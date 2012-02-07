@@ -1,0 +1,4 @@
+[DEFAULT]
+jobs = 5
+#include = cat ${XDG_CONFIG_HOME:-$HOME/.config}/mr/config.d/*
+include = vcsh-cat-mr-config

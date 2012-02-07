@@ -1,0 +1,37 @@
+Rxvt.background: black
+Rxvt.foreground: white
+Rxvt.font: fixed
+URxvt.font: xft:Mono:size=17
+
+Xft.dpi: 120.0
+
+!Specifies the primary timeout. Numerical.
+Xautolock.time: 1
+!Specifies the locker. No quotes are needed, even if the locker command contains multiple words.
+Xautolock.locker: xtrlock
+!Specifies the secondary timeout. Numerical.
+!Xautolock.killtime:
+!Specifies the killer. No quotes are needed, even if the killer command contains multiple words.
+!Xautolock.killer:
+!Specifies the notification margin. Numerical.
+Xautolock.notify: 10
+!Specifies the notifier. No quotes are needed, even if the notifier command contains multiple words.
+Xautolock.notifier: notify-send --urgency=normal --expire-time=10000 "Screenlock" "Screen will be locked in 10 seconds"
+!Specifies the notification loudness. Numerical.
+!Xautolock.bell: 10
+!Specifies the corner behaviour, as explained above.
+Xautolock.corners: +-+-
+!Specifies the size of the corner areas. Numerical.
+Xautolock.cornersize: 25
+!Specifies the delay of a '+' corner. Numerical.
+Xautolock.cornerdelay: 3
+!Specifies the alternative delay of a '+' corner. Numerical.
+Xautolock.cornerredelay: 60
+!Reset the default X screen saver. Boolean.
+!Xautolock.resetsaver:
+!Dont close stdout. Boolean.
+!Xautolock.nocloseout:
+!Dont close stderr. Boolean.
+!Xautolock.nocloseerr:
+!Close neither stdout nor stderr. Boolean.
+!Xautolock.noclose:

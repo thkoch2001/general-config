@@ -1,0 +1,10 @@
+#setxkbmap de
+#xset r on
+if [ -r $HOME/.myenvironment ]; then
+  . $HOME/.myenvironment
+fi
+keynav &
+# xautolock &
+autocutsel -fork &
+emacs --daemon &
+#export KDEWM=awesome

@@ -1,0 +1,23 @@
+[user]
+	name = Thomas Koch
+	email = thomas@koch.ro
+	signingkey = 042BA65A
+[core]
+#	excludesfile = $HOME/.gitignore.global
+	pager = less
+[color]
+    status = auto
+    pager = true
+    ui = auto
+[sendemail]
+	identity = privat
+[sendemail "privat"]
+	smtpserver = koch.ro
+	smtpuser = thkoch
+	smtpssl = true
+
+[alias]
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	squash = "!f() { git checkout -B gerrit_temp && git reset --soft $1; }; f `git merge-base \"$1\" HEAD`"
+[rebase]
+	autosquash = true
