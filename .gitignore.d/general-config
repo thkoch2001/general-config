@@ -1,0 +1,6 @@
+*
+!.config
+!.config/termit
+!.config/termit/rc.lua
+!.gitignore.d
+!.gitignore.d/general-config
