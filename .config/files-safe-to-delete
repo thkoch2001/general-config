@@ -1,0 +1,17 @@
+.gegl-?.?
+.local/share/vlc
+.kchmviewer
+.lingot
+.config/smplayer
+.config/vlc
+.gaphor
+.cache/clive
+.cache/vlc
+.cache/wocky
+.cache/xine-lib
+.gnash
+.gnashpluginrc
+.thumbnails
+.lesshst
+.gstreamer-*.*
+.xine

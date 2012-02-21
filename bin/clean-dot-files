@@ -1,0 +1,21 @@
+#!/bin/sh
+
+CONFDIR=${HOME}/.config
+LISTFILE=$CONFDIR/files-safe-to-delete
+
+if [ ! -r $LISTFILE ]
+then
+  echo "not found: $LISTFILE"
+  exit 1
+fi
+
+for FILE in $(cat $LISTFILE)
+do
+  if [ ! -r $FILE ]
+  then
+    continue
+  else
+    echo removing $FILE
+    rm -rf $FILE
+  fi
+done
