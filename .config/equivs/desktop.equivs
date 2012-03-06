@@ -9,7 +9,9 @@ Package: thkoch-desktop
 Version: 0.2
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: 
-Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils, impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector, gnash, clive, cclive
+Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils,
+ impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector,
+ browser-plugin-gnash, clive, cclive
 Suggests: mediathekview
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
