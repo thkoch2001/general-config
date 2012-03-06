@@ -21,3 +21,7 @@
 	squash = "!f() { git checkout -B gerrit_temp && git reset --soft $1; }; f `git merge-base \"$1\" HEAD`"
 [rebase]
 	autosquash = true
+[annex]
+	numcopies = 2
+[url "koch.ro:git/vcsh/"]
+	insteadOf = vcsh://
