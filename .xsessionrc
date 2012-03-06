@@ -1,10 +1,10 @@
-#setxkbmap de
-#xset r on
 if [ -r $HOME/.myenvironment ]; then
   . $HOME/.myenvironment
 fi
-keynav &
+# kdm has problems, if dbus does not come up fast enough...
+# sleep 5
+$HOME/bin/dex -v -a || true
 # xautolock &
-autocutsel -fork &
-emacs --daemon &
-#export KDEWM=awesome
+# autocutsel -fork &
+# emacs --daemon &
+

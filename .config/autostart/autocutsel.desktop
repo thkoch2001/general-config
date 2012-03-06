@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=autocutsel
+#GenericName=Text Editor
+#Comment=View and edit files
+Exec=/usr/bin/autocutsel -fork
+TryExec=autocutsel
+#Icon=/usr/share/icons/hicolor/scalable/apps/emacs23.svg
+Type=Application
+Terminal=false
+#Categories=Utility;Development;TextEditor;
