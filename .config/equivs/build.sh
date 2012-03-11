@@ -2,9 +2,10 @@
 
 CFGDIR=~/.config/equivs
 REPODIR=$CFGDIR/repo
+WORKDIR=/tmp/equivs
 
-mkdir -p /tmp/equivs
-cd /tmp/equivs
+mkdir -p $WORKDIR
+cd $WORKDIR
 
 for F in $(find $CFGDIR -name "*.equivs" -type f)
 do
@@ -19,8 +20,13 @@ do
   fi
 done
 
-dpkg-scanpackages $REPODIR >$REPODIR/Packages
-apt-ftparchive release $REPODIR >$REPODIR/Release
-gpg --output $REPODIR/Release.gpg -ba $REPODIR/Release
+cd $REPODIR
+apt-ftparchive packages . >Packages
+apt-ftparchive release . >Release
+if [ -e Release.gpg ]
+then
+  rm Release.gpg
+fi
+gpg --output Release.gpg -ba Release
 
-rmdir /tmp/equivs || true
+rmdir $WORKDIR || true
