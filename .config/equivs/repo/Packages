@@ -1,0 +1,112 @@
+Package: thkoch-ca-certificates
+Version: 0.1
+Architecture: all
+Maintainer: Thomas Koch <thomas@koch.ro>
+Installed-Size: 47
+Depends: ca-certificates
+Filename: /home/thkoch/.config/equivs/repo/thkoch-ca-certificates_0.1_all.deb
+Size: 5670
+MD5sum: 923286d23b303eabce547955b5fd47b9
+SHA1: 661f5d00fe9058b089411115a678f57e8b1e1700
+SHA256: df2f1b01df0f55c6e6d88db52793cf03a44b915d5b9258e2698d62bc1a551ef5
+Section: misc
+Priority: optional
+Description: Certificates that I must trust
+ - Deutsches Forschungsnetz
+ - Fernuni Hagen
+
+Package: thkoch-commandline
+Version: 0.1
+Architecture: all
+Maintainer: Thomas Koch <thomas@koch.ro>
+Installed-Size: 3
+Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
+Recommends: rsync, ssh, di, apt-listbugs
+Suggests: pwgen, etckeeper, insserv, sshfs
+Filename: /home/thkoch/.config/equivs/repo/thkoch-commandline_0.1_all.deb
+Size: 2230
+MD5sum: 1a084ee69651121b13739db63be77e41
+SHA1: 5ea02ac1d5bc76e0d3f8beafdbe3ef20fa2e49d2
+SHA256: c5f625264d3fad4b7e311481da5991b5a49cbf67082b6bcca6b6c46b046960ab
+Section: misc
+Priority: optional
+Description: essential packages to be present on every computer I touch
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-desktop
+Version: 0.2
+Architecture: all
+Maintainer: Thomas Koch <thomas@koch.ro>
+Installed-Size: 3
+Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils, impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector, gnash, clive, cclive
+Suggests: mediathekview
+Filename: /home/thkoch/.config/equivs/repo/thkoch-desktop_0.2_all.deb
+Size: 2256
+MD5sum: 08b1d4621b59c0c2d20140f1b576ba06
+SHA1: 995302f247ca84ac2953bdcca3ec9782c70a09ed
+SHA256: 325e852fedb539772169b92bac059e6426f1b565ac2882e610fe75044142650a
+Section: misc
+Priority: optional
+Description: packages for a desktop style machine
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-dummy
+Version: 0.1
+Architecture: all
+Maintainer: Thomas Koch <thomas@koch.ro>
+Installed-Size: 3
+Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
+Recommends: rsync, ssh, di, apt-listbugs
+Suggests: pwgen, etckeeper, insserv, sshfs
+Filename: /home/thkoch/.config/equivs/repo/thkoch-dummy_0.1_all.deb
+Size: 2222
+MD5sum: 1b416c8b139a2d7eeaf9b3f43e6a991c
+SHA1: 5c00eef21d6c5c2aef6bb63ed14c214d4d54336a
+SHA256: b9121627dd330cad6910267640b36f0825762f92d9b15399829aa44b5100c64b
+Section: misc
+Priority: optional
+Description: essential packages to be present on every computer I touch
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-fun
+Version: 0.1
+Architecture: all
+Maintainer: Thomas Koch <thomas@koch.ro>
+Installed-Size: 3
+Recommends: sl, bb, cowsay, xcowsay, saytime, toilet
+Filename: /home/thkoch/.config/equivs/repo/thkoch-fun_0.1_all.deb
+Size: 2070
+MD5sum: fd7a3c0deb143c41abd6c294a25ffcc8
+SHA1: 7057b282f9fe002ccd7245d940bd7db0982b476c
+SHA256: 83e55b39d3c6da9adb7dccc8873ecf667dc99b76a9fde79026be0860b4c5e2ef
+Section: misc
+Priority: optional
+Description: packages which make fun
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-workmachine
+Version: 0.1
+Architecture: all
+Maintainer: Thomas Koch <thomas@koch.ro>
+Installed-Size: 3
+Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff
+Filename: /home/thkoch/.config/equivs/repo/thkoch-workmachine_0.1_all.deb
+Size: 2132
+MD5sum: 3eea809ccea5c6b05f5dd4baf6ca343d
+SHA1: 6ad2caba8049c07b8962c242f6ad98ef166924e8
+SHA256: 1c24ec8741a124aed598a64e7d4ac74433c0182e6cf97f7f7e4ecc89659d64f8
+Section: misc
+Priority: optional
+Description: packages for a regular work machine
+ long description and info
+ .
+ second paragraph
+
