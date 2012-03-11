@@ -6,7 +6,7 @@ Priority: optional
 Standards-Version: 3.9.2
 
 Package: thkoch-ca-certificates
-Version: 0.2
+Version: 0.3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: ca-certificates
 Recommends: 
@@ -19,8 +19,8 @@ Architecture: all
 Postinst: ca-certificates.postinst
 # Readme: <README.Debian file; defaults to a generic one>
 # Extra-Files: <comma-separated list of additional files for the doc directory>
-Files: ca-certificates/dfn-deutsches-forschungsnetz-intermediatecacert.crt /usr/local/share/ca-certificates/
- ca-certificates/fernuni-hagen-cacert.pem.crt /usr/local/share/ca-certificates/
+Files: ca-certificates/dfn-deutsches-forschungsnetz-intermediatecacert.crt /usr/local/share/
+ ca-certificates/fernuni-hagen-cacert.pem.crt /usr/local/share/
 #  <more pairs, if there's more than one file to include. Notice the starting space>
 Description: Certificates that I must trust
  - Deutsches Forschungsnetz

@@ -1,17 +1,19 @@
-Package: thkoch-workmachine
+Package: thkoch-commandline
 Priority: optional
 Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
 Version: 0.1
-Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff
-Filename: ./thkoch-workmachine_0.1_all.deb
-Size: 2132
-MD5sum: 3eea809ccea5c6b05f5dd4baf6ca343d
-SHA1: 6ad2caba8049c07b8962c242f6ad98ef166924e8
-SHA256: 1c24ec8741a124aed598a64e7d4ac74433c0182e6cf97f7f7e4ecc89659d64f8
-Description: packages for a regular work machine
+Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
+Recommends: rsync, ssh, di, apt-listbugs
+Suggests: pwgen, etckeeper, insserv, sshfs
+Filename: ./thkoch-commandline_0.1_all.deb
+Size: 2230
+MD5sum: 1a084ee69651121b13739db63be77e41
+SHA1: 5ea02ac1d5bc76e0d3f8beafdbe3ef20fa2e49d2
+SHA256: c5f625264d3fad4b7e311481da5991b5a49cbf67082b6bcca6b6c46b046960ab
+Description: essential packages to be present on every computer I touch
  long description and info
  .
  second paragraph
@@ -53,40 +55,38 @@ Description: packages which make fun
  .
  second paragraph
 
-Package: thkoch-ca-certificates
-Priority: optional
-Section: misc
-Installed-Size: 46
-Maintainer: Thomas Koch <thomas@koch.ro>
-Architecture: all
-Version: 0.2
-Depends: ca-certificates
-Filename: ./thkoch-ca-certificates_0.2_all.deb
-Size: 4852
-MD5sum: 5bf34c85b9e7b0eb7659e4d672be7a0e
-SHA1: dd6b632708748e7a2d6b61a112799732cb56ecc9
-SHA256: f7cfba1891b33bf49ad0d4c25d69b16887b4a3848a215dfa8692fe163d1b5d7e
-Description: Certificates that I must trust
- - Deutsches Forschungsnetz
- - Fernuni Hagen
-
-Package: thkoch-commandline
+Package: thkoch-workmachine
 Priority: optional
 Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
 Version: 0.1
-Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
-Recommends: rsync, ssh, di, apt-listbugs
-Suggests: pwgen, etckeeper, insserv, sshfs
-Filename: ./thkoch-commandline_0.1_all.deb
-Size: 2230
-MD5sum: 1a084ee69651121b13739db63be77e41
-SHA1: 5ea02ac1d5bc76e0d3f8beafdbe3ef20fa2e49d2
-SHA256: c5f625264d3fad4b7e311481da5991b5a49cbf67082b6bcca6b6c46b046960ab
-Description: essential packages to be present on every computer I touch
+Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff
+Filename: ./thkoch-workmachine_0.1_all.deb
+Size: 2132
+MD5sum: 3eea809ccea5c6b05f5dd4baf6ca343d
+SHA1: 6ad2caba8049c07b8962c242f6ad98ef166924e8
+SHA256: 1c24ec8741a124aed598a64e7d4ac74433c0182e6cf97f7f7e4ecc89659d64f8
+Description: packages for a regular work machine
  long description and info
  .
  second paragraph
+
+Package: thkoch-ca-certificates
+Priority: optional
+Section: misc
+Installed-Size: 6
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 0.3
+Depends: ca-certificates
+Filename: ./thkoch-ca-certificates_0.3_all.deb
+Size: 4792
+MD5sum: 31bf8798a1898410391f3bebd3e5eb2a
+SHA1: 3020826a1e1736b28c2f027947512531f4c13d67
+SHA256: 16e359a69c41f3973080ee4c2162731965261a3a05796e789060f4d5005ffdbb
+Description: Certificates that I must trust
+ - Deutsches Forschungsnetz
+ - Fernuni Hagen
 
