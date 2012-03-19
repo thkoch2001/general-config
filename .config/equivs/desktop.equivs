@@ -6,12 +6,13 @@ Priority: optional
 Standards-Version: 3.9.2
 
 Package: thkoch-desktop
-Version: 0.2
+Version: 2012.03.19
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: 
 Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils,
  impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector,
- browser-plugin-gnash, clive, cclive
+ browser-plugin-gnash, clive, cclive, keynav, unrar-free, libreoffice,
+ network-manager-gnome, gsimplecal
 Suggests: mediathekview
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>

@@ -4,6 +4,7 @@
 !.caff/gnupghome/gpg.conf
 !.caffrc
 !.config
+!.config/equivs
 !.config/termit
 !.config/termit/rc.lua
 !.devscripts

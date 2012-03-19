@@ -5,12 +5,14 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 
-Package: thkoch-workmachine
+Package: thkoch-devel-debian
 Version: 2012.03.19
 Maintainer: Thomas Koch <thomas@koch.ro>
-Depends: 
-Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff, git-annex,
- emacs-goodies-el, vcsh
+Depends: debian-goodies, debhelper, devscripts, devscripts-el,
+ git-buildpackage
+Recommends: eatmydata, build-essential, javahelper, packaging-dev,
+ developers-reference, debian-policy, equivs, schroot, debian-faq,
+ doc-debian, manpages
 Suggests: 
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
@@ -21,7 +23,7 @@ Architecture: all
 # Extra-Files: <comma-separated list of additional files for the doc directory>
 # Files: <pair of space-separated paths; First is file to include, second is destination>
 #  <more pairs, if there's more than one file to include. Notice the starting space>
-Description: packages for a regular work machine
+Description: essential packages to be present on every computer I touch
  long description and info
  .
  second paragraph

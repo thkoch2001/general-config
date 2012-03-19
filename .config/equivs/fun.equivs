@@ -6,10 +6,10 @@ Priority: optional
 Standards-Version: 3.9.2
 
 Package: thkoch-fun
-Version: 0.1
+Version: 2012-03-19
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: 
-Recommends: sl, bb, cowsay, xcowsay, saytime, toilet
+Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet
 Suggests: 
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
