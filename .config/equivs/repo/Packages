@@ -1,20 +1,3 @@
-Package: thkoch-ca-certificates
-Priority: optional
-Section: misc
-Installed-Size: 6
-Maintainer: Thomas Koch <thomas@koch.ro>
-Architecture: all
-Version: 0.3
-Depends: ca-certificates
-Filename: ./thkoch-ca-certificates_0.3_all.deb
-Size: 4792
-MD5sum: 31bf8798a1898410391f3bebd3e5eb2a
-SHA1: 3020826a1e1736b28c2f027947512531f4c13d67
-SHA256: 16e359a69c41f3973080ee4c2162731965261a3a05796e789060f4d5005ffdbb
-Description: Certificates that I must trust
- - Deutsches Forschungsnetz
- - Fernuni Hagen
-
 Package: thkoch-commandline
 Priority: optional
 Section: misc
@@ -49,25 +32,6 @@ MD5sum: 3e58e0839d5311fda45b8486e94f5ffd
 SHA1: bddcfdcf105c4721ec3a0ddce03ad27e0189ab9e
 SHA256: c7e1a80682aa6aa61e9f30d45e3a28ed2d1942c1e007b6ea3bafccb2f37a0a6d
 Description: packages for a regular work machine
- long description and info
- .
- second paragraph
-
-Package: thkoch-desktop
-Priority: optional
-Section: misc
-Installed-Size: 3
-Maintainer: Thomas Koch <thomas@koch.ro>
-Architecture: all
-Version: 2012.03.19
-Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils, impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector, browser-plugin-gnash, clive, cclive, keynav, unrar-free, libreoffice, network-manager-gnome, gsimplecal
-Suggests: mediathekview
-Filename: ./thkoch-desktop_2012.03.19_all.deb
-Size: 2390
-MD5sum: 56ec3bd3bfa251b7dc656218f7e13539
-SHA1: 221521c6614b736ef8eb5cf9e6b191678131a5ca
-SHA256: 473cb718a782c80ce31a9ac6ac7e4dbb201d81064e1b70533f75d9b300ee9dc6
-Description: packages for a desktop style machine
  long description and info
  .
  second paragraph
@@ -108,4 +72,40 @@ Description: packages which make fun
  long description and info
  .
  second paragraph
+
+Package: thkoch-desktop
+Priority: optional
+Section: misc
+Installed-Size: 3
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2012.03.20
+Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils, impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector, browser-plugin-gnash, clive, cclive, keynav, unrar-free, libreoffice, network-manager-gnome, gsimplecal, get-flash-videos, xul-ext-firebug, xul-ext-openinbrowser, arandr, unagi, xclip, xpra
+Suggests: mediathekview
+Filename: ./thkoch-desktop_2012.03.20_all.deb
+Size: 2486
+MD5sum: 81288a3ae24e376f81ea0071cd5a1440
+SHA1: f07c3546c28bff5d679381d95a878f14c0bf41ed
+SHA256: b232437276ac69f6083a6028f826b402b9a3edb59e6299c29ce35bd0539fe5ab
+Description: packages for a desktop style machine
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-ca-certificates
+Priority: optional
+Section: misc
+Installed-Size: 11
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2012.03.20
+Depends: ca-certificates
+Filename: ./thkoch-ca-certificates_2012.03.20_all.deb
+Size: 7782
+MD5sum: 2ef8db7797823f7d64b8d026d47eab18
+SHA1: be9c508d1ee58533f6674c1463379768aa75d49b
+SHA256: f17a8352451719e2f41301227b36679fab2cfb3106522a8eec91bc5809d92ac7
+Description: Certificates that I must trust
+ - Deutsches Forschungsnetz
+ - Fernuni Hagen
 
