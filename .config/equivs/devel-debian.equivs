@@ -6,14 +6,14 @@ Priority: optional
 Standards-Version: 3.9.2
 
 Package: thkoch-devel-debian
-Version: 2012.03.19
+Version: 2012.06.09
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: debian-goodies, debhelper, devscripts, devscripts-el,
  git-buildpackage
 Recommends: eatmydata, build-essential, javahelper, packaging-dev,
  developers-reference, debian-policy, equivs, schroot, debian-faq,
- doc-debian, manpages
-Suggests: 
+ doc-debian, manpages, sysv-rc-conf, tardiff
+Suggests:
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 Architecture: all

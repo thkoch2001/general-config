@@ -6,10 +6,11 @@ Priority: optional
 Standards-Version: 3.9.2
 
 Package: thkoch-commandline
-Version: 2012.03.19
+Version: 2012.06.15
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
-Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges, moreutils, atop
+Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges, moreutils, atop,
+ smartmontools
 Suggests: pwgen, etckeeper, insserv, sshfs
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
