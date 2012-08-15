@@ -1,10 +1,10 @@
 if [ -r $HOME/.myenvironment ]; then
   . $HOME/.myenvironment
 fi
-# kdm has problems, if dbus does not come up fast enough...
-# sleep 5
-$HOME/bin/dex -v -a || true
-# xautolock &
-# autocutsel -fork &
-# emacs --daemon &
 
+$HOME/bin/run-autoruns.sh
+
+# kdm has problems, if dbus does not come up fast enough...
+#echo "start sleep"
+#sleep 3
+#echo "end sleep"
