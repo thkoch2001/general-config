@@ -11,7 +11,7 @@ do
 [${REPODIR}]
 status   = echo -n "git-annex: ${REPO} on " && git status --short --branch
 gc       = git gc --aggressive
-notify   = git-wip | xargs --no-run-if-empty -0 notify-send -t 10000 "git-wip in vcsh repo ${REPO}"
+notify   = git-wip | xargs --no-run-if-empty -0 notify-send -t 10000 "git-wip in git-annex repo ${REPO}"
 
 EOF
 
