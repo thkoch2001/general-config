@@ -1,0 +1,18 @@
+#!/bin/sh
+
+LOCAL_REPO_BASE=$HOME/.local/share/git-annex
+
+for REPODIR in $(find ${LOCAL_REPO_BASE} -maxdepth 1 -type d)
+do
+  REPO=$(basename $REPODIR .git)
+  is-git-annex $REPODIR || continue
+
+  cat <<EOF
+[${REPODIR}]
+status   = echo -n "git-annex: ${REPO} on " && git status --short --branch
+gc       = git gc --aggressive
+notify   = git-wip | xargs --no-run-if-empty -0 notify-send -t 10000 "git-wip in vcsh repo ${REPO}"
+
+EOF
+
+done
