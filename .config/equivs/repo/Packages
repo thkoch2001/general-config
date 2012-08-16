@@ -1,56 +1,20 @@
-Package: thkoch-commandline
+Package: thkoch-desktop
 Priority: optional
 Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012.03.19
-Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
-Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges, moreutils, atop
-Suggests: pwgen, etckeeper, insserv, sshfs
-Filename: ./thkoch-commandline_2012.03.19_all.deb
-Size: 2280
-MD5sum: f6e15a37135d758669e7d53a97bfb79c
-SHA1: a79d9f3de28a6b322e30debfd067581b9d882c41
-SHA256: 5723f79fc68c25a50f77425dbb6687917f1a79b0707a595aee5bcc3d9b5f4635
-Description: essential packages to be present on every computer I touch
- long description and info
- .
- second paragraph
-
-Package: thkoch-workmachine
-Priority: optional
-Section: misc
-Installed-Size: 3
-Maintainer: Thomas Koch <thomas@koch.ro>
-Architecture: all
-Version: 2012.03.19
-Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff, git-annex, emacs-goodies-el
-Filename: ./thkoch-workmachine_2012.03.19_all.deb
-Size: 2176
-MD5sum: 3e58e0839d5311fda45b8486e94f5ffd
-SHA1: bddcfdcf105c4721ec3a0ddce03ad27e0189ab9e
-SHA256: c7e1a80682aa6aa61e9f30d45e3a28ed2d1942c1e007b6ea3bafccb2f37a0a6d
-Description: packages for a regular work machine
- long description and info
- .
- second paragraph
-
-Package: thkoch-devel-debian
-Priority: optional
-Section: misc
-Installed-Size: 3
-Maintainer: Thomas Koch <thomas@koch.ro>
-Architecture: all
-Version: 2012.03.19
-Depends: debian-goodies, debhelper, devscripts, devscripts-el, git-buildpackage
-Recommends: eatmydata, build-essential, javahelper, packaging-dev, developers-reference, debian-policy, equivs, schroot, debian-faq, doc-debian, manpages
-Filename: ./thkoch-devel-debian_2012.03.19_all.deb
-Size: 2308
-MD5sum: 964a3faa21969cca05d8161360223ecc
-SHA1: 6421b12846b5024120bf4ef420228e0b7323b3fe
-SHA256: e1c618900d0c45b02312499561b5b4ed4d213ce8663dfaf559c47818c1fbde68
-Description: essential packages to be present on every computer I touch
+Version: 2012-08-16
+Depends: libnotify-bin
+Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils, impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector, browser-plugin-gnash, clive, cclive, keynav, unrar-free, libreoffice, network-manager-gnome, gsimplecal, get-flash-videos, xul-ext-firebug, xul-ext-openinbrowser, arandr, unagi, xclip, xpra
+Suggests: mediathekview
+Filename: ./thkoch-desktop_2012-08-16_all.deb
+Size: 2518
+MD5sum: 96382f6b3b7be1086134bc4ac5b864f2
+SHA1: fc93f2648d1bf74293798eb38887ac03b0dc8515
+SHA256: 440e8d92c58eccb4e696a65c7e9d1c09c91cdf2e4d90f1c42d31226033718541
+SHA512: dbbf7e100c80f381b05ff807aebe6bae4a19f2314db78a524cfdcd6a5531f819575471e2e4d6c3cc98f8a54cb56f60a03d51461a82c917a0bd9d9f43d26cb753
+Description: packages for a desktop style machine
  long description and info
  .
  second paragraph
@@ -64,48 +28,73 @@ Architecture: all
 Version: 2012-03-19
 Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet
 Filename: ./thkoch-fun_2012-03-19_all.deb
-Size: 2108
-MD5sum: e0e49cc9ceaf2619e989ec3a6c6a28ed
-SHA1: f1d13f55fbfaeb8b3a62f1be31e00798c881c3a8
-SHA256: 8851f05232405d3c1003c3c6758db871c07152323c956b85eac750004e15370f
+Size: 2102
+MD5sum: 2820972580f24f23a447ec371f01e7a6
+SHA1: 73fde422af3826ec4bf6413fdc1f2080c40a6a06
+SHA256: 1caf23ff2bb692bcc9c7b43065001ebfd73d04b41dfc46c444632ec20b868833
+SHA512: 20e195225a51b97968a218e9a232140da514a2385183ee451baed69924bbda998ce2638a9e21ccacfef756dcc374efa2e3c790694b586cbcba1eb849587fe21f
 Description: packages which make fun
  long description and info
  .
  second paragraph
 
-Package: thkoch-desktop
+Package: thkoch-workmachine
 Priority: optional
 Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012.03.20
-Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils, impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector, browser-plugin-gnash, clive, cclive, keynav, unrar-free, libreoffice, network-manager-gnome, gsimplecal, get-flash-videos, xul-ext-firebug, xul-ext-openinbrowser, arandr, unagi, xclip, xpra
-Suggests: mediathekview
-Filename: ./thkoch-desktop_2012.03.20_all.deb
-Size: 2486
-MD5sum: 81288a3ae24e376f81ea0071cd5a1440
-SHA1: f07c3546c28bff5d679381d95a878f14c0bf41ed
-SHA256: b232437276ac69f6083a6028f826b402b9a3edb59e6299c29ce35bd0539fe5ab
-Description: packages for a desktop style machine
+Version: 2012.03.19
+Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff, git-annex, emacs-goodies-el
+Filename: ./thkoch-workmachine_2012.03.19_all.deb
+Size: 2174
+MD5sum: d16c34c405302993c11493b01fa1dc23
+SHA1: 20c1e675c1663d5c77b493d95897e5f31ea1c96d
+SHA256: beabe564be783e6e227f962906e1aff0315d01a42da7b054119f6d956a3a9337
+SHA512: 71bd141582044195f1822881beafe5860a6a69730f83b574207eb7922bfcabdf985eb500822cf8169e73c7a41a288a27d8736f2f3d25ee1e162e1ae72febfe15
+Description: packages for a regular work machine
  long description and info
  .
  second paragraph
 
-Package: thkoch-ca-certificates
+Package: thkoch-devel-debian
 Priority: optional
 Section: misc
-Installed-Size: 11
+Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012.03.20
-Depends: ca-certificates
-Filename: ./thkoch-ca-certificates_2012.03.20_all.deb
-Size: 7782
-MD5sum: 2ef8db7797823f7d64b8d026d47eab18
-SHA1: be9c508d1ee58533f6674c1463379768aa75d49b
-SHA256: f17a8352451719e2f41301227b36679fab2cfb3106522a8eec91bc5809d92ac7
-Description: Certificates that I must trust
- - Deutsches Forschungsnetz
- - Fernuni Hagen
+Version: 2012.06.09
+Depends: debian-goodies, debhelper, devscripts, devscripts-el, git-buildpackage
+Recommends: eatmydata, build-essential, javahelper, packaging-dev, developers-reference, debian-policy, equivs, schroot, debian-faq, doc-debian, manpages, sysv-rc-conf, tardiff
+Filename: ./thkoch-devel-debian_2012.06.09_all.deb
+Size: 2338
+MD5sum: 8e9c43cae48334fe73a06d2f7cec15f4
+SHA1: f982c78f0af3eeef913096baf2e3f4246425a2e6
+SHA256: 3b9ce85c069d9b33b92f4547b12f2bcd2e2361ae0a1ce7f73e0b0f88ce15ccf7
+SHA512: 9c3fba6499e0647de437709d0bd58c3419c21b79712cad61d7012896d6d8103f8c00dfb4d168d207a2080da3f805e563fb477621847b8cfe023dacd338d3576d
+Description: essential packages to be present on every computer I touch
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-commandline
+Priority: optional
+Section: misc
+Installed-Size: 3
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2012.06.15
+Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
+Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges, moreutils, atop, smartmontools
+Suggests: pwgen, etckeeper, insserv, sshfs
+Filename: ./thkoch-commandline_2012.06.15_all.deb
+Size: 2298
+MD5sum: 8e8738d36c433b05a24dde837e1d4f72
+SHA1: 881815ef8d8104e5a8bcffbb3d747f7216f93d1d
+SHA256: a57c0aedfa550c7ac8e6555f11f2ab4794cc9a5034888bc20e3ebba445225331
+SHA512: 8aee5cbdf803d7c67848c806acf143021d4d866090368789ea2c64f13b874089e4190d2fb63ee80db0f38bad94a506089c968e86b430c17ea162deda2f591418
+Description: essential packages to be present on every computer I touch
+ long description and info
+ .
+ second paragraph
 

@@ -1,10 +1,13 @@
-Date: Tue, 20 Mar 2012 15:30:56 UTC
+Date: Thu, 16 Aug 2012 19:07:44 UTC
 MD5Sum:
- 7a9c41eb374cf2148b64200643620ed2             3836 Packages
+ 57189d35c350ee22301dd803e2ab5687             4078 Packages
  d41d8cd98f00b204e9800998ecf8427e                0 Release
 SHA1:
- 7b32be36d3d7f683cf5ea2d7876192da88008eeb             3836 Packages
+ cba61881289739d2f6bae11701065f6e92e41b1a             4078 Packages
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Release
 SHA256:
- dfa04698899368ec8de4d60e030a462e5f1de24ce2a78e4ac63b9aa12deb1299             3836 Packages
+ b3e7f811b29cd67422eaaf2efaa4b8fdcc855249803ecde5a7e6124ff9ad39fc             4078 Packages
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Release
+SHA512:
+ 61bbbd7e535c6e0a47f0b95426d5abe9fe49be43f4bbc6b47a6cd813584cdf22f005b27501013277138078807d5c41cb9039d43fc5cfb4adfd8d8f754f9cf660             4078 Packages
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Release
