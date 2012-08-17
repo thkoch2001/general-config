@@ -1,20 +1,20 @@
-Package: thkoch-desktop
+Package: thkoch-commandline
 Priority: optional
 Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012-08-16
-Depends: libnotify-bin
-Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils, impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector, browser-plugin-gnash, clive, cclive, keynav, unrar-free, libreoffice, network-manager-gnome, gsimplecal, get-flash-videos, xul-ext-firebug, xul-ext-openinbrowser, arandr, unagi, xclip, xpra
-Suggests: mediathekview
-Filename: ./thkoch-desktop_2012-08-16_all.deb
-Size: 2518
-MD5sum: 96382f6b3b7be1086134bc4ac5b864f2
-SHA1: fc93f2648d1bf74293798eb38887ac03b0dc8515
-SHA256: 440e8d92c58eccb4e696a65c7e9d1c09c91cdf2e4d90f1c42d31226033718541
-SHA512: dbbf7e100c80f381b05ff807aebe6bae4a19f2314db78a524cfdcd6a5531f819575471e2e4d6c3cc98f8a54cb56f60a03d51461a82c917a0bd9d9f43d26cb753
-Description: packages for a desktop style machine
+Version: 2012.06.15
+Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
+Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges, moreutils, atop, smartmontools
+Suggests: pwgen, etckeeper, insserv, sshfs
+Filename: ./thkoch-commandline_2012.06.15_all.deb
+Size: 2294
+MD5sum: 71f8450c128367545e00f6f4c1bd1609
+SHA1: d2ab83da4325b3edcbfda75a178302a98efa48ea
+SHA256: db7fe8528edd0205f54b0c93f7d55375c750e4238d835301e722652762b031bd
+SHA512: 9a068eb1c43b5b40a8b4142445ca32b09b05a64c3807ff905ea121aed88d1626d1be36bde9f298218c5a5d7893998cd684fb26a82d34533bec680c75e55dbb63
+Description: essential packages to be present on every computer I touch
  long description and info
  .
  second paragraph
@@ -25,14 +25,14 @@ Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012-03-19
+Version: 2012.08.17
 Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet
-Filename: ./thkoch-fun_2012-03-19_all.deb
-Size: 2102
-MD5sum: 2820972580f24f23a447ec371f01e7a6
-SHA1: 73fde422af3826ec4bf6413fdc1f2080c40a6a06
-SHA256: 1caf23ff2bb692bcc9c7b43065001ebfd73d04b41dfc46c444632ec20b868833
-SHA512: 20e195225a51b97968a218e9a232140da514a2385183ee451baed69924bbda998ce2638a9e21ccacfef756dcc374efa2e3c790694b586cbcba1eb849587fe21f
+Filename: ./thkoch-fun_2012.08.17_all.deb
+Size: 2104
+MD5sum: 81ee77f0764c61024a162f9b9255bdf7
+SHA1: e9bfcff5fe35a8c1b216d95ff5a7ad8387980585
+SHA256: fd74845a9e5dca17fa3d46cc8fbec26c5646a8551f4b7fc1e6537f73d844e379
+SHA512: 90be2fcfb6c24519c68b98d8033dfd70aaacb4aae507728f6d304f958a4de6e5fe98a4b443868ab5c73c9594ac456e903ad4c52d47f4427b4ca0c93498177ad9
 Description: packages which make fun
  long description and info
  .
@@ -48,10 +48,10 @@ Version: 2012.03.19
 Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff, git-annex, emacs-goodies-el
 Filename: ./thkoch-workmachine_2012.03.19_all.deb
 Size: 2174
-MD5sum: d16c34c405302993c11493b01fa1dc23
-SHA1: 20c1e675c1663d5c77b493d95897e5f31ea1c96d
-SHA256: beabe564be783e6e227f962906e1aff0315d01a42da7b054119f6d956a3a9337
-SHA512: 71bd141582044195f1822881beafe5860a6a69730f83b574207eb7922bfcabdf985eb500822cf8169e73c7a41a288a27d8736f2f3d25ee1e162e1ae72febfe15
+MD5sum: 3992c6136df958738e74406ac58d0e91
+SHA1: bfa8e0a038e751bc1b12822ccdfaf6244fd85bc6
+SHA256: 04f382749019ed17560739d21b7c703888ec8827e9d8bad5ea51eb92131d0f81
+SHA512: e94ca86d30cb3f8eeebecc8d31eb9cd49b2d9c1c2f347c546892f50fe5d01bd6e243fec17f5aecf422158f50480fc965ff3b37bd568aebe4ec19e64ce0fbe1d2
 Description: packages for a regular work machine
  long description and info
  .
@@ -67,33 +67,33 @@ Version: 2012.06.09
 Depends: debian-goodies, debhelper, devscripts, devscripts-el, git-buildpackage
 Recommends: eatmydata, build-essential, javahelper, packaging-dev, developers-reference, debian-policy, equivs, schroot, debian-faq, doc-debian, manpages, sysv-rc-conf, tardiff
 Filename: ./thkoch-devel-debian_2012.06.09_all.deb
-Size: 2338
-MD5sum: 8e9c43cae48334fe73a06d2f7cec15f4
-SHA1: f982c78f0af3eeef913096baf2e3f4246425a2e6
-SHA256: 3b9ce85c069d9b33b92f4547b12f2bcd2e2361ae0a1ce7f73e0b0f88ce15ccf7
-SHA512: 9c3fba6499e0647de437709d0bd58c3419c21b79712cad61d7012896d6d8103f8c00dfb4d168d207a2080da3f805e563fb477621847b8cfe023dacd338d3576d
+Size: 2336
+MD5sum: 8aeba7e4a27566f854a5cb7ab378a41c
+SHA1: 019dfcbb4a2aeed8f332d65f830aaaf846afaf7d
+SHA256: 1870e895387fefad0acd5ff9f499bb364eba3ee8bba62cd4497fc941aeb185a9
+SHA512: 7d22b897f60552c9a4cc1fa62bba1e430367cbc744582b4b8b279aa6140d2dc9fd2bf54fb64c5e8ac8cc2b0584481d5e3f0adf1574e1fe395e1b59d145b0e1e9
 Description: essential packages to be present on every computer I touch
  long description and info
  .
  second paragraph
 
-Package: thkoch-commandline
+Package: thkoch-desktop
 Priority: optional
 Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012.06.15
-Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
-Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges, moreutils, atop, smartmontools
-Suggests: pwgen, etckeeper, insserv, sshfs
-Filename: ./thkoch-commandline_2012.06.15_all.deb
-Size: 2298
-MD5sum: 8e8738d36c433b05a24dde837e1d4f72
-SHA1: 881815ef8d8104e5a8bcffbb3d747f7216f93d1d
-SHA256: a57c0aedfa550c7ac8e6555f11f2ab4794cc9a5034888bc20e3ebba445225331
-SHA512: 8aee5cbdf803d7c67848c806acf143021d4d866090368789ea2c64f13b874089e4190d2fb63ee80db0f38bad94a506089c968e86b430c17ea162deda2f591418
-Description: essential packages to be present on every computer I touch
+Version: 2012.08.16
+Depends: libnotify-bin
+Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils, impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector, browser-plugin-gnash, clive, cclive, keynav, unrar-free, libreoffice, network-manager-gnome, gsimplecal, get-flash-videos, xul-ext-firebug, xul-ext-openinbrowser, arandr, unagi, xclip, xpra
+Suggests: mediathekview
+Filename: ./thkoch-desktop_2012.08.16_all.deb
+Size: 2510
+MD5sum: dceeae810789454193779426ae086d52
+SHA1: 94863608800b3921ff1ba8039eab28cac0036519
+SHA256: 195cdf853da7a5fd38413dacc482a61026d39a92ac6d08936bc6ee6a58846085
+SHA512: 23f6276a6ec086d72f95cd7e5b965fb9267e99cb1d8aea6c10813af21842753cf7d46e968624dfca9ea3d9e12eb97c4e0ea472662a7c3e461b943bec8b86d9ff
+Description: packages for a desktop style machine
  long description and info
  .
  second paragraph

@@ -6,7 +6,7 @@ Priority: optional
 Standards-Version: 3.9.2
 
 Package: thkoch-desktop
-Version: 2012-08-16
+Version: 2012.08.16
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: libnotify-bin
 Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils,
