@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+BRANCH=$(git branch --no-color | grep "^* " | cut -c 3-)
+NO_WIP_STATUS="## ${BRANCH}"
+
+[ "${NO_WIP_STATUS}" = "$(git status --porcelain -b)" ] && exit 0
+
+git -c status.relativePaths=false status --short --branch
