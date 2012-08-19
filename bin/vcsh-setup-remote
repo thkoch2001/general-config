@@ -1,0 +1,12 @@
+#!/bin/sh
+
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+
+VCSH_MR_CONFIG_OVERRIDES=$XDG_CONFIG_HOME/vcsh/mr
+
+VCSH_REMOTE_BASE=koch.ro:git/vcsh
+VCSH_LOCAL_REPO_BASE=$XDG_CONFIG_HOME/vcsh/repo.d
+
+# vcsh $1 remote rm origin || true
+vcsh $1 remote add origin $VCSH_REMOTE_BASE/$1.git
+# vcsh $1 branch --set-upstream master remotes/origin/master

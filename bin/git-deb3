@@ -1,0 +1,73 @@
+#! /bin/sh
+
+# TODO check content of debian/source/format
+# git for-each-ref --shell --format="git-deb3 %(refname)" "refs/heads/fix/*" | while read C; do eval $C ;done
+# find debian/patches -type f -printf "%P\n" | grep -v "series" > debian/patches/series
+
+PATCHDIR=debian/patches
+
+usage() {
+  echo $0 top_treeish [base_treeish]
+}
+
+# format, refspec
+formatlog() {
+  git log --reverse -1 --format="format:$1" $2
+}
+
+if ! dh_testdir
+then
+  echo not in a debian package
+  exit 1
+fi
+
+if [ $# -lt 2 ]
+then
+  PATCH_BASE_TREEISH_GIVEN=refs/heads/upstream
+else
+  PATCH_BASE_TREEISH_GIVEN="$2"
+fi
+
+PATCH_BASE_COMMIT_GIVEN=`git rev-parse --verify ${PATCH_BASE_TREEISH_GIVEN}`
+PATCH_HEAD="$1"
+PATCH_HEAD_COMMIT=`git rev-parse --verify ${PATCH_HEAD}`
+
+PATCH_BASE_COMMIT=`git merge-base ${PATCH_HEAD_COMMIT} ${PATCH_BASE_COMMIT_GIVEN}`
+
+git check-ref-format ${PATCH_HEAD}
+git check-ref-format ${PATCH_BASE_TREEISH_GIVEN}
+
+NAME=$(git name-rev --name-only --no-undefined ${PATCH_HEAD})
+FILE=${PATCHDIR}/${NAME}
+
+mkdir -p $(dirname $FILE)
+REFSPEC=${PATCH_BASE_COMMIT}..${PATCH_HEAD_COMMIT}
+
+DATE=$(date -u +%F)
+AUTHOR=$(formatlog "%aN <%aE>" ${REFSPEC})
+SUBJECT=$(formatlog "%s" ${REFSPEC})
+
+
+cat >$FILE <<-END
+Description: ${SUBJECT}
+ <long description that can span multiple lines, optional>
+Author: ${AUTHOR}
+Origin: <upstream|backport|vendor|other>, <URL, required except if Author is present>
+Bug: <URL to the upstream bug report if any, implies patch has been forwarded, optional>
+Bug-<Vendor>: <URL to the vendor bug report if any, optional>
+Forwarded: <URL|no|not-needed, useless if you have a Bug field, optional>
+Applied-Upstream: <version|URL|commit, identifies patches merged upstream, optional>
+Reviewed-by: <name and email of a reviewer, optional>
+Last-Update: ${DATE}
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+END
+
+git diff ${REFSPEC} >> $FILE
+
+exit 0
+
+PATCH_BODY=`git diff ${PATCH_BASE_COMMIT}..${PATCH_HEAD_COMMIT}`
+
+echo -e $PATCH_BODY | cat
+

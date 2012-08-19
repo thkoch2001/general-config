@@ -1,0 +1,19 @@
+#! /bin/sh
+
+ODD=13579
+EVEN=02468
+ME=$(basename $0)
+
+if [ $ME = "filter_odd" ]
+then
+  NUMBERS=$ODD
+else
+  NUMBERS=$EVEN
+fi
+
+PATTERN="/.*[${NUMBERS}]\..*/p"
+
+while read F
+do
+ echo $F | sed -n ${PATTERN}
+done <&0
