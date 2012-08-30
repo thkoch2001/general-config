@@ -3,7 +3,7 @@
 	email = thomas@koch.ro
 	signingkey = 042BA65A
 [core]
-#	excludesfile = $HOME/.gitignore.global
+	excludesfile = ~/.config/git/ignore-global
 	pager = less
 [color]
     status = auto

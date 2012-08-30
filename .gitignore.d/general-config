@@ -12,6 +12,7 @@
 !/.config/autosync/
 !/.config/equivs/
 !/.config/termit/
+!/.config/git/
 !.devscripts
 !.dput.cf
 !.dupload.conf
