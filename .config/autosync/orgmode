@@ -4,7 +4,7 @@ path = ~/Desktop/orgmode
 # will be appended with '.pid', e.g. for a config file ~/.autosync, the PID
 # will be written to ~/.autosync.pid. This option allows to override the
 # default.
-pidfile = /tmp/autosync/orgmode.pid
+pidfile = /tmp/autosync_orgmode.pid
 
 # Available synchronization methods: "xmpp" and "none", "autosync-server"
 # may be implemented later (to potentially be interoperable with SparkleShare).
