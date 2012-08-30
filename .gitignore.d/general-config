@@ -25,7 +25,13 @@
 !.Xresources
 !.xsessionrc
 
-
+/.eclipse/
+/workspace/
+/.sane/
+/.screenlayout/
+/.ido.last
+/git
+/Downloads
 
 
 /.Xauthority
