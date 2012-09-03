@@ -61,7 +61,7 @@ pulllock = conservative
 # this lower will increase the synchronization speed at the cost of CPU and
 # transfer resources.
 readfrequency = 60
-ignorepath = .git
+ignorepath = .git .#*
 
 # Note: addcmd, rmcmd, and modifycmd take one argument, movecmd takes two (first the source, then the destination).
 # Note: statuscmd should return with code 0 when nothing has changed in the 
