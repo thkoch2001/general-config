@@ -2,7 +2,8 @@ if [ -r $HOME/.myenvironment ]; then
   . $HOME/.myenvironment
 fi
 
-$HOME/bin/run-autoruns.sh
+#this is executed too early here. rather let this be done by awesome config
+#$HOME/bin/run-autoruns.sh
 
 # kdm has problems, if dbus does not come up fast enough...
 #echo "start sleep"
