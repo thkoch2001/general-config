@@ -1,0 +1,5 @@
+#!/bin/sh
+echo -ne '\033c'
+
+# http://unix.stackexchange.com/questions/26975/how-to-clear-terminal-completely
+# http://superuser.com/questions/299903/clear-terminal-using-keyboard-shortcut

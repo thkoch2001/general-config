@@ -1,0 +1,19 @@
+#!/bin/sh
+
+STARTKEY=$1
+
+KEYS=$STARTKEY
+
+for i in 1 2 3
+do
+  NEWKEYS=
+  gpg --recv-keys $KEYS
+  for KEY in $KEYS
+  do
+    echo add new keys for $KEY
+    NEWKEYS="$NEWKEYS $(gpg-list-signatures $KEY)"
+  done
+  echo new keys are $NEWKEYS
+  KEYS="$KEYS $NEWKEYS"
+  echo KEYS is now: $KEYS
+done

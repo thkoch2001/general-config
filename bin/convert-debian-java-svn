@@ -1,0 +1,9 @@
+#!/bin/sh
+
+PROJECT=$1
+SVN_URL=svn://svn.debian.org/svn/pkg-java
+
+echo converting project $PROJECT
+
+git svn clone -A /tmp/pkg-java-authors --no-metadata -Ttrunk/$PROJECT -ttags/$PROJECT -bbranches/$PROJECT $SVN_URL \
+                $PROJECT

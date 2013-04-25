@@ -1,0 +1,3 @@
+#!/bin/sh
+
+gpg --with-colons --list-sigs $1 | grep "^sig" | cut -d":" -f 5
