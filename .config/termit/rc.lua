@@ -6,6 +6,7 @@ defaults.hideMenubar = true
 defaults.encoding = 'UTF-8'
 defaults.allowChangingTitle = true
 defaults.hideSingleTab = true
+defaults.showBorder = false
 setOptions(defaults)
 
 -- bindKey('Ctrl-j', prevTab)

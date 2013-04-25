@@ -2,3 +2,5 @@ DEBSIGN_KEYID="042BA65A"
 DEBUILD_DPKG_BUILDPACKAGE_OPTS="-i\.git -I.git"
 DEBEMAIL="thomas@koch.ro"
 DEBFULLNAME="Thomas Koch"
+BTS_INTERACTIVE=yes
+BTS_DEFAULT_CC="thomas@koch.ro"
