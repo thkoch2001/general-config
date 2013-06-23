@@ -5,12 +5,18 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.4
 
-Package: thkoch-commandline
+Package: thkoch-applications
 Version: 2013.06.22
 Maintainer: Thomas Koch <thomas@koch.ro>
-Depends: tmux, htop, less, psmisc, tree, strace, git, zsh, moreutils, at
-Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges,
-Suggests:
+Depends: libnotify-bin
+Recommends: vlc,
+ impressive, lingot, iceweasel-vimperator, chromium-inspector,
+ browser-plugin-gnash, libreoffice,
+ xul-ext-firebug,
+ xul-ext-openinbrowser,
+ openstreetmap-client,
+ pgadmin3, gimp-help-de, scribus-ng-doc, 
+Suggests: mediathekview
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 Architecture: all
@@ -20,7 +26,7 @@ Architecture: all
 # Extra-Files: <comma-separated list of additional files for the doc directory>
 # Files: <pair of space-separated paths; First is file to include, second is destination>
 #  <more pairs, if there's more than one file to include. Notice the starting space>
-Description: essential packages to be present on every computer I touch, even servers
+Description: packages for a desktop style machine
  long description and info
  .
  second paragraph

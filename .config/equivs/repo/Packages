@@ -4,17 +4,16 @@ Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012.06.15
-Depends: tmux, htop, less, psmisc, tree, strace, git, zsh
-Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges, moreutils, atop, smartmontools
-Suggests: pwgen, etckeeper, insserv, sshfs
-Filename: ./thkoch-commandline_2012.06.15_all.deb
-Size: 2294
-MD5sum: 71f8450c128367545e00f6f4c1bd1609
-SHA1: d2ab83da4325b3edcbfda75a178302a98efa48ea
-SHA256: db7fe8528edd0205f54b0c93f7d55375c750e4238d835301e722652762b031bd
-SHA512: 9a068eb1c43b5b40a8b4142445ca32b09b05a64c3807ff905ea121aed88d1626d1be36bde9f298218c5a5d7893998cd684fb26a82d34533bec680c75e55dbb63
-Description: essential packages to be present on every computer I touch
+Version: 2013.06.22
+Depends: tmux, htop, less, psmisc, tree, strace, git, zsh, moreutils, at
+Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges
+Filename: ./thkoch-commandline_2013.06.22_all.deb
+Size: 2224
+MD5sum: 655d5a413ec4338623e4cd427085da27
+SHA1: 8de1ed0061ae137091ce253d60c0b4d2a3fc048c
+SHA256: 7aafc72a14fc06e3cf32c3e92e3778e9df70303a421bd6c3f425aaf6d1ee508e
+SHA512: c67fe9b80cf14c5dd94fa6794859fe2fc18b535223e90328f13ad4fd2e13d9370d2b6c795c5cb1b3d7081f877140246f9c6e0bb7c2d021751707d6fe756f8c97
+Description: essential packages to be present on every computer I touch, even servers
  long description and info
  .
  second paragraph
@@ -25,14 +24,14 @@ Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012.08.17
-Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet
-Filename: ./thkoch-fun_2012.08.17_all.deb
-Size: 2104
-MD5sum: 81ee77f0764c61024a162f9b9255bdf7
-SHA1: e9bfcff5fe35a8c1b216d95ff5a7ad8387980585
-SHA256: fd74845a9e5dca17fa3d46cc8fbec26c5646a8551f4b7fc1e6537f73d844e379
-SHA512: 90be2fcfb6c24519c68b98d8033dfd70aaacb4aae507728f6d304f958a4de6e5fe98a4b443868ab5c73c9594ac456e903ad4c52d47f4427b4ca0c93498177ad9
+Version: 2013.06.22
+Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet, goplay, anarchism, asr-manpages, debian-history, funny-manpages, jargon, jargon-text, fonts-dkg-handwriting
+Filename: ./thkoch-fun_2013.06.22_all.deb
+Size: 2228
+MD5sum: a32f1edb175a92646c91ba15c61b7bab
+SHA1: 24bc2a7980b1c935c437af0b5b89292bbe313a43
+SHA256: d711c591d6838567ef9ed7dd22fd7f89ef6c9d7c4538515c03131d7e3fd24c09
+SHA512: df0f85001be7e9dbfca6626be3ba34f569951d41db8f7176dacd203a5e9c81d6eb163c3c6234cc54a125064ec79b6e83ecca47124ebccd393b3259a4430de86d
 Description: packages which make fun
  long description and info
  .
@@ -44,15 +43,17 @@ Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012.03.19
-Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff, git-annex, emacs-goodies-el
-Filename: ./thkoch-workmachine_2012.03.19_all.deb
-Size: 2174
-MD5sum: 3992c6136df958738e74406ac58d0e91
-SHA1: bfa8e0a038e751bc1b12822ccdfaf6244fd85bc6
-SHA256: 04f382749019ed17560739d21b7c703888ec8827e9d8bad5ea51eb92131d0f81
-SHA512: e94ca86d30cb3f8eeebecc8d31eb9cd49b2d9c1c2f347c546892f50fe5d01bd6e243fec17f5aecf422158f50480fc965ff3b37bd568aebe4ec19e64ce0fbe1d2
-Description: packages for a regular work machine
+Version: 2013.06.22
+Depends: apt-file
+Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff, git-annex, emacs-goodies-el, pciutils, smartmontools, bootlogd, deborphan, discover, dstat, fbset, iotop, atop, apt-zip, stow, syslog-summary, doc-base, docutils-doc, git-doc, zsh-doc, emacs24-el, expand-region-el, emacs24-common-non-dfsg, fonts-anonymous-pro
+Suggests: pwgen, etckeeper, sysv-rc-conf, sshfs, bup, recutils, pinfo
+Filename: ./thkoch-workmachine_2013.06.22_all.deb
+Size: 2570
+MD5sum: 9115d87333b811ed88de8a24bfb48712
+SHA1: 5236fddf73455f3802a9cc660134a3c404d7ed92
+SHA256: fb44054241b4912d27e086e904aa0625cd43075aa8d56af269f4f177160b50e1
+SHA512: 4c9180b6d1b92dce332e21a8941f7ed1608f42fe0d7ea560205fbb8094690b35cc87702790067cbf35a9df40d7a7ab1eb6aa7164e9487e8f0a4c9fb0bcf89c18
+Description: packages for every computer I work on but not necessary on servers
  long description and info
  .
  second paragraph
@@ -60,18 +61,19 @@ Description: packages for a regular work machine
 Package: thkoch-devel-debian
 Priority: optional
 Section: misc
-Installed-Size: 3
+Installed-Size: 4
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012.06.09
+Version: 2013.06.22
 Depends: debian-goodies, debhelper, devscripts, devscripts-el, git-buildpackage
-Recommends: eatmydata, build-essential, javahelper, packaging-dev, developers-reference, debian-policy, equivs, schroot, debian-faq, doc-debian, manpages, sysv-rc-conf, tardiff
-Filename: ./thkoch-devel-debian_2012.06.09_all.deb
-Size: 2336
-MD5sum: 8aeba7e4a27566f854a5cb7ab378a41c
-SHA1: 019dfcbb4a2aeed8f332d65f830aaaf846afaf7d
-SHA256: 1870e895387fefad0acd5ff9f499bb364eba3ee8bba62cd4497fc941aeb185a9
-SHA512: 7d22b897f60552c9a4cc1fa62bba1e430367cbc744582b4b8b279aa6140d2dc9fd2bf54fb64c5e8ac8cc2b0584481d5e3f0adf1574e1fe395e1b59d145b0e1e9
+Recommends: eatmydata, build-essential, javahelper, packaging-dev, developers-reference, debian-policy, equivs, schroot, debian-faq, doc-debian, manpages, sysv-rc-conf, tardiff, apt-utils, debsig-verify, guilt, premake4, shunit2, apache2-doc, aptitude-doc-en, gnupg-doc, icu-doc, iproute2-doc, manpages-dev, abs-guide, doc-rfc, valgrind, c++-annotations, cmake-doc, glibc-doc, gnu-standards, cpp-doc, gcc-doc, ebook-dev-alp, gccintro, gdb-doc, glibc-doc-reference, make-doc, manpages-posix-dev, eclipse, eclipse-egit, eclipse-wtp-servertools, eclipse-wtp-webtools, eclipse-wtp-ws, ecb, debsigs, dh-autoreconf, dh-make, headache, help2man, license-reconcile, mozilla-devscripts, openstack-pkg-tools, pkg-components, pkg-kde-tools, ubuntu-dev-tools, debconf-doc, debian-faq-de, debian-handbook, debian-kernel-handbook, debian-refcard, debian-reference-en, dput-ng-doc, harden-doc, clusterssh, cltl, hyperspec, hdevtools, haskell-platform-doc, haskell-platform, lintian4python, python-ropemacs, cython-doc, diveintopython3, diveintopython, ipython-doc, python3-doc, protobuf-compiler, scala, ant-doc, scala-doc, scala-mode-el, w3-recs, ocaml-book-en, ocaml-doc, lua-mode
+Suggests: debaux, stress
+Filename: ./thkoch-devel-debian_2013.06.22_all.deb
+Size: 3290
+MD5sum: 676943978b536408aa54aa560277f30f
+SHA1: 359b344292289a0616772614a8b2bb18e7c3bddb
+SHA256: 49bc4890aea261c4e3f078ec87f6c0111827d3b7f98165dcc308a9650f670026
+SHA512: bf72112482f0d0512c96e6a223e83d339b759f7db28c1461b797da09e6e97d8dc6efc6dea2281245d2448488e84cbe78c6c64a8a0bd7ec9f3335e759fb880aef
 Description: essential packages to be present on every computer I touch
  long description and info
  .
@@ -83,17 +85,76 @@ Section: misc
 Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
-Version: 2012.08.16
-Depends: libnotify-bin
-Recommends: vlc, awesome, termit, autocutsel, awesome-extra, alsa-utils, impressive, lingot, iceweasel-vimperator, youtube-dl, chromium-inspector, browser-plugin-gnash, clive, cclive, keynav, unrar-free, libreoffice, network-manager-gnome, gsimplecal, get-flash-videos, xul-ext-firebug, xul-ext-openinbrowser, arandr, unagi, xclip, xpra
-Suggests: mediathekview
-Filename: ./thkoch-desktop_2012.08.16_all.deb
-Size: 2510
-MD5sum: dceeae810789454193779426ae086d52
-SHA1: 94863608800b3921ff1ba8039eab28cac0036519
-SHA256: 195cdf853da7a5fd38413dacc482a61026d39a92ac6d08936bc6ee6a58846085
-SHA512: 23f6276a6ec086d72f95cd7e5b965fb9267e99cb1d8aea6c10813af21842753cf7d46e968624dfca9ea3d9e12eb97c4e0ea472662a7c3e461b943bec8b86d9ff
+Version: 2013.06.22
+Depends: libnotify-bin, menu-xdg
+Recommends: awesome, termit, autocutsel, awesome-extra, alsa-utils, youtube-dl, clive, cclive, keynav, unrar-free, network-manager-gnome, gsimplecal, get-flash-videos, arandr, unagi, xclip, xpra, gksu, sux, digikam, digikam-doc
+Filename: ./thkoch-desktop_2013.06.22_all.deb
+Size: 2368
+MD5sum: 3257bdab2e460f234c39e082d3f76634
+SHA1: bc1a0029db97ba9219a11da6322e3f04c6d51513
+SHA256: 2c0589bd9328fb85e3a02697f478d3ffe032cfb2a432a01354e954d40d3ab753
+SHA512: ead4843f24e2a7aabbd0788295d18c09d2cf8157e5edb9b39fdfc21d9bb3ab1876af046601df4c4c57d2527aca2cc521ee403cbe922e41766e4a05c36207af72
 Description: packages for a desktop style machine
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-applications
+Priority: optional
+Section: misc
+Installed-Size: 3
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2013.06.22
+Depends: libnotify-bin
+Recommends: vlc, impressive, lingot, iceweasel-vimperator, chromium-inspector, browser-plugin-gnash, libreoffice, xul-ext-firebug, xul-ext-openinbrowser, openstreetmap-client, pgadmin3, gimp-help-de, scribus-ng-doc
+Suggests: mediathekview
+Filename: ./thkoch-applications_2013.06.22_all.deb
+Size: 2396
+MD5sum: ef277f72ae8004b40a4b611a143afa61
+SHA1: 51ead79915747bf183a12c6a96f481c9be4d3585
+SHA256: c8065d0d933173da40b58519bccc758a8f6a604b13af94dccd7f1d6fa5900902
+SHA512: 2ffba5bea0efa3a233df425cb2ce6bd7d806ba0ea0fd9e0fd96a1c8047797b9e7196640c144588893b5d718538c1c034cbc2c5c86a3527295f4ecef81b6d6bdb
+Description: packages for a desktop style machine
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-laptop
+Priority: optional
+Section: misc
+Installed-Size: 3
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2013.06.22
+Depends: task-laptop, acpi-support
+Recommends: bluetooth, mobile-broadband-provider-info
+Filename: ./thkoch-laptop_2013.06.22_all.deb
+Size: 2120
+MD5sum: e2febc586a46f14817dfcc7eda1bca5b
+SHA1: 53165111af49efea4633a6c855ef6f2d688d33d3
+SHA256: 32f4afbdbd3f40b7a7dfd4ceebeb62db4c37c114c6e5ba41baeaf75d7f763863
+SHA512: efac77692abe96a6db416dd1d73a2215eccde778b18c152c3f5c714f02d7d9416d572a07e3fce34337a7f74c98913aed47c5080dc8231640e89c0335e2e2c1ad
+Description: packages for a laptop
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-education
+Priority: optional
+Section: misc
+Installed-Size: 3
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2013.06.22
+Recommends: diploma, gitmagic, gnuplot-doc, golang-doc, graphviz-doc, kile-doc, kile, lyx
+Filename: ./thkoch-education_2013.06.22_all.deb
+Size: 2144
+MD5sum: 02ffea2a4b749ec2a794a1e2a33e22ac
+SHA1: 6642dd498b523ea4c3106d29b858f19076b969b1
+SHA256: c2c8fedb1b4b0cc732ae9d354c99b8bf44ab1f44a3f4ab15a49bd5fc9ec420b2
+SHA512: 2d1f5f7069984cd195516048972762e5afcb56ac4b4562a42fcdbcd75b09aaed13ae11eadfcd9176fb93c8dfec259f6180c41cc2502acfdedce81f326dbf9c18
+Description: packages for educational context
  long description and info
  .
  second paragraph

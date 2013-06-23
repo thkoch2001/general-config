@@ -3,14 +3,15 @@
 Section: misc
 Priority: optional
 # Homepage: <enter URL here; no default>
-Standards-Version: 3.9.2
+Standards-Version: 3.9.4
 
 Package: thkoch-fun
-Version: 2012.08.17
+Version: 2013.06.22
 Maintainer: Thomas Koch <thomas@koch.ro>
-Depends: 
-Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet
-Suggests: 
+Depends:
+Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet, goplay, anarchism,
+ asr-manpages, debian-history, funny-manpages, jargon, jargon-text, fonts-dkg-handwriting,
+Suggests:
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 Architecture: all

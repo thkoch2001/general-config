@@ -3,17 +3,45 @@
 Section: misc
 Priority: optional
 # Homepage: <enter URL here; no default>
-Standards-Version: 3.9.2
+Standards-Version: 3.9.4
 
 Package: thkoch-devel-debian
-Version: 2012.06.09
+Version: 2013.06.22
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: debian-goodies, debhelper, devscripts, devscripts-el,
  git-buildpackage
 Recommends: eatmydata, build-essential, javahelper, packaging-dev,
  developers-reference, debian-policy, equivs, schroot, debian-faq,
- doc-debian, manpages, sysv-rc-conf, tardiff
-Suggests:
+ doc-debian, manpages, sysv-rc-conf, tardiff, apt-utils, debsig-verify,
+ guilt, premake4, shunit2, apache2-doc, aptitude-doc-en, gnupg-doc,
+ icu-doc, iproute2-doc, manpages-dev, abs-guide, doc-rfc, 
+# c
+ valgrind, c++-annotations, cmake-doc, glibc-doc, gnu-standards, cpp-doc, gcc-doc,
+ ebook-dev-alp, gccintro, gdb-doc, glibc-doc-reference, make-doc, manpages-posix-dev,
+# eclipse
+ eclipse, eclipse-egit, eclipse-wtp-servertools, eclipse-wtp-webtools, eclipse-wtp-ws,
+# emacs
+ ecb,
+# debian packaging stuff
+ debsigs, dh-autoreconf, dh-make, headache, help2man, license-reconcile, mozilla-devscripts,
+ openstack-pkg-tools, pkg-components, pkg-kde-tools, ubuntu-dev-tools, debconf-doc, debian-faq-de,
+ debian-handbook, debian-kernel-handbook, debian-refcard, debian-reference-en, dput-ng-doc, harden-doc,
+# cluster stuff
+ clusterssh,
+# common lisp
+ cltl, hyperspec,
+# haskell
+ hdevtools, haskell-platform-doc, haskell-platform,
+# python
+ lintian4python, python-ropemacs, cython-doc, diveintopython3, diveintopython, ipython-doc,
+ python3-doc, 
+# java
+  protobuf-compiler, scala, ant-doc, scala-doc, scala-mode-el,
+# web
+ w3-recs, 
+# other
+ ocaml-book-en, ocaml-doc, lua-mode
+Suggests: debaux, stress
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 Architecture: all

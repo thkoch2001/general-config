@@ -3,15 +3,17 @@
 Section: misc
 Priority: optional
 # Homepage: <enter URL here; no default>
-Standards-Version: 3.9.2
+Standards-Version: 3.9.4
 
 Package: thkoch-workmachine
-Version: 2012.03.19
+Version: 2013.06.22
 Maintainer: Thomas Koch <thomas@koch.ro>
-Depends: 
+Depends: apt-file
 Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff, git-annex,
- emacs-goodies-el, vcsh
-Suggests: 
+ emacs-goodies-el, pciutils, smartmontools, bootlogd, deborphan, discover, dstat, fbset, iotop,
+ atop, apt-zip, stow, syslog-summary, doc-base, docutils-doc, git-doc, zsh-doc, emacs24-el, expand-region-el,
+ emacs24-common-non-dfsg, fonts-anonymous-pro, 
+Suggests: pwgen, etckeeper, sysv-rc-conf, sshfs, bup, recutils, pinfo
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 Architecture: all
@@ -21,7 +23,7 @@ Architecture: all
 # Extra-Files: <comma-separated list of additional files for the doc directory>
 # Files: <pair of space-separated paths; First is file to include, second is destination>
 #  <more pairs, if there's more than one file to include. Notice the starting space>
-Description: packages for a regular work machine
+Description: packages for every computer I work on but not necessary on servers
  long description and info
  .
  second paragraph
