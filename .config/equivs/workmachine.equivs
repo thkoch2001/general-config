@@ -6,14 +6,22 @@ Priority: optional
 Standards-Version: 3.9.4
 
 Package: thkoch-workmachine
-Version: 2013.06.22
+Version: 2013.06.23
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: apt-file
 Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff, git-annex,
  emacs-goodies-el, pciutils, smartmontools, bootlogd, deborphan, discover, dstat, fbset, iotop,
  atop, apt-zip, stow, syslog-summary, doc-base, docutils-doc, git-doc, zsh-doc, emacs24-el, expand-region-el,
- emacs24-common-non-dfsg, fonts-anonymous-pro, 
-Suggests: pwgen, etckeeper, sysv-rc-conf, sshfs, bup, recutils, pinfo
+ emacs24-common-non-dfsg, fonts-anonymous-pro, gpart, memtest86+,
+# emacs
+ auto-complete-el, emacs-calfw, prolog-el, quilt-el, wysihtml-el, yasnippet, org-mode,
+ auctex, catdvi, dvipng,
+# tools
+ pxz, undistract-me, mosh, colordiff, dos2unix, enca, recode, wdiff, bsdcpio, bsdtar,
+ busybox, console-setup, convmv, detox, dvcs-autosync, eject, github-backup, lbzip2,
+ lshw, par2, parallel, pixz, powertop, usbutils, unrar, flashbake, git-extras,
+ unburden-home-dir, linux-headers
+Suggests: pwgen, etckeeper, sysv-rc-conf, sshfs, bup, recutils, pinfo, firmware-linux,
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 Architecture: all

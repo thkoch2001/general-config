@@ -6,16 +6,51 @@ Priority: optional
 Standards-Version: 3.9.4
 
 Package: thkoch-applications
-Version: 2013.06.22
+Version: 2013.06.23
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: libnotify-bin
-Recommends: vlc,
- impressive, lingot, iceweasel-vimperator, chromium-inspector,
- browser-plugin-gnash, libreoffice,
- xul-ext-firebug,
- xul-ext-openinbrowser,
- openstreetmap-client,
- pgadmin3, gimp-help-de, scribus-ng-doc, 
+Recommends: lingot, xkeycaps,
+ ffgtk, cycle, dolphin,
+# office
+ libreoffice, openclipart,
+# git
+ giggle, git-cola, gitg, gitk, legit, qgit, git-gui,
+# maps
+ merkaartor, openstreetmap-client, qgis, worldwind, gosmore, josm-plugins, viking,
+# images
+ digikam, digikam-doc, edisplay, exiftran, exiv2, feh, geeqie, gwenview,
+ hugin, kamera, lazygal, libjpeg-progs, libpano13-bin, mirage, openimageio-tools,
+ kipi-plugins,
+# sound player
+ audacious, clementine, gjay,
+# sound editor
+ audacity, mp3splt,
+# video
+ vlc, handbrake-cli, x264, subdownloader, gnome-mplayer, kmplayer, mencoder,
+ vlc-plugin-notify, handbrake-gtk,
+# webcam
+ v4l-conf,
+# graphics
+ blender, gimp-help-de, gimp-help-en, scribus-ng-doc, dia, gimp-data-extras,
+ scribus-ng, scribus-template, inkscape, xfig, xpaint,
+# chat
+ empathy, kdeartwork-emoticons, konversation, kopete, pidgin-libnotify, kde-telepathy,
+# pim
+ kdepim, kgpg,
+# documents, ocr
+ didjvu, ocrfeeder, skanlite, unpaper, xsane, yagf, pct-scanner-scripts,
+ tesseract-ocr-deu, tesseract-ocr-deu-frak, tesseract-ocr-enm, tesseract-ocr-fra,
+ tesseract-ocr-ron,
+ okular-extra-backends, pdfposter, djvusmooth, ocrodjvu, pdf2djvu, pdfchain, psutils,
+ qpdf, gscan2pdf, djview-plugin,
+# presentations
+ pdf-presenter-console, impressive, sozi, screenkey, disper, key-mon,
+# web
+ iceweasel-vimperator, chromium-inspector,
+ xul-ext-firebug, xul-ext-openinbrowser, xul-ext-flashblock, xul-ext-y-u-no-validate,
+ browser-plugin-gnash,
+ fatrat, kget, uget, ktorrent,
+ surfraw-extra,
 Suggests: mediathekview
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>

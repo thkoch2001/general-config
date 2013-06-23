@@ -6,14 +6,36 @@ Priority: optional
 Standards-Version: 3.9.4
 
 Package: thkoch-desktop
-Version: 2013.06.22
+Version: 2013.06.23
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: libnotify-bin, menu-xdg
 Recommends: awesome, termit, autocutsel, awesome-extra, alsa-utils,
- youtube-dl, clive, cclive, keynav, unrar-free, network-manager-gnome, gsimplecal,
- get-flash-videos, arandr, unagi, xclip, xpra,
- gksu, sux, digikam, digikam-doc
-# Suggests:
+ keynav, unrar-free, gsimplecal, jsymphonic,
+ arandr, unagi, xclip, xpra,
+ gksu, sux, ksnapshot, mplayerthumbs, djvulibre-desktop,
+ libdirectfb-bin, libdirectfb-extra, marble,
+ sound-theme-freedesktop, autotrash, gsmartcontrol, lshw-gtk,
+ md5deep, mediainfo, psensor, rlwrap, smart-notifier, trash-cli,
+ desktop-base, driconf, notification-daemon, suckless-tools, xdotool,
+ xorg, xpp, xscreensaver, xsensors, xtrlock, xvfb, thunar,
+# sound
+ alsa-utils, libasound2-plugins, alsa-base,
+# network
+  network-manager-gnome, network-manager-openvpn-gnome, ssh-askpass, tcpd,
+# printing
+ cups-bsd, cups-pdf, printer-driver-all-enforce, foomatic-db-compressed-ppds,
+ foomatic-db-engine,
+# gstreamer
+ gstreamer0.10-fluendo-mp3, gstreamer1.0-alsa, gstreamer1.0-libav,
+ gstreamer1.0-plugins-ugly, gstreamer1.0-x, gstreamer-tools,
+# gnome-keyring needed for network-manager password entry
+ gnome-keyring,
+# kde
+ systemsettings, system-config-printer, kinfocenter, kwalletmanager,
+# video downloads
+ youtube-dl, clive, cclive, get-flash-videos, get-iplayer, id3v2,
+ atomicparsley, freetuxtv
+Suggests: gparted
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 Architecture: all

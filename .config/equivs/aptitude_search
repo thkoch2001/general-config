@@ -1,1 +1,1 @@
-?not(?essential) ?installed ?not(?reverse-depends(?installed)) ?not(?reverse-predepends(?installed)) ?not(?reverse-recommends(thkoch-.*)) ?not(?reverse-suggests(thkoch-.*)) ?not(?priority(important)) ?not(?priority(required))
+?not(?essential) ?installed ?not(?reverse-depends(?installed)) ?not(?reverse-predepends(?installed)) ?not(?reverse-recommends(thkoch-.*)) ?not(?reverse-suggests(thkoch-.*)) ?not(?priority(important)) ?not(?priority(required)) ?not(?priority(standard))

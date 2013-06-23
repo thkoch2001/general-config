@@ -6,12 +6,19 @@ Priority: optional
 Standards-Version: 3.9.4
 
 Package: thkoch-fun
-Version: 2013.06.22
+Version: 2013.06.23
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends:
-Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet, goplay, anarchism,
+Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet, goplay, games-thumbnails,
+ anarchism, sysvbanner,
  asr-manpages, debian-history, funny-manpages, jargon, jargon-text, fonts-dkg-handwriting,
-Suggests:
+ cappuccino, dizzy, extremetuxracer,
+ fortunes-bofh-excuses, fortunes-de, fortunes-debian-hints, fortunes-off, tdfsb,
+ ospics,
+# chess
+ glaurung, gnuchess-book, phalanx, dreamchess, eboard, eboard-extras-pack1, emacs-chess,
+ scid,
+Suggests: armagetronad,
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 Architecture: all
