@@ -11,7 +11,7 @@ Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: tmux, htop, less, psmisc, tree, strace, git, zsh, moreutils, at, openssh-blacklist,
  openssh-blacklist-extra,
 Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges
-Suggests: ntpdate, hardlink, hddtemp, sensord,
+Suggests: ntpdate, hardlink, hddtemp, sensord, ncdu, reptyr,
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 Architecture: all

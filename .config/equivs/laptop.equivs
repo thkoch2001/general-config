@@ -10,7 +10,7 @@ Version: 2013.06.23
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: task-laptop, acpi-support, laptop-detect,
 Recommends: bluetooth, mobile-broadband-provider-info, hotkey-setup, laptop-mode-tools,
- rfkill, vbetool, fdpowermon, xinput,
+ rfkill, vbetool, fdpowermon, xinput, urfkill, wireless-tools,
 Suggests: gpsd, gpsd-clients,
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>

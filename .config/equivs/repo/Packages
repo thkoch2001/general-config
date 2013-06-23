@@ -1,3 +1,24 @@
+Package: thkoch-laptop
+Priority: optional
+Section: misc
+Installed-Size: 3
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2013.06.23
+Depends: task-laptop, acpi-support, laptop-detect
+Recommends: bluetooth, mobile-broadband-provider-info, hotkey-setup, laptop-mode-tools, rfkill, vbetool, fdpowermon, xinput, urfkill, wireless-tools
+Suggests: gpsd, gpsd-clients
+Filename: ./thkoch-laptop_2013.06.23_all.deb
+Size: 2306
+MD5sum: a6dfa4e54b5cb0c5c52a09d362860047
+SHA1: baaee49a376c61022f0e798550353e262d1ffbdb
+SHA256: 54d26604c1753fac423a0858f3550206625f65f03522bce99576a97ac8919a6b
+SHA512: a65c282081452b5e68e55303e79b7f33612b94b0167e8b6f8acc9405d63167a7351a4ccef5ef44046c54ba73b5fd25aa4a0b032a9e3eea8fad7f608bb3007fc1
+Description: packages for a laptop
+ long description and info
+ .
+ second paragraph
+
 Package: thkoch-commandline
 Priority: optional
 Section: misc
@@ -7,13 +28,13 @@ Architecture: all
 Version: 2013.06.23
 Depends: tmux, htop, less, psmisc, tree, strace, git, zsh, moreutils, at, openssh-blacklist, openssh-blacklist-extra
 Recommends: rsync, ssh, di, apt-listbugs, apt-listchanges
-Suggests: ntpdate, hardlink, hddtemp, sensord
+Suggests: ntpdate, hardlink, hddtemp, sensord, ncdu, reptyr
 Filename: ./thkoch-commandline_2013.06.23_all.deb
-Size: 2318
-MD5sum: 41b3fe96bcc9853337cc9891f46803f1
-SHA1: 7c7dc94d2a6a5dc015904286a41b1f0873ad38f0
-SHA256: ac925a99fa1b56befcffc5c1c73ad049a0aeca9cb92b8562a2322c5aeb2a8034
-SHA512: 10ac4a7a55d459f5414e94b882b15889dc4ee7eb9abfa3e5256d7570d14608f59b55ed8a6f5e8ae5bb6917846d3b04194b14868e722ce3580b48a0a0ccf2275d
+Size: 2344
+MD5sum: 6d6ab79376f4c87d6875b8cea85ba664
+SHA1: d91087b277c0aea96ee538c0b2560f996728dd90
+SHA256: e337f6a1a366ad504c1d86b81122446f8c13b5097ca4092f96e28ed127b6cf0e
+SHA512: 734a9dcf014a9b39ddeb6ba3aee42e4a8dfc969ad480d7b2e759d779609fe4e4ac792da59229d8d34b613e49c8a719aa7ffc7e7540ff292924f850bc5ea2b89a
 Description: essential packages to be present on every computer I touch, even servers
  long description and info
  .
@@ -26,57 +47,15 @@ Installed-Size: 3
 Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
 Version: 2013.06.23
-Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet, goplay, games-thumbnails, anarchism, sysvbanner, asr-manpages, debian-history, funny-manpages, jargon, jargon-text, fonts-dkg-handwriting, cappuccino, dizzy, extremetuxracer, fortunes-bofh-excuses, fortunes-de, fortunes-debian-hints, fortunes-off, tdfsb, ospics, glaurung, gnuchess-book, phalanx, dreamchess, eboard, eboard-extras-pack1, emacs-chess, scid
+Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet, goplay, games-thumbnails, anarchism, sysvbanner, bsdgames, fortunes-fr, pianobooster, vice, flite, screenie-qt, asr-manpages, debian-history, funny-manpages, jargon, jargon-text, fonts-dkg-handwriting, cappuccino, dizzy, extremetuxracer, fortunes-bofh-excuses, fortunes-de, fortunes-debian-hints, fortunes-off, tdfsb, ospics, glaurung, gnuchess-book, phalanx, dreamchess, eboard, eboard-extras-pack1, emacs-chess, scid
 Suggests: armagetronad
 Filename: ./thkoch-fun_2013.06.23_all.deb
-Size: 2536
-MD5sum: e27cb6ae32fc01443bc6182f8d2e7883
-SHA1: f45649d4ffdcaef3e36fc48928b71d8980362369
-SHA256: d68f1c90c5ad499b457e7821693514bdf142080d6d77ef7319422a9ef96d5371
-SHA512: 7da708f4dd3b1daeccf0dc02d3a163ead5e5a89fc601ba8af3e795c160aee6e4903309bb74ddc6fcbd28d4613dfa785e74bb459ddbabb0dbcaeef178eb32c4a7
+Size: 2616
+MD5sum: 163303c4c07a33d210ca34bfd384ad08
+SHA1: 664f9c2e955ec579b4da2b6b5c4da39db2783517
+SHA256: a7d8a5abe57c42c65314940f1833cf5bb50f841622f2663a9350250678c38d9d
+SHA512: bd4c1ce139843e6310527acb04a6b91a06ae23a81ade15dbae3a897c8924e5020b563e04492fa8ef0974688266cc79cb3b30b0080074c68283c6c3b15bcfa6b5
 Description: packages which make fun
- long description and info
- .
- second paragraph
-
-Package: thkoch-workmachine
-Priority: optional
-Section: misc
-Installed-Size: 4
-Maintainer: Thomas Koch <thomas@koch.ro>
-Architecture: all
-Version: 2013.06.23
-Depends: apt-file
-Recommends: apt-xapian-index, magit, emacs, sm, vcsh, mr, git-stuff, git-annex, emacs-goodies-el, pciutils, smartmontools, bootlogd, deborphan, discover, dstat, fbset, iotop, atop, apt-zip, stow, syslog-summary, doc-base, docutils-doc, git-doc, zsh-doc, emacs24-el, expand-region-el, emacs24-common-non-dfsg, fonts-anonymous-pro, gpart, memtest86+, auto-complete-el, emacs-calfw, prolog-el, quilt-el, wysihtml-el, yasnippet, org-mode, auctex, catdvi, dvipng, pxz, undistract-me, mosh, colordiff, dos2unix, enca, recode, wdiff, bsdcpio, bsdtar, busybox, console-setup, convmv, detox, dvcs-autosync, eject, github-backup, lbzip2, lshw, par2, parallel, pixz, powertop, usbutils, unrar, flashbake, git-extras, unburden-home-dir, linux-headers
-Suggests: pwgen, etckeeper, sysv-rc-conf, sshfs, bup, recutils, pinfo, firmware-linux
-Filename: ./thkoch-workmachine_2013.06.23_all.deb
-Size: 3058
-MD5sum: 5d4e4012ea9359d4baf8f62dd33b3d7b
-SHA1: 4aa1367846d07685e8353b51f340fb7ce734cba2
-SHA256: 3bb2ea83b8c9bb92e7fdb325fc1b5321b2f8f90331c0d49d39ecda7d66d9d50b
-SHA512: d0e67abd004e4010345ab8e10f6144c371593f7f3036abb912aa243e955d79a6d868feb53cd3be67917d79f4332655c8dd6175659039538dc2ed98f63992640e
-Description: packages for every computer I work on but not necessary on servers
- long description and info
- .
- second paragraph
-
-Package: thkoch-devel-debian
-Priority: optional
-Section: misc
-Installed-Size: 5
-Maintainer: Thomas Koch <thomas@koch.ro>
-Architecture: all
-Version: 2013.06.23
-Depends: debian-goodies, debhelper, devscripts, devscripts-el, git-buildpackage
-Recommends: eatmydata, build-essential, javahelper, packaging-dev, developers-reference, debian-policy, equivs, schroot, debian-faq, doc-debian, manpages, sysv-rc-conf, tardiff, apt-utils, debsig-verify, guilt, premake4, shunit2, apache2-doc, aptitude-doc-en, gnupg-doc, icu-doc, iproute2-doc, manpages-dev, abs-guide, doc-rfc, hdparm, ldap-git-backup, libgtk2.0-bin, git-review, attr, editorconfig, git-bzr-ng, git-email, git-svn, valgrind, c++-annotations, cmake-doc, glibc-doc, gnu-standards, cpp-doc, gcc-doc, ebook-dev-alp, gccintro, gdb-doc, glibc-doc-reference, make-doc, manpages-posix-dev, cmake, doxymacs, doxygen-gui, gdb, doxygen-doc, linux-doc, gdc, doconce, pandoc, eclipse, eclipse-egit, eclipse-wtp-servertools, eclipse-wtp-webtools, eclipse-wtp-ws, eclipse-rse-sdk, ecb, debsigs, dh-autoreconf, dh-make, headache, help2man, license-reconcile, mozilla-devscripts, openstack-pkg-tools, pkg-components, pkg-kde-tools, ubuntu-dev-tools, debconf-doc, debian-faq-de, debian-handbook, debian-kernel-handbook, debian-refcard, debian-reference-en, dput-ng-doc, harden-doc, dbconfig-common, debian-keyring, ben, python3-debian, python3-magic, adequate, dlocate, pristine-tar, clusterssh, pssh, pconsole, cltl, hyperspec, dh-lisp, tora, pgadmin3, hdevtools, haskell-platform-doc, haskell-platform, haskell-doc, ghc-mod, haskell-devscripts, hothasktags, lintian4python, python-ropemacs, cython-doc, diveintopython3, diveintopython, ipython-doc, nuitka, ccache, ipython, ipython3, cython, pylint, python-autopep8, python-pip, python-pygresql, python-pytest, python-virtualenv, python3-doc, protobuf-compiler, scala, ant-doc, scala-doc, scala-mode-el, default-jdk-doc, visualvm, bridge-utils, ethtool, finger, ipcalc, netmask, nmapsi4, python-scapy, sendxmpp, sipcalc, wifite, wireshark, w3-recs, fonts-font-awesome, geoip-database, httpcode, webkit-image-qt, httpie, twitter-recess, wordnet, raptor2-utils, libnss3-tools, nss-passwords, wotsap, vttest, libvirt-bin, lxctl, virt-manager, virt-viewer, spice-client, spice-client-gtk, vde2, python-spice-client-gtk, xmlstarlet, xqilla, ocaml-book-en, ocaml-doc, lua-mode, golang-mode, golang-doc
-Suggests: debaux, stress, cpuburn
-Filename: ./thkoch-devel-debian_2013.06.23_all.deb
-Size: 4226
-MD5sum: bd712332190f0d08ec5e1f8f7b273c60
-SHA1: 910e003fa3917b31c0cb8591f81e013856a2dad9
-SHA256: 82250b982e0255eaf135802989ea6c9d1a36e2c3ca8e174abbfea551f6ef2071
-SHA512: 74340d482fae74dc27048ed9e47300ff34cfefd247978dbff6514c3f6ec0df00ad0d1345209530eb1ae33b7d43a9071d20539bef2f673fc0fee3d35ceafc7833
-Description: essential packages to be present on every computer I touch
  long description and info
  .
  second paragraph
@@ -89,14 +68,14 @@ Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
 Version: 2013.06.23
 Depends: libnotify-bin, menu-xdg
-Recommends: awesome, termit, autocutsel, awesome-extra, alsa-utils, keynav, unrar-free, gsimplecal, jsymphonic, arandr, unagi, xclip, xpra, gksu, sux, ksnapshot, mplayerthumbs, djvulibre-desktop, libdirectfb-bin, libdirectfb-extra, marble, sound-theme-freedesktop, autotrash, gsmartcontrol, lshw-gtk, md5deep, mediainfo, psensor, rlwrap, smart-notifier, trash-cli, desktop-base, driconf, notification-daemon, suckless-tools, xdotool, xorg, xpp, xscreensaver, xsensors, xtrlock, xvfb, thunar, libasound2-plugins, alsa-base, network-manager-gnome, network-manager-openvpn-gnome, ssh-askpass, tcpd, cups-bsd, cups-pdf, printer-driver-all-enforce, foomatic-db-compressed-ppds, foomatic-db-engine, gstreamer0.10-fluendo-mp3, gstreamer1.0-alsa, gstreamer1.0-libav, gstreamer1.0-plugins-ugly, gstreamer1.0-x, gstreamer-tools, gnome-keyring, systemsettings, system-config-printer, kinfocenter, kwalletmanager, youtube-dl, clive, cclive, get-flash-videos, get-iplayer, id3v2, atomicparsley, freetuxtv
+Recommends: awesome, termit, autocutsel, awesome-extra, alsa-utils, keynav, unrar-free, gsimplecal, jsymphonic, arandr, unagi, xclip, xpra, gksu, sux, ksnapshot, mplayerthumbs, djvulibre-desktop, libdirectfb-bin, libdirectfb-extra, marble, sound-theme-freedesktop, autotrash, gsmartcontrol, lshw-gtk, md5deep, mediainfo, psensor, rlwrap, smart-notifier, trash-cli, desktop-base, driconf, notification-daemon, suckless-tools, xdotool, xorg, xpp, xscreensaver, xsensors, xtrlock, xvfb, thunar, shutter, ffmpegthumbs, k3b, libk3b6-extracodecs, kalarm, libglib2.0-bin, dares, dvdbackup, wininfo, xtightvncviewer, libasound2-plugins, alsa-base, network-manager-gnome, network-manager-openvpn-gnome, ssh-askpass, tcpd, cups-bsd, cups-pdf, printer-driver-all-enforce, foomatic-db-compressed-ppds, foomatic-db-engine, gstreamer0.10-fluendo-mp3, gstreamer1.0-alsa, gstreamer1.0-libav, gstreamer1.0-plugins-ugly, gstreamer1.0-x, gstreamer-tools, gstreamer0.10-plugins-ugly, gnome-keyring, systemsettings, system-config-printer, kinfocenter, kwalletmanager, libaacs0, libbluray-bdj, youtube-dl, clive, cclive, get-flash-videos, get-iplayer, id3v2, atomicparsley, freetuxtv, nomnom
 Suggests: gparted
 Filename: ./thkoch-desktop_2013.06.23_all.deb
-Size: 3180
-MD5sum: 353ffd67106e723a90f467fbf34b78e0
-SHA1: 2a937a096b3a7ad2366e3c28374043a117ae050d
-SHA256: b791970a816c7a8607a753a864af0a59d2ea38fbc6b8b6685f9de2fbfc9a7723
-SHA512: c72b4d3a5b33d26647d9091b2d24f496297d3ac6a794167c696b92bcf484041465f90839c864062b7093a63c3eab1d31e904efb207bbbc5662d6727424f56f38
+Size: 3358
+MD5sum: 495fa65b7d9b2c53a534526849572e28
+SHA1: 42545c3c58e59d49f0f0da59461c82f86e8dbac9
+SHA256: 2ce4f10fd2ed3181f277d1f0d0a5b281033dcd1de1fd46e8f8fe68de4241498c
+SHA512: 219c515d8caf1cf1a3088272af3dfd4b7ee0c00e1c41fb9bf67023e589d48835d2cfab195f4d2efeac68705cff28ee3a7f8858ed3ba0cbdfd0ce4399b920c132
 Description: packages for a desktop style machine
  long description and info
  .
@@ -110,55 +89,15 @@ Maintainer: Thomas Koch <thomas@koch.ro>
 Architecture: all
 Version: 2013.06.23
 Depends: libnotify-bin
-Recommends: lingot, xkeycaps, ffgtk, cycle, dolphin, libreoffice, openclipart, giggle, git-cola, gitg, gitk, legit, qgit, git-gui, merkaartor, openstreetmap-client, qgis, worldwind, gosmore, josm-plugins, viking, digikam, digikam-doc, edisplay, exiftran, exiv2, feh, geeqie, gwenview, hugin, kamera, lazygal, libjpeg-progs, libpano13-bin, mirage, openimageio-tools, kipi-plugins, audacious, clementine, gjay, audacity, mp3splt, vlc, handbrake-cli, x264, subdownloader, gnome-mplayer, kmplayer, mencoder, vlc-plugin-notify, handbrake-gtk, v4l-conf, blender, gimp-help-de, gimp-help-en, scribus-ng-doc, dia, gimp-data-extras, scribus-ng, scribus-template, inkscape, xfig, xpaint, empathy, kdeartwork-emoticons, konversation, kopete, pidgin-libnotify, kde-telepathy, kdepim, kgpg, didjvu, ocrfeeder, skanlite, unpaper, xsane, yagf, pct-scanner-scripts, tesseract-ocr-deu, tesseract-ocr-deu-frak, tesseract-ocr-enm, tesseract-ocr-fra, tesseract-ocr-ron, okular-extra-backends, pdfposter, djvusmooth, ocrodjvu, pdf2djvu, pdfchain, psutils, qpdf, gscan2pdf, djview-plugin, pdf-presenter-console, impressive, sozi, screenkey, disper, key-mon, iceweasel-vimperator, chromium-inspector, xul-ext-firebug, xul-ext-openinbrowser, xul-ext-flashblock, xul-ext-y-u-no-validate, browser-plugin-gnash, fatrat, kget, uget, ktorrent, surfraw-extra
+Recommends: lingot, fmit, gtkguitune, xkeycaps, verse, streamripper, ffgtk, cycle, dolphin, gobby-infinote, empathy, kdeartwork-emoticons, konversation, kopete, pidgin-libnotify, kde-telepathy, gajim, libpurple-bin, didjvu, ocrfeeder, skanlite, unpaper, sane, xsane, yagf, pct-scanner-scripts, tesseract-ocr-deu, tesseract-ocr-deu-frak, tesseract-ocr-enm, tesseract-ocr-fra, tesseract-ocr-ron, okular, okular-extra-backends, pdfposter, djvusmooth, ocrodjvu, pdf2djvu, pdfchain, psutils, qpdf, gscan2pdf, djview-plugin, giggle, git-cola, gitg, gitk, legit, qgit, git-gui, blender, gimp-help-de, gimp-help-en, scribus-ng-doc, dia, gimp-data-extras, scribus-ng, scribus-template, inkscape, xfig, xpaint, kolourpaint4, digikam, digikam-doc, edisplay, exiftran, exiv2, feh, geeqie, gwenview, hugin, kamera, lazygal, libjpeg-progs, libpano13-bin, mirage, openimageio-tools, kipi-plugins, merkaartor, openstreetmap-client, qgis, worldwind, gosmore, josm-plugins, viking, libreoffice, openclipart, kdepim, kgpg, pdf-presenter-console, impressive, sozi, screenkey, disper, key-mon, pdfcube, douf00, gromit, audacity, mp3splt, lame, audacious, clementine, gjay, mpd, mpc, sonata, vlc, handbrake-cli, x264, subdownloader, gnome-mplayer, kmplayer, mencoder, vlc-plugin-notify, handbrake-gtk, arista, transmageddon, v4l-conf, iceweasel-vimperator, chromium-inspector, xul-ext-firebug, xul-ext-openinbrowser, xul-ext-flashblock, xul-ext-y-u-no-validate, xul-ext-webdeveloper, xul-ext-flashgot, browser-plugin-gnash, fatrat, kget, uget, ktorrent, surfraw-extra
 Suggests: mediathekview
 Filename: ./thkoch-applications_2013.06.23_all.deb
-Size: 3524
-MD5sum: 6d9a6d3df88960b7b15765a0bba685ea
-SHA1: e2dcacbb23a1ca2e81c9efb863f609fe77a1c6bd
-SHA256: c236a80dfcd22751eef40e3b5cd48894916e226e319b1c8d8d4946393b46da05
-SHA512: fa512feeae02a50ee9cef41b83eb1d2097d356e036e89eb67dd8f5d377cb862473e1f379a695cfe848efda8588399dfbd764328d393fb65db11e6bd0e47f77e2
+Size: 3744
+MD5sum: 0596135a49a4104489073d58f8b534a4
+SHA1: e0f2681b459b997dac0cee13ea8dfe9d9e6db7aa
+SHA256: 32c514de9a30360bed9572c11fb84ca4c308cad962c345504adf9dff0d35c11c
+SHA512: a65f5eda04f637edfeba3c835e5b4b63f68731eae7b49ed59ee5b8fe4e0eedc7dad0bc107d2b0f6c9afd0454e2b6ef1a0b4fd8e2b08a30eb5828fcf67b18eb03
 Description: packages for a desktop style machine
- long description and info
- .
- second paragraph
-
-Package: thkoch-laptop
-Priority: optional
-Section: misc
-Installed-Size: 3
-Maintainer: Thomas Koch <thomas@koch.ro>
-Architecture: all
-Version: 2013.06.23
-Depends: task-laptop, acpi-support, laptop-detect
-Recommends: bluetooth, mobile-broadband-provider-info, hotkey-setup, laptop-mode-tools, rfkill, vbetool, fdpowermon, xinput
-Suggests: gpsd, gpsd-clients
-Filename: ./thkoch-laptop_2013.06.23_all.deb
-Size: 2274
-MD5sum: 5bd1dce5af501b1160ae450e6562f98e
-SHA1: 1d189515d8718813c2b4c4a0aa36c04069393dda
-SHA256: cda8e7e75afcc5f5b0dcdccb6c267c3862cdddea9691ec6834168ab6b22a080a
-SHA512: a59b19c15bcf73ab291c2ab7bf672aa8c91cc90be1541bde78afaf8f849793502778719124348e5900528e9eb44a5d642a09ada3f4911f7019dd34c1cdf00d9a
-Description: packages for a laptop
- long description and info
- .
- second paragraph
-
-Package: thkoch-education
-Priority: optional
-Section: misc
-Installed-Size: 3
-Maintainer: Thomas Koch <thomas@koch.ro>
-Architecture: all
-Version: 2013.06.23
-Recommends: gitmagic, gnuplot-doc, graphviz-doc, kgeography, gnuplot, gnuplot-mode, octave, gtk-recordmydesktop, diploma, kile-doc, kile, lyx, kile-l10n, jabref, mythes-en-us, lacheck, latex-beamer, lintex, texlive, texlive-bibtex-extra, texlive-lang-german, texlive-science, whizzytex, tuxtype, typespeed, ktouch, gtypist, nlkt, infon-server, infon-viewer, laby
-Filename: ./thkoch-education_2013.06.23_all.deb
-Size: 2462
-MD5sum: 7f08bd2af4b261fe1dfc8e484950e599
-SHA1: ae8d543a96b62b4598f88cccc1e9ddad4b611854
-SHA256: 5e9dd0c0a063a85c07311e8548551d5c8a56533b010cab9edc6bc34a9e0b10b8
-SHA512: e8ff811e61273cbc2866830f4d4d913b69c208c2eeae910285042cb78fde6c0655484baaf56dbd41c10c99b089f7e9bbbbca7e64d0b3f93a7d65f4e863b8f904
-Description: packages for educational context
  long description and info
  .
  second paragraph
@@ -172,12 +111,73 @@ Architecture: all
 Version: 2013.06.23
 Recommends: bambam, childsplay, childsplay-alphabet-sounds-ro, gcompris, glpeces, jigzo, tuxpaint
 Filename: ./thkoch-children_2013.06.23_all.deb
-Size: 2156
-MD5sum: 27fdbb48cc3296a1840a6ae9282a4e3b
-SHA1: 39b4a28fb1ebb032a8205b9bcdad23b300e83b7f
-SHA256: 8d1c51a2d715ee2746c85def739fff4901463434391fdcca097594ddec457f7a
-SHA512: 94480d4b43aa244e11ef2e29c76c6219d0463258b1afab1a8068e39f0e3123ccbe38bda9fee2e147d7713dfa6317e0229230cecd87d90a11898eca1636960842
+Size: 2152
+MD5sum: 215012dd2795e031f79ef4d492a5d1ee
+SHA1: ec026451b8f7a466adec930a311a0ac0ed91cb98
+SHA256: c9eb705052a6829ac3de3c35c4fe404aeb5c05610890295544e126532a005a26
+SHA512: 5a5a6ab1aa186187468562740d19700a2b1019f12689eff6afe6678ac9115347f7c701224d5e04a0a25dec26c2023ad25a125bcf9ebe2809de43313add8f03da
 Description: packages which make fun
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-devel-debian
+Priority: optional
+Section: misc
+Installed-Size: 5
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2013.06.23
+Depends: debian-goodies, debhelper, devscripts, devscripts-el, git-buildpackage
+Recommends: eatmydata, build-essential, javahelper, packaging-dev, developers-reference, debian-policy, equivs, schroot, debian-faq, doc-debian, manpages, sysv-rc-conf, tardiff, apt-utils, debsig-verify, guilt, premake4, shunit2, apache2-doc, aptitude-doc-en, gnupg-doc, icu-doc, iproute2-doc, manpages-dev, abs-guide, doc-rfc, doc-rfc-experimental, hdparm, libgtk2.0-bin, git-review, attr, editorconfig, git-bzr-ng, git-email, git-svn, ed, valgrind, c++-annotations, cmake-doc, glibc-doc, gnu-standards, cpp-doc, gcc-doc, ebook-dev-alp, gccintro, gdb-doc, glibc-doc-reference, make-doc, manpages-posix-dev, cmake, doxymacs, doxygen-gui, gdb, doxygen-doc, linux-doc, exuberant-ctags, chrpath, clusterssh, pssh, pconsole, cltl, hyperspec, dh-lisp, gdc, tora, pgadmin3, postgresql-contrib, postgresql-doc, debsigs, dh-autoreconf, dh-make, headache, help2man, license-reconcile, mozilla-devscripts, openstack-pkg-tools, pkg-components, pkg-kde-tools, ubuntu-dev-tools, debconf-doc, debian-faq-de, debian-handbook, debian-kernel-handbook, debian-refcard, debian-reference-en, dput-ng-doc, harden-doc, dbconfig-common, debian-keyring, ben, python3-debian, python3-magic, adequate, dlocate, pristine-tar, cdbs, dh-exec, piuparts, ohcount, pbzip2, git-dpm, gitpkg, doconce, pandoc, texinfo-doc-nonfree, publican, python3-docutils, eclipse, eclipse-egit, eclipse-wtp-servertools, eclipse-wtp-webtools, eclipse-wtp-ws, eclipse-rse-sdk, eclipse-egit-mylyn, eclipse-gef-doc, ecb, hdevtools, haskell-platform-doc, haskell-platform, haskell-doc, ghc-mod, haskell-devscripts, hothasktags, hlint, protobuf-compiler, scala, ant-doc, scala-doc, scala-mode-el, default-jdk-doc, visualvm, libguava-java-doc, ant-contrib, ecj, ivy, maven-debian-helper, openjdk-7-source, service-wrapper, spring-build-scripts, ldap-utils, ldap-git-backup, bridge-utils, ethtool, finger, ipcalc, netmask, nmapsi4, python-scapy, sendxmpp, sipcalc, wifite, wireshark, nmap, socat, tcpdump, perl-doc, lintian4python, python-ropemacs, cython-doc, diveintopython3, diveintopython, ipython-doc, nuitka, ccache, ipython, ipython3, cython, pylint, python-autopep8, python-pip, python-pygresql, python-pytest, python-virtualenv, python3-doc, python-nose, wordnet, libnss3-tools, nss-passwords, wotsap, monkeysphere, w3af, raptor2-utils, vttest, libvirt-bin, lxctl, virt-manager, virt-viewer, spice-client, spice-client-gtk, vde2, python-spice-client-gtk, libguestfs-tools, w3-recs, fonts-font-awesome, geoip-database, httpcode, webkit-image-qt, httpie, wkhtmltopdf, tidy, twitter-recess, xmlstarlet, xqilla, ocaml-book-en, ocaml-doc, lua-mode, golang-mode, golang-doc
+Suggests: debaux, stress, cpuburn
+Filename: ./thkoch-devel-debian_2013.06.23_all.deb
+Size: 4662
+MD5sum: b22095b0001c01a5850e0acffd84943d
+SHA1: f12c2ab5a33c8c67b4cf3a345bbb070f81b46308
+SHA256: 51ba2c256f23846abedeeb7391d3bd6524466000470baf08a832579a403590c3
+SHA512: 2fbc69189d619403e681d2c9cedd5d4f89a31de5f7beda13ede5245779d0ce197b33b922a1a7f4115be01d5667a51a53ee5d3b657f5a11261c9bebfd1c2fa570
+Description: essential packages to be present on every computer I touch
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-education
+Priority: optional
+Section: misc
+Installed-Size: 3
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2013.06.23
+Recommends: gitmagic, gnuplot-doc, graphviz-doc, kgeography, gnuplot, gnuplot-mode, octave, gtk-recordmydesktop, diploma, kile-doc, kile, lyx, kile-l10n, jabref, mythes-en-us, ktikz, qtikz, lacheck, latex-beamer, lintex, texlive, texlive-bibtex-extra, texlive-lang-german, texlive-science, whizzytex, tuxtype, typespeed, ktouch, gtypist, nlkt, infon-server, infon-viewer, laby, packaging-tutorial
+Filename: ./thkoch-education_2013.06.23_all.deb
+Size: 2494
+MD5sum: d91674959dfda071c74bb2c6deb71a0d
+SHA1: 5d0b9f39127efbfc883a49ae733b5816e338d1da
+SHA256: a4ef85789bcdf5e6609331a7d8b4e5954cc1a9f805ec08c52b2aa2100b3afb9c
+SHA512: c8b7aec42e952845222581d7ba0850f5532094afbd88965249c4bb24ab6801df3990059f2a8ed1daf1919ea8f6c99cc2ad0ec32bca2d80a3c1c1cb87c1ee2d34
+Description: packages for educational context
+ long description and info
+ .
+ second paragraph
+
+Package: thkoch-workmachine
+Priority: optional
+Section: misc
+Installed-Size: 4
+Maintainer: Thomas Koch <thomas@koch.ro>
+Architecture: all
+Version: 2013.06.23
+Depends: apt-file
+Recommends: apt-xapian-index, magit, sm, vcsh, mr, git-stuff, git-annex, pciutils, smartmontools, bootlogd, deborphan, discover, dstat, fbset, iotop, atop, apt-zip, stow, syslog-summary, doc-base, docutils-doc, git-doc, zsh-doc, fonts-anonymous-pro, gpart, memtest86+, apt-offline, signing-party, auto-complete-el, emacs-calfw, prolog-el, quilt-el, wysihtml-el, yasnippet, org-mode, auctex, catdvi, dvipng, emacs-goodies-el, emacs, emacs24-el, expand-region-el, emacs24-common-non-dfsg, develock-el, psgml, pxz, undistract-me, mosh, colordiff, dos2unix, enca, recode, wdiff, bsdcpio, bsdtar, busybox, console-setup, convmv, detox, dvcs-autosync, eject, github-backup, lbzip2, lshw, par2, parallel, pixz, powertop, usbutils, unrar, flashbake, git-extras, unburden-home-dir, linux-headers
+Suggests: pwgen, etckeeper, sysv-rc-conf, sshfs, bup, recutils, pinfo, firmware-linux, ccal, tig
+Filename: ./thkoch-workmachine_2013.06.23_all.deb
+Size: 3134
+MD5sum: 201a5fafc75415e1a4e2c416104fad17
+SHA1: d14c36987aedb95e1cfbc8f0e4c95819be563858
+SHA256: 4c1cb6d9d9702d345a128ee27de78b81e5ec1475c4746d80a2507b2cbcbdfc43
+SHA512: f6692fc47ee0c33fc8db9d294b22099ba8a1e982c780b6c8d97a2525bb63cc969242e64a6be31428d06b774a585fb1bddf2e2b4e9db4f4dcd42f6efee7e37de6
+Description: packages for every computer I work on but not necessary on servers
  long description and info
  .
  second paragraph

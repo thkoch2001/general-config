@@ -12,7 +12,7 @@ Depends:
 Recommends: gitmagic, gnuplot-doc, graphviz-doc,
  kgeography, gnuplot, gnuplot-mode, octave, gtk-recordmydesktop,
 # writing
- diploma, kile-doc, kile, lyx, kile-l10n, jabref, mythes-en-us,
+ diploma, kile-doc, kile, lyx, kile-l10n, jabref, mythes-en-us, ktikz, qtikz,
 # latex
  lacheck, latex-beamer, lintex, texlive, texlive-bibtex-extra,
  texlive-lang-german, texlive-science, whizzytex,
@@ -20,6 +20,8 @@ Recommends: gitmagic, gnuplot-doc, graphviz-doc,
  tuxtype, typespeed, ktouch, gtypist, nlkt,
 # computer science
  infon-server, infon-viewer, laby,
+# debian packaging
+ packaging-tutorial
 Suggests:
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>

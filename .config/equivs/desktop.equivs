@@ -17,7 +17,9 @@ Recommends: awesome, termit, autocutsel, awesome-extra, alsa-utils,
  sound-theme-freedesktop, autotrash, gsmartcontrol, lshw-gtk,
  md5deep, mediainfo, psensor, rlwrap, smart-notifier, trash-cli,
  desktop-base, driconf, notification-daemon, suckless-tools, xdotool,
- xorg, xpp, xscreensaver, xsensors, xtrlock, xvfb, thunar,
+ xorg, xpp, xscreensaver, xsensors, xtrlock, xvfb, thunar, shutter,
+ ffmpegthumbs, k3b, libk3b6-extracodecs, kalarm, libglib2.0-bin,
+ dares, dvdbackup, wininfo, xtightvncviewer,
 # sound
  alsa-utils, libasound2-plugins, alsa-base,
 # network
@@ -28,13 +30,16 @@ Recommends: awesome, termit, autocutsel, awesome-extra, alsa-utils,
 # gstreamer
  gstreamer0.10-fluendo-mp3, gstreamer1.0-alsa, gstreamer1.0-libav,
  gstreamer1.0-plugins-ugly, gstreamer1.0-x, gstreamer-tools,
+ gstreamer0.10-plugins-ugly,
 # gnome-keyring needed for network-manager password entry
  gnome-keyring,
 # kde
  systemsettings, system-config-printer, kinfocenter, kwalletmanager,
+# video
+ libaacs0, libbluray-bdj,
 # video downloads
  youtube-dl, clive, cclive, get-flash-videos, get-iplayer, id3v2,
- atomicparsley, freetuxtv
+ atomicparsley, freetuxtv, nomnom,
 Suggests: gparted
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>

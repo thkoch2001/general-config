@@ -14,61 +14,68 @@ Recommends: eatmydata, build-essential, javahelper, packaging-dev,
  developers-reference, debian-policy, equivs, schroot, debian-faq,
  doc-debian, manpages, sysv-rc-conf, tardiff, apt-utils, debsig-verify,
  guilt, premake4, shunit2, apache2-doc, aptitude-doc-en, gnupg-doc,
- icu-doc, iproute2-doc, manpages-dev, abs-guide, doc-rfc, hdparm,
- ldap-git-backup, libgtk2.0-bin, git-review, attr, editorconfig,
- git-bzr-ng, git-email, git-svn,
+ icu-doc, iproute2-doc, manpages-dev, abs-guide, doc-rfc, doc-rfc-experimental,
+ hdparm, libgtk2.0-bin, git-review, attr, editorconfig,
+ git-bzr-ng, git-email, git-svn, ed,
 # c
  valgrind, c++-annotations, cmake-doc, glibc-doc, gnu-standards, cpp-doc, gcc-doc,
  ebook-dev-alp, gccintro, gdb-doc, glibc-doc-reference, make-doc, manpages-posix-dev,
- cmake, doxymacs, doxygen-gui, gdb, doxygen-doc, linux-doc,
+ cmake, doxymacs, doxygen-gui, gdb, doxygen-doc, linux-doc, exuberant-ctags, chrpath,
+# cluster stuff
+ clusterssh, pssh, pconsole,
+# common lisp
+ cltl, hyperspec, dh-lisp,
 # d
  gdc,
-# documentation
- doconce, pandoc,
-# eclipse
- eclipse, eclipse-egit, eclipse-wtp-servertools, eclipse-wtp-webtools, eclipse-wtp-ws,
- eclipse-rse-sdk,
-# emacs
- ecb,
+# database stuff
+ tora, pgadmin3, postgresql-contrib, postgresql-doc,
 # debian packaging stuff
  debsigs, dh-autoreconf, dh-make, headache, help2man, license-reconcile, mozilla-devscripts,
  openstack-pkg-tools, pkg-components, pkg-kde-tools, ubuntu-dev-tools, debconf-doc, debian-faq-de,
  debian-handbook, debian-kernel-handbook, debian-refcard, debian-reference-en, dput-ng-doc, harden-doc,
  dbconfig-common, debian-keyring, ben, python3-debian, python3-magic, adequate, dlocate,
- pristine-tar,
-# cluster stuff
- clusterssh, pssh, pconsole,
-# common lisp
- cltl, hyperspec, dh-lisp,
-# database stuff
- tora, pgadmin3,
+ pristine-tar, cdbs, dh-exec, piuparts, ohcount, pbzip2, git-dpm, gitpkg,
+# documentation
+ doconce, pandoc, texinfo-doc-nonfree, publican, python3-docutils,
+# eclipse
+ eclipse, eclipse-egit, eclipse-wtp-servertools, eclipse-wtp-webtools, eclipse-wtp-ws,
+ eclipse-rse-sdk, eclipse-egit-mylyn, eclipse-gef-doc,
+# emacs
+ ecb,
 # haskell
  hdevtools, haskell-platform-doc, haskell-platform, haskell-doc, ghc-mod, haskell-devscripts,
- hothasktags,
+ hothasktags, hlint,
+# java
+ protobuf-compiler, scala, ant-doc, scala-doc, scala-mode-el, default-jdk-doc, visualvm,
+ libguava-java-doc, ant-contrib, ecj, ivy, maven-debian-helper, openjdk-7-source,
+ service-wrapper, spring-build-scripts,
+# ldap
+ ldap-utils, ldap-git-backup,
+# network
+ bridge-utils, ethtool, finger, ipcalc, netmask, nmapsi4, python-scapy, sendxmpp, sipcalc,
+ wifite, wireshark, nmap, socat, tcpdump,
+# perl
+ perl-doc,
 # python
  lintian4python, python-ropemacs, cython-doc, diveintopython3, diveintopython, ipython-doc,
  nuitka, ccache, ipython, ipython3, cython, pylint, python-autopep8, python-pip, python-pygresql,
- python-pytest, python-virtualenv, python3-doc,
-# java
-  protobuf-compiler, scala, ant-doc, scala-doc, scala-mode-el, default-jdk-doc, visualvm,
-# network
- bridge-utils, ethtool, finger, ipcalc, netmask, nmapsi4, python-scapy, sendxmpp, sipcalc,
- wifite, wireshark,
-# web
- w3-recs, fonts-font-awesome, geoip-database, httpcode, webkit-image-qt, httpie,
-# web css
- twitter-recess,
+ python-pytest, python-virtualenv, python3-doc, python-nose,
 # search
  wordnet,
+# security
+ libnss3-tools, nss-passwords, wotsap, monkeysphere, w3af,
 # semantic
  raptor2-utils,
-# security
- libnss3-tools, nss-passwords, wotsap,
 # terminal (termit)
  vttest,
 # virtualization
  libvirt-bin, lxctl, virt-manager, virt-viewer, spice-client, spice-client-gtk, vde2,
- python-spice-client-gtk,
+ python-spice-client-gtk, libguestfs-tools,
+# web
+ w3-recs, fonts-font-awesome, geoip-database, httpcode, webkit-image-qt, httpie,
+ wkhtmltopdf, tidy,
+# web css
+ twitter-recess,
 # xml
  xmlstarlet, xqilla,
 # other
