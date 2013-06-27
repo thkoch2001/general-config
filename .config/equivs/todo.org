@@ -1,0 +1,10 @@
+** My machine setup
+- apt/sources.list.d entries
+- apt/config
+  - do not install recommends
+  - purge packages
+  - purge on uninstall
+- add my user to groups:
+  - staff
+  - libvirt, kvm, libvirt-qemu, vde2-net?
+- zsh as default shell
