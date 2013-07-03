@@ -8,3 +8,8 @@
   - staff
   - libvirt, kvm, libvirt-qemu, vde2-net?
 - zsh as default shell
+- /tmp as tmpfs
+- add my user to sudoers file
+- autologin for my user
+- automatically install documentation for libraries?
+- add my own GPG key as trusted apt key
