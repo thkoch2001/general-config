@@ -128,3 +128,4 @@
 /logs/
 /workspace/
 
+.config/user-dirs.*
