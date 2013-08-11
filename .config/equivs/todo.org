@@ -15,3 +15,4 @@
 - add my own GPG key as trusted apt key
 - emailversand einrichten, dass mail von commandline funktioniert
 - drucker einrichten
+- iceweasel als Standardbrowser (für KDE apps?)
