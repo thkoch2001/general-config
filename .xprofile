@@ -1,0 +1,2 @@
+which xcompmgr >/dev/null && xcompmgr -c &
+
