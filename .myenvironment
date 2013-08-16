@@ -13,7 +13,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # http://glandium.org/blog/?p=416
 # via http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=538871
 export MOZ_GRE_CONF=/etc/gre.d/1.9.system.conf
-export BC_ENV_ARGS=~/.config/bc
+export BC_ENV_ARGS=$HOME/.config/bc
 
 # emacs rules
 export ALTERNATE_EDITOR=""
