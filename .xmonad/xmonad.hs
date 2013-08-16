@@ -15,12 +15,13 @@ myManageHook = composeAll [
 
 main = xmonad $ gnomeConfig
         { modMask = mod4Mask
-        , terminal = "x-terminal-emulator"
+        , terminal = "x-terminal-emulator-default"
         , layoutHook = smartBorders (layoutHook gnomeConfig)
         , manageHook = myManageHook <+> manageHook gnomeConfig
         }
         `additionalKeysP`
                  [ ("M-e", spawn "e")
+                 , ("M-<Return>", spawn "x-terminal-emulator")
                  , ("M-r", gnomeRun)
                  , ("M-S-q", spawn "gnome-session-quit")
                  , ("M-<Left>",    prevWS )
