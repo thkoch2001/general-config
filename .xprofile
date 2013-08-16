@@ -1,2 +1,5 @@
-which xcompmgr >/dev/null && xcompmgr -c &
+which xcompmgr >/dev/null && xcompmgr -c -f -n -D 1 -I .04 -O .04 &
+
+# turn of annoying bell
+xset b off
 
