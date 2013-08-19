@@ -20,9 +20,9 @@ main = xmonad $ gnomeConfig
         , manageHook = myManageHook <+> manageHook gnomeConfig
         }
         `additionalKeysP`
-                 [ ("M-e", spawn "e")
+                 [ ("M-d", spawn "e")
                  , ("M-<Return>", spawn "x-terminal-emulator")
-                 , ("M-r", gnomeRun)
+                 , ("M-f", gnomeRun)
                  , ("M-S-q", spawn "gnome-session-quit")
                  , ("M-<Left>",    prevWS )
                  , ("M-<Right>",   nextWS )
