@@ -19,6 +19,8 @@
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	squash = "!f() { git checkout -B gerrit_temp && git reset --soft $1; }; f `git merge-base \"$1\" HEAD`"
+[branch]
+	autosetuprebase = remote
 [rebase]
 	autosquash = true
 [annex]
