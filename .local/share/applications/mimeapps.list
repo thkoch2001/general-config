@@ -1,2 +1,6 @@
+[Added Associations]
+text/html=iceweasel.desktop;chromium.desktop;libreoffice-writer.desktop;emacs23.desktop;gedit.desktop;gobby-0.5.desktop;
+text/plain=emacsclient.desktop;
+
 [Default Applications]
 x-scheme-handler/org-protocol=emacsclient.desktop
