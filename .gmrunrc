@@ -1,0 +1,9 @@
+Terminal = termit
+TermExec = termit -e
+
+TabTimeout = 300
+
+EXT:doc,rtf = libreoffice %s
+EXT:txt,cc,cpp,h,java,html,htm,epl,tex,latex,js,css,xml,xsl,am = emacsclient -c %s
+EXT:ps = gv %s
+EXT:pdf = okular %s
