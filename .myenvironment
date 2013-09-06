@@ -30,3 +30,14 @@ then
     alias $C="echo \"You don't want to run $C during a vcsh session!\" && false "
   done
 fi
+
+
+get_first_xpra_display()
+{
+  xpra list | sed -n 's/^.* session at \(.*\)/\1/p' | head -n 1
+}
+
+if [[ -z "$DISPLAY" && -n "$SSH_CONNECTION" ]]; then
+  XPRADISPLAY=$(get_first_xpra_display)
+  export DISPLAY=${XPRADISPLAY}
+fi
