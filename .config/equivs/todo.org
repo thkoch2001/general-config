@@ -1,3 +1,5 @@
+- add package daemon!
+
 ** My machine setup
 - apt/sources.list.d entries
 - apt/config
