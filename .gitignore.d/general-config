@@ -26,3 +26,6 @@ git
 .zshrc*
 .zcompdump
 
+.xsession-errors.old
+/.gitignore.d
+!/.gitignore.d/general-config
