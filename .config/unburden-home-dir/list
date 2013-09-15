@@ -18,4 +18,5 @@ m d .conkeror.mozdev.org/conkeror/*/Cache.Trash conkeror-cache-trash-%1
 #r D .Trash trash
 #r D .local/Trash local-trash
 
-
+# thkoch additions
+r D .gnash gnash
