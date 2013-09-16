@@ -4,7 +4,7 @@
 	signingkey = 042BA65A
 [core]
 	excludesfile = ~/.config/git/ignore-global
-	pager = less
+	pager = less --tabs=4
 [color]
     status = auto
     pager = true
