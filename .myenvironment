@@ -41,3 +41,5 @@ if [ -z "$DISPLAY" ] && [ -n "$SSH_CONNECTION" ]; then
   XPRADISPLAY=$(get_first_xpra_display)
   export DISPLAY=${XPRADISPLAY}
 fi
+
+alias cdgit=cd $(git root)/
