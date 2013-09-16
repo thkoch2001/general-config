@@ -42,4 +42,4 @@ if [ -z "$DISPLAY" ] && [ -n "$SSH_CONNECTION" ]; then
   export DISPLAY=${XPRADISPLAY}
 fi
 
-alias cdgit=cd $(git root)/
+alias cdgit='cd $(git root)'
