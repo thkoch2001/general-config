@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# http://superuser.com/questions/503204/how-to-verify-the-trust-path-to-a-gpg-key
+# http://security.stackexchange.com/questions/41208/what-is-the-exact-meaning-of-this-gpg-output-regarding-trust
+gpg --list-keys --list-options show-uid-validity $1
