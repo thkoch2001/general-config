@@ -7,6 +7,7 @@ import XMonad.Util.EZConfig
 import XMonad.Actions.CycleWS
 -- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-WindowBringer.html
 import XMonad.Actions.WindowBringer
+import XMonad.StackSet
 
 myManageHook = composeAll [
     (className =? "Pidgin" <&&> (title =? "Pidgin" <||> title =? "Accounts")) --> doCenterFloat
@@ -15,11 +16,18 @@ myManageHook = composeAll [
   , (className =? "Gcr-prompter") --> doCenterFloat
   ]
 
+avoidFocusStealingManageHook = fmap not isDialog --> doF avoidMaster
+
+avoidMaster :: StackSet i l a s sd -> StackSet i l a s sd
+avoidMaster = modify' $ \c -> case c of
+     Stack t [] (r:rs) -> Stack r [] (t:rs)
+     otherwise         -> c
+
 main = xmonad $ gnomeConfig
         { modMask = mod4Mask
         , terminal = "x-terminal-emulator-default"
         , layoutHook = smartBorders (layoutHook gnomeConfig)
-        , manageHook = myManageHook <+> manageHook gnomeConfig
+        , manageHook = myManageHook <+> avoidFocusStealingManageHook <+> manageHook gnomeConfig
         }
         `additionalKeysP`
                  [ ("M-d", spawn "e")
