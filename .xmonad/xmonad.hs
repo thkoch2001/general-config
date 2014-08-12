@@ -5,6 +5,8 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.EZConfig
 import XMonad.Actions.CycleWS
+-- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-WindowBringer.html
+import XMonad.Actions.WindowBringer
 
 myManageHook = composeAll [
     (className =? "Pidgin" <&&> (title =? "Pidgin" <||> title =? "Accounts")) --> doCenterFloat
@@ -31,4 +33,6 @@ main = xmonad $ gnomeConfig
                  , ("M-h", sendMessage ToggleStruts)
                  , ("M-S-h", sendMessage $ ToggleStrut U)
                  , ("M-C-h", sendMessage $ ToggleStrut D)
+                 , ("M-g", gotoMenu)
+                 , ("M-b", bringMenu)
                  ]
