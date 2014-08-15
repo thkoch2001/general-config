@@ -10,16 +10,20 @@ import XMonad.Actions.WindowBringer
 import qualified XMonad.StackSet as W
 
 myManageHook = composeAll [
-    (className =? "Pidgin" <&&> (title =? "Pidgin" <||> title =? "Accounts")) --> doCenterFloat
--- , (className =? "Pidgin") --> doShift "3"
-  , (className =? "Gnome-panel" <&&> title =? "Run Application") --> doCenterFloat
-  , (className =? "Gcr-prompter") --> doCenterFloat
+--    (className =? "Pidgin" <&&> (title =? "Pidgin" <||> title =? "Accounts")) --> doCenterFloat
   ]
 
-avoidFocusStealingManageHook = fmap not isDialog --> doF avoidMaster
+avoidFocusStealingManageHook
+  = (
+           className /=? "Gmrun"
+      <&&> className /=? "Termit"
+      <&&> className /=? "X-terminal-emulator"
+      <&&> fmap not isDialog
+    )
+    --> doF avoidFocusStealing
 
-avoidMaster :: W.StackSet i l a s sd -> W.StackSet i l a s sd
-avoidMaster = W.modify' $ \c -> case c of
+avoidFocusStealing :: W.StackSet i l a s sd -> W.StackSet i l a s sd
+avoidFocusStealing = W.modify' $ \c -> case c of
      W.Stack t [] (r:rs) -> W.Stack r [] (t:rs)
      otherwise           -> c
 
