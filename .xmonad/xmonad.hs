@@ -36,15 +36,15 @@ main = xmonad $ gnomeConfig
         `additionalKeysP`
                  [ ("M-d", spawn "e")
                  , ("M-<Return>", spawn "x-terminal-emulator")
-                 , ("M-f", gnomeRun)
                  , ("M-S-q", spawn "gnome-session-quit")
                  , ("M-<Left>",    prevWS )
                  , ("M-<Right>",   nextWS )
                  , ("M-S-<Left>",  shiftToPrev )
                  , ("M-S-<Right>", shiftToNext )
-                 , ("M-h", sendMessage ToggleStruts)
-                 , ("M-S-h", sendMessage $ ToggleStrut U)
-                 , ("M-C-h", sendMessage $ ToggleStrut D)
+
+                 , ("M-f", sendMessage ToggleStruts)
+                 , ("M-S-f", sendMessage $ ToggleStrut U)
+                 , ("M-C-f", sendMessage $ ToggleStrut D)
                  , ("M-g", gotoMenu)
                  , ("M-b", bringMenu)
                  ]
