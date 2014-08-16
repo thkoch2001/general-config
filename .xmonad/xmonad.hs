@@ -8,6 +8,7 @@ import XMonad.Actions.CycleWS
 -- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-WindowBringer.html
 import XMonad.Actions.WindowBringer
 import qualified XMonad.StackSet as W
+import XMonad.Actions.WindowMenu
 
 myManageHook = composeAll [
 --    (className =? "Pidgin" <&&> (title =? "Pidgin" <||> title =? "Accounts")) --> doCenterFloat
@@ -47,4 +48,5 @@ main = xmonad $ gnomeConfig
                  , ("M-C-f", sendMessage $ ToggleStrut D)
                  , ("M-g", gotoMenu)
                  , ("M-b", bringMenu)
+                 , ("M-o", windowMenu)
                  ]
