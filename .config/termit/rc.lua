@@ -34,6 +34,7 @@ defaults.allowChangingTitle = true
 defaults.hideSingleTab = true
 defaults.showBorder = false
 defaults.showScrollbar = false
+defaults.urgencyOnBell = true
 setOptions(defaults)
 
 -- bindKey('Ctrl-j', prevTab)
