@@ -1,6 +1,14 @@
+{-# LANGUAGE OverloadedStrings #-}
+
+import DBus
+import DBus.Client
+
+import System.Taffybar.XMonadLog
+
 import XMonad
 import XMonad.Config.Gnome
 import XMonad.Layout.NoBorders
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.EZConfig
@@ -28,11 +36,22 @@ avoidFocusStealing = W.modify' $ \c -> case c of
      W.Stack t [] (r:rs) -> W.Stack r [] (t:rs)
      otherwise           -> c
 
-main = xmonad $ gnomeConfig
+logHookPP :: PP
+logHookPP = taffybarPP {
+    ppCurrent = taffybarColor "green" "#333333"
+  , ppVisible = taffybarColor "yellow" "#333333"
+  , ppTitle = taffybarColor "green"  "" . shorten 90
+  , ppHiddenNoWindows = taffybarColor "#bbbbbb" ""
+}
+
+main = do
+  dbusClient <- connectSession
+  xmonad $ gnomeConfig
         { modMask = mod4Mask
         , terminal = "x-terminal-emulator-default"
         , layoutHook = smartBorders (layoutHook gnomeConfig)
         , manageHook = myManageHook <+> avoidFocusStealingManageHook <+> manageHook gnomeConfig
+        , logHook = dbusLogWithPP dbusClient logHookPP >> logHook gnomeConfig
         }
         `additionalKeysP`
                  [ ("M-d", spawn "e")
@@ -49,4 +68,9 @@ main = xmonad $ gnomeConfig
                  , ("M-g", gotoMenu)
                  , ("M-b", bringMenu)
                  , ("M-o", windowMenu)
+                 , ("M1-C-l", spawn "gnome-screensaver-command -l")
+                 , ("M1-S-l", spawn "cinnamon-session-quit")
+                 , ("M1-S-q", spawn "cinnamon-session-quit --power-off")
+                 , ("M1-S-r", spawn "cinnamon-session-quit --reboot")
                  ]
+
