@@ -51,4 +51,4 @@ bind C-c run "tmux save-buffer - | xclip -i -sel clipboard"
 bind C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
 
 # solarized colors
-source-file ~/.config/tmux/solarized/tmuxcolors-dark.conf
+# source-file ~/.config/tmux/solarized/tmuxcolors-dark.conf
