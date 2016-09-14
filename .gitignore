@@ -78,11 +78,9 @@
 # google specific:
 /.mash_history
 /.mysql_history
-#/.nv/
-#/.nvidia-settings-rc
+/.nv/GLCache/
 #/.profile
 #/.rnd
-#/.shutter/
 /.thumbnails
 /.viminfo
 /.xsession-errors
