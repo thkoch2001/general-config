@@ -40,3 +40,6 @@
 	file-view-vpane-position = 498
 	main-window-view = FileView
 	file-view-hpane-position = 290
+
+[include]
+    path = work
