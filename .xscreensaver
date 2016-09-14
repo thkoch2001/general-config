@@ -4,8 +4,8 @@
 
 timeout:	0:04:00
 cycle:		0:02:00
-lock:		True
-lockTimeout:	0:01:00
+lock:           True
+lockTimeout:    0:00:05
 passwdTimeout:	0:00:30
 visualID:	default
 installColormap:    True
@@ -24,7 +24,7 @@ fadeTicks:	20
 captureStderr:	True
 ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
-dpmsEnabled:	True
+dpmsEnabled:    True
 dpmsQuickOff:	True
 dpmsStandby:	0:04:00
 dpmsSuspend:	0:05:00
@@ -254,4 +254,3 @@ GetViewPortIsFullOfLies:False
 procInterrupts:	True
 xinputExtensionDev: False
 overlayStderr:	True
-
