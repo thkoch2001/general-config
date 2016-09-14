@@ -25,7 +25,8 @@
 [rebase]
 	autosquash = true
 [annex]
-	numcopies = 2
+    backends = SHA256
+    numcopies = 2
 #	largefiles = largerthan=100kb and not (include=*.c or include=*.h or include=*.txt or include=*.org)
 	largefiles = not (include=*.c or include=*.h or include=*.txt or include=*.org)
     diskreserve = 10 gb
@@ -43,3 +44,12 @@
 
 [include]
     path = work
+    path = local
+
+[transfer]
+    fsckobjects = true
+[fetch]
+    fsckobjects = true
+[receive]
+    fsckObjects = true
+

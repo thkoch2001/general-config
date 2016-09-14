@@ -5,6 +5,7 @@ export DEBEMAIL="thomas@koch.ro"
 export DEBFULLNAME="Thomas Koch"
 export QUILT_PATCHES=debian/patches
 export SHELL=/bin/zsh
+export MAILER=kmailservice
 
 # fix java apps in awesome
 # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=508650
