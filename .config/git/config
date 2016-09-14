@@ -31,6 +31,9 @@
     diskreserve = 10 gb
 [url "koch.ro:git/vcsh/"]
 	insteadOf = vcsh://
+[push]
+    default = simple
+
 [giggle]
 	main-window-maximized = false
 	main-window-geometry = 1278x1003+0+19
