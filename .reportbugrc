@@ -19,3 +19,4 @@ smtphost reportbug.debian.org
 # /etc/reportbug.conf for a full listing of options.
 keyid 042BA65A
 sign gpg
+bts debian
