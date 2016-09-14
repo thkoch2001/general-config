@@ -6,31 +6,17 @@ import DBus.Client
 import System.Taffybar.XMonadLog
 
 import XMonad
-import XMonad.Actions.CycleWS
--- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-WindowBringer.html
-import XMonad.Actions.WindowBringer
-import XMonad.Actions.WindowMenu
 import XMonad.Config.Gnome
+import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
--- https://pbrisbin.com/posts/using_notify_osd_for_xmonad_notifications/
-import XMonad.Hooks.UrgencyHook
-import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig
-import XMonad.Util.NamedWindows
-import XMonad.Util.Run
-
+import XMonad.Actions.CycleWS
+-- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-WindowBringer.html
+import XMonad.Actions.WindowBringer
 import qualified XMonad.StackSet as W
-
-data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
-
-instance UrgencyHook LibNotifyUrgencyHook where
-  urgencyHook LibNotifyUrgencyHook w = do
-    name     <- getName w
-    Just idx <- fmap (W.findTag w) $ gets windowset
-
-    safeSpawn "notify-send" [show name, "workspace " ++ idx]
+import XMonad.Actions.WindowMenu
 
 myManageHook = composeAll [
 --    (className =? "Pidgin" <&&> (title =? "Pidgin" <||> title =? "Accounts")) --> doCenterFloat
@@ -54,16 +40,13 @@ logHookPP :: PP
 logHookPP = taffybarPP {
     ppCurrent = taffybarColor "green" "#333333"
   , ppVisible = taffybarColor "yellow" "#333333"
-  , ppUrgent  = taffybarColor "black" "red"
   , ppTitle = taffybarColor "green"  "" . shorten 90
   , ppHiddenNoWindows = taffybarColor "#bbbbbb" ""
 }
 
 main = do
   dbusClient <- connectSession
-  xmonad
-    $ withUrgencyHook LibNotifyUrgencyHook
-    $ gnomeConfig
+  xmonad $ gnomeConfig
         { modMask = mod4Mask
         , terminal = "x-terminal-emulator-default"
         , layoutHook = smartBorders (layoutHook gnomeConfig)
@@ -73,14 +56,11 @@ main = do
         `additionalKeysP`
                  [ ("M-d", spawn "e")
                  , ("M-<Return>", spawn "x-terminal-emulator")
-                 , ("M-S-q", spawn "cinnamon-session-quit")
+                 , ("M-S-q", spawn "gnome-session-quit")
                  , ("M-<Left>",    prevWS )
                  , ("M-<Right>",   nextWS )
                  , ("M-S-<Left>",  shiftToPrev )
                  , ("M-S-<Right>", shiftToNext )
-
-                 , ("M-<Backspace>", focusUrgent)
-                 , ("M-S-<Backspace>", clearUrgents)
 
                  , ("M-f", sendMessage ToggleStruts)
                  , ("M-S-f", sendMessage $ ToggleStrut U)

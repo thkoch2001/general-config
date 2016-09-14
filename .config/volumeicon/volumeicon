@@ -4,7 +4,7 @@ lmb_slider=false
 mmb_mute=false
 use_horizontal_slider=false
 show_sound_level=false
-onclick=gnome-alsamixer
+onclick=pavucontrol
 theme=Default
 
 [Hotkeys]
