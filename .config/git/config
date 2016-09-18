@@ -34,6 +34,8 @@
 	insteadOf = vcsh://
 [push]
     default = simple
+[pull]
+    rebase = true
 
 [giggle]
 	main-window-maximized = false
