@@ -73,6 +73,7 @@ main = do
         `additionalKeysP`
                  [ ("M-d", spawn "e")
                  , ("M-<Return>", spawn "x-terminal-emulator")
+                 , ("M-S-<Return>", spawn "x-terminal-emulator -e 'tmux new-session -A -s default'")
                  , ("M-S-q", spawn "cinnamon-session-quit")
                  , ("M-<Left>",    prevWS )
                  , ("M-<Right>",   nextWS )
