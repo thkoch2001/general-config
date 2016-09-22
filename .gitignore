@@ -78,6 +78,9 @@
 # google specific:
 /.mash_history
 /.mysql_history
+/.nix-channels
+/.nix-defexpr/
+/.nix-profile
 /.nv/GLCache/
 /.psql_history
 #/.profile
