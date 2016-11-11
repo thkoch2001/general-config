@@ -32,15 +32,14 @@ then
   done
 fi
 
-
 get_first_xpra_display()
 {
   xpra list | sed -n 's/^.* session at \(.*\)/\1/p' | head -n 1
 }
 
 if [ -z "$DISPLAY" ] && [ -n "$SSH_CONNECTION" ]; then
-  XPRADISPLAY=$(get_first_xpra_display)
-  export DISPLAY=${XPRADISPLAY}
+#  XPRADISPLAY=$(get_first_xpra_display)
+#  export DISPLAY=${XPRADISPLAY}
 fi
 
 # 256 colors in terminal
