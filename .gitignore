@@ -90,6 +90,7 @@
 /.xsession-errors.old
 /.zcompdumps/
 /.zcompdump
+/.zshenv
 /.zshrc*
 /bin/sm
 /Documents/
