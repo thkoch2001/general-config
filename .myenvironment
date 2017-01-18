@@ -37,10 +37,10 @@ get_first_xpra_display()
   xpra list | sed -n 's/^.* session at \(.*\)/\1/p' | head -n 1
 }
 
-if [ -z "$DISPLAY" ] && [ -n "$SSH_CONNECTION" ]; then
+#if [ -z "$DISPLAY" ] && [ -n "$SSH_CONNECTION" ]; then
 #  XPRADISPLAY=$(get_first_xpra_display)
 #  export DISPLAY=${XPRADISPLAY}
-fi
+#fi
 
 # 256 colors in terminal
 [ -z "$TMUX" ] && export TERM=xterm-256color
