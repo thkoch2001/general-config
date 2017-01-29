@@ -47,3 +47,11 @@ bindKey('Ctrl-t', nil)
 -- bindKey('Ctrl-v', paste)
 -- I need something better for copy
 -- bindKey('Ctrl-c', copy)
+
+function changeTabFontSize(delta)
+    tab = tabs[currentTabIndex()]
+    setTabFont(string.sub(tab.font, 1, string.find(tab.font, '%d+$') - 1)..(tab.fontSize + delta))
+end
+
+bindKey('Ctrl-plus', function () changeTabFontSize(1) end)
+bindKey('Ctrl-minus', function () changeTabFontSize(-1) end)
