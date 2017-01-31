@@ -34,6 +34,7 @@ instance UrgencyHook LibNotifyUrgencyHook where
 
 myManageHook = composeAll [
 --    (className =? "Pidgin" <&&> (title =? "Pidgin" <||> title =? "Accounts")) --> doCenterFloat
+    className =? "gnubby_ssh_prompt" --> doCenterFloat
   ]
 
 avoidFocusStealingManageHook
