@@ -1,9 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import DBus
-import DBus.Client
-
-import System.Taffybar.XMonadLog
+import System.Taffybar.Hooks.PagerHints (pagerHints)
 
 import XMonad
 import XMonad.Actions.CycleWS
@@ -12,6 +9,7 @@ import XMonad.Actions.WindowBringer
 import XMonad.Actions.WindowMenu
 import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops (ewmh) -- for System.Taffybar.TaffyPager
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
 -- https://pbrisbin.com/posts/using_notify_osd_for_xmonad_notifications/
@@ -20,6 +18,8 @@ import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig
 import XMonad.Util.NamedWindows
 import XMonad.Util.Run
+
+
 
 import qualified XMonad.StackSet as W
 
@@ -53,25 +53,15 @@ avoidFocusStealing = W.modify' $ \c -> case c of
      W.Stack t [] (r:rs) -> W.Stack r [] (t:rs)
      otherwise           -> c
 
-logHookPP :: PP
-logHookPP = taffybarPP {
-    ppCurrent = taffybarColor "green" "#333333"
-  , ppVisible = taffybarColor "yellow" "#333333"
-  , ppUrgent  = taffybarColor "black" "red"
-  , ppTitle = taffybarColor "green"  "" . shorten 90
-  , ppHiddenNoWindows = taffybarColor "#bbbbbb" ""
-}
-
 main = do
-  dbusClient <- connectSession
   xmonad
+    $ ewmh $ pagerHints -- see System.Taffybar.TaffyPager
     $ withUrgencyHook LibNotifyUrgencyHook
     $ gnomeConfig
         { modMask = mod4Mask
         , terminal = "x-terminal-emulator-default"
         , layoutHook = smartBorders (layoutHook gnomeConfig)
         , manageHook = myManageHook <+> avoidFocusStealingManageHook <+> manageHook gnomeConfig
-        , logHook = dbusLogWithPP dbusClient logHookPP >> logHook gnomeConfig
         }
         `additionalKeysP`
                  [ ("M-d", spawn "e")
