@@ -1,0 +1,6 @@
+#autoload
+
+git rev-parse --show-toplevel | read root
+
+[ $? -eq 0 ] || return $?
+cd "$root/$1"
