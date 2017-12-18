@@ -1,11 +1,4 @@
-if [ -r $HOME/.myenvironment ]; then
-  . $HOME/.myenvironment
+if [ -r $HOME/.config/environment/source_local_d.sh ]; then
+  . $HOME/.config/environment/source_local_d.sh
 fi
 
-#this is executed too early here. rather let this be done by awesome config
-#$HOME/bin/run-autoruns.sh
-
-# kdm has problems, if dbus does not come up fast enough...
-#echo "start sleep"
-#sleep 3
-#echo "end sleep"
