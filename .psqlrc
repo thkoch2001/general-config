@@ -1,0 +1,14 @@
+-- http://tapoueh.org/blog/2017/12/setting-up-psql-the-postgresql-cli/
+
+\pset linestyle 'unicode'
+
+\pset unicode_border_linestyle single
+\pset unicode_column_linestyle single
+\pset unicode_header_linestyle double
+
+\set COMP_KEYWORD_CASE upper
+
+\! mkdir -p ~/.local/state/psql
+\set HISTFILE ~/.local/state/psql/history- :DBNAME
+
+
