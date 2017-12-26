@@ -1,5 +1,20 @@
 -- http://tapoueh.org/blog/2017/12/setting-up-psql-the-postgresql-cli/
+-- https://github.com/thoughtbot/dotfiles/blob/master/psqlrc
 
+\set QUIET 1
+\pset null '[NULL]'
+
+-- http://www.postgresql.org/docs/9.3/static/app-psql.html#APP-PSQL-PROMPTING
+\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+-- PROMPT2 is printed when the prompt expects more input, like when you type
+-- SELECT * FROM<enter>. %R shows what type of input it expects.
+\set PROMPT2 '[more] %R > '
+
+-- Show how long each query takes to execute
+\timing
+
+\x auto
+\set VERBOSITY verbose
 \pset linestyle 'unicode'
 
 \pset unicode_border_linestyle single
@@ -10,5 +25,6 @@
 
 \! mkdir -p ~/.local/state/psql
 \set HISTFILE ~/.local/state/psql/history- :DBNAME
+\set HISTCONTROL ignoredups
 
-
+\unset QUIET
