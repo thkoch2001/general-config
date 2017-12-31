@@ -1,39 +1,23 @@
-### Commented entries have reasonable defaults.
-### Uncomment to edit them.
-Section: misc
-Priority: optional
-# Homepage: <enter URL here; no default>
-Standards-Version: 3.9.4
-
 Package: thkoch-workmachine
-Version: 2013.06.23
+Version: 2017.12.31
 Maintainer: Thomas Koch <thomas@koch.ro>
-Depends: apt-file
-Recommends: apt-xapian-index, magit, sm, vcsh, mr, git-stuff, git-annex,
- pciutils, smartmontools, bootlogd, deborphan, discover, dstat, fbset, iotop,
- atop, apt-zip, stow, syslog-summary, doc-base, docutils-doc, git-doc, zsh-doc,
- fonts-anonymous-pro, gpart, memtest86+, apt-offline, signing-party,
+Recommends: apt-file, apt-xapian-index, sm, vcsh, mr, git-annex,
+ pciutils, smartmontools, deborphan, discover, dstat, fbset, iotop,
+ atop, apt-zip, stow, doc-base, docutils-doc, git-doc, zsh-doc,
+ apt-offline, signing-party,
 # emacs
- auto-complete-el, emacs-calfw, prolog-el, quilt-el, wysihtml-el, yasnippet, org-mode,
- auctex, catdvi, dvipng, emacs-goodies-el, emacs, emacs24-el, expand-region-el,
- emacs24-common-non-dfsg, develock-el, psgml,
+ elpa-evil, quilt-el, elpa-yasnippet, org-mode, emacs-goodies-el, emacs, elpa-magit,
+ elpa-flycheck, elpa-git-messenger, elpa-git-modes, elpa-git-timemachine,
+ elpa-gitattributes-mode, elpa-gitconfig-mode, elpa-gitignore-mode,
+ elpa-helm-projectile, elpa-highlight-indentation, elpa-markdown-mode,
+ elpa-no-littering, elpa-org-bullets, elpa-persp-projectile, elpa-rainbow-delimiters,
+ elpa-rainbow-mode, elpa-solarized-theme, elpa-visual-fill-column, elpa-which-key,
+ elpa-world-time-mode, elpa-ws-butler,
 # tools
- pxz, undistract-me, mosh, colordiff, dos2unix, enca, recode, wdiff, bsdcpio, bsdtar,
- busybox, console-setup, convmv, detox, dvcs-autosync, eject, github-backup, lbzip2,
- lshw, par2, parallel, pixz, powertop, usbutils, unrar, flashbake, git-extras,
- unburden-home-dir, linux-headers
-Suggests: pwgen, etckeeper, sysv-rc-conf, sshfs, bup, recutils, pinfo, firmware-linux,
- ccal, tig,
-# Provides: <comma-separated list of packages>
-# Replaces: <comma-separated list of packages>
-Architecture: all
-# Copyright: <copyright file; defaults to GPL2>
-# Changelog: <changelog file; defaults to a generic changelog>
-# Readme: <README.Debian file; defaults to a generic one>
-# Extra-Files: <comma-separated list of additional files for the doc directory>
-# Files: <pair of space-separated paths; First is file to include, second is destination>
-#  <more pairs, if there's more than one file to include. Notice the starting space>
-Description: packages for every computer I work on but not necessary on servers
- long description and info
- .
- second paragraph
+ pxz, mosh, colordiff, enca, recode, wdiff, bsdcpio, bsdtar,
+ convmv, detox, eject, github-backup, lbzip2,
+ lshw, par2, parallel, pixz, powertop, usbutils, unrar, git-extras,
+ unburden-home-dir
+Suggests: pwgen, etckeeper, sshfs,
+Description: packages for every computer I work on but not necessarily on servers
+

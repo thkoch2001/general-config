@@ -1,56 +1,28 @@
-### Commented entries have reasonable defaults.
-### Uncomment to edit them.
-Section: misc
-Priority: optional
-# Homepage: <enter URL here; no default>
-Standards-Version: 3.9.4
-
 Package: thkoch-desktop
-Version: 2013.06.23
+Version: 2017.31.12
 Maintainer: Thomas Koch <thomas@koch.ro>
-Depends: libnotify-bin, menu-xdg
-Recommends: awesome, termit, autocutsel, awesome-extra, alsa-utils,
- keynav, unrar-free, gsimplecal, jsymphonic,
+Recommends: libnotify-bin, menu-xdg, termit, autocutsel, alsa-utils,
+ keynav, unrar-free, gmrun, xmonad,
  arandr, unagi, xclip, xpra,
- gksu, sux, ksnapshot, mplayerthumbs, djvulibre-desktop,
- libdirectfb-bin, libdirectfb-extra, marble,
+ gksu, sux, mplayerthumbs, djvulibre-desktop,
+ libdirectfb-bin, libdirectfb-extra,
  sound-theme-freedesktop, autotrash, gsmartcontrol, lshw-gtk,
- md5deep, mediainfo, psensor, rlwrap, smart-notifier, trash-cli,
- desktop-base, driconf, notification-daemon, suckless-tools, xdotool,
- xorg, xpp, xscreensaver, xsensors, xtrlock, xvfb, thunar, shutter,
- ffmpegthumbs, k3b, libk3b6-extracodecs, kalarm, libglib2.0-bin,
- dares, dvdbackup, wininfo, xtightvncviewer,
+ mediainfo, psensor, smart-notifier, trash-cli,
+ desktop-base, notification-daemon, suckless-tools, xdotool,
+ xpp, xvfb, shutter,
+ ffmpegthumbs, libglib2.0-bin,
+ wininfo, xtightvncviewer,
 # sound
- alsa-utils, libasound2-plugins, alsa-base,
+ libasound2-plugins,
 # network
-  network-manager-gnome, network-manager-openvpn-gnome, ssh-askpass, tcpd,
+  tcpd,
 # printing
  cups-bsd, cups-pdf, printer-driver-all-enforce, foomatic-db-compressed-ppds,
  foomatic-db-engine,
-# gstreamer
- gstreamer0.10-fluendo-mp3, gstreamer1.0-alsa, gstreamer1.0-libav,
- gstreamer1.0-plugins-ugly, gstreamer1.0-x, gstreamer-tools,
- gstreamer0.10-plugins-ugly,
 # gnome-keyring needed for network-manager password entry
  gnome-keyring,
-# kde
- systemsettings, system-config-printer, kinfocenter, kwalletmanager,
-# video
- libaacs0, libbluray-bdj,
 # video downloads
- youtube-dl, clive, cclive, get-flash-videos, get-iplayer, id3v2,
- atomicparsley, freetuxtv, nomnom,
+ youtube-dl, cclive, get-flash-videos,
+ freetuxtv, nomnom,
 Suggests: gparted
-# Provides: <comma-separated list of packages>
-# Replaces: <comma-separated list of packages>
-Architecture: all
-# Copyright: <copyright file; defaults to GPL2>
-# Changelog: <changelog file; defaults to a generic changelog>
-# Readme: <README.Debian file; defaults to a generic one>
-# Extra-Files: <comma-separated list of additional files for the doc directory>
-# Files: <pair of space-separated paths; First is file to include, second is destination>
-#  <more pairs, if there's more than one file to include. Notice the starting space>
 Description: packages for a desktop style machine
- long description and info
- .
- second paragraph
