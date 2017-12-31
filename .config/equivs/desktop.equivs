@@ -1,17 +1,27 @@
 Package: thkoch-desktop
-Version: 2017.31.12
+Version: 2017.12.31
 Maintainer: Thomas Koch <thomas@koch.ro>
-Recommends: libnotify-bin, menu-xdg, termit, autocutsel, alsa-utils,
- keynav, unrar-free, gmrun, xmonad,
- arandr, unagi, xclip, xpra,
+Recommends: libnotify-bin, menu-xdg, termit, alsa-utils,
+ keynav, gmrun, xmonad,
+ arandr, xclip, xpra,
+ trash-cli,
+ desktop-base, suckless-tools, xdotool,
+ xfonts-terminus,
+# video downloads
+ youtube-dl, cclive, get-flash-videos,
+ freetuxtv, nomnom,
+Suggests: gparted, xpp, xvfb, shutter,
+ autocutsel, unrar-free,
+ ffmpegthumbs, libglib2.0-bin,
+ wininfo, xtightvncviewer,
+ notification-daemon,
+ mediainfo, psensor, smart-notifier,
  gksu, sux, mplayerthumbs, djvulibre-desktop,
  libdirectfb-bin, libdirectfb-extra,
  sound-theme-freedesktop, autotrash, gsmartcontrol, lshw-gtk,
- mediainfo, psensor, smart-notifier, trash-cli,
- desktop-base, notification-daemon, suckless-tools, xdotool,
- xpp, xvfb, shutter,
- ffmpegthumbs, libglib2.0-bin,
- wininfo, xtightvncviewer,
+ unagi,
+# gnome-keyring needed for network-manager password entry
+ gnome-keyring,
 # sound
  libasound2-plugins,
 # network
@@ -19,10 +29,4 @@ Recommends: libnotify-bin, menu-xdg, termit, autocutsel, alsa-utils,
 # printing
  cups-bsd, cups-pdf, printer-driver-all-enforce, foomatic-db-compressed-ppds,
  foomatic-db-engine,
-# gnome-keyring needed for network-manager password entry
- gnome-keyring,
-# video downloads
- youtube-dl, cclive, get-flash-videos,
- freetuxtv, nomnom,
-Suggests: gparted
 Description: packages for a desktop style machine
