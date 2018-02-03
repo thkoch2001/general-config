@@ -1,6 +1,6 @@
 # source this file from .bashrc or .zshrc
 
-export PATH=$HOME/bin:$HOME/go/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$PATH
 export DEBEMAIL="thomas@koch.ro"
 export DEBFULLNAME="Thomas Koch"
 export QUILT_PATCHES=debian/patches
