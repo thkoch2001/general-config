@@ -38,6 +38,7 @@ Recommends:
  elpa-magit,
  elpa-markdown-mode,
  elpa-no-littering,
+ elpa-org,
  elpa-org-bullets,
  elpa-persp-projectile,
  elpa-projectile,
