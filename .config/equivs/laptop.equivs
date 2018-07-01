@@ -1,27 +1,24 @@
-### Commented entries have reasonable defaults.
-### Uncomment to edit them.
 Section: misc
 Priority: optional
-# Homepage: <enter URL here; no default>
-Standards-Version: 3.9.4
-
 Package: thkoch-laptop
-Version: 2013.06.23
+Version: 2018-07-01
 Maintainer: Thomas Koch <thomas@koch.ro>
-Depends: task-laptop, acpi-support, laptop-detect,
-Recommends: bluetooth, mobile-broadband-provider-info, hotkey-setup, laptop-mode-tools,
- rfkill, vbetool, fdpowermon, xinput, urfkill, wireless-tools,
-Suggests: gpsd, gpsd-clients,
-# Provides: <comma-separated list of packages>
-# Replaces: <comma-separated list of packages>
-Architecture: all
-# Copyright: <copyright file; defaults to GPL2>
-# Changelog: <changelog file; defaults to a generic changelog>
-# Readme: <README.Debian file; defaults to a generic one>
-# Extra-Files: <comma-separated list of additional files for the doc directory>
-# Files: <pair of space-separated paths; First is file to include, second is destination>
-#  <more pairs, if there's more than one file to include. Notice the starting space>
+Recommends:
+ acpi-support,
+ autorandr,
+ bluetooth,
+ fdpowermon,
+ gpsd,
+ gpsd-clients,
+ hotkey-setup,
+ laptop-detect,
+ laptop-mode-tools,
+ mobile-broadband-provider-info,
+ rfkill,
+ task-laptop,
+ urfkill,
+ vbetool,
+ wireless-tools,
+ xinput,
 Description: packages for a laptop
- long description and info
- .
- second paragraph
+
