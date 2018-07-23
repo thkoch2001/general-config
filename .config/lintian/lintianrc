@@ -1,0 +1,6 @@
+color = auto
+show-overrides = true
+pedantic = true
+display-info = true
+display-experimental = true
+info = true
