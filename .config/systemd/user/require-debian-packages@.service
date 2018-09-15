@@ -1,0 +1,9 @@
+[Unit]
+Description=require debian packages for unit %i
+Before=%i
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=%h/bin/require-debian-packages %i
+# StandardOutput=null

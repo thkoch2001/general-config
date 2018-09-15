@@ -2,6 +2,7 @@
 /Downloads
 /Videos
 /git
+/mnt
 
 /.ICEauthority
 /.cache
@@ -22,6 +23,7 @@
 /.pki/
 /.pulse-cookie
 /.pulse/
+/.stack/
 /.thumbnails
 /.xsession-errors
 /.zshrc*
