@@ -1,11 +1,10 @@
 #!/bin/sh
 
 set -e
-set -x
 
 PLUSORMINUS="+"
 
-if [ "$(basename $0)" == "tmux-demo-previous" ];then
+if [ "$(basename $0)" = "tmux-demo-previous" ];then
   PLUSORMINUS="-"
 fi
 
@@ -21,7 +20,7 @@ else
   LINE="$(sed -n ${TMUX_DEMO_LINE}p ${TMUX_DEMO_SCRIPT} || echo "#line below 1: ${TMUX_DEMO_LINE}")"
 fi
 
-if [ "x" == "x${LINE}" ]; then
+if [ "x" = "x${LINE}" ]; then
   exec $0
 fi
 

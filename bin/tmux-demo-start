@@ -12,5 +12,5 @@ test -r "${TMUX_DEMO_SCRIPT}" || exit 1
 tmux set-environment TMUX_DEMO_SCRIPT "${TMUX_DEMO_SCRIPT}"
 tmux set-environment TMUX_DEMO_LINE 1
 
-tmux bind-key -T root PageDown run-shell tmux-demo-next
-tmux bind-key -T root PageUp run-shell tmux-demo-previous
+tmux bind-key -T root C-PageDown run-shell tmux-demo-next
+tmux bind-key -T root C-PageUp run-shell tmux-demo-previous
