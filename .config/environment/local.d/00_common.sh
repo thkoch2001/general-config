@@ -45,4 +45,3 @@ get_first_xpra_display()
 # 256 colors in terminal
 [ -z "$TMUX" ] && export TERM=xterm-256color
 
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi

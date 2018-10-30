@@ -386,8 +386,6 @@ alias "ls=ls --color=auto"
 
 zstyle ':vcs_info:*' enable git
 
-. ~/.config/environment/source_local_d.sh
-
 alias cp='cp --reflink=auto --sparse=always'
 
 # disable flow control behaviour of CTRL+S, CTRL+Q

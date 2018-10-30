@@ -1,5 +1,4 @@
 [Desktop Entry]
-Hidden=true
 Type=Application
 Name=GNOME Settings Daemon's xrandr plugin
 Exec=/usr/lib/gnome-settings-daemon/gsd-xrandr
@@ -8,3 +7,4 @@ NoDisplay=true
 X-GNOME-Autostart-Phase=Initialization
 X-GNOME-Autostart-Notify=true
 X-GNOME-AutoRestart=true
+X-GNOME-Autostart-enabled=false
