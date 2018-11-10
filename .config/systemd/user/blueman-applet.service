@@ -1,0 +1,8 @@
+[Unit]
+Description=blueman applet
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/blueman-applet

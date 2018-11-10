@@ -1,9 +1,0 @@
-[Unit]
-Description=fbautostart
-
-[Install]
-WantedBy=xmonad.service
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/fbautostart

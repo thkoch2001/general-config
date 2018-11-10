@@ -1,0 +1,8 @@
+[Unit]
+Description=System Config Printer Applet
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+Exec=/usr/share/system-config-printer/applet.py

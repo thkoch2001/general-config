@@ -1,0 +1,8 @@
+[Unit]
+Description=PulseAudio systray
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/pasystray

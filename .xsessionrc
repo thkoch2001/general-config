@@ -1,4 +1,0 @@
-if [ -r $HOME/.config/environment/source_local_d.sh ]; then
-  . $HOME/.config/environment/source_local_d.sh
-fi
-
