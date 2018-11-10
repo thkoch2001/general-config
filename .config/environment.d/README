@@ -1,0 +1,23 @@
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
+export SHELL=/bin/zsh
+export MAILER=kmailservice
+
+# fix java apps in awesome
+# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=508650
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# fix eclipse
+# http://glandium.org/blog/?p=416
+# via http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=538871
+export MOZ_GRE_CONF=/etc/gre.d/1.9.system.conf
+
+get_first_xpra_display()
+{
+  xpra list | sed -n 's/^.* session at \(.*\)/\1/p' | head -n 1
+}
+
+#if [ -z "$DISPLAY" ] && [ -n "$SSH_CONNECTION" ]; then
+#  XPRADISPLAY=$(get_first_xpra_display)
+#  export DISPLAY=${XPRADISPLAY}
+#fi

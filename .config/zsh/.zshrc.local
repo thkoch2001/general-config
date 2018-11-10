@@ -344,27 +344,21 @@ fi
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' add-space true
-zstyle :compinstall filename '/home/ymc-toko/.zshrc'
+# zstyle :compinstall filename '/home/ymc-toko/.zshrc'
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.local/state/zsh/histfile
-DIRSTACKFILE=~/.local/state/zsh/dirstack
+
 mkdir -p $(dirname $HISTFILE)
 
-HISTSIZE=1000
-SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
-
-RPS1="%(?..(ret: %?%)) %~"
-PS1="%h%#"
 
 setopt SHARE_HISTORY
 

@@ -1,0 +1,7 @@
+[Unit]
+Description=xmonad window manager
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/xmonad

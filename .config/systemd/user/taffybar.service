@@ -1,0 +1,10 @@
+[Unit]
+Description=taffybar
+Requires=xmonad.service
+After=xmonad.service
+
+[Install]
+WantedBy=xmonad.service
+
+[Service]
+ExecStart=/usr/bin/taffybar
