@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Xmonad systemd
+Comment=Xmonad without session, just systemd
+Exec=xmonad-systemd-session
+Icon=
+Type=Application

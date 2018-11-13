@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# https://people.debian.org/~mpitt/systemd.conf-2016-graphical-session.pdf
+
+dbus-update-activation-environment --verbose --systemd --all
+systemctl --user import-environment DISPLAY XAUTHORITY DBUS_SESSION_BUS_ADDRESS
+systemctl --user start graphical-session-pre.target
+exec systemctl --user --wait start xmonad-systemd-session.target
