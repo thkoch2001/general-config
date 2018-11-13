@@ -1,0 +1,4 @@
+--target=/
+--ignore='xmonad-systemd.desktop'
+--no-folding
+

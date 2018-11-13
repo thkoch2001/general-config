@@ -1,0 +1,6 @@
+sudo apt-get install stow
+cd .config/stow
+sudo stow *(/)
+
+Apparently lightdm ignores xmonad-systemd.desktop when it is a synlink. Thus
+it needs to be copied manually.
