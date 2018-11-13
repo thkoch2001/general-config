@@ -1,7 +1,10 @@
 [Unit]
 Description=xmonad window manager
 After=graphical-session.target
-Wants=graphical-session.target
+PartOf=xmonad-systemd-session.target
 
 [Service]
 ExecStart=/usr/bin/xmonad
+
+[Install]
+WantedBy=xmonad-systemd-session.target
