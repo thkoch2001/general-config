@@ -7,7 +7,7 @@ import           XMonad.Actions.CycleWS
 -- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-WindowBringer.html
 import           XMonad.Actions.WindowBringer
 import           XMonad.Actions.WindowMenu
-import           XMonad.Config.Gnome
+import           XMonad.Config.Desktop
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.EwmhDesktops        (ewmh)
 import           XMonad.Hooks.ManageDocks
@@ -59,16 +59,17 @@ main = do
   xmonad
     $ ewmh $ pagerHints -- see System.Taffybar.TaffyPager
     $ withUrgencyHook LibNotifyUrgencyHook
-    $ gnomeConfig
+    $ desktopConfig
         { modMask = mod4Mask
         , terminal = "x-terminal-emulator-default"
-        , layoutHook = smartBorders (layoutHook gnomeConfig)
-        , manageHook = myManageHook <+> avoidFocusStealingManageHook <+> manageHook gnomeConfig
+        , layoutHook = smartBorders (layoutHook desktopConfig)
+        , manageHook = myManageHook <+> avoidFocusStealingManageHook <+> manageHook desktopConfig
         }
         `additionalKeysP`
-                 [ ("M-d", spawn "emacsclient -c")
-                 , ("M-<Return>", spawn "x-terminal-emulator")
-                 , ("M-S-<Return>", spawn "x-terminal-emulator -e 'tmux new-session -A -s default'")
+                 [ ("M-S-p", spawn "systemd-run --user gmrun")
+                 , ("M-d", spawn "emacsclient -c")
+                 , ("M-<Return>", spawn "systemd-run --user x-terminal-emulator")
+                 , ("M-S-<Return>", spawn "x-terminal-emulator -e 'tmux attach-session -t graphical-session'")
                  , ("M-S-q", spawn "lxsession-logout")
                  , ("M-<Left>",    prevWS )
                  , ("M-<Right>",   nextWS )
