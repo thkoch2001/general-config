@@ -2,6 +2,6 @@
 
 # https://people.debian.org/~mpitt/systemd.conf-2016-graphical-session.pdf
 
-dbus-update-activation-environment --verbose --systemd SSH_AUTH_SOCKET
+dbus-update-activation-environment --verbose --systemd SSH_AUTH_SOCK
 systemctl --user start graphical-session-pre.target
 exec systemctl --user --wait start xmonad-systemd-session.target
