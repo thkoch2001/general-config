@@ -5,4 +5,4 @@ Description=System Config Printer Applet
 WantedBy=graphical-session.target
 
 [Service]
-Exec=/usr/share/system-config-printer/applet.py
+ExecStart=/usr/share/system-config-printer/applet.py
