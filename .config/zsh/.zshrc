@@ -1,6 +1,14 @@
 # make emacs tramp work
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && RPS1='' && return 0
 
+local __systemd_envgen=/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator
+if [ "x" = "x$ZDOTDIR" -a -x "$__systemd_envgen" ];then
+	while read -r __line; do
+		eval export $__line
+	done <<< $($__systemd_envgen)
+fi
+unset __systemd_envgen
+
 # Filename:      /etc/zsh/zshrc
 # Purpose:       config file for zsh (z shell)
 # Authors:       grml-team (grml.org), (c) Michael Prokop <mika@grml.org>
