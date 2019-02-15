@@ -1,0 +1,8 @@
+[Unit]
+Description=ClipIt GTK Clipboard manager
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/clipit
