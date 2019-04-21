@@ -1,0 +1,8 @@
+[Unit]
+Description=gxkb - X11 keyboard indicator and switcher
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/gxkb
