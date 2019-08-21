@@ -1,3 +1,4 @@
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=36"
 export BATTERY=1
 
 fpath=( ~/.config/zsh/zfunc "${fpath[@]}" )
