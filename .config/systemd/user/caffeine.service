@@ -1,0 +1,8 @@
+[Unit]
+Description=Temporarily deactivate the screensaver and sleep mode
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/caffeine
