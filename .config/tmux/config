@@ -38,14 +38,7 @@ bind M set -g mouse on \; display "Mouse ON"
 
 # colors
 set -g default-terminal "screen-256color"
-
-setw -g window-status-fg default
-setw -g window-status-bg default
-setw -g window-status-attr dim
-
-setw -g window-status-current-fg white
-setw -g window-status-current-bg red
-setw -g window-status-current-attr bright
+setw -g window-status-current-style "fg=white bg=red bright"
 
 # status bar
 setw -g monitor-activity on
