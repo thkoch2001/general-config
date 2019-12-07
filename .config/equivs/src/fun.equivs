@@ -9,7 +9,10 @@ Package: thkoch-fun
 Version: 2013.06.23
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends:
-Recommends: sl, bb, cowsay, xcowsay, saytime, toilet, figlet, goplay, games-thumbnails,
+Recommends:
+ catimg,
+ filters,
+ sl, bb, cowsay, xcowsay, saytime, toilet, figlet, goplay, games-thumbnails,
  anarchism, sysvbanner, bsdgames, fortunes-fr, pianobooster, vice, flite, screenie-qt,
  asr-manpages, debian-history, funny-manpages, jargon, jargon-text, fonts-dkg-handwriting,
  cappuccino, dizzy, extremetuxracer,

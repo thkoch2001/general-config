@@ -9,12 +9,18 @@ Package: thkoch-applications
 Version: 2013.06.23
 Maintainer: Thomas Koch <thomas@koch.ro>
 Depends: libnotify-bin
-Recommends: lingot, fmit, gtkguitune, xkeycaps,
+Recommends:
+ autopostgresqlbackup,
+ bpm-tools,
+ undertime,
+ lingot, fmit, gtkguitune, xkeycaps,
  verse, streamripper,
  ffgtk, cycle, dolphin, gobby-infinote,
 # chat
  empathy, kdeartwork-emoticons, konversation, kopete, pidgin-libnotify, kde-telepathy,
  gajim, libpurple-bin,
+# crypto
+ pius,
 # documents, ocr
  didjvu, ocrfeeder, skanlite, unpaper, sane, xsane, yagf, pct-scanner-scripts,
  tesseract-ocr-deu, tesseract-ocr-deu-frak, tesseract-ocr-enm, tesseract-ocr-fra,
@@ -32,6 +38,8 @@ Recommends: lingot, fmit, gtkguitune, xkeycaps,
  kipi-plugins,
 # maps
  merkaartor, openstreetmap-client, qgis, worldwind, gosmore, josm-plugins, viking,
+# music
+ denemo,
 # office
  libreoffice, openclipart,
 # pim

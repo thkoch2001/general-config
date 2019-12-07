@@ -8,9 +8,13 @@ Standards-Version: 3.9.4
 Package: thkoch-devel-debian
 Version: 2013.06.23
 Maintainer: Thomas Koch <thomas@koch.ro>
-Depends: debian-goodies, debhelper, devscripts, devscripts-el,
- git-buildpackage
-Recommends: eatmydata, build-essential, javahelper, packaging-dev,
+Recommends:
+ debian-goodies, debhelper, devscripts, devscripts-el,
+ git-buildpackage,
+ mkosi,
+ rush,
+ wuzz,
+ eatmydata, build-essential, javahelper, packaging-dev,
  developers-reference, debian-policy, equivs, schroot, debian-faq,
  doc-debian, manpages, sysv-rc-conf, tardiff, apt-utils, debsig-verify,
  guilt, premake4, shunit2, apache2-doc, aptitude-doc-en, gnupg-doc,
@@ -25,11 +29,12 @@ Recommends: eatmydata, build-essential, javahelper, packaging-dev,
  clusterssh, pssh, pconsole,
 # common lisp
  cltl, hyperspec, dh-lisp,
-# d
- gdc,
 # database stuff
  tora, pgadmin3, postgresql-contrib, postgresql-doc,
 # debian packaging stuff
+ autodep8,
+ autopkgtest,
+ check-all-the-things,
  debsigs, dh-autoreconf, dh-make, headache, help2man, license-reconcile, mozilla-devscripts,
  openstack-pkg-tools, pkg-components, pkg-kde-tools, ubuntu-dev-tools, debconf-doc, debian-faq-de,
  debian-handbook, debian-kernel-handbook, debian-refcard, debian-reference-en, dput-ng-doc, harden-doc,
@@ -37,21 +42,18 @@ Recommends: eatmydata, build-essential, javahelper, packaging-dev,
  pristine-tar, cdbs, dh-exec, piuparts, ohcount, pbzip2, git-dpm, gitpkg,
 # documentation
  doconce, pandoc, texinfo-doc-nonfree, publican, python3-docutils,
-# eclipse
- eclipse, eclipse-egit, eclipse-wtp-servertools, eclipse-wtp-webtools, eclipse-wtp-ws,
- eclipse-rse-sdk, eclipse-egit-mylyn, eclipse-gef-doc,
 # emacs
  ecb,
 # haskell
  hdevtools, haskell-platform-doc, haskell-platform, haskell-doc, ghc-mod, haskell-devscripts,
  hothasktags, hlint,
 # java
- protobuf-compiler, scala, ant-doc, scala-doc, scala-mode-el, default-jdk-doc, visualvm,
- libguava-java-doc, ant-contrib, ecj, ivy, maven-debian-helper, openjdk-7-source,
- service-wrapper, spring-build-scripts,
+ visualvm,
+ service-wrapper,
 # ldap
  ldap-utils, ldap-git-backup,
 # network
+ avahi-utils,
  bridge-utils, ethtool, finger, ipcalc, netmask, nmapsi4, python-scapy, sendxmpp, sipcalc,
  wifite, wireshark, nmap, socat, tcpdump,
 # perl

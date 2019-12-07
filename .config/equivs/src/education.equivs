@@ -17,7 +17,7 @@ Recommends: gitmagic, gnuplot-doc, graphviz-doc,
  lacheck, latex-beamer, lintex, texlive, texlive-bibtex-extra,
  texlive-lang-german, texlive-science, whizzytex,
 # typing
- tuxtype, typespeed, ktouch, gtypist, nlkt,
+ speedpad, tuxtype, typespeed, ktouch, gtypist, nlkt,
 # computer science
  infon-server, infon-viewer, laby,
 # debian packaging

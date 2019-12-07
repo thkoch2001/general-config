@@ -1,11 +1,16 @@
 Package: thkoch-desktop
 Version: 2017.12.31
 Maintainer: Thomas Koch <thomas@koch.ro>
-Recommends: libnotify-bin, menu-xdg, termit, alsa-utils,
+Recommends:
+ autorandr,
+ copyq,
+ libnotify-bin, menu-xdg, termit, alsa-utils,
  keynav, gmrun, xmonad,
  arandr, xclip, xpra,
  trash-cli,
  desktop-base, suckless-tools, xdotool,
+ paprefs,
+ webcamoid,
  xfonts-terminus,
 # video downloads
  youtube-dl, cclive, get-flash-videos,
