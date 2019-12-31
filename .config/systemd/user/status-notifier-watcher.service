@@ -1,0 +1,5 @@
+[Unit]
+Description=status-notifier-watcher
+
+[Service]
+ExecStart=/usr/bin/status-notifier-watcher

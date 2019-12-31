@@ -1,0 +1,26 @@
+/* see https://github.com/taffybar/taffybar/blob/master/taffybar.css
+ */
+
+@define-color menu-border-color #999;
+
+.taffy-window * {
+  color: #FFF;
+  background-color: #000;
+}
+
+.taffy-window menu > * {
+  border-left: 1px solid @menu-border-color;
+  border-right: 1px solid @menu-border-color;
+}
+
+.taffy-window menu > :first-child {
+  border-top: 1px solid @menu-border-color;
+}
+
+.taffy-window menu > :last-child {
+  border-bottom: 1px solid @menu-border-color;
+}
+
+.taffy-window menuitem:hover, menuitem:hover {
+  background-color: #444;
+}

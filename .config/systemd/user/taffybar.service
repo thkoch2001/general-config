@@ -1,7 +1,7 @@
 [Unit]
 Description=taffybar
-Requires=xmonad.service
-After=xmonad.service
+Requires=xmonad.service status-notifier-watcher.service
+After=xmonad.service status-notifier-watcher.service
 
 [Install]
 WantedBy=xmonad.service
