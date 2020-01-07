@@ -86,5 +86,9 @@ main = do
                  , ("M-b", bringMenu)
                  , ("M-o", windowMenu)
                  , ("M1-C-l", spawn "cinnamon-screensaver-command -l")
+                 -- apt install brightnessctl brightness-udev
+                 -- usermod -aG video $USER
+                 , ("<XF86MonBrightnessUp>", spawn "brightnessctl --class backlight set +10%")
+                 , ("<XF86MonBrightnessDown>", spawn "brightnessctl --class backlight set 10%-")
                  ]
 
