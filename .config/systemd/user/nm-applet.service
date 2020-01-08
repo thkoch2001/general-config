@@ -5,4 +5,4 @@ Description=NetworkManager applet
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/nm-applet
+ExecStart=/usr/bin/nm-applet --indicator
