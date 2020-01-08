@@ -6,7 +6,7 @@ import System.Taffybar.Information.Memory
 import System.Taffybar.SimpleConfig
 import System.Taffybar.Widget
 import System.Taffybar.Widget.Battery
-import System.Taffybar.Widget.FreedesktopNotifications
+--import System.Taffybar.Widget.FreedesktopNotifications
 import System.Taffybar.Widget.Generic.Graph
 import System.Taffybar.Widget.Generic.PollingGraph
 import System.Taffybar.Widget.Windows
@@ -35,9 +35,9 @@ main = do
       workspaces = workspacesNew defaultWorkspacesConfig
       menu = menuWidgetNew $ Just "cinnamon-"
       windows = windowsNew $ defaultWindowsConfig
-      notify = notifyAreaNew defaultNotificationConfig
+--      notify = notifyAreaNew defaultNotificationConfig
       simpleConfig = defaultSimpleTaffyConfig
                        { startWidgets = [ menu, workspaces, windows ]
-                       , endWidgets = [ notify, sniTrayNew, clock, textBattery, mem, cpu ]
+                       , endWidgets = [ {-notify,-} sniTrayNew, clock, textBattery, mem, cpu ]
                        }
   simpleTaffybar simpleConfig

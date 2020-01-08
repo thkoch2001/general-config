@@ -3,5 +3,8 @@ Description=xembedsniproxy
 Requires=status-notifier-watcher.service
 After=status-notifier-watcher.service
 
+[Install]
+WantedBy=taffybar.service
+
 [Service]
 ExecStart=/usr/bin/xembedsniproxy
