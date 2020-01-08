@@ -34,7 +34,10 @@ main = do
       textBattery = textBatteryNew "$percentage$% ($time$) $status$"
       workspaces = workspacesNew defaultWorkspacesConfig
       menu = menuWidgetNew $ Just "cinnamon-"
-      windows = windowsNew $ defaultWindowsConfig
+      windows = windowsNew $ WindowsConfig {
+          getMenuLabel = truncatedGetMenuLabel 120
+        , getActiveLabel = truncatedGetActiveLabel 60
+                                           }
 --      notify = notifyAreaNew defaultNotificationConfig
       simpleConfig = defaultSimpleTaffyConfig
                        { startWidgets = [ menu, workspaces, windows ]
