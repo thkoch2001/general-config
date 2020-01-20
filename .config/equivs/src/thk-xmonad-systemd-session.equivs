@@ -1,6 +1,26 @@
 Package: thk-xmonad-systemd-session
-Version: 2018-11-17
-Depends: xmonad
+Version: 2020-01-12
+Depends:
+ blueman,
+ brightnessctl,
+ brighness-udev,
+ gmrun,
+ haskell-status-notifier-item-utils,
+ lightdm,
+ lxsession-logout,
+ network-manager-gnome,
+ parcellite,
+ pasystray,
+ plasma-apple-redshift-control,
+ redshift,
+ redshift-gtk,
+ taffybar,
+ termit,
+ upower,
+ xbase-clients|x11-xserver-utils,
+ xfonts-terminus,
+ xmonad,
+ xsecurelock
 Provides: x-session-manager
 # <pair of space-separated paths; First is file to include, second is destination>
 Files: thk-xmonad-systemd-session/usr/share/xsessions/xmonad-systemd.desktop /usr/share/xsessions
