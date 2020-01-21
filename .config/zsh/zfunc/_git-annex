@@ -1,0 +1,2 @@
+source <(git-annex --zsh-completion-script `which git-annex`)
+
