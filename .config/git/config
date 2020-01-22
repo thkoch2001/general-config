@@ -25,10 +25,7 @@
 [rebase]
 	autosquash = true
 [annex]
-    backends = SHA256
     numcopies = 2
-#	largefiles = largerthan=100kb and not (include=*.c or include=*.h or include=*.txt or include=*.org)
-	largefiles = not (include=*.c or include=*.h or include=*.txt or include=*.org)
     diskreserve = 10 gb
 [url "koch.ro:git/vcsh/"]
 	insteadOf = vcsh://
