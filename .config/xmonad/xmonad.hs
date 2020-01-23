@@ -85,7 +85,7 @@ main = do
                  , ("M-g", gotoMenu)
                  , ("M-b", bringMenu)
                  , ("M-o", windowMenu)
-                 , ("M1-C-l", spawn "xsecurelock")
+                 , ("M1-C-l", spawn "thk-lock-screen")
                  -- apt install brightnessctl brightness-udev
                  -- usermod -aG video $USER
                  , ("<XF86MonBrightnessUp>", spawn "brightnessctl --class backlight set +10%")
