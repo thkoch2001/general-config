@@ -1,0 +1,8 @@
+[Unit]
+Description=Udiskie automount daemon
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/udiskie --verbose --use-udisks2 --automount --no-config --notify --tray --appindicator
