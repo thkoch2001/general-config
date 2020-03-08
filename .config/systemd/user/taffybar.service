@@ -8,3 +8,6 @@ WantedBy=xmonad.service
 
 [Service]
 ExecStart=/usr/bin/taffybar
+MemoryMax=1K
+MemoryAccounting=true
+MemorySwapMax=0
