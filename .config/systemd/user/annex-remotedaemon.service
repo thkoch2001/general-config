@@ -2,5 +2,5 @@
 Description=remotedaemon running in ~/annex
 
 [Service]
-ExecStart=/usr/bin/git-annex remotedaemon --verbose --debug --foreground
+ExecStart=/bin/sh -c 'sleep infinity | git-annex remotedaemon --verbose --debug --foreground'
 WorkingDirectory=%h/annex
