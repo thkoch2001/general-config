@@ -27,7 +27,7 @@ defaults = {}
 
 -- defaults.foregroundColor = 'white'
 -- defaults.backgroundColor = 'black'
-defaults.font = 'Terminus 13'
+defaults.font = 'Terminus (TTF) Medium 13'
 defaults.hideMenubar = true
 defaults.encoding = 'UTF-8'
 defaults.allowChangingTitle = true
