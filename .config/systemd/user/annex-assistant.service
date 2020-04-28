@@ -1,0 +1,6 @@
+[Unit]
+Description=assistant running in ~/annex
+
+[Service]
+ExecStart=/bin/sh -c 'sleep infinity | git-annex assistant --verbose --debug --foreground'
+WorkingDirectory=%h/annex
