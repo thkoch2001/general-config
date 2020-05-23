@@ -1,0 +1,5 @@
+[Unit]
+Description=set background with feh
+
+[Service]
+ExecStart=/usr/bin/feh --bg-center /usr/share/icons/desktop-base/256x256/emblems/emblem-debian.png
