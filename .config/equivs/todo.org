@@ -18,3 +18,7 @@
 - emailversand einrichten, dass mail von commandline funktioniert
 - drucker einrichten
 - iceweasel als Standardbrowser (für KDE apps?)
+- git-annex needs a lot of inotify nodes:
+  echo fs.inotify.max_user_watches=32768 >> /etc/sysctl.d/99-sysctl.conf
+- fs.inotify.max_user_instances >= 256 ? e.g.
+  /etc/sysctl.d/30-lxc-inotify.conf from package lxc
