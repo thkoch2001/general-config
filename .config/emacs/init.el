@@ -8,7 +8,11 @@
 
 (package-initialize)
 
-(use-package system-packages)
+(use-package system-packages
+  :custom
+  (system-packages-package-manager 'apt)
+  (system-packages-use-sudo t)
+  )
 
 (defun use-package-ensure-debian (name args _state &optional _no-refresh)
   (dolist (ensure args)
@@ -29,17 +33,34 @@
                               :error))))))))
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-revert-check-vc-info t)
+ '(auto-save-file-name-transforms (quote ((".*" "~/.local/state/emacs/auto-save/" t))))
+ '(auto-save-list-file-prefix "~/.local/state/emacs/auto-save-list/")
+ '(backup-by-copying t)
  '(blink-cursor-mode t)
+ '(bookmark-default-file "~/.local/state/emacs/bookmarks")
+ '(bookmark-save-flag 1)
+ '(calendar-week-start-day 1)
  '(column-number-mode t)
+ '(custom-safe-themes
+   '("0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" default))
  '(fill-column 78)
+ '(global-auto-revert-mode t)
+ '(inhibit-startup-screen t)
+ '(initial-scratch-message nil)
  '(line-number-mode t)
  '(menu-bar-mode nil)
+ '(require-final-newline nil)
  '(scroll-bar-mode nil)
+ '(show-trailing-whitespace t)
  '(show-paren-mode t)
- '(system-packages-package-manager 'apt)
- '(system-packages-use-sudo t)
  '(tool-bar-mode nil)
  '(use-package-ensure-function 'use-package-ensure-debian)
+ '(visible-bell t)
  )
 
 (use-package company
@@ -96,6 +117,12 @@
 
 (use-package org
   :ensure t
+  :custom
+  (initial-major-mode 'org-mode)
+  (org-special-ctrl-a/e t)
+  (org-special-ctrl-k t)
+  (org-src-fontify-natively t)
+  (org-use-speed-commands t)
   )
 
 (use-package paredit
@@ -108,6 +135,8 @@
 
 (use-package solarized-theme
   :ensure t
+  :custom
+  (custom-enabled-themes '(solarized-dark))
   )
 
 (use-package systemd
