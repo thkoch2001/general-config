@@ -1,4 +1,3 @@
-(message "entered ~/.config/emacs/init.el")
 (unless (package-installed-p 'use-package)
   (progn
     (message "WARNING: use-package not installed!")
@@ -13,6 +12,11 @@
   (system-packages-package-manager 'apt)
   (system-packages-use-sudo t)
   )
+
+(defun thk-state-file (path)
+  (concat "~/.local/state/emacs/" path)
+  )
+(make-directory (thk-state-file "auto-save") t)
 
 (defun use-package-ensure-debian (name args _state &optional _no-refresh)
   (dolist (ensure args)
@@ -38,11 +42,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-revert-check-vc-info t)
- '(auto-save-file-name-transforms (quote ((".*" "~/.local/state/emacs/auto-save/" t))))
- '(auto-save-list-file-prefix "~/.local/state/emacs/auto-save-list/")
+ `(auto-save-file-name-transforms '((".*" ,(thk-state-file "auto-save/") t)))
+ '(auto-save-list-file-prefix (thk-state-file "auto-save-list"))
  '(backup-by-copying t)
+ `(backup-directory-alist '(("." . ,(thk-state-file "backup"))))
  '(blink-cursor-mode t)
- '(bookmark-default-file "~/.local/state/emacs/bookmarks")
+ '(bookmark-default-file (thk-state-file "bookmarks"))
  '(bookmark-save-flag 1)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
@@ -141,6 +146,12 @@
 
 (use-package systemd
   :ensure t
+  )
+
+(use-package transient
+  :ensure t
+  :custom
+  (transient-history-file (thk-state-file "transient/history.el"))
   )
 
 (use-package visual-fill-column
