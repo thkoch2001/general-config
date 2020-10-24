@@ -4,3 +4,6 @@ DEBEMAIL="thomas@koch.ro"
 DEBFULLNAME="Thomas Koch"
 BTS_INTERACTIVE=yes
 BTS_DEFAULT_CC="thomas@koch.ro"
+
+# man dch
+DEBCHANGE_FORCE_SAVE_ON_RELEASE=no
