@@ -6,3 +6,5 @@
 
  '(ifconfig-program "/sbin/ifconfig")
  '(lpr-command "xpp") ; xpp does not exist anymore
+
+https://www.emacswiki.org/emacs/BackupDirectory
