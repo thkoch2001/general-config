@@ -51,20 +51,27 @@
  '(bookmark-save-flag 1)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
- '(custom-safe-themes
-   '("0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" default))
+ '(custom-safe-themes '("0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" default)) ; solarized
+ '(delete-old-versions t)
  '(fill-column 78)
  '(global-auto-revert-mode t)
+ '(indent-tabs-mode nil)
+ '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
+ '(kept-new-versions 6)
  '(line-number-mode t)
  '(menu-bar-mode nil)
  '(require-final-newline nil)
  '(scroll-bar-mode nil)
+ '(select-enable-clipboard t)
  '(show-trailing-whitespace t)
  '(show-paren-mode t)
+ '(tab-width 4)
  '(tool-bar-mode nil)
  '(use-package-ensure-function 'use-package-ensure-debian)
+ '(vc-make-backup-files t)
+ '(version-control t)
  '(visible-bell t)
  )
 
@@ -101,6 +108,17 @@
     )
   )
 
+(use-package ido
+  :ensure t
+  :custom
+  (ido-enable-flex-matching t)
+  (ido-everywhere t)
+  (ido-mode 'both nil (ido))
+  (ido-save-directory-list-file (thk-state-file "ido_last"))
+  (ido-use-filename-at-point 'guess)
+  (ido-use-url-at-point t)
+  )
+
 (use-package lsp-haskell
   :ensure t
   )
@@ -124,6 +142,10 @@
   :ensure t
   :custom
   (initial-major-mode 'org-mode)
+  (org-agenda-files '("~/org"))
+  (org-clock-continuously t)
+  (org-clock-persist t)
+  (org-clock-persist-file (thk-state-file "org-clock-save.el"))
   (org-special-ctrl-a/e t)
   (org-special-ctrl-k t)
   (org-src-fontify-natively t)
@@ -138,6 +160,11 @@
   :ensure t
   )
 
+(use-package rainbow-delimiters
+  :ensure t
+  :hook ((emacs-lisp-mode) . #'rainbow-delimiters-mode)
+  )
+
 (use-package solarized-theme
   :ensure t
   :custom
@@ -148,15 +175,41 @@
   :ensure t
   )
 
+(use-package time
+  :custom
+  (display-time-world-list
+    '(("Europe/Berlin" "Berlin")
+      ("America/New_York" "New York")
+      ("America/Los_Angeles" "San Francisco")
+      ("Europe/Bucharest" "Bucarest")
+      ("Asia/Tokyo" "Tokyo")))
+  )
+
+(use-package tramp
+  :custom
+  (tramp-persistency-file-name (thk-state-file "tramp-connection-history"))
+  )
+
 (use-package transient
   :ensure t
   :custom
   (transient-history-file (thk-state-file "transient/history.el"))
   )
 
+(use-package uniquify
+  :custom
+  (uniquify-buffer-name-style 'reverse nil (uniquify))
+)
+
 (use-package visual-fill-column
   :ensure t
   )
+
+(use-package woman
+  :cusstom
+  (woman-fill-column 100)
+  (woman-fill-frame nil)
+)
 
 (use-package ws-butler
   :ensure t

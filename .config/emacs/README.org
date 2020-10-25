@@ -1,0 +1,8 @@
+* TODO
+
+- Package https://github.com/ryuslash/git-auto-commit-mode
+- check on org-drill ITP
+- Check https://www.emacswiki.org/emacs/DiredPlus#Dired%2b
+
+ '(ifconfig-program "/sbin/ifconfig")
+ '(lpr-command "xpp") ; xpp does not exist anymore
