@@ -51,6 +51,7 @@
  '(bookmark-save-flag 1)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
+ '(custom-file "~/.config/emacs/custom-save-dump-not-loaded.el")
  '(custom-safe-themes '("0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" default)) ; solarized
  '(delete-old-versions t)
  '(fill-column 78)
@@ -79,9 +80,9 @@
   :ensure t
   )
 
-(use-package company-lsp
-  :ensure t
-  )
+;(use-package company-lsp
+;  :ensure t
+;  )
 
 (use-package editorconfig
   :ensure t
@@ -119,9 +120,9 @@
   (ido-use-url-at-point t)
   )
 
-(use-package lsp-haskell
-  :ensure t
-  )
+;(use-package lsp-haskell
+;  :ensure t
+;  )
 
 (use-package lsp-mode
   :ensure t
@@ -206,7 +207,7 @@
   )
 
 (use-package woman
-  :cusstom
+  :custom
   (woman-fill-column 100)
   (woman-fill-frame nil)
 )
