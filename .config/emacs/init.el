@@ -120,9 +120,11 @@
   (ido-use-url-at-point t)
   )
 
-;(use-package lsp-haskell
-;  :ensure t
-;  )
+(use-package lsp-haskell
+  :ensure t
+  :custom
+  (lsp-haskell-server-args '("--debug" "--logfile" "/tmp/hls.log"))
+  )
 
 (use-package lsp-mode
   :ensure t
