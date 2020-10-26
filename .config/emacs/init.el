@@ -47,8 +47,6 @@
  '(backup-by-copying t)
  `(backup-directory-alist '(("." . ,(thk-state-file "backup"))))
  '(blink-cursor-mode t)
- '(bookmark-default-file (thk-state-file "bookmarks"))
- '(bookmark-save-flag 1)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(custom-file "~/.config/emacs/custom-save-dump-not-loaded.el")
@@ -75,6 +73,12 @@
  '(version-control t)
  '(visible-bell t)
  )
+
+(use-package backup
+  :custom
+  (bookmark-default-file (thk-state-file "bookmarks"))
+  (bookmark-save-flag 1)
+)
 
 (use-package company
   :ensure t
