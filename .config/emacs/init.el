@@ -62,6 +62,9 @@
  '(line-number-mode t)
  '(menu-bar-mode nil)
  '(require-final-newline nil)
+ '(safe-local-variable-values '(
+    (gac-automatically-push-p . t) ; git-auto-commit-mode
+  ))
  '(scroll-bar-mode nil)
  '(select-enable-clipboard t)
  '(show-trailing-whitespace t)
@@ -73,6 +76,10 @@
  '(version-control t)
  '(visible-bell t)
  )
+
+(use-package git-auto-commit-mode
+  :ensure t
+)
 
 (use-package backup
   :custom
