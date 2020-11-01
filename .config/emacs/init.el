@@ -160,9 +160,12 @@
   (org-clock-continuously t)
   (org-clock-persist t)
   (org-clock-persist-file (thk-state-file "org-clock-save.el"))
+  (org-hide-block-startup t)
+  (org-list-allow-alphabetical t)
   (org-special-ctrl-a/e t)
   (org-special-ctrl-k t)
   (org-src-fontify-natively t)
+  (org-startup-folded t)
   (org-use-speed-commands t)
   )
 
