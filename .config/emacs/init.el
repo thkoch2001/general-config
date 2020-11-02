@@ -169,6 +169,10 @@
   (org-use-speed-commands t)
   )
 
+(use-package org-drill
+  :ensure t
+)
+
 (use-package paredit
   :ensure t
   )
