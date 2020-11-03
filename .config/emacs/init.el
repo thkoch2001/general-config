@@ -152,6 +152,10 @@
     )
   )
 
+(use-package markdown-mode
+  :ensure t
+)
+
 (use-package org
   :ensure t
   :custom
