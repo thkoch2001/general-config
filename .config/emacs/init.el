@@ -81,7 +81,7 @@
   :ensure t
 )
 
-(use-package backup
+(use-package bookmark
   :custom
   (bookmark-default-file (thk-state-file "bookmarks"))
   (bookmark-save-flag 1)
