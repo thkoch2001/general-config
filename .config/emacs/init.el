@@ -169,6 +169,18 @@
   (org-clock-persist t)
   (org-clock-persist-file (thk-state-file "org-clock-save.el"))
   (org-hide-block-startup t)
+  (org-latex-hyperref-template
+   "\\hypersetup{
+ pdfauthor={%a},
+ pdftitle={%t},
+ pdfkeywords={%k},
+ pdfsubject={%d},
+ pdfcreator={%c},
+ pdflang={%L},
+ colorlinks=true,
+ urlcolor=[rgb]{0.1,0.1,1},
+ linkcolor=[rgb]{0,0,0}
+ }")
   (org-list-allow-alphabetical t)
   (org-special-ctrl-a/e t)
   (org-special-ctrl-k t)

@@ -46,6 +46,18 @@
  '(org-clock-persist t t nil "Customized with use-package org")
  '(org-clock-persist-file "~/.local/state/emacs/org-clock-save.el" t nil "Customized with use-package org")
  '(org-hide-block-startup t nil nil "Customized with use-package org")
+ '(org-latex-hyperref-template
+   "\\hypersetup{
+ pdfauthor={%a},
+ pdftitle={%t},
+ pdfkeywords={%k},
+ pdfsubject={%d},
+ pdfcreator={%c},
+ pdflang={%L},
+ colorlinks=true,
+ urlcolor=[rgb]{0.1,0.1,1},
+ linkcolor=[rgb]{0,0,0}
+ }" t nil "Customized with use-package org")
  '(org-list-allow-alphabetical t nil nil "Customized with use-package org")
  '(org-special-ctrl-a/e t nil nil "Customized with use-package org")
  '(org-special-ctrl-k t nil nil "Customized with use-package org")
