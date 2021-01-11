@@ -125,11 +125,12 @@
   )
 
 (use-package ido
-  :ensure t
+  :init
+  (ido-mode t)
   :custom
+  (ido-auto-merge-work-directories-length -1)
   (ido-enable-flex-matching t)
   (ido-everywhere t)
-  (ido-mode 'both nil (ido))
   (ido-save-directory-list-file (thk-state-file "ido_last"))
   (ido-use-filename-at-point 'guess)
   (ido-use-url-at-point t)
