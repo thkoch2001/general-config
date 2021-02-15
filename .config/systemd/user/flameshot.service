@@ -1,0 +1,8 @@
+[Unit]
+Description=Flameshot Screenshot Tool
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/flameshot
