@@ -1,0 +1,31 @@
+#!/bin/sh
+
+set -e
+
+nl='
+'
+
+should_correct="$1"
+
+check() {
+  local schema="$1"
+  local key="$2"
+  local value="$3"
+
+  current=$(gsettings get "$schema" "$key")
+  if [ "$value" != "$current" ];then
+    echo "Current value for $schema $key is '$current' but should be '$value'"
+    if [ "--correct" = "${should_correct}" ]; then
+      gsettings set "$schema" "$key" "$value"
+    fi
+  fi
+}
+
+while IFS="$nl" read -r line; do
+  check $line
+done <<\EOT
+org.gnome.desktop.privacy remember-recent-files false
+org.gnome.desktop.privacy remember-app-usage false
+org.gnome.desktop.privacy recent-files-max-age 0
+EOT
+
