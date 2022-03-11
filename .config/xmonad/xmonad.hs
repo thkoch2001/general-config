@@ -69,7 +69,7 @@ main = do
                  [ ("M-S-p", spawn "systemd-run --user gmrun")
                  , ("M-d", spawn "emacsclient -c")
                  , ("M-<Return>", spawn "systemd-run --user x-terminal-emulator")
-                 , ("M-S-<Return>", spawn "x-terminal-emulator -e 'tmux attach-session -t graphical-session'")
+                 , ("M-S-<Return>", spawn "x-terminal-emulator -e 'tmux new-session -A -t graphical-session'")
                  , ("M-S-q", spawn "lxsession-logout")
                  , ("M-<Left>",    prevWS )
                  , ("M-<Right>",   nextWS )
