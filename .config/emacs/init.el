@@ -49,11 +49,11 @@
  '(blink-cursor-mode t)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
- '(custom-enabled-themes '(solarized-dark))
+ '(custom-enabled-themes '(solarized-dark-high-contrast))
  '(custom-file "~/.config/emacs/custom-save-dump-not-loaded.el")
  '(custom-safe-themes '(
                         "69181b408ef74ce12270736cddd201de626ec5021a9b4d87fb788a18b8c59d1b" ; modus-vivendi
-                        "0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" ; solarized
+                        "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" ; solarized-dark-high-contrast
                         default))
  '(delete-old-versions t)
  '(fill-column 78)
