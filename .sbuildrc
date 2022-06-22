@@ -1,17 +1,26 @@
 # https://wiki.debian.org/sbuild
+# https://anarc.at/blog/2022-04-27-sbuild-qemu/
 
 $build_arch_all = 1;
 $distribution = 'unstable';
 
 $run_lintian = 1;
-$lintian_opts = ['-i', '-I'];
+$lintian_opts = ['--info', '--display-level', '>=pedantic', '--display-experimental'];
 
 $run_piuparts = 1;
-$piuparts_opts = ['--schroot', 'unstable-amd64-sbuild', '--no-eatmydata'];
+$piuparts_opts = ['--schroot', '%r-%a-sbuild', '--no-eatmydata'];
 
 $run_autopkgtest = 1;
+# tell sbuild to use autopkgtest as a chroot
+#$chroot_mode = 'autopkgtest';
+# No need for sudo
 $autopkgtest_root_args = '';
-$autopkgtest_opts = [ '--', 'schroot', '%r-%a-sbuild' ];
+# Use `sudo autopkgtest-build-qemu --size=4G unstable $IMAGE` to build
+#$autopkgtest_virt_server = 'qemu';
+#$autopkgtest_virt_server_options = [ '--', '/var/lib/autopkgtest-qemu-images/%r-%a.qcow2' ];
+$autopkgtest_opts = [ '--', 'qemu', '/var/lib/autopkgtest-qemu-images/%r-%a.qcow2' ];
+# no need to cleanup the chroot after build, we run in a completely clean VM
+$purge_build_deps = 'never';
 
 # https://wiki.kubuntu.org/SimpleSbuild
 # When to purge the build directory afterwards; possible values are "never",
