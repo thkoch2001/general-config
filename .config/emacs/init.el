@@ -67,7 +67,9 @@
  '(menu-bar-mode nil)
  '(require-final-newline nil)
  '(safe-local-variable-values '(
-    (gac-automatically-push-p . t) ; git-auto-commit-mode
+                                (gac-automatically-push-p . t)
+                                (gac-automatically-push-p . nil)
+                                        ; git-auto-commit-mode
   ))
  '(scroll-bar-mode nil)
  '(select-enable-clipboard t)
@@ -161,12 +163,16 @@
   :ensure t
 )
 
+(use-package nov
+  :ensure t
+  :mode ("\\.epub\\'" . nov-mode)
+)
+
 (use-package org
   :ensure t
   :custom
   (initial-major-mode 'org-mode)
   (org-agenda-files '("~/org"))
-  (org-clock-continuously t)
   (org-clock-persist t)
   (org-clock-persist-file (thk-state-file "org-clock-save.el"))
   (org-hide-block-startup t)
@@ -190,9 +196,9 @@
   (org-use-speed-commands t)
   )
 
-(use-package org-drill
-  :ensure t
-)
+;;(use-package org-drill
+;;  :ensure t
+;;)
 
 (use-package paredit
   :ensure t
