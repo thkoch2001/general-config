@@ -76,12 +76,13 @@
  '(show-trailing-whitespace t)
  '(show-paren-mode t)
  '(tab-width 4)
- '(tool-bar-mode nil)
  '(use-package-ensure-function 'use-package-ensure-debian)
  '(vc-make-backup-files t)
  '(version-control t)
  '(visible-bell t)
  )
+
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 (use-package git-auto-commit-mode
   :ensure t
@@ -230,6 +231,10 @@
 (use-package tramp
   :custom
   (tramp-persistency-file-name (thk-state-file "tramp-connection-history"))
+  :config
+  ;; make eglot over tramp happy
+  ;; https://emacs.stackexchange.com/questions/74651/how-to-configure-eglot-over-tramp
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
   )
 
 (use-package transient
