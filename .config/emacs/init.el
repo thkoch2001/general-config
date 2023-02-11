@@ -53,7 +53,7 @@
  '(custom-file "~/.config/emacs/custom-save-dump-not-loaded.el")
  '(custom-safe-themes '(
                         "69181b408ef74ce12270736cddd201de626ec5021a9b4d87fb788a18b8c59d1b" ; modus-vivendi
-                        "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" ; solarized-dark-high-contrast
+                        "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" ; solarized-dark-high-contrast 2.0
                         default))
  '(delete-old-versions t)
  '(fill-column 78)
@@ -74,7 +74,7 @@
  '(scroll-bar-mode nil)
  '(select-enable-clipboard t)
  '(show-trailing-whitespace t)
- '(show-paren-mode t)
+ '(tab-bar-show 1)
  '(tab-width 4)
  '(use-package-ensure-function 'use-package-ensure-debian)
  '(vc-make-backup-files t)
@@ -83,6 +83,12 @@
  )
 
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+
+(add-hook 'prog-mode-hook '(lambda ()
+                             (progn
+                               (display-line-numbers-mode 1)
+                               (show-paren-mode t)
+                               )))
 
 (use-package git-auto-commit-mode
   :ensure t
@@ -156,7 +162,9 @@
 (use-package magit
   :ensure t
   :bind (
-    ("C-x g" . 'magit-status)
+         ("C-x g" . 'magit-status)
+         ("C-x M-g" . 'magit-dispatch)
+         ("C-c g" . 'magit-file-dispatch)
     )
   )
 
@@ -241,6 +249,15 @@
   :ensure t
   :custom
   (transient-history-file (thk-state-file "transient/history.el"))
+  )
+
+(use-package treemacs
+  :config
+  (treemacs-follow-mode t)
+  (treemacs-filewatch-mode t)
+  (treemacs-git-mode 'simple)
+  :bind
+  (:map global-map ("C-M-t" . treemacs))
   )
 
 (use-package uniquify
