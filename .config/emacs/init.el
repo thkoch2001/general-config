@@ -90,9 +90,11 @@
                                (show-paren-mode t)
                                )))
 
-(use-package git-auto-commit-mode
-  :ensure t
-)
+(use-package ace-window
+  :bind (
+         ("M-o" . ace-window)
+         )
+  )
 
 (use-package bookmark
   :custom
@@ -115,6 +117,10 @@
 (use-package flycheck
   :ensure t
   )
+
+(use-package git-auto-commit-mode
+  :ensure t
+)
 
 (use-package graphviz-dot-mode
   :ensure t
