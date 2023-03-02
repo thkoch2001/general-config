@@ -88,7 +88,33 @@
                              (progn
                                (display-line-numbers-mode 1)
                                (show-paren-mode t)
+                               (local-set-key "%" 'thk-match-paren)
                                )))
+
+;; "y or n" instead of "yes or no"
+(fset 'yes-or-no-p 'y-or-n-p)
+
+
+
+;; see emacs FAQ: 5.27 How do I show which parenthesis matches the one I'm looking at?
+
+(show-paren-mode 1)
+
+
+;; Here is some Emacs Lisp that will make the <%> key show the
+;; matching parenthesis, like in `vi'.  In addition, if the cursor
+;; isn't over a parenthesis, it simply inserts a % like normal.
+(defun thk-match-paren (arg)
+  "Go to the matching paren if on a paren; otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+        (t (self-insert-command (or arg 1)))))
+
+(defun sm (&optional b e) "run sm with the current region as input"
+  (interactive "r")
+  (shell-command-on-region b e "sm -")
+)
 
 (use-package ace-window
   :bind (
@@ -249,6 +275,7 @@
   ;; make eglot over tramp happy
   ;; https://emacs.stackexchange.com/questions/74651/how-to-configure-eglot-over-tramp
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  (tramp-change-syntax 'simplified)
   )
 
 (use-package transient
