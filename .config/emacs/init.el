@@ -7,11 +7,11 @@
 
 (package-initialize)
 
-(use-package system-packages
-  :custom
-  (system-packages-package-manager 'apt)
-  (system-packages-use-sudo t)
-  )
+;; (use-package system-packages
+;;   :custom
+;;   (system-packages-package-manager 'apt)
+;;   (system-packages-use-sudo t)
+;;   )
 
 (defun thk-state-file (path)
   (concat "~/.local/state/emacs/" path)
@@ -84,7 +84,7 @@
 
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
-(add-hook 'prog-mode-hook '(lambda ()
+(add-hook 'prog-mode-hook #'(lambda ()
                              (progn
                                (display-line-numbers-mode 1)
                                (show-paren-mode t)
@@ -111,9 +111,9 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 
-(defun sm (&optional b e) "run sm with the current region as input"
+(defun sm (&optional start end) "run sm with the current region as input"
   (interactive "r")
-  (shell-command-on-region b e "sm -")
+  (shell-command-on-region start end "/usr/games/sm -")
 )
 
 (use-package ace-window
@@ -177,19 +177,19 @@
   (ido-use-url-at-point t)
   )
 
-(use-package lsp-haskell
-  :ensure t
-  :custom
-  (lsp-haskell-server-args '("--debug" "--logfile" "/tmp/hls.log"))
-  )
+;; (use-package lsp-haskell
+;;   :ensure t
+;;   :custom
+;;   (lsp-haskell-server-args '("--debug" "--logfile" "/tmp/hls.log"))
+;;   )
 
-(use-package lsp-mode
-  :ensure t
-  )
+;; (use-package lsp-mode
+;;   :ensure t
+;;   )
 
-(use-package lsp-ui
-  :ensure t
-  )
+;; (use-package lsp-ui
+;;   :ensure t
+;;   )
 
 (use-package magit
   :ensure t
@@ -245,9 +245,9 @@
   :ensure t
   )
 
-(use-package projectile
-  :ensure t
-  )
+;; (use-package projectile
+;;   :ensure t
+;;   )
 
 (use-package rainbow-delimiters
   :ensure t
@@ -319,5 +319,3 @@
 (use-package yasnippet-snippets
   :ensure t
   )
-
-(debian-run-directories (concat (file-name-directory load-file-name) "/init.d"))
