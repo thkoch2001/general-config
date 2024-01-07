@@ -56,6 +56,7 @@
                         "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" ; solarized-dark-high-contrast 2.0
                         default))
  '(delete-old-versions t)
+ '(enable-remote-dir-locals t) ; test https://debbugs.gnu.org/12145
  '(fill-column 78)
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
@@ -122,6 +123,12 @@
          )
   )
 
+(use-package apache-mode
+ )
+
+(use-package atomic-chrome
+ )
+
 (use-package bookmark
   :custom
   (bookmark-default-file (thk-state-file "bookmarks"))
@@ -138,6 +145,12 @@
 
 (use-package editorconfig
   :ensure t
+  )
+
+(use-package eglot
+  :ensure t
+  :custom
+  (eglot-connect-timeout 120)
   )
 
 (use-package flycheck
@@ -201,6 +214,10 @@
   )
 
 (use-package markdown-mode
+  :ensure t
+)
+
+(use-package nix-mode
   :ensure t
 )
 
@@ -271,6 +288,7 @@
 (use-package tramp
   :custom
   (tramp-persistency-file-name (thk-state-file "tramp-connection-history"))
+;  (tramp-use-ssh-controlmaster-options nil)
   :config
   ;; make eglot over tramp happy
   ;; https://emacs.stackexchange.com/questions/74651/how-to-configure-eglot-over-tramp
@@ -310,6 +328,9 @@
 
 (use-package ws-butler
   :ensure t
+  )
+
+(use-package yaml-mode
   )
 
 (use-package yasnippet
