@@ -88,17 +88,24 @@ auctex
       extraOutputsToInstall = [ "doc" "info" "man" ];
       name = "user-packages";
       paths = [
+        arandr
         ghc
         git
         (pkgs.haskell-language-server.override { supportedGhcVersions = [ "94" ]; })
+        #        ladybird
+        ncdu
         nix
+        pass
         screen-message
         stack
         sqlite
         thk-emacsWithPackages
         tmux
+        tree
         vcsh
         virtiofsd
+        wmctrl # used in ~/bin/switch-to-emacs
+        xclip # used in tmux.conf
       ];
     };
   };

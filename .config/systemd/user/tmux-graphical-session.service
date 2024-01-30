@@ -6,6 +6,6 @@ WantedBy=graphical-session.target
 
 [Service]
 Type=forking
-ExecStart=%h/.nix-profile/bin/tmux new-session -s graphical-session -d
+ExecStart=%h/.local/state/nix/profile/bin/tmux new-session -s graphical-session -d
 Restart=always
 
