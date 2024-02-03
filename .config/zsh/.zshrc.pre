@@ -1,4 +1,12 @@
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=36"
 export BATTERY=1
 
-fpath=( ~/.config/zsh/zfunc "${fpath[@]}" )
+fpath=( ~/.config/zsh/zfunc ~/.local/state/nix/profile/share/zsh/vendor-completions ~/.local/state/nix/profile/share/zsh/site-functions "${fpath[@]}" )
+
+export HISTFILE=${HOME}/.local/state/zsh/histfile
+export DIRSTACKFILE=${HOME}/.local/state/zsh/dirstack
+export HISTSIZE=1000
+export SAVEHIST=1000
+
+export RPS1="%(?..(ret: %?%)) %~"
+export PS1="%h%#"

@@ -89,23 +89,45 @@ auctex
       name = "user-packages";
       paths = [
         arandr
+        brightnessctl # TODO: check whether udev rules are necessary?
+        feh
+        flameshot
+        freecad
         ghc
         git
+        gmrun
+        gnome.cheese
+        go-mtpfs
         (pkgs.haskell-language-server.override { supportedGhcVersions = [ "94" ]; })
+        htop
         #        ladybird
         ncdu
         nix
+        # nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl
+        # see https://github.com/nix-community/nixGL
+        # necessary e.g. for FreeCAD
+        #nixgl.nixGLIntel
+        pandoc
+        parcellite
         pass
+        pasystray
+        pavucontrol
         screen-message
         stack
+        strace
         sqlite
+        telegram-desktop
         thk-emacsWithPackages
         tmux
         tree
+        udiskie
         vcsh
         virtiofsd
         wmctrl # used in ~/bin/switch-to-emacs
         xclip # used in tmux.conf
+        xsecurelock
+        yt-dlp
+        zsh
       ];
     };
   };

@@ -5,4 +5,4 @@ Description=PulseAudio systray
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/pasystray
+ExecStart=%h/.local/state/nix/profile/bin/pasystray

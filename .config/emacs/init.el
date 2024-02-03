@@ -1,3 +1,7 @@
+;; completion stuff:
+;; https://www.masteringemacs.org/article/understanding-minibuffer-completion
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html
+
 (unless (package-installed-p 'use-package)
   (progn
     (message "WARNING: use-package not installed!")
@@ -48,6 +52,7 @@
  `(backup-directory-alist '(("." . ,(thk-state-file "backup"))))
  '(blink-cursor-mode t)
  '(calendar-week-start-day 1)
+ '(completion-cycle-threshold t)
  '(column-number-mode t)
  '(custom-enabled-themes '(solarized-dark-high-contrast))
  '(custom-file "~/.config/emacs/custom-save-dump-not-loaded.el")
@@ -57,6 +62,7 @@
                         default))
  '(delete-old-versions t)
  '(enable-remote-dir-locals t) ; test https://debbugs.gnu.org/12145
+ '(fido-vertical-mode t)
  '(fill-column 78)
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
@@ -178,17 +184,17 @@
     )
   )
 
-(use-package ido
-  :init
-  (ido-mode t)
-  :custom
-  (ido-auto-merge-work-directories-length -1)
-  (ido-enable-flex-matching t)
-  (ido-everywhere t)
-  (ido-save-directory-list-file (thk-state-file "ido_last"))
-  (ido-use-filename-at-point 'guess)
-  (ido-use-url-at-point t)
-  )
+;;(use-package ido
+;;  :init
+;;  (ido-mode t)
+;;  :custom
+;;  (ido-auto-merge-work-directories-length -1)
+;;  (ido-enable-flex-matching t)
+;;  (ido-everywhere t)
+;;  (ido-save-directory-list-file (thk-state-file "ido_last"))
+;;  (ido-use-filename-at-point 'guess)
+;;  (ido-use-url-at-point t)
+;;  )
 
 ;; (use-package lsp-haskell
 ;;   :ensure t
@@ -340,3 +346,4 @@
 (use-package yasnippet-snippets
   :ensure t
   )
+

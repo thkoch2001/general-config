@@ -5,4 +5,4 @@ Description=ClipIt GTK Clipboard manager
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/parcellite
+ExecStart=%h/.local/state/nix/profile/bin/parcellite

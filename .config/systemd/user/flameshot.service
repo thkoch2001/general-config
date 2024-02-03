@@ -5,4 +5,4 @@ Description=Flameshot Screenshot Tool
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/flameshot
+ExecStart=%h/.local/state/nix/profile/bin/flameshot
