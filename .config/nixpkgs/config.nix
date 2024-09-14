@@ -1,8 +1,8 @@
 with (import <nixpkgs> {});
-{
-  packageOverrides = pkgs: with pkgs; {
-    thk-emacsWithPackages = (pkgs.emacsPackagesFor emacs-gtk).emacsWithPackages (
-      epkgs:
+with (import <nixgl> {}); /* https://github.com/nix-community/nixGL */
+let
+  thk-emacsWithPackages = (pkgs.emacsPackagesFor emacs-gtk).emacsWithPackages (
+    epkgs:
       (with epkgs.elpaPackages; [
         ace-window
         company
@@ -31,8 +31,7 @@ with (import <nixpkgs> {});
         yaml-mode
         yasnippet-snippets
       ]) ++ [    # From main packages set
-      ]
-    );
+    ]
 /*
 Debian emacs packages not yet installed by nix:
 elpa-avy
@@ -81,7 +80,10 @@ elpa-magit
 elpa-magit-section
 auctex
 */
-
+  );
+in
+{
+  packageOverrides = pkgs: with pkgs; {
     userPackages = buildEnv {
 #      inherit ((import <nixpkgs/nixos> {}).config.system.path)
 #      pathsToLink ignoreCollisions postBuild;
@@ -89,33 +91,48 @@ auctex
       name = "user-packages";
       paths = [
         arandr
+#        blueman
         brightnessctl # TODO: check whether udev rules are necessary?
+        dnsutils
         feh
+        ffmpeg
         flameshot
-        freecad
+#        freecad
         ghc
         git
+        glibcLocalesUtf8
         gmrun
-        gnome.cheese
+#        gnome.cheese
         go-mtpfs
-        (pkgs.haskell-language-server.override { supportedGhcVersions = [ "94" ]; })
+#        (pkgs.haskell-language-server.override { supportedGhcVersions = [ "96" ]; })
         htop
         #        ladybird
+        klavaro
+        lingot
+        lxde.lxsession
+        mate.eom
+        mediathekview
+        mpv
         ncdu
         nix
+        nixGLIntel
+        nmap
         # nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl
         # see https://github.com/nix-community/nixGL
         # necessary e.g. for FreeCAD
         #nixgl.nixGLIntel
-        pandoc
+ #       pandoc
         parcellite
         pass
         pasystray
         pavucontrol
         screen-message
-        stack
+ #       stack
         strace
         sqlite
+        #sweethome3d.application
+        #sweethome3d.furniture-editor
+        #sweethome3d.textures-editor
         telegram-desktop
         thk-emacsWithPackages
         tmux
@@ -123,6 +140,7 @@ auctex
         udiskie
         vcsh
         virtiofsd
+        vlc
         wmctrl # used in ~/bin/switch-to-emacs
         xclip # used in tmux.conf
         xsecurelock

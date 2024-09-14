@@ -2,6 +2,7 @@
 ;; https://www.masteringemacs.org/article/understanding-minibuffer-completion
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html
 
+(setq default-directory "~/")
 (unless (package-installed-p 'use-package)
   (progn
     (message "WARNING: use-package not installed!")
