@@ -91,28 +91,41 @@ in
       name = "user-packages";
       paths = [
         arandr
-#        blueman
+        # blueman # does not show up
         brightnessctl # TODO: check whether udev rules are necessary?
         dnsutils
+        # evince
         feh
         ffmpeg
         flameshot
 #        freecad
         ghc
         git
+        # git-big-picture
+        # git-imerge
         glibcLocalesUtf8
         gmrun
-#        gnome.cheese
+        #        gnome.cheese
+        gnumake
         go-mtpfs
-#        (pkgs.haskell-language-server.override { supportedGhcVersions = [ "96" ]; })
+        # gparted
+        # graphviz
+        gxkb
+        #        (pkgs.haskell-language-server.override { supportedGhcVersions = [ "96" ]; })
+        # html-tidy
         htop
+        # jdupes
+        # jq
         #        ladybird
         klavaro
         lingot
+        # lsof
         lxde.lxsession
+        # lynx
         mate.eom
         mediathekview
         mpv
+        # netsurf.browser
         ncdu
         nix
         nixGLIntel
@@ -121,12 +134,17 @@ in
         # see https://github.com/nix-community/nixGL
         # necessary e.g. for FreeCAD
         #nixgl.nixGLIntel
- #       pandoc
+        #       pandoc
+        # paperkey
         parcellite
         pass
         pasystray
         pavucontrol
+        # powertop
+        # redshift
+        # sassc
         screen-message
+        # sshfs
  #       stack
         strace
         sqlite
@@ -138,9 +156,13 @@ in
         tmux
         tree
         udiskie
+        unrar-free
+        unzip
+        # usbutils # provides lsusb
         vcsh
         virtiofsd
         vlc
+        # wget
         wmctrl # used in ~/bin/switch-to-emacs
         xclip # used in tmux.conf
         xsecurelock

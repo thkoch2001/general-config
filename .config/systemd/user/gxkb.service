@@ -5,4 +5,4 @@ Description=gxkb - X11 keyboard indicator and switcher
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/gxkb
+ExecStart=%h/.local/state/nix/profile/bin/gxkb
