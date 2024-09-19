@@ -110,12 +110,20 @@ in
         go-mtpfs
         # gparted
         # graphviz
+        kdePackages.akregator
+        kdePackages.gwenview
+        kdePackages.kgeography
+        kdePackages.okular
+        kdePackages.pim-sieve-editor
         gxkb
+        haskellPackages.gtk-sni-tray
+        haskellPackages.status-notifier-item
         #        (pkgs.haskell-language-server.override { supportedGhcVersions = [ "96" ]; })
         # html-tidy
         htop
         # jdupes
         # jq
+        kdePackages.plasma-workspace # for xembedsniproxy
         #        ladybird
         klavaro
         lingot
@@ -127,13 +135,13 @@ in
         mpv
         # netsurf.browser
         ncdu
+        nettools
         nix
-        nixGLIntel
-        nmap
         # nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl
         # see https://github.com/nix-community/nixGL
         # necessary e.g. for FreeCAD
-        #nixgl.nixGLIntel
+        nixGLIntel
+        nmap
         #       pandoc
         # paperkey
         parcellite
@@ -151,6 +159,7 @@ in
         #sweethome3d.application
         #sweethome3d.furniture-editor
         #sweethome3d.textures-editor
+        taffybar
         telegram-desktop
         thk-emacsWithPackages
         tmux
@@ -165,6 +174,8 @@ in
         # wget
         wmctrl # used in ~/bin/switch-to-emacs
         xclip # used in tmux.conf
+        xmonad-with-packages
+#        xpra
         xsecurelock
         yt-dlp
         zsh
