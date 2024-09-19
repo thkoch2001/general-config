@@ -7,4 +7,4 @@ After=status-notifier-watcher.service
 WantedBy=taffybar.service
 
 [Service]
-ExecStart=/usr/bin/xembedsniproxy
+ExecStart=%h/.local/state/nix/profile/bin/xembedsniproxy

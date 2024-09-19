@@ -1,5 +1,10 @@
 [Unit]
 Description=status-notifier-watcher
+After=graphical-session-pre.target
+PartOf=graphical-session.target
+
+[Install]
+WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/status-notifier-watcher
+ExecStart=%h/.local/state/nix/profile/bin/status-notifier-watcher
