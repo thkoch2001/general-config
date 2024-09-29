@@ -7,7 +7,7 @@ After=xmonad.service status-notifier-watcher.service
 WantedBy=xmonad.service
 
 [Service]
-ExecStart=/usr/bin/taffybar
+ExecStart=%h/.local/state/nix/profile/bin/taffybar
 MemoryMax=400M
 MemoryAccounting=true
 MemorySwapMax=0

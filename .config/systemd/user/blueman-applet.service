@@ -5,4 +5,5 @@ Description=blueman applet
 WantedBy=graphical-session.target
 
 [Service]
+#ExecStart=%h/.local/state/nix/profile/bin/blueman-applet
 ExecStart=/usr/bin/blueman-applet

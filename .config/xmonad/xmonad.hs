@@ -1,7 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import           System.Taffybar.Support.PagerHints (pagerHints)
-
 import           XMonad
 import           XMonad.Actions.CycleWS
 -- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-WindowBringer.html
@@ -57,7 +55,7 @@ avoidFocusStealing = W.modify' $ \c -> case c of
 
 main = do
   xmonad
-    $ ewmh $ pagerHints -- see System.Taffybar.TaffyPager
+    $ ewmh
     $ withUrgencyHook LibNotifyUrgencyHook
     $ desktopConfig
         { modMask = mod4Mask

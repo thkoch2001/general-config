@@ -4,7 +4,7 @@ After=graphical-session.target
 PartOf=xmonad-systemd-session.target
 
 [Service]
-ExecStart=/usr/bin/xmonad
+ExecStart=%h/.local/state/nix/profile/bin/xmonad
 
 [Install]
 WantedBy=xmonad-systemd-session.target

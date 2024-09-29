@@ -93,7 +93,11 @@ in
         arandr
         # blueman # does not show up
         brightnessctl # TODO: check whether udev rules are necessary?
+        # davfs2
+        # detox
         dnsutils
+        # dovecot_pigeonhole
+        # duff
         # evince
         feh
         ffmpeg
@@ -126,6 +130,8 @@ in
         kdePackages.plasma-workspace # for xembedsniproxy
         #        ladybird
         klavaro
+        libreoffice-fresh
+        # libsecret # for msmtp
         lingot
         # lsof
         lxde.lxsession
@@ -133,6 +139,7 @@ in
         mate.eom
         mediathekview
         mpv
+        # msmtp
         # netsurf.browser
         ncdu
         nettools
@@ -149,6 +156,8 @@ in
         pasystray
         pavucontrol
         # powertop
+        # psmisc # fuser, killall and pstree
+        pwgen # maybe replace with spwgen from pwgen-secure?
         # redshift
         # sassc
         screen-message
@@ -162,6 +171,7 @@ in
         taffybar
         telegram-desktop
         thk-emacsWithPackages
+        # thunderbird
         tmux
         tree
         udiskie
