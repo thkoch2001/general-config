@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+set -x
+
+go-mtpfs ~/mnt/android &
+sleep 2
+DIR=~/tmp/$(date +%Y-%m-%d)
+mkdir -p $DIR
+cd $DIR
+cp ~/mnt/android/Interner\ gemeinsamer\ Speicher/DCIM/Camera/* $DIR
+fusermount3 -u ~/mnt/android
+
