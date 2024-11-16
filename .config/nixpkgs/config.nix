@@ -95,6 +95,7 @@ in
         brightnessctl # TODO: check whether udev rules are necessary?
         # davfs2
         # detox
+        devenv
         dnsutils
         # dovecot_pigeonhole
         # duff
@@ -158,6 +159,7 @@ in
         # powertop
         # psmisc # fuser, killall and pstree
         pwgen # maybe replace with spwgen from pwgen-secure?
+        quasselClient
         # redshift
         # sassc
         screen-message
@@ -172,6 +174,7 @@ in
         telegram-desktop
         thk-emacsWithPackages
         # thunderbird
+        tig # text mode interface to git (to browse sparse checkouts)
         tmux
         tree
         udiskie
