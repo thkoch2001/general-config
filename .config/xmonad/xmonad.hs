@@ -64,7 +64,7 @@ main = do
         , manageHook = myManageHook <+> avoidFocusStealingManageHook <+> manageHook desktopConfig
         }
         `additionalKeysP`
-                 [ ("M-S-p", spawn "systemd-run --user gmrun")
+                 [ ("M-S-p", spawn "systemd-run --user -p ExitType=cgroup gmrun")
                  , ("M-d", spawn "emacsclient -c")
                  , ("M-<Return>", spawn "systemd-run --user x-terminal-emulator")
                  , ("M-S-<Return>", spawn "x-terminal-emulator -e 'tmux new-session -A -t graphical-session'")

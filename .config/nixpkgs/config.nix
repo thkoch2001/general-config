@@ -23,6 +23,7 @@ let
         nov
         paredit
         rainbow-delimiters
+        rust-mode
         solarized-theme
         systemd
         treemacs
@@ -93,6 +94,8 @@ in
         arandr
         # blueman # does not show up
         brightnessctl # TODO: check whether udev rules are necessary?
+        cargo # rust package manager
+        clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
         # davfs2
         # detox
         devenv
@@ -104,6 +107,7 @@ in
         ffmpeg
         flameshot
 #        freecad
+        #gcc # needed for rustc
         ghc
         git
         # git-big-picture
@@ -128,6 +132,7 @@ in
         htop
         # jdupes
         # jq
+        kdePackages.falkon
         kdePackages.plasma-workspace # for xembedsniproxy
         #        ladybird
         klavaro
@@ -142,6 +147,7 @@ in
         mpv
         # msmtp
         # netsurf.browser
+        # newsboat
         ncdu
         nettools
         nix
@@ -158,9 +164,13 @@ in
         pavucontrol
         # powertop
         # psmisc # fuser, killall and pstree
+        pspg # postgres pager
         pwgen # maybe replace with spwgen from pwgen-secure?
         quasselClient
         # redshift
+        rust-analyzer
+        rustc # rust compiler
+        rustfmt
         # sassc
         screen-message
         # sshfs

@@ -1,0 +1,8 @@
+[Unit]
+Description=Quassel IRC client
+
+[Service]
+ExecStart=%h/.local/state/nix/profile/bin/nixGLIntel quasselclient
+
+[Install]
+WantedBy=applications.target

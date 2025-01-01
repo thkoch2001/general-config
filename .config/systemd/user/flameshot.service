@@ -1,5 +1,6 @@
 [Unit]
 Description=Flameshot Screenshot Tool
+After=graphical-session-pre.target
 
 [Install]
 WantedBy=graphical-session.target

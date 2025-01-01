@@ -1,0 +1,9 @@
+[Unit]
+Description=Chromium Web Browser
+
+[Service]
+#Type=notify
+ExecStart=/usr/bin/chromium
+
+[Install]
+WantedBy=applications.target

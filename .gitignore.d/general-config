@@ -13,23 +13,26 @@
 
 /.ICEauthority
 /.cache
+/.cargo
 /.config/chromium/
 /.config/gobby/
 /.config/gsmartcontrol/
 /.config/htop/
 /.config/libreoffice/
 /.config/monitors.xml
-/.emacs.d
+/.config/quasselrc
 /.gstreamer-0.10
 /.kde/
 /.lesshst
 /.local/
 /.mission-control/
 /.mozilla/
+/.msmtprc
 /.netrc
 /.pki/
 /.pulse-cookie
 /.pulse/
+/.rustup/
 /.stack/
 /.thumbnails
 /.xsession-errors

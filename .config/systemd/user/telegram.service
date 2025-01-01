@@ -1,0 +1,8 @@
+[Unit]
+Description=Telegram Chat
+
+[Service]
+ExecStart=%h/.local/state/nix/profile/bin/nixGLIntel telegram-desktop
+
+[Install]
+WantedBy=applications.target

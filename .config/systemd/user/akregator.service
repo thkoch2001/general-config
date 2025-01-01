@@ -1,0 +1,8 @@
+[Unit]
+Description=Akregator Feed Reader
+
+[Service]
+ExecStart=%h/.local/state/nix/profile/bin/nixGLIntel akregator
+
+[Install]
+WantedBy=applications.target
