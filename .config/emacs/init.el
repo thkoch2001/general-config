@@ -222,6 +222,8 @@
 
 (use-package markdown-mode
   :ensure t
+  :custom
+  (markdown-command "pandoc -f markdown -t html")
 )
 
 (use-package nix-mode
