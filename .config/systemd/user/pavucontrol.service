@@ -1,0 +1,8 @@
+[Unit]
+Description=PulseAudio Volumecontrol
+
+[Install]
+WantedBy=applications.target
+
+[Service]
+ExecStart=%h/.local/state/nix/profile/bin/pavucontrol
