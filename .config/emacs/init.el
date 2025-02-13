@@ -10,6 +10,8 @@
     )
   )
 
+(set-face-attribute 'default nil :height 130)
+
 (package-initialize)
 
 ;; (use-package system-packages
@@ -256,6 +258,7 @@
  linkcolor=[rgb]{0,0,0}
  }")
   (org-list-allow-alphabetical t)
+  (org-modules '(org-protocol))
   (org-special-ctrl-a/e t)
   (org-special-ctrl-k t)
   (org-src-fontify-natively t)
