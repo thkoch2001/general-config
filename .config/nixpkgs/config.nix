@@ -11,8 +11,6 @@ let
       ]) ++ (with epkgs.melpaPackages; [
         apache-mode
         atomic-chrome
-        editorconfig
-        flycheck
         git-auto-commit-mode
         graphviz-dot-mode
         haskell-mode
@@ -34,6 +32,8 @@ let
       ]) ++ [    # From main packages set
     ]
 /*
+pandoc-mode?
+
 Debian emacs packages not yet installed by nix:
 elpa-avy
 elpa-bar-cursor
@@ -94,11 +94,12 @@ in
         arandr
         # blueman # does not show up
         brightnessctl # TODO: check whether udev rules are necessary?
-        cargo # rust package manager
-        clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
+        #cargo # rust package manager
+        #clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
+        #darcs
         # davfs2
         # detox
-        devenv
+        #devenv
         dnsutils
         # dovecot_pigeonhole
         # duff
@@ -108,7 +109,7 @@ in
         flameshot
 #        freecad
         #gcc # needed for rustc
-        ghc
+        #ghc
         git
         # git-big-picture
         # git-imerge
@@ -118,36 +119,41 @@ in
         gnumake
         go-mtpfs
         # gparted
-        # graphviz
+        gramps
+        graphviz
         kdePackages.akregator
         kdePackages.gwenview
-        kdePackages.kgeography
+        #kdePackages.kgeography
         kdePackages.okular
-        kdePackages.pim-sieve-editor
+        #kdePackages.pim-sieve-editor
         gxkb
         haskellPackages.gtk-sni-tray
         haskellPackages.status-notifier-item
         #        (pkgs.haskell-language-server.override { supportedGhcVersions = [ "96" ]; })
+        hledger
+        hledger-ui
         # html-tidy
         htop
         # jdupes
-        # jq
-        kdePackages.falkon
+        josh
+        jq
+        #kdePackages.falkon
         kdePackages.plasma-workspace # for xembedsniproxy
         #        ladybird
-        klavaro
+        #klavaro
         libreoffice-fresh
         # libsecret # for msmtp
         lingot
-        # lsof
+        lsof # git-annex assistant checks if files are open for writing
         lxde.lxsession
         # lynx
         mate.eom
-        mediathekview
+        #mdbook
+        #mediathekview
         mpv
         # msmtp
         # netsurf.browser
-        # newsboat
+        #newsboat
         ncdu
         nettools
         nix
@@ -155,8 +161,10 @@ in
         # see https://github.com/nix-community/nixGL
         # necessary e.g. for FreeCAD
         nixGLIntel
+        nixpkgs-fmt
         nmap
-        #       pandoc
+        #palemoon-bin # firefox fork https://www.palemoon.org/
+        pandoc
         # paperkey
         parcellite
         pass
@@ -168,11 +176,14 @@ in
         pwgen # maybe replace with spwgen from pwgen-secure?
         quasselClient
         # redshift
-        rust-analyzer
-        rustc # rust compiler
-        rustfmt
+        #reuse
+        #rust-analyzer
+        #rustc # rust compiler
+        #rustfmt
+        rustup
         # sassc
         screen-message
+        #sequoia-sq
         # sshfs
  #       stack
         strace
@@ -182,6 +193,7 @@ in
         #sweethome3d.textures-editor
         taffybar
         telegram-desktop
+        #termonad
         thk-emacsWithPackages
         # thunderbird
         tig # text mode interface to git (to browse sparse checkouts)

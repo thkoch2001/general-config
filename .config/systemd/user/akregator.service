@@ -2,6 +2,8 @@
 Description=Akregator Feed Reader
 
 [Service]
+# via https://bbs.archlinux.org/viewtopic.php?id=305308
+Environment="QTWEBENGINE_CHROMIUM_FLAGS=--use-gl=disabled"
 ExecStart=%h/.local/state/nix/profile/bin/nixGLIntel akregator
 
 [Install]

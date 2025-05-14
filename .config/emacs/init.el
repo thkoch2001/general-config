@@ -64,6 +64,7 @@
                         "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" ; solarized-dark-high-contrast 2.0
                         default))
  '(delete-old-versions t)
+ '(editorconfig-mode t)
  '(enable-remote-dir-locals t) ; test https://debbugs.gnu.org/12145
  '(fido-vertical-mode t)
  '(fill-column 78)
@@ -152,18 +153,10 @@
 ;  :ensure t
 ;  )
 
-(use-package editorconfig
-  :ensure t
-  )
-
 (use-package eglot
   :ensure t
   :custom
   (eglot-connect-timeout 120)
-  )
-
-(use-package flycheck
-  :ensure t
   )
 
 (use-package git-auto-commit-mode

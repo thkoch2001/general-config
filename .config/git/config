@@ -24,8 +24,11 @@
 	root = rev-parse --show-toplevel
 [branch]
 	autosetuprebase = remote
+	sort = -committerdate
 [rebase]
 	autosquash = true
+[rerere]
+	enabled = true
 [annex]
     numcopies = 2
     diskreserve = 10 gb
@@ -54,3 +57,7 @@
 [receive]
     fsckObjects = true
 
+[column]
+	ui = auto
+[init]
+	defaultBranch = master

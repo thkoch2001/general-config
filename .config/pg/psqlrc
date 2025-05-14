@@ -1,6 +1,9 @@
 -- http://tapoueh.org/blog/2017/12/setting-up-psql-the-postgresql-cli/
 -- https://github.com/thoughtbot/dotfiles/blob/master/psqlrc
 
+-- due to https://github.com/okbob/pspg/issues/132
+-- pspg did not render utf8 borders with LANG=de_DE.UTF-8
+\setenv LANG C.UTF8
 \setenv PSQL_PAGER pspg
 \setenv PSPG_CONF .config/pspg/config
 \! mkdir -p ~/.local/state/pspg
