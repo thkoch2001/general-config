@@ -1,9 +1,0 @@
-[Unit]
-Description=Flameshot Screenshot Tool
-After=graphical-session-pre.target
-
-[Install]
-WantedBy=graphical-session.target
-
-[Service]
-ExecStart=%h/.local/state/nix/profile/bin/flameshot

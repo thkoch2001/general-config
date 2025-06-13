@@ -1,0 +1,9 @@
+color=008080
+daemonize
+indicator-caps-lock
+show-failed-attempts
+show-keyboard-layout
+
+indicator-radius=230
+indicator-thickness=50
+font-size=60

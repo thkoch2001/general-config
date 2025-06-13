@@ -1,8 +1,0 @@
-[Unit]
-Description=Notification Daemon
-
-[Install]
-WantedBy=graphical-session.target
-
-[Service]
-ExecStart=/usr/lib/notification-daemon/notification-daemon

@@ -1,3 +1,0 @@
-[Unit]
-Description=xmonad systemd session target
-BindsTo=graphical-session.target

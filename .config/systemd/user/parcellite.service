@@ -1,8 +1,0 @@
-[Unit]
-Description=ClipIt GTK Clipboard manager
-
-[Install]
-WantedBy=graphical-session.target
-
-[Service]
-ExecStart=%h/.local/state/nix/profile/bin/parcellite

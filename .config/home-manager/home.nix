@@ -18,9 +18,12 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    alacritty
     # blueman # does not show up
+    (callPackage ./borg2.nix { })
     # brightnessctl # TODO: check whether udev rules are necessary?
     #cargo # rust package manager
+    chromium
     #clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
     #darcs
     # davfs2
@@ -33,6 +36,7 @@
     (import ./emacs.nix { inherit pkgs; })
     ffmpeg
     #        freecad
+    fuzzel # application launcher
     #gcc # needed for rustc
     #ghc
     git
@@ -45,23 +49,24 @@
     # gparted
     #gramps
     graphviz
-    #kdePackages.akregator
+    kanshi # wayland equivalent to autorandr
+    kdePackages.akregator
     #kdePackages.gwenview
     #kdePackages.kgeography
-    #kdePackages.okular
+    kdePackages.okular
     #kdePackages.pim-sieve-editor
     #        (pkgs.haskell-language-server.override { supportedGhcVersions = [ "96" ]; })
     #hledger
     #hledger-ui
     # html-tidy
-    htop
     # jdupes
     #josh
     #jq
     #kdePackages.falkon
     #        ladybird
     #klavaro
-    #libreoffice-fresh
+    libnotify # provides notify-send
+    libreoffice-fresh
     # libsecret # for msmtp
     #lingot
     lsof # git-annex assistant checks if files are open for writing
@@ -70,39 +75,50 @@
     #mate.eom
     #mdbook
     #mediathekview
-    #mpv
+    mpv
     # msmtp
     # netsurf.browser
     #newsboat
     #ncdu
     nettools
+    niri # tliing wayland composer
     nixpkgs-fmt
     #nmap
     #palemoon-bin # firefox fork https://www.palemoon.org/
     #pandoc
     # paperkey
     #parcellite
-    #pass
+    pass
     #pasystray
-    #pavucontrol
+    pavucontrol
     # powertop
     # psmisc # fuser, killall and pstree
     #pspg # postgres pager
     #pwgen # maybe replace with spwgen from pwgen-secure?
-    #quasselClient
+    qemu_kvm
+    quasselClient
+    # from tazjin
+    #pkgs.quassel.override {
+    #  client = true;
+    #  enableDaemon = false;
+    #  monolithic = false;
+    #};
     # redshift
     #reuse
     #rust-analyzer
     #rustc # rust compiler
     #rustfmt
+    # rustic # backup, see GitHub issue on --cacert option
     #rustup
     # sassc
     #screen-message
     #sequoia-sq
     # sshfs
     #       stack
-    #strace
+    strace
     #sqlite
+    swayidle
+    swaylock
     #sweethome3d.application
     #sweethome3d.furniture-editor
     #sweethome3d.textures-editor
@@ -116,53 +132,29 @@
     #unrar-free
     #unzip
     # usbutils # provides lsusb
-    #vcsh
+    vcsh
     #virtiofsd
     #vlc
-    # wget
+    waybar # desktop bar
+    wdisplays
+    wget
+    wl-clipboard
+    wlr-randr
     #wmctrl # used in ~/bin/switch-to-emacs
+    xdg-utils
+    xwayland-satellite
     #xclip # used in tmux.conf
-    #xmonad-with-packages
-    #        xpra
-    #xsecurelock
+    xorg.xlsclients # find out which running apps use xwayland
+    xorg.xwininfo # get X11 info by clicking on window
     yt-dlp
     #zsh
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/thk/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
 
   programs.home-manager.enable = true;
+  services.dunst.enable = true;
+  programs.waybar.systemd.enable = true;
 }

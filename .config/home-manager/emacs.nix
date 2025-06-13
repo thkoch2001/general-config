@@ -9,6 +9,7 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
   ]) ++ (with epkgs.melpaPackages; [
     apache-mode
     atomic-chrome
+    casual-suite
     git-auto-commit-mode
     graphviz-dot-mode
     haskell-mode
