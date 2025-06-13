@@ -39,7 +39,7 @@
     fuzzel # application launcher
     #gcc # needed for rustc
     #ghc
-    git
+    gitFull # To also get gitk
     # git-big-picture
     # git-imerge
     #        glibcLocalesUtf8
