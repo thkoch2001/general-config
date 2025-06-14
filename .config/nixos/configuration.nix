@@ -1,9 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, ... }:
-
 {
   imports =
     [
@@ -13,6 +8,7 @@
       ./hardware-configuration.nix
       ./autologin.nix
       ./fonts.nix
+      ./laptop.nix
       ./printing
     ];
 
@@ -50,55 +46,36 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "thk-nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.hostName = "thk-nixos";
+  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Bucharest";
 
   i18n.defaultLocale = "de_DE.UTF-8";
   console = {
-    font = "Lat2-Terminus16";
+    font = "ter-128n";
     keyMap = "de-latin1-nodeadkeys";
-    #    useXkbConfig = true; # use xkb.options in tty.
-  };
-
-  # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.thk = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    # useXkbConfig = true; # use xkb.options in tty.
     packages = with pkgs; [
+      tamsyn # bitmap font
+      terminus_font # bitmap font
+      termsyn # bitmap font
     ];
   };
 
-  services = {
-    blueman.enable = true;
-
-    libinput.enable = true; # TODO
-    pipewire = {
-      enable = true;
-      pulse.enable = true;
-    };
-    openssh.enable = true;
+  users.users.thk = {
+    isNormalUser = true;
+    # my former Debian groups: cdrom floppy sudo audio dip video plugdev netdev bluetooth docker nix-users
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.fish;
+    ignoreShellProgramCheck = true; # home-manager is responsible for ~/.config/fish
   };
+  nix.settings.trusted-users = [ "@wheel" ];
 
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     autologin
     pinentry-qt # provided here, see ~/.gnupg/gpg-agent.conf
+    fish # make sure it's there even if it's also configured in home-manager
     git
     htop
     qt5.qtwayland
@@ -107,46 +84,45 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   ];
 
+  # from tazjin
   security.pam.services.swaylock = { };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    #   enableSSHSupport = true;
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      # enableSSHSupport = true; # TODO
+    };
+    mosh.enable = true;
+    # mtr.enable = true; # TODO network diagnostic https://www.bitwizard.nl/mtr/
+    ssh.startAgent = true;
   };
-  services.pcscd.enable = true;
 
-  # List services that you want to enable:
+  services = {
+    blueman.enable = true;
+    libinput.enable = true;
+    pcscd.enable = true;
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
+    openssh.enable = true;
+    # Enable power-saving features.
+    tlp.enable = true;
+    # from tazjin, see https://yggdrasil-network.github.io/
+    # Enable yggdrasil network.
+    # yggdrasil = {
+    #   enable = true;
+    #   persistentKeys = true;
+    #   settings.IfName = "ygg0";
+    # };
+  };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+  };
+  # TODO https://nixos.org/manual/nixos/stable/#sec-upgrading
+  # `man configuration.nix`
+  # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "25.05"; # Did you read the comment?
 }

@@ -1,0 +1,33 @@
+# https://sr.ht/~emersion/kanshi/
+# https://manpages.debian.org/bookworm/sway/sway-output.5.en.html
+profile "2extern+laptop" {
+  output DP-6 position 0,0
+  output DP-4 position 1920,0
+  output eDP-1 position 4480,0
+
+# Output "AU Optronics 0x226D Unknown" (eDP-1)
+#   Current mode: 1920x1080 @ 60.049 Hz (preferred)
+#   Physical size: 280x160 mm
+#   Logical position: 4480, 0
+#   Logical size: 1536x864
+#   Scale: 1.25
+# Output "Dell Inc. DELL 2407WFP UY54575H02JS " (DP-4)
+#   Current mode: 1920x1200 @ 59.950 Hz (preferred)
+#   Physical size: 520x330 mm
+#   Logical position: 0, 0
+#   Logical size: 1920x1200
+#   Scale: 1
+#   Transform: normal
+# Output "Dell Inc. DELL U2719DC 7J0GVS2" (DP-6)
+#   Current mode: 2560x1440 @ 59.951 Hz (preferred)
+#   Physical size: 600x340 mm
+#   Logical position: 1920, 0
+#   Logical size: 2560x1440
+#   Scale: 1
+}
+
+profile "laptoponly" {
+  output eDP-1 enable
+}
+
+

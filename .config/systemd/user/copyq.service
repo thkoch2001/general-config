@@ -1,0 +1,9 @@
+[Unit]
+Description=CopyQ Clipboard manager
+After=niri.service xwayland-satellite.service
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=%h/.local/state/nix/profile/bin/copyq

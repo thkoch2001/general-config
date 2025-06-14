@@ -14,10 +14,21 @@
 /.ICEauthority
 /.cache
 /.cargo
+/.config/akregatorrc
 /.config/chromium/
+/.config/dunst
+/.config/fish
+/.config/glib-2.0/settings/keyfile
 /.config/gobby/
 /.config/gsmartcontrol/
+/.config/gwenviewrc
 /.config/htop/
+/.config/KDE/UserFeedback.conf
+/.config/kde.org/UserFeedback*
+/.config/okularrc
+/.config/pavucontrol.ini
+/.config/phishingurlrc
+/.config/QtProject.conf
 /.config/libreoffice/
 /.config/monitors.xml
 /.config/quasselrc
@@ -25,6 +36,7 @@
 /.kde/
 /.lesshst
 /.local/
+/.manpath
 /.mission-control/
 /.mozilla/
 /.msmtprc
@@ -40,5 +52,5 @@
 /.zcompdump
 
 /.xsession-errors.old
-/.gitignore.d
+/.gitignore.d/*
 !/.gitignore.d/general-config

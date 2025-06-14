@@ -1,5 +1,7 @@
-{ config, pkgs, ... }:
-
+{ lib, config, pkgs, ... }:
+let
+  font = "DejaVu Sans 12";
+in
 {
   home.username = "thk";
   home.homeDirectory = "/home/thk";
@@ -19,142 +21,181 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     alacritty
-    # blueman # does not show up
+    (aspellWithDicts (d: [ d.de d.en d.ro d.ru ]))
+    bc # cli calculator
+    # blueman
     (callPackage ./borg2.nix { })
-    # brightnessctl # TODO: check whether udev rules are necessary?
-    #cargo # rust package manager
+    # cargo # rust package manager
     chromium
-    #clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
-    #darcs
+    # clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
+    copyq # clipboard manager
+    # darcs
     # davfs2
     # detox
-    #devenv
+    # devenv
     dnsutils
     # dovecot_pigeonhole
     # duff
     # evince
     (import ./emacs.nix { inherit pkgs; })
     ffmpeg
-    #        freecad
+    # freecad
     fuzzel # application launcher
-    #gcc # needed for rustc
-    #ghc
+    # gcc # needed for rustc
+    # ghc
     gitFull # To also get gitk
     # git-big-picture
     # git-imerge
-    #        glibcLocalesUtf8
-    #        gnome.cheese
-    #gnumake
-    #go-mtpfs
+    # glibcLocalesUtf8
+    # gnome.cheese
+    # gnumake
+    # go-mtpfs # mount android
     # gparted
-    #gramps
+    # gramps # gen-trees
     graphviz
     kanshi # wayland equivalent to autorandr
     kdePackages.akregator
-    #kdePackages.gwenview
-    #kdePackages.kgeography
+    kdePackages.gwenview
+    # kdePackages.kgeography
     kdePackages.okular
-    #kdePackages.pim-sieve-editor
-    #        (pkgs.haskell-language-server.override { supportedGhcVersions = [ "96" ]; })
-    #hledger
-    #hledger-ui
+    # kdePackages.pim-sieve-editor
+    # (pkgs.haskell-language-server.override { supportedGhcVersions = [ "96" ]; })
+    # hledger # bookkeeping
+    # hledger-ui
     # html-tidy
     # jdupes
-    #josh
-    #jq
-    #kdePackages.falkon
-    #        ladybird
-    #klavaro
+    # josh # monorepos with git
+    # jq
+    kanshi # TODO like autorandr but for wayland
+    # kdePackages.falkon # webbrowser
+    # ladybird # webbrowser C++
+    # klavaro
     libnotify # provides notify-send
     libreoffice-fresh
     # libsecret # for msmtp
-    #lingot
+    # lingot
     lsof # git-annex assistant checks if files are open for writing
-    #lxde.lxsession
+    # lxde.lxsession
     # lynx
-    #mate.eom
-    #mdbook
-    #mediathekview
+    mate.eom
+    # mdbook
+    # mediathekview
     mpv
     # msmtp
+    # ncdu
     # netsurf.browser
-    #newsboat
-    #ncdu
+    networkmanagerapplet
+    # newsboat
     nettools
     niri # tliing wayland composer
     nixpkgs-fmt
-    #nmap
-    #palemoon-bin # firefox fork https://www.palemoon.org/
-    #pandoc
+    # nix-prefetch-github
+    # nmap
+    # palemoon-bin # firefox fork https://www.palemoon.org/
+    # pandoc
     # paperkey
-    #parcellite
+    # parcellite
     pass
-    #pasystray
+    # pasystray
     pavucontrol
     # powertop
     # psmisc # fuser, killall and pstree
-    #pspg # postgres pager
-    #pwgen # maybe replace with spwgen from pwgen-secure?
+    # pspg # postgres pager
+    # pwgen # maybe replace with spwgen from pwgen-secure?
     qemu_kvm
     quasselClient
     # from tazjin
-    #pkgs.quassel.override {
-    #  client = true;
-    #  enableDaemon = false;
-    #  monolithic = false;
-    #};
+    # pkgs.quassel.override {
+    #   client = true;
+    #   enableDaemon = false;
+    #   monolithic = false;
+    # };
     # redshift
-    #reuse
-    #rust-analyzer
-    #rustc # rust compiler
-    #rustfmt
+    # reuse
+    # rust-analyzer
+    # rustc # rust compiler
+    # rustfmt
     # rustic # backup, see GitHub issue on --cacert option
-    #rustup
+    # rustup
     # sassc
-    #screen-message
-    #sequoia-sq
+    # screen-message
+    # sequoia-sq
     # sshfs
-    #       stack
+    # stack
     strace
-    #sqlite
-    swayidle
+    # sqlite
+    swayidle # TODO
     swaylock
-    #sweethome3d.application
-    #sweethome3d.furniture-editor
-    #sweethome3d.textures-editor
+    # sweethome3d.application
+    # sweethome3d.furniture-editor
+    # sweethome3d.textures-editor
     telegram-desktop
-    #termonad
+    # termonad
     # thunderbird
-    #tig # text mode interface to git (to browse sparse checkouts)
+    # tig # text mode interface to git (to browse sparse checkouts)
     tmux
     tree
-    #udiskie
-    #unrar-free
-    #unzip
+    # udiskie
+    # unrar-free
+    # unzip
     # usbutils # provides lsusb
     vcsh
-    #virtiofsd
-    #vlc
+    # virtiofsd
+    # vlc
     waybar # desktop bar
     wdisplays
     wget
     wl-clipboard
     wlr-randr
-    #wmctrl # used in ~/bin/switch-to-emacs
-    xdg-utils
+    # wmctrl # TODO used in ~/bin/switch-to-emacs
+    xdg-utils # xdg-open
     xwayland-satellite
-    #xclip # used in tmux.conf
     xorg.xlsclients # find out which running apps use xwayland
     xorg.xwininfo # get X11 info by clicking on window
     yt-dlp
-    #zsh
   ];
 
-  home.sessionVariables = {
-    # EDITOR = "emacs";
+  programs = {
+    fish.enable = true;
+    home-manager.enable = true;
+    waybar.systemd.enable = true;
   };
 
-  programs.home-manager.enable = true;
-  services.dunst.enable = true;
-  programs.waybar.systemd.enable = true;
+  services.dunst = {
+    enable = true;
+    settings = {
+      global.font = font;
+    };
+  };
+
+  services.wpaperd = {
+    enable = true;
+    settings = {
+      default = {
+        duration = "1d";
+        mode = "fit";
+        sorting = "random";
+      };
+      any.path = "~/.local/share/wallpapers";
+    };
+  };
+
+  services.swayidle =
+    let
+      lockcmd = "${pkgs.swaylock}/bin/swaylock";
+      niricmd = "${pkgs.niri}/bin/niri msg action";
+    in {
+    enable = true;
+    events = [
+      { event = "before-sleep"; command = lockcmd; }
+      { event = "lock"; command = lockcmd; }
+      { event = "after-resume"; command = "${niricmd} power-on-monitors"; }
+    ];
+    timeouts = [
+      { timeout = 120; command = "${niricmd} power-off-monitors"; }
+    ];
+    # extraArgs = ["-d"];
+  };
+  systemd.user.services.swayidle.Unit.After = lib.mkForce [ "niri.service" ];
+  systemd.user.startServices = false; # This sd-switch thing has no documentation.
 }

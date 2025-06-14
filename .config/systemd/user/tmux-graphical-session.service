@@ -1,5 +1,7 @@
 [Unit]
 Description=tmux session running in the background of the graphical-session
+# After niri to ensure WAYLAND_DISPLAY is set
+After=niri.service
 
 [Install]
 WantedBy=graphical-session.target
