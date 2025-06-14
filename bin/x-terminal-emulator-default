@@ -1,2 +1,0 @@
-#!/bin/sh
-exec termit -e tmux new-session -A -s default $@
