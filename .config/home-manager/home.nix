@@ -3,9 +3,16 @@ let
   font = "DejaVu Sans 12";
 in
 {
-  home.username = "thk";
-  home.homeDirectory = "/home/thk";
-  home.stateVersion = "25.05";
+  home = {
+    homeDirectory = "/home/thk";
+    preferXdgDirectories = true;
+    stateVersion = "25.05";
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/bin"
+    ];
+    username = "thk";
+  };
 
   home.packages = with pkgs; [
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -154,6 +161,11 @@ in
     xorg.xwininfo # get X11 info by clicking on window
     yt-dlp
   ];
+
+  home.activation.gitignore-for-vcsh = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    (cd $newGenPath/home-files && run find . \( -type f -or -type l \) -printf "%h/%f\n" | cut -c 2- > "$HOME/.gitignore" )
+    run echo "/.gitignore" >> "$HOME/.gitignore"
+  '';
 
   programs = {
     fish.enable = true;
