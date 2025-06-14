@@ -6,6 +6,7 @@
 /.config/KDE/UserFeedback.conf
 /.config/QtProject.conf
 /.config/akregatorrc
+/.config/borg/security
 /.config/chromium/
 /.config/glib-2.0/settings/keyfile
 /.config/gobby/
