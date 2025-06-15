@@ -23,7 +23,7 @@
         "keyboard-state",
         "niri/language",
         "battery",
-        "battery#bat2",
+        "battery#bat1",
         "clock",
         "tray",
         "custom/power"

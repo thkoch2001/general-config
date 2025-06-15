@@ -135,7 +135,7 @@ in
     # stack
     strace
     # sqlite
-    swayidle # TODO
+    swayidle
     swaylock
     # sweethome3d.application
     # sweethome3d.furniture-editor
@@ -158,7 +158,6 @@ in
     wget
     wl-clipboard
     wlr-randr
-    # wmctrl # TODO used in ~/bin/switch-to-emacs
     xdg-utils # xdg-open
     xwayland-satellite
     xorg.xlsclients # find out which running apps use xwayland
