@@ -1,6 +1,6 @@
 [Unit]
 Description=CopyQ Clipboard manager
-After=niri.service xwayland-satellite.service
+After=niri.service
 
 [Install]
 WantedBy=graphical-session.target

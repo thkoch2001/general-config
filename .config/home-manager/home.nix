@@ -14,6 +14,10 @@ in
     username = "thk";
   };
 
+  # TODO:
+  # get rid of chromium
+  # https://github.com/crossbowerbt/dillo-plus/
+  # https://sr.ht/~bptato/chawan/
   home.packages = with pkgs; [
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -33,7 +37,7 @@ in
     # blueman
     (callPackage ./borg2.nix { })
     # cargo # rust package manager
-    chromium
+    chromium # ungoogled-chromium didn't work
     # clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
     copyq # clipboard manager
     # darcs
@@ -75,7 +79,7 @@ in
     # jq
     kanshi # TODO like autorandr but for wayland
     # kdePackages.falkon # webbrowser
-    # ladybird # webbrowser C++
+    # ladybird # webbrowser C++, needs to be installed via NixOS
     # klavaro
     libnotify # provides notify-send
     libreoffice-fresh
@@ -170,6 +174,7 @@ in
   programs = {
     fish.enable = true;
     home-manager.enable = true;
+    man.generateCaches = true; # Needed for fish manpage completion
     waybar.systemd.enable = true;
   };
 

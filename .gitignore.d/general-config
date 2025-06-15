@@ -8,6 +8,8 @@
 /.config/akregatorrc
 /.config/borg/security
 /.config/chromium/
+/.config/dconf
+/.config/fish
 /.config/glib-2.0/settings/keyfile
 /.config/gobby/
 /.config/gsmartcontrol/
@@ -19,7 +21,9 @@
 /.config/okularrc
 /.config/pavucontrol.ini
 /.config/phishingurlrc
+/.config/pulse
 /.config/quasselrc
+/.config/vcsh
 /.gstreamer-0.10
 /.kde/
 /.lesshst

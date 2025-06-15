@@ -27,7 +27,7 @@ profile "2extern+laptop" {
 }
 
 profile "laptoponly" {
-  output eDP-1 enable
+  output eDP-1 position 0,0
 }
 
 

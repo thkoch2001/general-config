@@ -1,8 +1,8 @@
-export MAILER=kmailservice
-
 # fix java apps in awesome
 # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=508650
-export _JAVA_AWT_WM_NONREPARENTING=1
+# https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Problems_with_Java_applications.2C_Applet_java_console
+# https://bugs.debian.org/956608
+_JAVA_AWT_WM_NONREPARENTING=1
 
 # fix eclipse
 # http://glandium.org/blog/?p=416

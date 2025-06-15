@@ -3,45 +3,13 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html
 
 (setq default-directory "~/")
-(unless (package-installed-p 'use-package)
-  (progn
-    (message "WARNING: use-package not installed!")
-    (throw 'no-use-package "use-package not installed!")
-    )
-  )
-
 (set-face-attribute 'default nil :height 130)
-
 (package-initialize)
-
-;; (use-package system-packages
-;;   :custom
-;;   (system-packages-package-manager 'apt)
-;;   (system-packages-use-sudo t)
-;;   )
 
 (defun thk-state-file (path)
   (concat "~/.local/state/emacs/" path)
   )
 (make-directory (thk-state-file "auto-save") t)
-
-(defun use-package-ensure-debian (name args _state &optional _no-refresh)
-  (dolist (ensure args)
-    (let ((package
-           (or (and (eq ensure t) (use-package-as-symbol name))
-               ensure)))
-      (when package
-        (require 'package)
-        (unless (package-installed-p package)
-          (condition-case-unless-debug err
-              (progn
-                (system-packages-install (concat "elpa-" (symbol-name package)))
-                t)
-            (error
-             (display-warning 'use-package
-                              (format "Failed to install %s: %s"
-                                      name (error-message-string err))
-                              :error))))))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -100,17 +68,14 @@
                                (display-line-numbers-mode 1)
                                (show-paren-mode t)
                                (local-set-key "%" 'thk-match-paren)
+                               (hs-minor-mode t)
                                )))
 
 ;; "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
-
-
 ;; see emacs FAQ: 5.27 How do I show which parenthesis matches the one I'm looking at?
-
 (show-paren-mode 1)
-
 
 ;; Here is some Emacs Lisp that will make the <%> key show the
 ;; matching parenthesis, like in `vi'.  In addition, if the cursor
@@ -199,32 +164,6 @@
     ("C-h k" . 'helpful-key)
     )
   )
-
-;;(use-package ido
-;;  :init
-;;  (ido-mode t)
-;;  :custom
-;;  (ido-auto-merge-work-directories-length -1)
-;;  (ido-enable-flex-matching t)
-;;  (ido-everywhere t)
-;;  (ido-save-directory-list-file (thk-state-file "ido_last"))
-;;  (ido-use-filename-at-point 'guess)
-;;  (ido-use-url-at-point t)
-;;  )
-
-;; (use-package lsp-haskell
-;;   :ensure t
-;;   :custom
-;;   (lsp-haskell-server-args '("--debug" "--logfile" "/tmp/hls.log"))
-;;   )
-
-;; (use-package lsp-mode
-;;   :ensure t
-;;   )
-
-;; (use-package lsp-ui
-;;   :ensure t
-;;   )
 
 (use-package magit
   :ensure t

@@ -23,7 +23,7 @@
   # see https://nixos.wiki/wiki/Full_Disk_Encryption
   boot.initrd.kernelModules = [ "dm-snapshot" "cryptd" ];
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NixOS-Encrypted";
-
+  documentation.man.generateCaches = true;
   fileSystems."/" =
     {
       device = "/dev/disk/by-label/NixOS-Root";
@@ -92,6 +92,7 @@
       enable = true;
       # enableSSHSupport = true; # TODO
     };
+    ladybird.enable = true; # https://github.com/LadybirdBrowser/ladybird/issues/572#issuecomment-2242268172
     mosh.enable = true;
     # mtr.enable = true; # TODO network diagnostic https://www.bitwizard.nl/mtr/
     ssh.startAgent = true;
@@ -121,7 +122,12 @@
     automatic = true;
     dates = "daily";
   };
-  # TODO https://nixos.org/manual/nixos/stable/#sec-upgrading
+  system.autoUpgrade = {
+    dates = "daily";
+    enable = true;
+    operation = "boot";
+  };
+
   # `man configuration.nix`
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "25.05"; # Did you read the comment?
