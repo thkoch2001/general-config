@@ -109,6 +109,7 @@
     openssh.enable = true;
     # Enable power-saving features.
     tlp.enable = true;
+    udisks2.enable = true;
     # from tazjin, see https://yggdrasil-network.github.io/
     # Enable yggdrasil network.
     # yggdrasil = {

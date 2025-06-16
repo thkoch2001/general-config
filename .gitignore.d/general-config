@@ -24,6 +24,7 @@
 /.config/Ladybird
 /.config/libreoffice/
 /.config/monitors.xml
+/.config/okularpartrc
 /.config/okularrc
 /.config/pavucontrol.ini
 /.config/phishingurlrc

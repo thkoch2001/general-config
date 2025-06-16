@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ISO 8601 Datetime with seperators
+# key: isodt
+# type: command
+# --
+(insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time)))

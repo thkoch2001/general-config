@@ -1,8 +1,0 @@
-[Unit]
-Description=Udiskie automount daemon
-
-[Install]
-WantedBy=graphical-session.target
-
-[Service]
-ExecStart=%h/.local/state/nix/profile/bin/udiskie --verbose --automount --no-config --notify --tray --appindicator

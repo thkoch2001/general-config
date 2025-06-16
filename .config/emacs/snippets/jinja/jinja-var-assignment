@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: jinja-var-assignment
+# key: jva%
+# --
+{% set $1 = $2 -%}$0

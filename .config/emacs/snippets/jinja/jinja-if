@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: jinja-if
+# key: jif%
+# --
+{% if $1 -%}
+  $0
+{% endif -%}

@@ -165,7 +165,7 @@ in
     yt-dlp
   ];
 
-  home.activation.gitignore-for-vcsh = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.gitignore-for-vcsh = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     (cd $newGenPath/home-files && run find . \( -type f -or -type l \) -printf "%h/%f\n" | cut -c 2- > "$HOME/.gitignore" )
     run echo "/.gitignore" >> "$HOME/.gitignore"
   '';
@@ -177,12 +177,33 @@ in
     waybar.systemd.enable = true;
   };
 
-  services.dunst = {
-    enable = true;
-    settings = {
-      global.font = font;
+  services = {
+    dunst = {
+      enable = true;
+      settings = {
+        global.font = font;
+      };
     };
+    udiskie.enable = true;
   };
+
+  services.swayidle =
+    let
+      lockcmd = "${pkgs.swaylock}/bin/swaylock";
+      niricmd = "${pkgs.niri}/bin/niri msg action";
+    in
+    {
+      enable = true;
+      events = [
+        { event = "before-sleep"; command = lockcmd; }
+        { event = "lock"; command = lockcmd; }
+        { event = "after-resume"; command = "${niricmd} power-on-monitors"; }
+      ];
+      timeouts = [
+        { timeout = 120; command = "${niricmd} power-off-monitors"; }
+      ];
+      # extraArgs = ["-d"];
+    };
 
   services.wpaperd = {
     enable = true;
@@ -196,22 +217,19 @@ in
     };
   };
 
-  services.swayidle =
-    let
-      lockcmd = "${pkgs.swaylock}/bin/swaylock";
-      niricmd = "${pkgs.niri}/bin/niri msg action";
-    in {
+  xdg.mimeApps = {
     enable = true;
-    events = [
-      { event = "before-sleep"; command = lockcmd; }
-      { event = "lock"; command = lockcmd; }
-      { event = "after-resume"; command = "${niricmd} power-on-monitors"; }
-    ];
-    timeouts = [
-      { timeout = 120; command = "${niricmd} power-off-monitors"; }
-    ];
-    # extraArgs = ["-d"];
+    defaultApplications = {
+      "x-scheme-handler/org-protocol" = [ "emacsclient.desktop" ];
+      "x-scheme-handler/mailto" = [ "chromium-browser.desktop" ];
+      "text/html" = [ "chromium-incognito.desktop" ];
+      "x-scheme-handler/http" = [ "chromium-incognito.desktop" ];
+      "x-scheme-handler/https" = [ "chromium-incognito.desktop" ];
+      "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
+      "x-scheme-handler/tonsite" = [ "org.telegram.desktop.desktop" ];
+    };
   };
+
   systemd.user.services.swayidle.Unit.After = lib.mkForce [ "niri.service" ];
   systemd.user.startServices = false; # This sd-switch thing has no documentation.
 }
