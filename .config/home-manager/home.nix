@@ -60,8 +60,9 @@ in
     ffmpeg
     # freecad
     fuzzel # application launcher
-    # gcc # needed for rustc
+    gcc # needed for rustc
     # ghc
+    gimp
     gitFull # To also get gitk
     # git-big-picture
     # git-imerge
@@ -136,7 +137,7 @@ in
     # rustc # rust compiler
     # rustfmt
     # rustic # backup, see GitHub issue on --cacert option
-    # rustup
+    rustup
     # sassc
     # screen-message
     # sequoia-sq
