@@ -23,14 +23,14 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
     rust-mode
     solarized-theme
     systemd
+    telega
     treemacs
     visual-fill-column
-    ws-butler
     yaml-mode
     yasnippet-snippets
-  ]) ++ [
-    # From main packages set
-  ]
+  ]) ++ (with epkgs.nongnuPackages; [
+    ws-butler
+  ])
   /*
     pandoc-mode?
 

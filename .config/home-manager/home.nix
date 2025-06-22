@@ -3,6 +3,14 @@ let
   font = "DejaVu Sans 12";
 in
 {
+  dconf.settings = {
+    "org/blueman/general" = {
+      # dunst doesn't seem to support OSD to enter pin codes
+      # https://ubuntu-mate.community/t/bluetooth-doesnt-display-pin-code-for-pairing/8496
+      notification-daemon = false;
+    };
+  };
+
   home = {
     homeDirectory = "/home/thk";
     preferXdgDirectories = true;
@@ -83,6 +91,7 @@ in
     # klavaro
     libnotify # provides notify-send
     libreoffice-fresh
+    libwebp # for dwebp for telegram emacs client telega, to display stickers
     # libsecret # for msmtp
     # lingot
     lsof # git-annex assistant checks if files are open for writing
@@ -152,7 +161,7 @@ in
     # usbutils # provides lsusb
     vcsh
     # virtiofsd
-    # vlc
+    vlc
     waybar # desktop bar
     wdisplays
     wget

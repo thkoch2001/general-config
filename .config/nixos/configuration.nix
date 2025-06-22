@@ -12,6 +12,7 @@
       ./printing
     ];
 
+  hardware.bluetooth.enable = true;
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
@@ -88,6 +89,7 @@
   security.pam.services.swaylock = { };
 
   programs = {
+    dconf.enable = true; # needed to set dconf stuff in home-manager
     gnupg.agent = {
       enable = true;
       # enableSSHSupport = true; # TODO

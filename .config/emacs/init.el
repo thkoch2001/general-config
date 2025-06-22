@@ -239,6 +239,20 @@
   :ensure t
   )
 
+(use-package telega
+  ;; :bind (:map global-map ("C-x c" . (lambda (p) (interactive "P")
+  ;;                                   (if p (call-interactively #'telega-chat-with)
+  ;;                                     (telega))))
+  ;;        :map telega-chat-button-map ("a" . ignore))
+  :config
+  (telega-mode-line-mode 1)
+  (telega-directory "~/.local/share/telega")
+  :custom
+  (telega-emoji-use-images nil)
+  ;; (telega-completing-read-function #'completing-read)
+  (telega-video-player-command "vlc"))
+
+
 (use-package time
   :custom
   (display-time-world-list
