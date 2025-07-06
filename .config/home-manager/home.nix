@@ -3,6 +3,13 @@ let
   font = "DejaVu Sans 12";
 in
 {
+  nix = {
+    enable = true;
+    settings = {
+      extra-experimental-features = ["flakes" "nix-command"];
+      use-xdg-base-directories = true;
+    };
+  };
   dconf.settings = {
     "org/blueman/general" = {
       # dunst doesn't seem to support OSD to enter pin codes
@@ -69,7 +76,7 @@ in
     # glibcLocalesUtf8
     # gnome.cheese
     # gnumake
-    # go-mtpfs # mount android
+    go-mtpfs # mount android
     # gparted
     # gramps # gen-trees
     graphviz
@@ -156,9 +163,8 @@ in
     # tig # text mode interface to git (to browse sparse checkouts)
     tmux
     tree
-    # udiskie
     # unrar-free
-    # unzip
+    unzip
     # usbutils # provides lsusb
     vcsh
     # virtiofsd
@@ -183,7 +189,10 @@ in
   programs = {
     fish.enable = true;
     home-manager.enable = true;
-    man.generateCaches = true; # Needed for fish manpage completion
+    man = {
+      enable = true;
+      generateCaches = true; # Needed for fish manpage completion
+    };
     waybar.systemd.enable = true;
   };
 

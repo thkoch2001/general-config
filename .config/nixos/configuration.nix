@@ -2,6 +2,7 @@
 {
   imports =
     [
+      <home-manager/nixos>
       # github.com/NixOS/nixos-hardware
       <nixos-hardware/lenovo/thinkpad/x260>
       # Include the results of the hardware scan.
@@ -12,6 +13,7 @@
       ./printing
     ];
 
+  home-manager.users.thk = /home/thk/.config/home-manager/home.nix;
   hardware.bluetooth.enable = true;
   hardware.graphics = {
     enable = true;
@@ -24,7 +26,7 @@
   # see https://nixos.wiki/wiki/Full_Disk_Encryption
   boot.initrd.kernelModules = [ "dm-snapshot" "cryptd" ];
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NixOS-Encrypted";
-  documentation.man.generateCaches = true;
+  # documentation.man.generateCaches = true;
   fileSystems."/" =
     {
       device = "/dev/disk/by-label/NixOS-Root";
@@ -71,7 +73,10 @@
     shell = pkgs.fish;
     ignoreShellProgramCheck = true; # home-manager is responsible for ~/.config/fish
   };
-  nix.settings.trusted-users = [ "@wheel" ];
+  nix.settings = {
+    trusted-users = [ "@wheel" ];
+    use-xdg-base-directories = true;
+  };
 
   environment.systemPackages = with pkgs; [
     autologin
@@ -108,7 +113,7 @@
       enable = true;
       pulse.enable = true;
     };
-    openssh.enable = true;
+    openssh.enable = false;
     # Enable power-saving features.
     tlp.enable = true;
     udisks2.enable = true;

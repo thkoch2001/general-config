@@ -13,7 +13,6 @@
 # emacs early compilation cache
 /.config/emacs/eln-cache
 /.config/emacs/tramp
-/.config/fish
 /.config/glib-2.0/settings/keyfile
 /.config/git/gitk
 /.config/gobby/

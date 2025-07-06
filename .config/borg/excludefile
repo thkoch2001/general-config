@@ -57,6 +57,8 @@
 /usr/src
 /var/cache
 /var/db/sudo
+/var/lib/bluetooth
+/var/lib/cups
 /var/lib/logrotate.status
 /var/lib/machines
 /var/lib/NetworkManager/secret_key
@@ -67,3 +69,4 @@
 /var/log/btmp
 /var/log/journal
 /var/log/private
+/var/spool/cups
