@@ -55,7 +55,6 @@
  '(show-trailing-whitespace t)
  '(tab-bar-show 1)
  '(tab-width 4)
- '(use-package-ensure-function 'use-package-ensure-debian)
  '(vc-make-backup-files t)
  '(version-control t)
  '(visible-bell t)
@@ -246,11 +245,13 @@
   ;;        :map telega-chat-button-map ("a" . ignore))
   :config
   (telega-mode-line-mode 1)
-  (telega-directory "~/.local/share/telega")
+
   :custom
   (telega-emoji-use-images nil)
+  (telega-directory "~/.local/share/telega")
   ;; (telega-completing-read-function #'completing-read)
-  (telega-video-player-command "vlc"))
+  (telega-video-player-command "vlc")
+  )
 
 
 (use-package time

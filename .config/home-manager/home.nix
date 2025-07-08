@@ -16,6 +16,10 @@ in
       # https://ubuntu-mate.community/t/bluetooth-doesnt-display-pin-code-for-pairing/8496
       notification-daemon = false;
     };
+    "org/blueman/transfer" = {
+      opp-accept = true;
+      shared-path = "/home/thk/Downloads";
+    };
   };
 
   home = {
@@ -75,7 +79,7 @@ in
     # git-imerge
     # glibcLocalesUtf8
     # gnome.cheese
-    # gnumake
+    gnumake
     go-mtpfs # mount android
     # gparted
     # gramps # gen-trees
