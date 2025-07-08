@@ -1,0 +1,1 @@
+The policy.json file is needed for skopeo, which is needed to upload docker images to thkoch.gitlab
