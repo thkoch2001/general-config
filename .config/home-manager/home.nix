@@ -255,4 +255,9 @@ in
 
   systemd.user.services.swayidle.Unit.After = lib.mkForce [ "niri.service" ];
   systemd.user.startServices = false; # This sd-switch thing has no documentation.
+  systemd.user.services.chromium = {
+    Unit.Description = "Chromium Web Browser";
+    Service.ExecStart = "${pkgs.chromium}/bin/chromium --gtk-version=4 --enable-features=UseOzonePlatform --ozone-platform=wayland --use-gl=desktop --enable-features=VaapiVideoDecoder --enable-accelerated-video-decode";
+    Install.WantedBy = ["applications.target"];
+  };
 }
