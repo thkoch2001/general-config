@@ -124,6 +124,7 @@
     #   persistentKeys = true;
     #   settings.IfName = "ygg0";
     # };
+    upower.enable = true;
   };
 
   nix.gc = {

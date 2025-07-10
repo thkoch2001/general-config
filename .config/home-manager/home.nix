@@ -207,6 +207,7 @@ in
         global.font = font;
       };
     };
+    poweralertd.enable = true;
     udiskie.enable = true;
   };
 
@@ -257,7 +258,7 @@ in
   systemd.user.startServices = false; # This sd-switch thing has no documentation.
   systemd.user.services.chromium = {
     Unit.Description = "Chromium Web Browser";
-    Service.ExecStart = "${pkgs.chromium}/bin/chromium --gtk-version=4 --enable-features=UseOzonePlatform --ozone-platform=wayland --use-gl=desktop --enable-features=VaapiVideoDecoder --enable-accelerated-video-decode";
+    Service.ExecStart = "${pkgs.chromium}/bin/chromium --gtk-version=4 --enable-features=UseOzonePlatform --ozone-platform=wayland"; # --use-gl=desktop --enable-features=VaapiVideoDecoder --enable-accelerated-video-decode";
     Install.WantedBy = ["applications.target"];
   };
 }
