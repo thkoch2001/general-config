@@ -5,7 +5,7 @@
 -- pspg did not render utf8 borders with LANG=de_DE.UTF-8
 \setenv LANG C.UTF8
 \setenv PSQL_PAGER pspg
-\setenv PSPG_CONF .config/pspg/config
+\setenv PSPG_CONF ~/.config/pspg/config
 \! mkdir -p ~/.local/state/pspg
 \setenv PSPG_HISTORY ~/.local/state/pspg/pspg_history
 

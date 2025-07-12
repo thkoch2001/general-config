@@ -1,15 +1,27 @@
 { lib, config, pkgs, ... }:
 let
   font = "DejaVu Sans 12";
+  #  unstable = import <nixpkgs-unstable> {};
+  #  upkgs = unstable.pkgs;
 in
 {
   nix = {
     enable = true;
     settings = {
-      extra-experimental-features = ["flakes" "nix-command"];
+      extra-experimental-features = [ "flakes" "nix-command" ];
       use-xdg-base-directories = true;
     };
   };
+  nixpkgs.overlays = [
+    (final: prev:
+      {
+        wpaperd = prev.wpaperd.overrideAttrs (old: {
+          patches = (old.patches or [ ]) ++ [
+            ./patches/wpaperd_fix_140.patch
+          ];
+        });
+      })
+  ];
   dconf.settings = {
     "org/blueman/general" = {
       # dunst doesn't seem to support OSD to enter pin codes
@@ -131,7 +143,7 @@ in
     pavucontrol
     # powertop
     # psmisc # fuser, killall and pstree
-    # pspg # postgres pager
+    pspg # postgres pager
     # pwgen # maybe replace with spwgen from pwgen-secure?
     qemu_kvm
     quasselClient
@@ -190,7 +202,7 @@ in
   '';
 
   programs = {
-#    fish.enable = true;
+    #    fish.enable = true;
     home-manager.enable = true;
     man = {
       enable = true;
@@ -258,6 +270,6 @@ in
   systemd.user.services.chromium = {
     Unit.Description = "Chromium Web Browser";
     Service.ExecStart = "${pkgs.chromium}/bin/chromium --gtk-version=4 --enable-features=UseOzonePlatform --ozone-platform=wayland"; # --use-gl=desktop --enable-features=VaapiVideoDecoder --enable-accelerated-video-decode";
-    Install.WantedBy = ["applications.target"];
+    Install.WantedBy = [ "applications.target" ];
   };
 }
