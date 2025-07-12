@@ -1,0 +1,21 @@
+# see readline info
+# reload with C-x C-r
+
+set editing-mode emacs
+$include /etc/inputrc
+"\C-p":history-search-backward
+"\C-n":history-search-forward
+set completion-query-items 150
+set completion-ignore-case On
+set mark-symlinked-directories On
+set blink-matching-paren On
+set colored-completion-prefix off
+set colored-stats on
+set completion-map-case On
+set completion-prefix-display-length 10
+set menu-complete-display-prefix on
+
+TAB: complete
+M-TAB: menu-complete
+"\e\t": menu-complete-backward
+"\e[Z": menu-complete-backward

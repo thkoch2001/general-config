@@ -95,9 +95,8 @@ in
     # hledger-ui
     # html-tidy
     # jdupes
-    # josh # monorepos with git
+    josh # monorepos with git
     # jq
-    kanshi # TODO like autorandr but for wayland
     # kdePackages.falkon # webbrowser
     # ladybird # webbrowser C++, needs to be installed via NixOS
     # klavaro
@@ -148,7 +147,7 @@ in
     # rustc # rust compiler
     # rustfmt
     # rustic # backup, see GitHub issue on --cacert option
-    rustup
+    # rustup
     # sassc
     # screen-message
     # sequoia-sq
@@ -191,7 +190,7 @@ in
   '';
 
   programs = {
-    fish.enable = true;
+#    fish.enable = true;
     home-manager.enable = true;
     man = {
       enable = true;
