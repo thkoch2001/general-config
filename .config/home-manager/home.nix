@@ -240,7 +240,7 @@ in
         { event = "after-resume"; command = "${niricmd} power-on-monitors"; }
       ];
       timeouts = [
-        { timeout = 120; command = "${niricmd} power-off-monitors"; }
+        { timeout = 6000; command = "${niricmd} power-off-monitors"; }
       ];
       # extraArgs = ["-d"];
     };
