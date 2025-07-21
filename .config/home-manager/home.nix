@@ -189,6 +189,7 @@ in
     wget
     wl-clipboard
     wlr-randr
+    (callPackage (import ./packages/wlr-which-key.nix) {})
     xdg-utils # xdg-open
     xwayland-satellite
     xorg.xlsclients # find out which running apps use xwayland

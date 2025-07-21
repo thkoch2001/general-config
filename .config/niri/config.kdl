@@ -1,3 +1,33 @@
+workspace "browser"
+
+window-rule {
+  match app-id="chromium-browser"
+  open-on-workspace "browser"
+}
+
+workspace "chat"
+
+window-rule {
+  match app-id="org.kde.quassel"
+  match app-id="org.telegram.desktop"
+  open-on-workspace "chat"
+}
+
+workspace "edit"
+
+window-rule {
+  match app-id="emacs"
+  open-on-workspace "edit"
+}
+
+workspace "term"
+
+window-rule {
+  match app-id="Alacritty"
+  open-on-workspace "term"
+}
+
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
@@ -106,6 +136,7 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 binds {
+    Mod+SPACE hotkey-overlay-title="wlr-which-key" { spawn "wlr-which-key"; }
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
     // like wev.
