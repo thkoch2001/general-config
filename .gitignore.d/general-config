@@ -10,6 +10,7 @@
 /.config/chromium/
 /.config/copyq
 /.config/dconf
+/.config/direnv/lib/
 # emacs early compilation cache
 /.config/emacs/eln-cache
 /.config/emacs/tramp

@@ -143,6 +143,10 @@
   (eglot-connect-timeout 120)
   )
 
+(use-package envrc
+  :hook (after-init . envrc-global-mode)
+)
+
 (use-package git-auto-commit-mode
   :ensure t
 )

@@ -202,7 +202,11 @@ in
   '';
 
   programs = {
-    #    fish.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    fish.enable = true;
     home-manager.enable = true;
     man = {
       enable = true;

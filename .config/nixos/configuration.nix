@@ -69,8 +69,8 @@
   users.users.thk = {
     isNormalUser = true;
     # my former Debian groups: cdrom floppy sudo audio dip video plugdev netdev bluetooth docker nix-users
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-#    shell = pkgs.fish;
+    extraGroups = [ "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.fish;
 #    ignoreShellProgramCheck = true; # home-manager is responsible for ~/.config/fish
   };
   nix.settings = {
@@ -81,7 +81,6 @@
   environment.systemPackages = with pkgs; [
     autologin
     pinentry-qt # provided here, see ~/.gnupg/gpg-agent.conf
-#    fish # make sure it's there even if it's also configured in home-manager
     git
     htop
     qt5.qtwayland
@@ -95,6 +94,7 @@
 
   programs = {
     dconf.enable = true; # needed to set dconf stuff in home-manager
+    fish.enable = true; # make sure it's there even if it's also configured in home-manager
     gnupg.agent = {
       enable = true;
       # enableSSHSupport = true; # TODO

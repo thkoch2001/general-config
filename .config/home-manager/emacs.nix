@@ -10,6 +10,7 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
     apache-mode
     atomic-chrome
     casual-suite
+    envrc
     git-auto-commit-mode
     graphviz-dot-mode
     haskell-mode
