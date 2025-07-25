@@ -1,0 +1,13 @@
+diff --git a/src/text.rs b/src/text.rs
+index 131027a..81d5e4b 100644
+--- a/src/text.rs
++++ b/src/text.rs
+@@ -22,7 +22,7 @@ impl ComputedText {
+     pub fn new(text: impl AsRef<str>, context: &pango::Context, font: &FontDescription) -> Self {
+         let layout = pango::Layout::new(context);
+         layout.set_font_description(Some(font));
+-        layout.set_markup(text.as_ref());
++        layout.set_text(text.as_ref());
+ 
+         let (width, height) = layout.pixel_size();
+ 

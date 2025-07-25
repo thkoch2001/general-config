@@ -108,7 +108,7 @@ in
     # html-tidy
     # jdupes
     josh # monorepos with git
-    # jq
+    jq
     # kdePackages.falkon # webbrowser
     # ladybird # webbrowser C++, needs to be installed via NixOS
     # klavaro
@@ -189,7 +189,12 @@ in
     wget
     wl-clipboard
     wlr-randr
-    (callPackage (import ./packages/wlr-which-key.nix) {})
+    ((callPackage (import ./packages/wlr-which-key.nix) {})
+      .overrideAttrs (old: {
+          patches = (old.patches or [ ]) ++ [
+            ./patches/wlr-which-key_fix_26.patch
+          ];
+    }))
     xdg-utils # xdg-open
     xwayland-satellite
     xorg.xlsclients # find out which running apps use xwayland

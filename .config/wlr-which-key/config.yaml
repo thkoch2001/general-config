@@ -8,6 +8,39 @@ menu:
   - key: "f"
     desc: focus
     submenu:
+      - key: "c"
+        desc: column
+        submenu:
+          - key: "h"
+            desc: left
+            cmd: niri msg action focus-column-left
+          - key: "l"
+            desc: right
+            cmd: niri msg action focus-column-right
+          - key: "<"
+            desc: first
+            cmd: niri msg action focus-column-first
+          - key: ">"
+            desc: last
+            cmd: niri msg action focus-column-last
+          - key: "H"
+            desc: left or monitor left
+            cmd: niri msg action focus-column-left-or-monitor-left
+          - key: "L"
+            desc: right or monitor right
+            cmd: niri msg action focus-column-right-or-monitor-right
+#  focus-column-right-or-first
+#  focus-column-left-or-last
+          - key: "1"
+            desc: 1
+            cmd: niri msg action focus-column 1
+          - key: "2"
+            desc: 2
+            cmd: niri msg action focus-column 2
+          - key: "3"
+            desc: 3
+            cmd: niri msg action focus-column 3
+
       - key: "m"
         desc: monitor
         submenu:
