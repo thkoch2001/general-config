@@ -272,6 +272,7 @@ in
       "x-scheme-handler/https" = [ "chromium-incognito.desktop" ];
       "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
       "x-scheme-handler/tonsite" = [ "org.telegram.desktop.desktop" ];
+      "inode/directory" = ["emacsclient.desktop"];
     };
   };
 
