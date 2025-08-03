@@ -1,8 +1,8 @@
 { lib, config, pkgs, ... }:
 let
   font = "DejaVu Sans 12";
-  #  unstable = import <nixpkgs-unstable> {};
-  #  upkgs = unstable.pkgs;
+  unstable = import <nixpkgs-unstable> {};
+  upkgs = unstable.pkgs;
 in
 {
   nix = {
@@ -42,6 +42,9 @@ in
       "$HOME/.local/bin"
       "$HOME/bin"
     ];
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+    };
     username = "thk";
   };
 
@@ -68,7 +71,7 @@ in
     # blueman
     (callPackage ./borg2.nix { })
     # cargo # rust package manager
-    chromium # ungoogled-chromium didn't work
+    # chromium # enabled; ungoogled-chromium didn't work
     # clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
     copyq # clipboard manager
     # darcs
@@ -111,6 +114,7 @@ in
     jq
     # kdePackages.falkon # webbrowser
     # ladybird # webbrowser C++, needs to be installed via NixOS
+    upkgs.ladybird
     # klavaro
     libnotify # provides notify-send
     libreoffice-fresh
@@ -200,6 +204,7 @@ in
     xorg.xlsclients # find out which running apps use xwayland
     xorg.xwininfo # get X11 info by clicking on window
     yt-dlp
+    (callPackage (import ./packages/ydl-podcast.nix) {})
   ];
 
   home.activation.gitignore-for-vcsh = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -208,6 +213,9 @@ in
   '';
 
   programs = {
+    chromium = {
+      enable = true;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -280,7 +288,7 @@ in
   systemd.user.startServices = false; # This sd-switch thing has no documentation.
   systemd.user.services.chromium = {
     Unit.Description = "Chromium Web Browser";
-    Service.ExecStart = "${pkgs.chromium}/bin/chromium --gtk-version=4 --enable-features=UseOzonePlatform --ozone-platform=wayland"; # --use-gl=desktop --enable-features=VaapiVideoDecoder --enable-accelerated-video-decode";
+    Service.ExecStart = "${pkgs.chromium}/bin/chromium";
     Install.WantedBy = [ "applications.target" ];
   };
 }

@@ -8,7 +8,6 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./autologin.nix
-      ./fonts.nix
       ./laptop.nix
       ./printing
     ];
@@ -55,6 +54,32 @@
   time.timeZone = "Europe/Bucharest";
 
   i18n.defaultLocale = "de_DE.UTF-8";
+
+  fonts = {
+    enableDefaultPackages = true;
+    fontDir.enable = true; # needed for ladybird browser
+    packages = with pkgs; [
+      # corefonts # has unfree license
+      dejavu_fonts
+      font-awesome
+      jetbrains-mono
+      openmoji-color
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      noto-fonts-monochrome-emoji
+    ];
+
+    fontconfig = {
+      hinting.enable = true;
+      subpixel.lcdfilter = "light";
+
+      defaultFonts = {
+        monospace = [ "JetBrains Mono" ];
+        emoji = [ "OpenMoji Color" ];
+      };
+    };
+  };
+
   console = {
     font = "ter-128n";
     keyMap = "de-latin1-nodeadkeys";
@@ -99,7 +124,9 @@
       enable = true;
       # enableSSHSupport = true; # TODO
     };
-    ladybird.enable = true; # https://github.com/LadybirdBrowser/ladybird/issues/572#issuecomment-2242268172
+    # using ladybird from unstable
+    # manually doing what ladybird.enable does
+    # ladybird.enable = true; # https://github.com/LadybirdBrowser/ladybird/issues/572#issuecomment-2242268172
     mosh.enable = true;
     # mtr.enable = true; # TODO network diagnostic https://www.bitwizard.nl/mtr/
     ssh.startAgent = true;
