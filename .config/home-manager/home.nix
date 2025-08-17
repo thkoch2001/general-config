@@ -3,6 +3,12 @@ let
   font = "DejaVu Sans 12";
   unstable = import <nixpkgs-unstable> {};
   upkgs = unstable.pkgs;
+  thk-nur = import (pkgs.fetchFromGitHub {
+    owner = "thkoch2001";
+    repo = "nur-packages";
+    rev = "a9ee13389b65ed76894c7d2630a4711a695cf89";
+    hash = "sha256-34ZI/fvLgUGK7cHV4bOFtYDTEOVMciSc79R8EShjoVQ=";
+  }) {inherit pkgs;};
 in
 {
   nix = {
@@ -67,6 +73,7 @@ in
     # '')
     alacritty
     (aspellWithDicts (d: [ d.de d.en d.ro d.ru ]))
+    bat # syntax highlighting cat https://github.com/sharkdp/bat
     bc # cli calculator
     # blueman
     (callPackage ./borg2.nix { })
@@ -129,6 +136,7 @@ in
     # mediathekview
     mpv
     # msmtp
+    # muvm # Run programs from your system in a microVM
     # ncdu
     # netsurf.browser
     networkmanagerapplet
@@ -139,7 +147,7 @@ in
     # nix-prefetch-github
     # nmap
     # palemoon-bin # firefox fork https://www.palemoon.org/
-    # pandoc
+    pandoc # e.g. markdown preview in emacs
     # paperkey
     # parcellite
     pass
@@ -157,6 +165,7 @@ in
     #   enableDaemon = false;
     #   monolithic = false;
     # };
+    quickemu # Quickly create and run optimised Windows, macOS and Linux virtual machines
     # redshift
     # reuse
     # rust-analyzer
@@ -164,6 +173,7 @@ in
     # rustfmt
     # rustic # backup, see GitHub issue on --cacert option
     # rustup
+    samba # for file sharing to VMs, see quickemu
     # sassc
     # screen-message
     # sequoia-sq
@@ -188,6 +198,7 @@ in
     vcsh
     # virtiofsd
     vlc
+    watchexec
     waybar # desktop bar
     wdisplays
     wget
@@ -204,7 +215,7 @@ in
     xorg.xlsclients # find out which running apps use xwayland
     xorg.xwininfo # get X11 info by clicking on window
     yt-dlp
-    (callPackage (import ./packages/ydl-podcast.nix) {})
+    thk-nur.yt2feed
   ];
 
   home.activation.gitignore-for-vcsh = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -219,6 +230,10 @@ in
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+    };
+    firefox = {
+      enable = true;
+      package = pkgs.librewolf;
     };
     fish.enable = true;
     home-manager.enable = true;
