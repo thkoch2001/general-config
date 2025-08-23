@@ -157,7 +157,7 @@ in
     # psmisc # fuser, killall and pstree
     pspg # postgres pager
     # pwgen # maybe replace with spwgen from pwgen-secure?
-    qemu_kvm
+    # qemu_kvm # qickemu should bring in qemu_full
     quasselClient
     # from tazjin
     # pkgs.quassel.override {
