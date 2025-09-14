@@ -98,6 +98,7 @@
     shell = pkgs.fish;
 #    ignoreShellProgramCheck = true; # home-manager is responsible for ~/.config/fish
   };
+
   nix.settings = {
     trusted-users = [ "@wheel" ];
     use-xdg-base-directories = true;
@@ -154,6 +155,7 @@
     upower.enable = true;
   };
 
+  nix.optimise.automatic = true;
   nix.gc = {
     automatic = true;
     dates = "daily";

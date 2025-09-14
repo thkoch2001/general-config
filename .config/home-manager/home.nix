@@ -58,7 +58,21 @@ in
   # get rid of chromium
   # https://github.com/crossbowerbt/dillo-plus/
   # https://sr.ht/~bptato/chawan/
-  home.packages = with pkgs; [
+  home.packages = with pkgs;
+    let
+      # https://nixos.wiki/wiki/TexLive
+      # https://gitlab.com/Kaligule/org-to-pdf/-/blob/master/shell.nix
+      tex_for_orgmode = (texlive.combine {
+        inherit (pkgs.texlive) scheme-basic
+          dvisvgm dvipng # for preview and export as html
+          wrapfig amsmath ulem hyperref capt-of
+          latexmk collection-fontsrecommended
+        ;
+        #(setq org-latex-compiler "lualatex")
+        #(setq org-preview-latex-default-process 'dvisvgm)
+      });
+    in
+    [
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -89,7 +103,7 @@ in
     # dovecot_pigeonhole
     # duff
     # evince
-    (import ./emacs.nix { inherit pkgs; })
+    (import ./emacs.nix { pkgs = upkgs; })
     ffmpeg
     # freecad
     fuzzel # application launcher
@@ -158,6 +172,7 @@ in
     pspg # postgres pager
     # pwgen # maybe replace with spwgen from pwgen-secure?
     # qemu_kvm # qickemu should bring in qemu_full
+    #qgnomeplatform-qt6 # dark-mode for e.g. akregator, see https://people.debian.org/~werdahias/enforcing-darkmode-for-qt-programs-under-a-non-qt-based-environment.html     #adwaita-qt6
     quasselClient
     # from tazjin
     # pkgs.quassel.override {
@@ -188,9 +203,11 @@ in
     # sweethome3d.textures-editor
     telegram-desktop
     # termonad
+    tex_for_orgmode
     # thunderbird
     # tig # text mode interface to git (to browse sparse checkouts)
     tmux
+    traceroute
     tree
     # unrar-free
     unzip

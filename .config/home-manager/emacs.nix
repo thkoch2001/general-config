@@ -5,6 +5,7 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
     ace-window
     company
     org
+    # org-modern # https://github.com/minad/org-modern
     use-package
   ]) ++ (with epkgs.melpaPackages; [
     apache-mode
