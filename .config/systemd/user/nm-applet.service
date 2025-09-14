@@ -1,8 +1,0 @@
-[Unit]
-Description=NetworkManager applet
-
-[Install]
-WantedBy=graphical-session.target
-
-[Service]
-ExecStart=/usr/bin/nm-applet --indicator
