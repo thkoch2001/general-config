@@ -22,9 +22,16 @@
     ];
   };
 
-  # see https://nixos.wiki/wiki/Full_Disk_Encryption
-  boot.initrd.kernelModules = [ "dm-snapshot" "cryptd" ];
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NixOS-Encrypted";
+  boot = {
+    # Use the systemd-boot EFI boot loader.
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+
+    # see https://nixos.wiki/wiki/Full_Disk_Encryption
+    initrd.kernelModules = [ "dm-snapshot" "cryptd" ];
+    initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NixOS-Encrypted";
+  };
+
   # documentation.man.generateCaches = true;
   fileSystems."/" =
     {
@@ -44,12 +51,13 @@
   swapDevices = [{ device = "/dev/disk/by-label/NixOS-Swap"; }];
   #    [ { device = "/dev/disk/by-uuid/ae097c9a-a9eb-474d-8d22-95ceb511a096"; }
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "thk-nixos";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "thk-nixos";
+    networkmanager = {
+      enable = true;
+      insertNameservers = [ "8.8.8.8" ];
+    };
+  };
 
   time.timeZone = "Europe/Bucharest";
 
@@ -64,9 +72,7 @@
       font-awesome
       jetbrains-mono
       openmoji-color
-      noto-fonts-cjk-sans
-      noto-fonts-color-emoji
-      noto-fonts-monochrome-emoji
+      noto-fonts
     ];
 
     fontconfig = {
@@ -105,7 +111,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    autologin
     pinentry-qt # provided here, see ~/.gnupg/gpg-agent.conf
     git
     htop
