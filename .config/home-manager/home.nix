@@ -21,11 +21,17 @@ in
   nixpkgs.overlays = [
     (final: prev:
       {
+        wlr-which-key = upkgs.wlr-which-key.overrideAttrs (old: {
+          patches = (old.patches or [ ]) ++ [
+            ./patches/wlr-which-key_fix_26.patch
+          ];
+        });
         wpaperd = prev.wpaperd.overrideAttrs (old: {
           patches = (old.patches or [ ]) ++ [
             ./patches/wpaperd_fix_140.patch
           ];
         });
+        yt-dlp = (pkgs.callPackage (import ./packages/yt-dlp.nix) {});
       })
   ];
   dconf.settings = {
@@ -221,12 +227,7 @@ in
     wget
     wl-clipboard
     wlr-randr
-    ((callPackage (import ./packages/wlr-which-key.nix) {})
-      .overrideAttrs (old: {
-          patches = (old.patches or [ ]) ++ [
-            ./patches/wlr-which-key_fix_26.patch
-          ];
-    }))
+    wlr-which-key
     xdg-utils # xdg-open
     xwayland-satellite
     xorg.xlsclients # find out which running apps use xwayland
@@ -243,6 +244,7 @@ in
   programs = {
     chromium = {
       enable = true;
+      package = upkgs.chromium;
     };
     direnv = {
       enable = true;
