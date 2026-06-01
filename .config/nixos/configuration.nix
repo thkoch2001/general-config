@@ -23,6 +23,10 @@
   };
 
   boot = {
+    kernel.sysctl = {
+      # https://knowledge.informatica.com/s/article/524270?language=en_US
+      "kernel.yama.ptrace_scope" = 0;
+    };
     # Use the systemd-boot EFI boot loader.
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -32,7 +36,6 @@
     initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NixOS-Encrypted";
   };
 
-  # documentation.man.generateCaches = true;
   fileSystems."/" =
     {
       device = "/dev/disk/by-label/NixOS-Root";
@@ -97,6 +100,16 @@
     ];
   };
 
+  documentation = {
+    dev.enable = false; # false is default TODO
+    nixos.includeAllModules = true;
+    man = {
+      mandoc.settings.output.toc = true;
+      mandoc.enable = false; # man-db and mandoc can't be used as the default man page viewer at the same time!
+      # generateCaches = true; # conflict with home-manager?
+    };
+  };
+
   users.users.thk = {
     isNormalUser = true;
     # my former Debian groups: cdrom floppy sudo audio dip video plugdev netdev bluetooth docker nix-users
@@ -122,6 +135,8 @@
 
   # from tazjin
   security.pam.services.swaylock = { };
+
+  security.sudo.extraConfig = "Defaults insults,pwfeedback";
 
   programs = {
     dconf.enable = true; # needed to set dconf stuff in home-manager
@@ -160,18 +175,18 @@
     upower.enable = true;
   };
 
-  nix.optimise.automatic = true;
+  nix.optimise.automatic = false;
   nix.gc = {
-    automatic = true;
+    automatic = false;
     dates = "daily";
   };
   system.autoUpgrade = {
     dates = "daily";
-    enable = true;
+    enable = false;
     operation = "boot";
   };
 
   # `man configuration.nix`
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 }

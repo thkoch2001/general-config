@@ -29,7 +29,7 @@
  '(custom-file "~/.config/emacs/custom-save-dump-not-loaded.el")
  '(custom-safe-themes '(
                         "69181b408ef74ce12270736cddd201de626ec5021a9b4d87fb788a18b8c59d1b" ; modus-vivendi
-                        "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" ; solarized-dark-high-contrast 2.0
+                        "46433a4be67ff0f415175d0876ef9435d190f3aa57bb00670febd70ba0ba52e1" ; solarized-dark-high-contrast 2.0
                         default))
  '(delete-old-versions t)
  '(editorconfig-mode t)
@@ -243,6 +243,7 @@
   )
 
 (use-package telega
+  :after (xdg)
   ;; :bind (:map global-map ("C-x c" . (lambda (p) (interactive "P")
   ;;                                   (if p (call-interactively #'telega-chat-with)
   ;;                                     (telega))))
@@ -252,7 +253,8 @@
 
   :custom
   (telega-emoji-use-images nil)
-  (telega-directory "~/.local/share/telega")
+  (telega-directory  (expand-file-name "telega" (xdg-data-home)))
+  (telega-cache-dir  (expand-file-name "telega" (xdg-cache-home)))
   ;; (telega-completing-read-function #'completing-read)
   (telega-video-player-command "vlc")
   )

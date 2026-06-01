@@ -355,6 +355,7 @@ binds {
     // moving the mouse or pressing any other key.
     // Mod+Shift+P { power-off-monitors; }
     Ctrl+Alt+P hotkey-overlay-title="Power off monitors" { power-off-monitors; }
+    Ctrl+Alt+H hotkey-overlay-title="Clipboard Manager" { spawn "copyq" "show"; }
 }
 
 hotkey-overlay {

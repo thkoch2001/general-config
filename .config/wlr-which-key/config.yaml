@@ -290,4 +290,26 @@ menu:
           - key: "5"
             desc: 5
             cmd: niri msg action move-column-to-workspace 5
+  - key: "s"
+    desc: size
+    submenu:
+      - key: "f"
+        desc: Toggle fullscreen on the focused window
+        cmd: niri msg action fullscreen-window
+      - key: "m"
+        desc: Toggle the maximized state of the focused column
+        cmd: niri msg action maximize-column
+      - key: "r"
+        desc: reset window height
+        cmd: niri msg action reset-window-height
+      - key: "c"
+        desc: Switch between preset column widths
+        cmd: niri msg action switch-preset-column-width
+      - key: "w"
+        desc: Switch between preset window widths
+        cmd: niri msg action switch-preset-window-width
+      - key: "h"
+        desc: Switch between preset window heights
+        cmd: niri msg action switch-preset-window-height
+
 

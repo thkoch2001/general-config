@@ -1,0 +1,3 @@
+--extractor-args "youtube:player_js_version=actual"
+#--format "best[height<=720]"
+--abort-on-unavailable-fragments

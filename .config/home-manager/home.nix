@@ -6,8 +6,8 @@ let
   thk-nur = import (pkgs.fetchFromGitHub {
     owner = "thkoch2001";
     repo = "nur-packages";
-    rev = "a9ee13389b65ed76894c7d2630a4711a695cf89";
-    hash = "sha256-34ZI/fvLgUGK7cHV4bOFtYDTEOVMciSc79R8EShjoVQ=";
+    rev = "e3afcb25c7539d47b52023057b7f6f99cd025af3";
+    hash = "sha256-pi9pakM7MujZZktPp7P5EJhEINPT3sFs2/H0mnJhdBQ=";
   }) {inherit pkgs;};
 in
 {
@@ -31,7 +31,7 @@ in
             ./patches/wpaperd_fix_140.patch
           ];
         });
-        yt-dlp = (pkgs.callPackage (import ./packages/yt-dlp.nix) {});
+        # yt-dlp = (pkgs.callPackage (import ./packages/yt-dlp.nix) {});
       })
   ];
   dconf.settings = {
@@ -48,6 +48,17 @@ in
 
   home = {
     homeDirectory = "/home/thk";
+    pointerCursor = {
+      # https://github.com/YaLTeR/niri/issues/2339
+      # https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#cursor
+      # https://nix-community.github.io/home-manager/options.xhtml#opt-home.pointerCursor
+      enable = true;
+      package = pkgs.vanilla-dmz;
+      gtk.enable = true;
+      name = "Vanilla-DMZ";
+      size = 48;
+      x11.enable = true;
+    };
     preferXdgDirectories = true;
     stateVersion = "25.05";
     sessionPath = [
@@ -108,7 +119,7 @@ in
     dnsutils
     # dovecot_pigeonhole
     # duff
-    # evince
+    evince
     (import ./emacs.nix { pkgs = upkgs; })
     ffmpeg
     # freecad
@@ -117,6 +128,7 @@ in
     # ghc
     gimp
     gitFull # To also get gitk
+    git-annex
     # git-big-picture
     # git-imerge
     # glibcLocalesUtf8
@@ -141,7 +153,7 @@ in
     jq
     # kdePackages.falkon # webbrowser
     # ladybird # webbrowser C++, needs to be installed via NixOS
-    upkgs.ladybird
+    ladybird
     # klavaro
     libnotify # provides notify-send
     libreoffice-fresh
@@ -198,6 +210,7 @@ in
     # sassc
     # screen-message
     # sequoia-sq
+    servo
     # sshfs
     # stack
     strace
@@ -214,6 +227,8 @@ in
     # tig # text mode interface to git (to browse sparse checkouts)
     tmux
     traceroute
+    translate-shell # Command-line translator using Google Translate, Bing Translator, Yandex.Translate, and Apertium
+                    # https://github.com/soimort/translate-shell/wiki/Configuration
     tree
     # unrar-free
     unzip
@@ -222,6 +237,7 @@ in
     # virtiofsd
     vlc
     watchexec
+    wavemon
     waybar # desktop bar
     wdisplays
     wget
@@ -234,6 +250,7 @@ in
     xorg.xwininfo # get X11 info by clicking on window
     yt-dlp
     thk-nur.yt2feed
+    zip
   ];
 
   home.activation.gitignore-for-vcsh = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

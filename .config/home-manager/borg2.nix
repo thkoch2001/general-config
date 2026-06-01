@@ -37,11 +37,17 @@ python.pkgs.buildPythonApplication rec {
   '';*/
   postPatch = ''
     substituteInPlace setup.cfg \
-      --replace-warn "msgpack >=1.0.3, <=1.0.4" "msgpack >=1.0.3, <=1.1.0" \
-      --replace-warn "platformdirs >=3.0.0, <4.0.0" "platformdirs >=3.0.0, <4.3.8"
+      --replace-warn "msgpack >=1.0.3, <=1.0.4" "msgpack >=1.0.3, <=1.1.1" \
+      --replace-warn "platformdirs >=3.0.0, <4.0.0" "platformdirs >=3.0.0, <=4.5.0"
     substituteInPlace src/borg/helpers/msgpack.py \
       --replace-warn "# DO NOT CHANGE OR REMOVE! See also requirements and comments in setup.py." \
       "return True"
+    substituteInPlace src/borg/item.pyx \
+      --replace-warn "    cpdef __set_name__(self, name):" \
+      "    cpdef __set_name__(self, owner, name):"
+    substituteInPlace src/borg/item.pyx \
+      --replace-warn "                value.__set_name__(name)" \
+      "                value.__set_name__(cls, name)"
   '';
 
   build-system = with python.pkgs; [
