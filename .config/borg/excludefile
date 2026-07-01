@@ -65,6 +65,7 @@
 /var/lib/NetworkManager-fortisslvpn
 /var/lib/portables
 /var/lib/private
+/var/lib/systemd/pstore
 /var/lib/systemd/random-seed
 /var/log/btmp
 /var/log/journal

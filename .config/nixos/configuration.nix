@@ -12,16 +12,6 @@
       ./printing
     ];
 
-  home-manager.users.thk = /home/thk/.config/home-manager/home.nix;
-  hardware.bluetooth.enable = true;
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      vpl-gpu-rt
-      #intel-media-sdk
-    ];
-  };
-
   boot = {
     kernel.sysctl = {
       # https://knowledge.informatica.com/s/article/524270?language=en_US
@@ -36,35 +26,48 @@
     initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NixOS-Encrypted";
   };
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-label/NixOS-Root";
-      #    { device = "/dev/disk/by-uuid/561c61cf-de56-49e0-bdd4-3252ab766d38";
-      fsType = "btrfs";
-    };
+  console = {
+    font = "ter-128n";
+    keyMap = "de-latin1-nodeadkeys";
+    # useXkbConfig = true; # use xkb.options in tty.
+    packages = with pkgs; [
+      tamsyn # bitmap font
+      terminus_font # bitmap font
+      termsyn # bitmap font
+    ];
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-label/NixOS-Boot";
-      fsType = "vfat";
-    };
-  #    { device = "/dev/disk/by-uuid/82F8-842D";
-  #      options = [ "fmask=0022" "dmask=0022" ];
-
-  swapDevices = [{ device = "/dev/disk/by-label/NixOS-Swap"; }];
-  #    [ { device = "/dev/disk/by-uuid/ae097c9a-a9eb-474d-8d22-95ceb511a096"; }
-
-  networking = {
-    hostName = "thk-nixos";
-    networkmanager = {
-      enable = true;
-      insertNameservers = [ "8.8.8.8" ];
+  documentation = {
+    dev.enable = false; # false is default TODO
+    nixos.includeAllModules = true;
+    man = {
+      mandoc.settings.output.toc = true;
+      mandoc.enable = false; # man-db and mandoc can't be used as the default man page viewer at the same time!
+      # generateCaches = true; # conflict with home-manager?
     };
   };
 
-  time.timeZone = "Europe/Bucharest";
+  environment.systemPackages = with pkgs; [
+    pinentry-qt # provided here, see ~/.gnupg/gpg-agent.conf
+    git
+    htop
+    qt5.qtwayland
+    tmux
+    tree
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  ];
 
-  i18n.defaultLocale = "de_DE.UTF-8";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/NixOS-Root";
+      fsType = "btrfs";
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-label/NixOS-Boot";
+      fsType = "vfat";
+    };
+  };
 
   fonts = {
     enableDefaultPackages = true;
@@ -89,54 +92,40 @@
     };
   };
 
-  console = {
-    font = "ter-128n";
-    keyMap = "de-latin1-nodeadkeys";
-    # useXkbConfig = true; # use xkb.options in tty.
-    packages = with pkgs; [
-      tamsyn # bitmap font
-      terminus_font # bitmap font
-      termsyn # bitmap font
-    ];
-  };
-
-  documentation = {
-    dev.enable = false; # false is default TODO
-    nixos.includeAllModules = true;
-    man = {
-      mandoc.settings.output.toc = true;
-      mandoc.enable = false; # man-db and mandoc can't be used as the default man page viewer at the same time!
-      # generateCaches = true; # conflict with home-manager?
+  hardware = {
+    bluetooth.enable = true;
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        vpl-gpu-rt
+        #intel-media-sdk
+      ];
     };
   };
 
-  users.users.thk = {
-    isNormalUser = true;
-    # my former Debian groups: cdrom floppy sudo audio dip video plugdev netdev bluetooth docker nix-users
-    extraGroups = [ "video" "wheel" ]; # Enable ‘sudo’ for the user.
-    shell = pkgs.fish;
-#    ignoreShellProgramCheck = true; # home-manager is responsible for ~/.config/fish
+  home-manager.users.thk = /home/thk/.config/home-manager/home.nix;
+
+  i18n.defaultLocale = "de_DE.UTF-8";
+
+  networking = {
+    hostName = "thk-nixos";
+    networkmanager = {
+      enable = true;
+      insertNameservers = [ "8.8.8.8" ];
+    };
   };
 
-  nix.settings = {
-    trusted-users = [ "@wheel" ];
-    use-xdg-base-directories = true;
+  nix = {
+    gc = {
+      automatic = false;
+      dates = "daily";
+    };
+    optimise.automatic = false;
+    settings = {
+      trusted-users = [ "@wheel" ];
+      use-xdg-base-directories = true;
+    };
   };
-
-  environment.systemPackages = with pkgs; [
-    pinentry-qt # provided here, see ~/.gnupg/gpg-agent.conf
-    git
-    htop
-    qt5.qtwayland
-    tmux
-    tree
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  ];
-
-  # from tazjin
-  security.pam.services.swaylock = { };
-
-  security.sudo.extraConfig = "Defaults insults,pwfeedback";
 
   programs = {
     dconf.enable = true; # needed to set dconf stuff in home-manager
@@ -151,6 +140,12 @@
     mosh.enable = true;
     # mtr.enable = true; # TODO network diagnostic https://www.bitwizard.nl/mtr/
     ssh.startAgent = true;
+  };
+
+  # from tazjin
+  security = {
+    pam.services.swaylock = { };
+    sudo.extraConfig = "Defaults insults,pwfeedback";
   };
 
   services = {
@@ -175,18 +170,26 @@
     upower.enable = true;
   };
 
-  nix.optimise.automatic = false;
-  nix.gc = {
-    automatic = false;
-    dates = "daily";
-  };
-  system.autoUpgrade = {
-    dates = "daily";
-    enable = false;
-    operation = "boot";
+  swapDevices = [{ device = "/dev/disk/by-label/NixOS-Swap"; }];
+
+  system = {
+    autoUpgrade = {
+      dates = "daily";
+      enable = false;
+      operation = "boot";
+    };
+    # `man configuration.nix`
+    # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
+    stateVersion = "25.11"; # Did you read the comment?
   };
 
-  # `man configuration.nix`
-  # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
-  system.stateVersion = "25.11"; # Did you read the comment?
+  time.timeZone = "Europe/Bucharest";
+
+  users.users.thk = {
+    isNormalUser = true;
+    # my former Debian groups: cdrom floppy sudo audio dip video plugdev netdev bluetooth docker nix-users
+    extraGroups = [ "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.fish;
+#    ignoreShellProgramCheck = true; # home-manager is responsible for ~/.config/fish
+  };
 }

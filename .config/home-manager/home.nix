@@ -178,6 +178,7 @@ in
     nixpkgs-fmt
     # nix-prefetch-github
     # nmap
+    openrsync
     # palemoon-bin # firefox fork https://www.palemoon.org/
     pandoc # e.g. markdown preview in emacs
     # paperkey
@@ -268,7 +269,7 @@ in
       nix-direnv.enable = true;
     };
     firefox = {
-      enable = true;
+      enable = false;
       package = pkgs.librewolf;
     };
     fish.enable = true;
