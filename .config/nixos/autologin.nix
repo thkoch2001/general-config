@@ -1,4 +1,5 @@
 { config, lib, pkgs, ... }:
+with lib;
 let
   # autologin on tty7y. Otherwise autologin and getty alternate in grabbing tty1 on nixos-rebuild switch
   autologin_on_7 = pkgs.autologin.overrideAttrs (_: {
@@ -9,42 +10,57 @@ let
     '';
   }
   );
+  cfg = config.services.autologin;
 in
 {
-  # see https://git.sr.ht/~kennylevinsen/autologin
-  # TODO https://superuser.com/questions/1904422/how-to-auto-login-without-display-manager-for-nixos-wayland-niri/1904473#1904473
-  environment.systemPackages = [ autologin_on_7 ];
-
-  systemd.services.autologin = {
-    enable = true;
-    restartIfChanged = lib.mkForce false;
-    description = "Autologin";
-    after = [
-      "systemd-user-sessions.service"
-      "plymouth-quit-wait.service"
-    ];
-
-    serviceConfig = {
-      ExecStart = "${autologin_on_7}/bin/autologin thk ${pkgs.niri}/bin/niri-session";
-      Type = "simple";
-      IgnoreSIGPIPE = "no";
-      SendSIGHUP = "yes";
-      TimeoutStopSec = "30s";
-      KeyringMode = "shared";
-      Restart = "always";
-      RestartSec = "10";
+  options.services.autologin = {
+    enable = mkEnableOption "autologin";
+    leader = mkOption {
+      description = "which binary to start";
+      type = types.str;
     };
-    startLimitBurst = 5;
-    startLimitIntervalSec = 30;
-    aliases = [ "display-manager.service" ];
-    wantedBy = [ "multi-user.target" ];
+    user = mkOption {
+      description = "user to autologin";
+      type = types.str;
+    };
   };
 
-  security.pam.services.autologin = {
-    enable = true;
-    name = "autologin";
-    startSession = true;
-    setLoginUid = true;
-    updateWtmp = true;
+  config = mkIf cfg.enable {
+    # see https://git.sr.ht/~kennylevinsen/autologin
+    # TODO https://superuser.com/questions/1904422/how-to-auto-login-without-display-manager-for-nixos-wayland-niri/1904473#1904473
+    environment.systemPackages = [ autologin_on_7 ];
+
+    systemd.services.autologin = {
+      enable = true;
+      restartIfChanged = lib.mkForce false;
+      description = "Autologin";
+      after = [
+        "systemd-user-sessions.service"
+        "plymouth-quit-wait.service"
+      ];
+
+      serviceConfig = {
+        ExecStart = "${autologin_on_7}/bin/autologin ${cfg.user} ${cfg.leader}";
+        Type = "simple";
+        IgnoreSIGPIPE = "no";
+        SendSIGHUP = "yes";
+        TimeoutStopSec = "30s";
+        KeyringMode = "shared";
+        Restart = "always";
+        RestartSec = "10";
+      };
+      startLimitBurst = 5;
+      startLimitIntervalSec = 30;
+      aliases = [ "display-manager.service" ];
+      wantedBy = [ "multi-user.target" ];
+    };
+
+    security.pam.services.autologin = {
+      enable = true;
+      name = "autologin";
+      startSession = true;
+      setLoginUid = true;
+      updateWtmp = true;
+    };
   };
 }

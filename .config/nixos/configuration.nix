@@ -8,7 +8,6 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./autologin.nix
-      ./laptop.nix
       ./printing
     ];
 
@@ -127,6 +126,8 @@
     };
   };
 
+#  nixpkgs.config.allowAliases = false; # needed to use pkgs.river
+
   programs = {
     dconf.enable = true; # needed to set dconf stuff in home-manager
     fish.enable = true; # make sure it's there even if it's also configured in home-manager
@@ -149,6 +150,11 @@
   };
 
   services = {
+    autologin = {
+      enable = lib.mkDefault true;
+      leader = lib.mkDefault "${pkgs.niri}/bin/niri-session";
+      user = "thk";
+    };
     blueman.enable = true;
     libinput.enable = true;
     pcscd.enable = true;
@@ -168,6 +174,29 @@
     #   settings.IfName = "ygg0";
     # };
     upower.enable = true;
+  };
+
+  specialisation = {
+    reka.configuration =
+    let
+      reka = import (pkgs.fetchgit {
+        url = "https://codeberg.org/tazjin/reka.git";
+        rev = "refs/heads/canon";
+        hash = "sha256-w25BZpbKMAACFweRqNEtGDvw/sNNJUfsVJQCXh41Y6w=";
+      });
+      reka-emacs = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (
+        reka
+      );
+    in {
+      imports = [ ./reka.nix ];
+      programs.reka = {
+        enable = true;
+        debug = true;
+        launchCommand = ''${reka-emacs}/bin/emacs --eval "(require 'reka)" --eval "(reka-enable)" --no-init-file'';
+      };
+      services.autologin.leader = "reka-session";
+      services.autologin.enable = false;
+    };
   };
 
   swapDevices = [{ device = "/dev/disk/by-label/NixOS-Swap"; }];

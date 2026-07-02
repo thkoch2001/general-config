@@ -119,6 +119,7 @@ in
     dnsutils
     # dovecot_pigeonhole
     # duff
+    eom
     evince
     (import ./emacs.nix { pkgs = upkgs; })
     ffmpeg
@@ -163,7 +164,6 @@ in
     lsof # git-annex assistant checks if files are open for writing
     # lxde.lxsession
     # lynx
-    mate.eom
     # mdbook
     # mediathekview
     mpv
@@ -247,8 +247,8 @@ in
     wlr-which-key
     xdg-utils # xdg-open
     xwayland-satellite
-    xorg.xlsclients # find out which running apps use xwayland
-    xorg.xwininfo # get X11 info by clicking on window
+    xlsclients # find out which running apps use xwayland
+    xwininfo # get X11 info by clicking on window
     yt-dlp
     thk-nur.yt2feed
     zip
@@ -299,11 +299,11 @@ in
     in
     {
       enable = true;
-      events = [
-        { event = "before-sleep"; command = lockcmd; }
-        { event = "lock"; command = lockcmd; }
-        { event = "after-resume"; command = "${niricmd} power-on-monitors"; }
-      ];
+      events = {
+        "before-sleep" = lockcmd;
+        "lock" = lockcmd;
+        "after-resume" = "${niricmd} power-on-monitors";
+      };
       timeouts = [
         { timeout = 6000; command = "${niricmd} power-off-monitors"; }
       ];

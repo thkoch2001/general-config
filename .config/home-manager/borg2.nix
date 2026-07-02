@@ -8,7 +8,7 @@
 , openssh
 , openssl
 , python3
-, xxHash
+, xxhash
 , zstd
 , installShellFiles
 , nixosTests
@@ -37,8 +37,8 @@ python.pkgs.buildPythonApplication rec {
   '';*/
   postPatch = ''
     substituteInPlace setup.cfg \
-      --replace-warn "msgpack >=1.0.3, <=1.0.4" "msgpack >=1.0.3, <=1.1.1" \
-      --replace-warn "platformdirs >=3.0.0, <4.0.0" "platformdirs >=3.0.0, <=4.5.0"
+      --replace-warn "msgpack >=1.0.3, <=1.0.4" "msgpack >=1.0.3, <=1.1.2" \
+      --replace-warn "platformdirs >=3.0.0, <4.0.0" "platformdirs >=3.0.0, <=4.5.1"
     substituteInPlace src/borg/helpers/msgpack.py \
       --replace-warn "# DO NOT CHANGE OR REMOVE! See also requirements and comments in setup.py." \
       "return True"
@@ -75,7 +75,7 @@ python.pkgs.buildPythonApplication rec {
     [
       libb2
       lz4
-      xxHash
+      xxhash
       zstd
       openssl
     ]
