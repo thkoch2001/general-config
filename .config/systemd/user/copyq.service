@@ -6,4 +6,4 @@ After=niri.service
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=%h/.local/state/nix/profile/bin/copyq
+ExecStart=/run/current-system/sw/bin/copyq
