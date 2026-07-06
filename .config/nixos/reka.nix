@@ -119,7 +119,7 @@ in
 
     environment.systemPackages = [
       rekaSystemPackage
-#      depot.third_party.river-channel
+      #      depot.third_party.river-channel
     ];
   };
 }
