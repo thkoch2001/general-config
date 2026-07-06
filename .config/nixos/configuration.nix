@@ -319,7 +319,7 @@ in
     };
   };
 
-  #  nixpkgs.config.allowAliases = false; # needed to use pkgs.river
+  nixpkgs.overlays = [( import ./lib/autopatch.nix { inherit lib; patchesDir = ./patches; } )];
 
   programs = {
     chromium = {
