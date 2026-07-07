@@ -1,9 +1,0 @@
-[Unit]
-Description=CopyQ Clipboard manager
-After=niri.service
-
-[Install]
-WantedBy=graphical-session.target
-
-[Service]
-ExecStart=/run/current-system/sw/bin/copyq

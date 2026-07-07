@@ -1,4 +1,11 @@
 { pkgs, ... }:
+let
+  reka = import (pkgs.fetchgit {
+    url = "https://codeberg.org/tazjin/reka.git";
+    rev = "refs/heads/canon";
+    hash = "sha256-w25BZpbKMAACFweRqNEtGDvw/sNNJUfsVJQCXh41Y6w=";
+  });
+in
 with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
   epkgs:
   (with epkgs.elpaPackages; [
@@ -32,7 +39,11 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
     yasnippet-snippets
   ]) ++ (with epkgs.nongnuPackages; [
     ws-butler
-  ])
+  ]) ++ [
+    (callPackage reka {
+      inherit pkgs;
+    })
+  ]
   /*
     pandoc-mode?
 

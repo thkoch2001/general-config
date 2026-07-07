@@ -3,6 +3,7 @@
 
 let
   cfg = config.programs.reka;
+  channel = (pkgs.callPackage ./packages/river-channel {inherit pkgs;});
 
   # this session script is copy&pasted from various places and is probably
   # a worst practice type thing
@@ -74,7 +75,7 @@ let
     Type=simple
     WorkingDirectory=%h
     Environment="RUST_LOG=${if cfg.debug then "DEBUG" else "INFO"}"
-    ExecStart=${pkgs.river}/bin/river -c ${wonkyLaunchCommand}
+    ExecStart=${pkgs.river}/bin/river -log-level ${if cfg.debug then "debug" else "info"} -c ${wonkyLaunchCommand}
   '';
 
   rekaSystemPackage = pkgs.runCommand "reka-system"
@@ -115,11 +116,23 @@ in
     services.graphical-desktop.enable = true;
 
     systemd.packages = [ rekaSystemPackage ];
+    systemd.user.services.channel = {
+      after = ["graphical-session.target"];
+      description = "Channel: input config for river";
+#      documentation = ["man:poweralertd(1)"];
+      partOf = ["graphical-session.target"];
+      serviceConfig = {
+        ExecStart = "${channel}/bin/channel";
+      };
+      wantedBy = ["reka.service"];
+#Restart=always
+    };
+
     services.displayManager.sessionPackages = [ rekaSystemPackage ];
 
     environment.systemPackages = [
+      channel
       rekaSystemPackage
-      #      depot.third_party.river-channel
     ];
   };
 }

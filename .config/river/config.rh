@@ -1,0 +1,32 @@
+input {
+    profiles {
+        keyboard {
+            keyboard {
+                layout de,ro,ru
+                options grp:shifts_toggle
+            }
+        }
+
+        # I just want to showcase the libinput options
+        other {
+            libinput {
+                natural_scroll false
+                tap_to_click false
+                disable_while_typing false
+                disable_while_trackpointing false
+                left_handed false
+                middle_mouse_emulation false
+                rotation 0 # in degrees
+                three_finger_drag_mode disabled # could be enabled_3fg or enabled_4fg
+                accel_profile flat # could be none or adaptive
+                accel_speed 0 # this should be equivalent to not having the entry
+                scroll_method two_finger # could be no_scroll or edge
+                click_method clickfinger # could be none or button_areas
+            }
+        }
+    }
+
+    rules [
+        type, keyboard, keyboard
+    ]
+}

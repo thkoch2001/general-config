@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   upkgs = (import <nixpkgs-unstable> { }).pkgs;
+  thk-emacs = (import ./emacs.nix { pkgs = upkgs; });
   thk-nur = import
     (pkgs.fetchFromGitHub {
       owner = "thkoch2001";
@@ -17,8 +18,9 @@ in
       <nixos-hardware/lenovo/thinkpad/x260>
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./autologin.nix
+#      ./autologin.nix
       ./printing
+      ./reka.nix
     ];
 
   boot = {
@@ -98,7 +100,6 @@ in
         (aspellWithDicts (d: [ d.de d.en d.ro d.ru ]))
         bat # syntax highlighting cat https://github.com/sharkdp/bat
         bc # cli calculator
-        # blueman
         (callPackage ./borg2.nix { })
         # cargo # rust package manager
         chromium # needed although programs.enabled.chromius = true; ungoogled-chromium didn't work
@@ -113,7 +114,6 @@ in
         # duff
         eom
         evince
-        (import ./emacs.nix { pkgs = upkgs; })
         ffmpeg
         # freecad
         fuzzel # application launcher
@@ -167,7 +167,6 @@ in
         networkmanagerapplet
         # newsboat
         nettools
-        niri # tliing wayland composer
         nixpkgs-fmt
         # nix-prefetch-github
         # nmap
@@ -177,7 +176,6 @@ in
         # paperkey
         # parcellite
         pass
-        # pasystray
         pavucontrol
         pinentry-qt # provided here, see ~/.gnupg/gpg-agent.conf
         # powertop
@@ -185,7 +183,7 @@ in
         pspg # postgres pager
         # pwgen # maybe replace with spwgen from pwgen-secure?
         # qemu_kvm # qickemu should bring in qemu_full
-        #qgnomeplatform-qt6 # dark-mode for e.g. akregator, see https://people.debian.org/~werdahias/enforcing-darkmode-for-qt-programs-under-a-non-qt-based-environment.html     #adwaita-qt6
+        #qgnomeplatform-qt6 # dark-mode for e.g. akregator, see https://people.debian.org/~werdahias/enforcing-darkmode-for-qt-programs-under-a-non-qt-based-environentm.html     #adwaita-qt6
         qt5.qtwayland
         quasselClient
         # from tazjin
@@ -219,6 +217,7 @@ in
         telegram-desktop
         # termonad
         tex_for_orgmode
+        thk-emacs
         # thunderbird
         # tig # text mode interface to git (to browse sparse checkouts)
         tmux
@@ -362,7 +361,15 @@ in
     # ladybird.enable = true; # https://github.com/LadybirdBrowser/ladybird/issues/572#issuecomment-2242268172
     mosh.enable = true;
     # mtr.enable = true; # TODO network diagnostic https://www.bitwizard.nl/mtr/
-    ssh.startAgent = true;
+    niri.enable = true;
+    reka = {
+      enable = true;
+      debug = true;
+      launchCommand = ''${thk-emacs}/bin/emacs'';
+    };
+    # - `programs.ssh.startAgent' (defined in `/home/thk/.config/nixos/configuration.nix') and `services.gnome.gcr-ssh-agent.enable' (defined in `/nix/store/snl5y2ljnxfaz7a7hih2f67n1wvj69jk-nixos-26.05/nixos/nixos/modules/services/desktops/gnome/gcr-ssh-agent.nix') cannot both be enabled at the same time.
+    # These options conflict because only one SSH agent can be installed at a time.
+    # ssh.startAgent = true;
     waybar.enable = true;
   };
 
@@ -373,12 +380,13 @@ in
   };
 
   services = {
-    autologin = {
+    /*autologin = {
       enable = lib.mkDefault true;
       leader = lib.mkDefault "${pkgs.niri}/bin/niri-session";
       user = "thk";
-    };
+    };*/
     blueman.enable = true;
+    displayManager.ly.enable = true;
     dunst = {
       enable = true;
       settings = {
@@ -404,6 +412,10 @@ in
     #   settings.IfName = "ygg0";
     # };
     upower.enable = true;
+#    xserver.enable= true;
+#    xserver.displayManager.lightdm = {
+#      enable = true;
+#    };
   };
 
   /*specialisation = {
@@ -448,6 +460,18 @@ in
       serviceConfig.ExecStart = "${pkgs.chromium}/bin/chromium";
       wantedBy = [ "applications.target" ];
     };
+    copyq = {
+      description = "CopyQ Clipboard manager";
+      after = ["niri.service" "reka.service"];
+      wantedBy = ["graphical-session.target"];
+      serviceConfig.ExecStart = "${pkgs.copyq}/bin/copyq";
+    };
+    pasystray = {
+      description = "PulseAudio systray";
+      after = ["niri.service" "reka.service"];
+      wantedBy = ["graphical-session.target"];
+      serviceConfig.ExecStart = "${pkgs.pasystray}/bin/pasystray";
+    };
     poweralertd = {
       after = ["graphical-session.target"];
       description = "UPower-powered power alerter";
@@ -469,12 +493,11 @@ in
         documentation = ["man:swayidle(1)"];
         partOf = ["graphical-session.target"];
         serviceConfig = {
-          ExecStart = "${pkgs.swayidle}/bin/swayidle -w \
+          ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
             timeout 6000 '${niricmd} power-off-monitors' \
             after-resume '${niricmd} power-on-monitors' \
-            before-sleep '${lockcmd} lock' \
-            ${lockcmd}
-          ";
+            before-sleep '${lockcmd}' \
+            lock '${lockcmd}' '';
           #Restart = "always";
         };
         unitConfig = {
@@ -517,6 +540,12 @@ in
     extraGroups = [ "video" "wheel" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     #    ignoreShellProgramCheck = true; # home-manager is responsible for ~/.config/fish
+  };
+
+  users.users.test = {
+    isNormalUser = true;
+    extraGroups = [ "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.fish;
   };
 
   xdg.mime = {

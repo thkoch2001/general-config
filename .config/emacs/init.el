@@ -2,6 +2,11 @@
 ;; https://www.masteringemacs.org/article/understanding-minibuffer-completion
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html
 
+(if (equal (getenv "XDG_CURRENT_DESKTOP") "reka")
+    (progn
+      (require 'reka)
+      (reka-enable)))
+
 (setq default-directory "~/")
 (set-face-attribute 'default nil :height 130)
 (package-initialize)
