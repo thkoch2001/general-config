@@ -5,6 +5,12 @@
 [Unit]
 Description=Emacs text editor
 Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+# ConditionEnvironment="XDG_CURRENT_DESKTOP=niri";
+# workaround for autologin not setting XDG_CURRENT_DESKTOP and
+# systemd checking conditions on the systemd process env which is not the same
+# as the one manipulated with import-environment
+# https://github.com/systemd/systemd/issues/20366
+ConditionPathExistsGlob=%t/niri.wayland-1.*.sock
 
 [Service]
 Type=notify
@@ -20,4 +26,4 @@ SuccessExitStatus=15
 Restart=on-failure
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target

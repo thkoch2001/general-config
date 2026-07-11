@@ -3,7 +3,7 @@
 
 let
   cfg = config.programs.reka;
-  channel = (pkgs.callPackage ./packages/river-channel {inherit pkgs;});
+  channel = (pkgs.callPackage ./packages/river-channel { inherit pkgs; });
 
   # this session script is copy&pasted from various places and is probably
   # a worst practice type thing
@@ -29,11 +29,6 @@ let
       exit 1
     fi
 
-    systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
-    if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-      dbus-update-activation-environment --all
-    fi
-
     systemctl --user --wait start reka.service
 
     # Force stop of graphical-session.target on exit
@@ -52,30 +47,19 @@ let
     DesktopNames=reka
   '';
 
-  # launch command extended with stuff needed to fix systemd wonkiness
-  wonkyLaunchCommand = pkgs.writeShellScript "reka-launch-wonky" ''
-    systemctl --user import-environment WAYLAND_DISPLAY
-    exec ${cfg.launchCommand}
-  '';
-
   # this is NOT a nixos unit because those have a weird environment
   rekaUnit = pkgs.writeText "reka.service" ''
     [Unit]
     Description=reka, emacs for river
-    BindsTo=graphical-session.target
-    Before=graphical-session.target
     Wants=pipewire.service graphical-session-pre.target
     After=pipewire.service graphical-session-pre.target
-
-    Wants=xdg-desktop-autostart.target
-    Before=xdg-desktop-autostart.target
 
     [Service]
     Slice=session.slice
     Type=simple
     WorkingDirectory=%h
-    Environment="RUST_LOG=${if cfg.debug then "DEBUG" else "INFO"}"
-    ExecStart=${pkgs.river}/bin/river -log-level ${if cfg.debug then "debug" else "info"} -c ${wonkyLaunchCommand}
+    Environment=REKA_LOGLEVEL=${cfg.reka_loglevel}
+    ExecStart=${pkgs.river}/bin/river -log-level ${cfg.river_loglevel}
   '';
 
   rekaSystemPackage = pkgs.runCommand "reka-system"
@@ -102,7 +86,17 @@ in
 {
   options.programs.reka = {
     enable = lib.mkEnableOption "reka, an Emacs window manager for river";
-    debug = lib.mkEnableOption "enable debug logging for reka";
+    reka_loglevel = lib.mkOption {
+      type = lib.types.str;
+      description = "log level for reka, see https://docs.rs/env_logger/latest/env_logger/";
+      default = "warn";
+    };
+
+    river_loglevel = lib.mkOption {
+      type = lib.types.str;
+      description = "log level for river, [*error*|*warning*|*info*|*debug*]";
+      default = "warning";
+    };
 
     # TODO(tazjin): this is too generic, I guess, but it'll work ...
     launchCommand = lib.mkOption {
@@ -117,15 +111,14 @@ in
 
     systemd.packages = [ rekaSystemPackage ];
     systemd.user.services.channel = {
-      after = ["graphical-session.target"];
+      after = [ "graphical-session.target" ];
       description = "Channel: input config for river";
-#      documentation = ["man:poweralertd(1)"];
-      partOf = ["graphical-session.target"];
+      #      documentation = ["man:poweralertd(1)"];
+      partOf = [ "graphical-session.target" ];
       serviceConfig = {
         ExecStart = "${channel}/bin/channel";
       };
-      wantedBy = ["reka.service"];
-#Restart=always
+      wantedBy = [ "reka-emacs.service" ];
     };
 
     services.displayManager.sessionPackages = [ rekaSystemPackage ];
@@ -134,5 +127,6 @@ in
       channel
       rekaSystemPackage
     ];
+    services.autologin.leader = "${rekaSession}"; # TODO this should not be here
   };
 }

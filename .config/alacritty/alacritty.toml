@@ -1,6 +1,9 @@
 [general]
 live_config_reload = true
 
+[font]
+size=14
+
 [window]
 #startup_mode = "Fullscreen"
 

@@ -1,9 +1,21 @@
 # https://sr.ht/~emersion/kanshi/
 # https://manpages.debian.org/bookworm/sway/sway-output.5.en.html
 profile "2extern+laptop" {
-  output DP-6 position 0,0
-  output DP-4 position 1920,0
-  output eDP-1 position 4480,0
+#  output DP-6 position 0,0
+#  output DP-4 position 1920,0
+#  output eDP-1 position 4480,0
+  output DP-6 {
+    position 0,0
+    scale 1.4
+  }
+  output DP-5 {
+    position 1372,0
+    scale 1.4
+  }
+  output eDP-1 {
+    position 3203,0
+    scale 1.5
+  }
 
 # Output "AU Optronics 0x226D Unknown" (eDP-1)
 #   Current mode: 1920x1080 @ 60.049 Hz (preferred)
@@ -27,7 +39,10 @@ profile "2extern+laptop" {
 }
 
 profile "laptoponly" {
-  output eDP-1 position 0,0
+  output eDP-1 {
+    position 0,0
+    scale 1.1
+  }
 }
 
 

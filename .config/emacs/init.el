@@ -2,11 +2,6 @@
 ;; https://www.masteringemacs.org/article/understanding-minibuffer-completion
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html
 
-(if (equal (getenv "XDG_CURRENT_DESKTOP") "reka")
-    (progn
-      (require 'reka)
-      (reka-enable)))
-
 (setq default-directory "~/")
 (set-face-attribute 'default nil :height 130)
 (package-initialize)
@@ -90,6 +85,28 @@
   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
+
+(defun thk-transparency-stop-on-first-char ()
+  "hook to disable transparency in *scratch* buffer on first keypress"
+  (progn
+    (set-frame-parameter (selected-frame) 'alpha-background 100)
+    (remove-hook 'post-self-insert-hook 'thk-transparency-stop-on-first-char)
+    )
+  )
+
+(defun thk-transparency ()
+  "transparency"
+  (if (and (string-equal (buffer-name) "*scratch*")
+           (= (buffer-size (current-buffer)) 0)
+           (= (count-windows) 1))
+      (progn
+        (set-frame-parameter (selected-frame) 'alpha-background 0)
+        (add-hook 'post-self-insert-hook 'thk-transparency-stop-on-first-char 100 t)
+        )
+    (set-frame-parameter (selected-frame) 'alpha-background 100)
+    )
+  )
+(add-hook 'buffer-list-update-hook 'thk-transparency)
 
 (defun sm (&optional start end) "run sm with the current region as input"
   (interactive "r")

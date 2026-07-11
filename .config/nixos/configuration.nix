@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   upkgs = (import <nixpkgs-unstable> { }).pkgs;
-  thk-emacs = (import ./emacs.nix { pkgs = upkgs; });
+  thk-emacs = (import ./emacs.nix { pkgs = pkgs; });
   thk-nur = import
     (pkgs.fetchFromGitHub {
       owner = "thkoch2001";
@@ -18,7 +18,7 @@ in
       <nixos-hardware/lenovo/thinkpad/x260>
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-#      ./autologin.nix
+      ./autologin.nix
       ./printing
       ./reka.nix
     ];
@@ -318,7 +318,7 @@ in
     };
   };
 
-  nixpkgs.overlays = [( import ./lib/autopatch.nix { inherit lib; patchesDir = ./patches; } )];
+  nixpkgs.overlays = [ (import ./lib/autopatch.nix { inherit lib; patchesDir = ./patches; }) ];
 
   programs = {
     chromium = {
@@ -361,16 +361,12 @@ in
     # ladybird.enable = true; # https://github.com/LadybirdBrowser/ladybird/issues/572#issuecomment-2242268172
     mosh.enable = true;
     # mtr.enable = true; # TODO network diagnostic https://www.bitwizard.nl/mtr/
-    niri.enable = true;
-    reka = {
-      enable = true;
-      debug = true;
-      launchCommand = ''${thk-emacs}/bin/emacs'';
-    };
+    niri.enable = lib.mkDefault true;
     # - `programs.ssh.startAgent' (defined in `/home/thk/.config/nixos/configuration.nix') and `services.gnome.gcr-ssh-agent.enable' (defined in `/nix/store/snl5y2ljnxfaz7a7hih2f67n1wvj69jk-nixos-26.05/nixos/nixos/modules/services/desktops/gnome/gcr-ssh-agent.nix') cannot both be enabled at the same time.
     # These options conflict because only one SSH agent can be installed at a time.
-    # ssh.startAgent = true;
+    ssh.startAgent = true;
     waybar.enable = true;
+    xwayland.enable = true;
   };
 
   # from tazjin
@@ -380,20 +376,20 @@ in
   };
 
   services = {
-    /*autologin = {
-      enable = lib.mkDefault true;
+    autologin = {
+      enable = true;
       leader = lib.mkDefault "${pkgs.niri}/bin/niri-session";
       user = "thk";
-    };*/
+    };
     blueman.enable = true;
-    displayManager.ly.enable = true;
+    #    displayManager.gdm.enable = true;
     dunst = {
       enable = true;
       settings = {
         global.font = "DejaVu Sans 12";
       };
     };
-
+    gnome.gcr-ssh-agent.enable = lib.mkForce false; # seems this gets enabled by niri?
     libinput.enable = true;
     pcscd.enable = true;
     pipewire = {
@@ -412,34 +408,25 @@ in
     #   settings.IfName = "ygg0";
     # };
     upower.enable = true;
-#    xserver.enable= true;
-#    xserver.displayManager.lightdm = {
-#      enable = true;
-#    };
   };
 
-  /*specialisation = {
-    reka.configuration =
-    let
-      reka = import (pkgs.fetchgit {
-        url = "https://codeberg.org/tazjin/reka.git";
-        rev = "refs/heads/canon";
-        hash = "sha256-w25BZpbKMAACFweRqNEtGDvw/sNNJUfsVJQCXh41Y6w=";
-      });
-      reka-emacs = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (
-        reka
-      );
-    in {
-      imports = [ ./reka.nix ];
-      programs.reka = {
-        enable = true;
-        debug = true;
-        launchCommand = ''${reka-emacs}/bin/emacs --eval "(require 'reka)" --eval "(reka-enable)" --no-init-file'';
+  specialisation = {
+    reka.configuration = {
+      programs = {
+        niri.enable = false;
+        reka = {
+          enable = true;
+          # reka_loglevel = debug; # defaults to warn
+          # river_loglevel = debug; # defaults to warning
+          launchCommand = ''${thk-emacs}/bin/emacs --eval "(require 'reka)" --eval "(reka-enable)"'';
+        };
       };
-      services.autologin.leader = "reka-session";
-      services.autologin.enable = false;
+      systemd.user.services.waybar.serviceConfig = {
+        ExecStart = ["" "${pkgs.waybar}/bin/waybar -c %h/.config/waybar/config.reka.jsonc"];
+      };
+      #      services.autologin.leader = "reka-session";
     };
-  };*/
+  };
 
   swapDevices = [{ device = "/dev/disk/by-label/NixOS-Swap"; }];
 
@@ -462,36 +449,47 @@ in
     };
     copyq = {
       description = "CopyQ Clipboard manager";
-      after = ["niri.service" "reka.service"];
-      wantedBy = ["graphical-session.target"];
+      after = [ "niri.service" "reka.service" ];
+      wantedBy = [ "graphical-session.target" ];
       serviceConfig.ExecStart = "${pkgs.copyq}/bin/copyq";
+    };
+    kanshi = {
+      description = "automatically apply display configs";
+      # After niri to ensure WAYLAND_DISPLAY is set
+      after = [ "niri.service" "reka.service" ];
+      wantedBy = [ "graphical-session.target" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.kanshi}/bin/kanshi";
+        ExecReload = "kill -HUP $MAINPID";
+      };
     };
     pasystray = {
       description = "PulseAudio systray";
-      after = ["niri.service" "reka.service"];
-      wantedBy = ["graphical-session.target"];
+      after = [ "niri.service" "reka.service" ];
+      wantedBy = [ "graphical-session.target" ];
       serviceConfig.ExecStart = "${pkgs.pasystray}/bin/pasystray";
     };
     poweralertd = {
-      after = ["graphical-session.target"];
+      after = [ "graphical-session.target" ];
       description = "UPower-powered power alerter";
-      documentation = ["man:poweralertd(1)"];
-      partOf = ["graphical-session.target"];
+      documentation = [ "man:poweralertd(1)" ];
+      partOf = [ "graphical-session.target" ];
       serviceConfig = {
         ExecStart = "${pkgs.poweralertd}/bin/poweralertd";
       };
-      wantedBy = ["graphical-session.target"];
-#Restart=always
+      wantedBy = [ "graphical-session.target" ];
+      #      restart = "always";
     };
     swayidle =
       let
         lockcmd = "${pkgs.swaylock}/bin/swaylock";
         niricmd = "${pkgs.niri}/bin/niri msg action";
-      in {
-        after = ["niri.service"];
+      in
+      {
+        after = [ "niri.service" ];
         description = "Idle manager for Wayland";
-        documentation = ["man:swayidle(1)"];
-        partOf = ["graphical-session.target"];
+        documentation = [ "man:swayidle(1)" ];
+        partOf = [ "graphical-session.target" ];
         serviceConfig = {
           ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
             timeout 6000 '${niricmd} power-off-monitors' \
@@ -503,32 +501,32 @@ in
         unitConfig = {
           ConditionEnvironment = "WAYLAND_DISPLAY";
         };
-        wantedBy = ["graphical-session.target"];
+        wantedBy = [ "graphical-session.target" ];
       };
     udiskie = {
-      after = ["graphical-session.target" "tray.target"];
+      after = [ "graphical-session.target" "tray.target" ];
       description = "udiskie mount daemon";
-      partOf = ["graphical-session.target"];
+      partOf = [ "graphical-session.target" ];
       serviceConfig = {
         ExecStart = "${pkgs.udiskie}/bin/udiskie";
       };
-      requires = ["tray.target"];
-      wantedBy = ["graphical-session.target"];
+      requires = [ "tray.target" ];
+      wantedBy = [ "graphical-session.target" ];
     };
     wpaperd = {
-      after = ["graphical-session.target"];
+      after = [ "graphical-session.target" ];
       description = "wpaperd background image";
-      partOf = ["graphical-session.target"];
+      partOf = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart= "${upkgs.wpaperd}/bin/wpaperd";
-#Restart=always
+        ExecStart = "${upkgs.wpaperd}/bin/wpaperd";
+        #Restart=always
         RestartSec = 10;
       };
       unitConfig = {
-        ConditionEnvironment = "WAYLAND_DISPLAY";
-#X-Restart-Triggers=/nix/store/zaf2ssvamkd4af6h5dib8diwlv5m31fr-wpaperd-wallpaper
+        #TODO ConditionEnvironment = "XDG_CURRENT_DESKTOP=niri";
+        #X-Restart-Triggers=/nix/store/zaf2ssvamkd4af6h5dib8diwlv5m31fr-wpaperd-wallpaper
       };
-      wantedBy = ["graphical-session.target"];
+      wantedBy = [ "graphical-session.target" ];
     };
   };
 
@@ -536,15 +534,13 @@ in
 
   users.users.thk = {
     isNormalUser = true;
-    # my former Debian groups: cdrom floppy sudo audio dip video plugdev netdev bluetooth docker nix-users
-    extraGroups = [ "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "input" "video" "wheel" ];
     shell = pkgs.fish;
-    #    ignoreShellProgramCheck = true; # home-manager is responsible for ~/.config/fish
   };
 
   users.users.test = {
     isNormalUser = true;
-    extraGroups = [ "video" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "input" "video" "wheel" ];
     shell = pkgs.fish;
   };
 
@@ -558,7 +554,23 @@ in
       "x-scheme-handler/https" = [ "chromium-incognito.desktop" ];
       "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
       "x-scheme-handler/tonsite" = [ "org.telegram.desktop.desktop" ];
-      "inode/directory" = ["emacsclient.desktop"];
+      "inode/directory" = [ "emacsclient.desktop" ];
+    };
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-wlr
+    ];
+
+    config = {
+      # niri ships its own niri-portals.conf, nothing needed
+      # TODO: configure this for reka session
+      reka.default = [ "wlr" ];
+      reka."org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
     };
   };
 }
