@@ -4,11 +4,11 @@ profile "2extern+laptop" {
 #  output DP-6 position 0,0
 #  output DP-4 position 1920,0
 #  output eDP-1 position 4480,0
-  output DP-6 {
+  output DP-4 {
     position 0,0
     scale 1.4
   }
-  output DP-5 {
+  output DP-3 {
     position 1372,0
     scale 1.4
   }
@@ -41,7 +41,7 @@ profile "2extern+laptop" {
 profile "laptoponly" {
   output eDP-1 {
     position 0,0
-    scale 1.1
+    scale 1.4
   }
 }
 

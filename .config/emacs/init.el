@@ -54,6 +54,7 @@
  '(select-enable-clipboard t)
  '(show-trailing-whitespace t)
  '(tab-bar-show 1)
+ '(tab-bar-tab-hints 1)
  '(tab-width 4)
  '(vc-make-backup-files t)
  '(version-control t)
@@ -85,6 +86,9 @@
   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
+
+
+(add-to-list 'default-frame-alist '(alpha-background . 0))
 
 (defun thk-transparency-stop-on-first-char ()
   "hook to disable transparency in *scratch* buffer on first keypress"
@@ -363,3 +367,4 @@
 ;(keymap-global-set "M-g" #'casual-avy-tmenu)
 ;(keymap-set symbol-overlay-map "C-o" #'casual-symbol-overlay-tmenu)
 (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
+

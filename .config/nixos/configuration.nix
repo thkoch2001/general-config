@@ -112,6 +112,7 @@ in
         dnsutils
         # dovecot_pigeonhole
         # duff
+        e2fsprogs # e4crypt
         eom
         evince
         ffmpeg
@@ -225,6 +226,7 @@ in
         translate-shell # Command-line translator using Google Translate, Bing Translator, Yandex.Translate, and Apertium
         # https://github.com/soimort/translate-shell/wiki/Configuration
         tree
+        udiskie
         # unrar-free
         unzip
         # usbutils # provides lsusb
@@ -343,6 +345,9 @@ in
               opp-accept = true;
               shared-path = "/home/thk/Downloads";
             };
+            "org/gnome/desktop/interface" = {
+              color-scheme = "'prefer-dark'";
+            };
           };
         }];
       };
@@ -416,8 +421,8 @@ in
         niri.enable = false;
         reka = {
           enable = true;
-          # reka_loglevel = debug; # defaults to warn
-          # river_loglevel = debug; # defaults to warning
+          reka_loglevel = "debug"; # defaults to warn
+          river_loglevel = "debug"; # defaults to warning
           launchCommand = ''${thk-emacs}/bin/emacs --eval "(require 'reka)" --eval "(reka-enable)"'';
         };
       };
@@ -452,6 +457,13 @@ in
       after = [ "niri.service" "reka.service" ];
       wantedBy = [ "graphical-session.target" ];
       serviceConfig.ExecStart = "${pkgs.copyq}/bin/copyq";
+    };
+    dunst = {
+      serviceConfig = {
+        ExecStart = [
+          "" "${pkgs.dunst}/bin/dunst --verbosity debug"
+        ];
+      };
     };
     kanshi = {
       description = "automatically apply display configs";
@@ -504,13 +516,13 @@ in
         wantedBy = [ "graphical-session.target" ];
       };
     udiskie = {
-      after = [ "graphical-session.target" "tray.target" ];
-      description = "udiskie mount daemon";
+      after = [ "graphical-session.target" /*"tray.target"*/ ];
+      description = "udiskie automount daemon";
       partOf = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs.udiskie}/bin/udiskie";
+        ExecStart = "${pkgs.udiskie}/bin/udiskie --verbose --automount --no-config --notify --tray --appindicator";
       };
-      requires = [ "tray.target" ];
+#      requires = [ "tray.target" ];
       wantedBy = [ "graphical-session.target" ];
     };
     wpaperd = {
@@ -518,7 +530,7 @@ in
       description = "wpaperd background image";
       partOf = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = "${upkgs.wpaperd}/bin/wpaperd";
+        ExecStart = "${upkgs.wpaperd}/bin/wpaperd -v";
         #Restart=always
         RestartSec = 10;
       };

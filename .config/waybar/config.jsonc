@@ -1,7 +1,7 @@
 // -*- mode: jsonc -*-
 {
     "height": 30, // Waybar height (to be removed for auto height)
-    "spacing": 2, // Gaps between modules (4px)
+    "spacing": 1, // Gaps between modules (4px)
     "mode": "dock",
     "exclusive": true,
     // Choose the order of the modules
@@ -31,13 +31,16 @@
         "custom/power"
     ],
     // Modules configuration
+    "niri/language": {
+       "format": "{short}"
+    },
     "niri/window": {
         "icon": true
     },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
-        "format": "{name} {icon}",
+        "format": "{icon}",
         "format-icons": {
             "locked": "",
             "unlocked": ""
@@ -99,7 +102,7 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% 💡{icon}",
+        "format": "{icon}💡",
         "format-icons": ["○", "◔", "◑", "◕", "●"]
     },
     "battery": {
