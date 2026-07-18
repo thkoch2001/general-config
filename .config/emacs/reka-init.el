@@ -6,4 +6,8 @@
     (start-process "start reka-emacs-started.target" nil "systemctl" "--user" "start" "reka-emacs-started.target")
     ))
 
+(setq
+  tab-bar-select-tab-modifiers '(super)
+)
+
 (server-start)

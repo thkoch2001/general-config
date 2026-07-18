@@ -16,6 +16,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(async-shell-command-buffer 'new-buffer)
+ '(async-shell-command-display-buffer nil)
  '(auto-revert-check-vc-info t)
  `(auto-save-file-name-transforms '((".*" ,(thk-state-file "auto-save/") t)))
  '(auto-save-list-file-prefix (thk-state-file "auto-save-list"))
@@ -25,6 +27,7 @@
  '(calendar-week-start-day 1)
  '(completion-cycle-threshold t)
  '(column-number-mode t)
+ '(custom-buffer-done-kill t)
  '(custom-enabled-themes '(solarized-dark-high-contrast))
  '(custom-file "~/.config/emacs/custom-save-dump-not-loaded.el")
  '(custom-safe-themes '(
@@ -52,6 +55,7 @@
   ))
  '(scroll-bar-mode nil)
  '(select-enable-clipboard t)
+ '(shell-kill-buffer-on-exit t)
  '(show-trailing-whitespace t)
  '(tab-bar-show 1)
  '(tab-bar-tab-hints 1)

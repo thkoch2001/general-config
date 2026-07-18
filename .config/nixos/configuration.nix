@@ -421,9 +421,8 @@ in
         niri.enable = false;
         reka = {
           enable = true;
-          reka_loglevel = "debug"; # defaults to warn
-          river_loglevel = "debug"; # defaults to warning
-          launchCommand = ''${thk-emacs}/bin/emacs --eval "(require 'reka)" --eval "(reka-enable)"'';
+          #reka_loglevel = "debug"; # defaults to info
+          #river_loglevel = "debug"; # defaults to info
         };
       };
       systemd.user.services.waybar.serviceConfig = {

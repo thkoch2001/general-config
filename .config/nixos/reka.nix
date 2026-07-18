@@ -88,20 +88,14 @@ in
     enable = lib.mkEnableOption "reka, an Emacs window manager for river";
     reka_loglevel = lib.mkOption {
       type = lib.types.str;
-      description = "log level for reka, see https://docs.rs/env_logger/latest/env_logger/";
-      default = "warn";
+      description = "log level for reka, will end up in RUST_LOG, see https://docs.rs/env_logger/latest/env_logger/";
+      default = "info";
     };
 
     river_loglevel = lib.mkOption {
       type = lib.types.str;
       description = "log level for river, [*error*|*warning*|*info*|*debug*]";
-      default = "warning";
-    };
-
-    # TODO(tazjin): this is too generic, I guess, but it'll work ...
-    launchCommand = lib.mkOption {
-      type = lib.types.str;
-      description = "Fully configured launch command script (passed to river)";
+      default = "info";
     };
   };
 
