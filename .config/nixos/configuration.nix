@@ -239,6 +239,7 @@ in
         wdisplays
         wget
         wl-clipboard
+        wlopm # wayland output power management, used by swayidle, swaylock
         wlr-randr
         wlr-which-key
         xdg-utils # xdg-open
@@ -425,10 +426,33 @@ in
           #river_loglevel = "debug"; # defaults to info
         };
       };
-      systemd.user.services.waybar.serviceConfig = {
-        ExecStart = ["" "${pkgs.waybar}/bin/waybar -c %h/.config/waybar/config.reka.jsonc"];
+      systemd.user.services = {
+        swayidle =
+          let
+            lockcmd = "${pkgs.swaylock}/bin/swaylock";
+            wlopmcmd = "${pkgs.wlopm}/bin/wlopm";
+          in
+          {
+            description = "Idle manager for Wayland";
+            documentation = [ "man:swayidle(1)" ];
+            partOf = [ "graphical-session.target" ];
+            serviceConfig = {
+              ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
+                            timeout 6000 '${wlopmcmd} --off "*"' \
+                            after-resume '${wlopmcmd} --on "*"' \
+                            before-sleep '${lockcmd}' \
+                            lock '${lockcmd}' '';
+              #Restart = "always";
+            };
+            unitConfig = {
+              ConditionEnvironment = "WAYLAND_DISPLAY";
+            };
+            wantedBy = [ "graphical-session.target" ];
+          };
+        waybar.serviceConfig = {
+          ExecStart = [ "" "${pkgs.waybar}/bin/waybar -c %h/.config/waybar/config.reka.jsonc" ];
+        };
       };
-      #      services.autologin.leader = "reka-session";
     };
   };
 
@@ -456,13 +480,6 @@ in
       after = [ "niri.service" "reka.service" ];
       wantedBy = [ "graphical-session.target" ];
       serviceConfig.ExecStart = "${pkgs.copyq}/bin/copyq";
-    };
-    dunst = {
-      serviceConfig = {
-        ExecStart = [
-          "" "${pkgs.dunst}/bin/dunst --verbosity debug"
-        ];
-      };
     };
     kanshi = {
       description = "automatically apply display configs";
@@ -496,24 +513,25 @@ in
         lockcmd = "${pkgs.swaylock}/bin/swaylock";
         niricmd = "${pkgs.niri}/bin/niri msg action";
       in
-      {
-        after = [ "niri.service" ];
-        description = "Idle manager for Wayland";
-        documentation = [ "man:swayidle(1)" ];
-        partOf = [ "graphical-session.target" ];
-        serviceConfig = {
-          ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
+      lib.mkDefault
+        {
+          after = [ "niri.service" ];
+          description = "Idle manager for Wayland";
+          documentation = [ "man:swayidle(1)" ];
+          partOf = [ "graphical-session.target" ];
+          serviceConfig = {
+            ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
             timeout 6000 '${niricmd} power-off-monitors' \
             after-resume '${niricmd} power-on-monitors' \
             before-sleep '${lockcmd}' \
             lock '${lockcmd}' '';
-          #Restart = "always";
+            #Restart = "always";
+          };
+          unitConfig = {
+            ConditionEnvironment = "WAYLAND_DISPLAY";
+          };
+          wantedBy = [ "graphical-session.target" ];
         };
-        unitConfig = {
-          ConditionEnvironment = "WAYLAND_DISPLAY";
-        };
-        wantedBy = [ "graphical-session.target" ];
-      };
     udiskie = {
       after = [ "graphical-session.target" /*"tray.target"*/ ];
       description = "udiskie automount daemon";
@@ -521,7 +539,7 @@ in
       serviceConfig = {
         ExecStart = "${pkgs.udiskie}/bin/udiskie --verbose --automount --no-config --notify --tray --appindicator";
       };
-#      requires = [ "tray.target" ];
+      #      requires = [ "tray.target" ];
       wantedBy = [ "graphical-session.target" ];
     };
     wpaperd = {
