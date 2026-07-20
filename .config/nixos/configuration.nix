@@ -62,6 +62,7 @@ in
     homeBinInPath = true;
     localBinInPath = true;
     sessionVariables = {
+      EDITOR = "emacsclient -a vi";
       NIXOS_OZONE_WL = "1";
     };
     # TODO:
@@ -438,10 +439,9 @@ in
             partOf = [ "graphical-session.target" ];
             serviceConfig = {
               ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
-                            timeout 6000 '${wlopmcmd} --off "*"' \
-                            after-resume '${wlopmcmd} --on "*"' \
-                            before-sleep '${lockcmd}' \
-                            lock '${lockcmd}' '';
+                            timeout 180 '${wlopmcmd} --off "*"' \
+                            resume '${wlopmcmd} --on "*"' \
+                          '';
               #Restart = "always";
             };
             unitConfig = {
@@ -521,10 +521,9 @@ in
           partOf = [ "graphical-session.target" ];
           serviceConfig = {
             ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
-            timeout 6000 '${niricmd} power-off-monitors' \
-            after-resume '${niricmd} power-on-monitors' \
-            before-sleep '${lockcmd}' \
-            lock '${lockcmd}' '';
+            timeout 180 '${niricmd} power-off-monitors' \
+            resume '${niricmd} power-on-monitors' \
+            '';
             #Restart = "always";
           };
           unitConfig = {
@@ -548,8 +547,10 @@ in
       partOf = [ "graphical-session.target" ];
       serviceConfig = {
         ExecStart = "${upkgs.wpaperd}/bin/wpaperd -v";
-        #Restart=always
-        RestartSec = 10;
+        Restart= "always";
+        RestartSec = 4;
+        RestartSteps = 3;
+        RestartMaxDelaySec = 60;
       };
       unitConfig = {
         #TODO ConditionEnvironment = "XDG_CURRENT_DESKTOP=niri";

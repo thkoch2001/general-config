@@ -57,9 +57,12 @@
  '(select-enable-clipboard t)
  '(shell-kill-buffer-on-exit t)
  '(show-trailing-whitespace t)
+ '(tab-bar-new-tab-choice "*scratch*")
  '(tab-bar-show 1)
  '(tab-bar-tab-hints 1)
  '(tab-width 4)
+ '(use-dialog-box nil)
+ '(use-file-dialog nil) ; prevents endless loop with filechooser.el https://codeberg.org/rahguzar/filechooser/pulls/23
  '(vc-make-backup-files t)
  '(version-control t)
  '(visible-bell t)
@@ -116,19 +119,13 @@
   )
 (add-hook 'buffer-list-update-hook 'thk-transparency)
 
-(defun sm (&optional start end) "run sm with the current region as input"
-  (interactive "r")
-  (shell-command-on-region start end "/usr/games/sm -")
-)
-
 (use-package ace-window
   :bind (
          ("M-o" . ace-window)
          )
   )
 
-(use-package apache-mode
- )
+;(use-package apache-mode)
 
 (use-package atomic-chrome
  )
@@ -175,7 +172,11 @@
 
 (use-package envrc
   :hook (after-init . envrc-global-mode)
-)
+  )
+
+(use-package eww
+  :ensure t
+  )
 
 (use-package git-auto-commit-mode
   :ensure t
@@ -356,19 +357,28 @@
   :ensure t
   )
 
+; https://kickingvegas.github.io/casual/index.html#SEC_Contents
 (require 'casual)
 ;(keymap-set calc-mode-map "C-o" #'casual-calc-tmenu)
+;(keymap-set calc-alg-map "C-o" #'casual-calc-tmenu)
 (keymap-set dired-mode-map "C-o" #'casual-dired-tmenu)
+; https://kickingvegas.github.io/casual/EWW-Install.html
+(keymap-set eww-mode-map "C-o" #'casual-eww-tmenu)
+; (keymap-set eshell-mode-map "C-o" #'casual-eshell-tmenu)
+(keymap-set help-mode-map "C-o" #'casual-help-tmenu)
+; not yet in nixos?
+;(keymap-set image-mode-map "C-o" #'casual-image-tmenu)
 ;(keymap-set isearch-mode-map "C-o" #'casual-isearch-tmenu)
 ;(keymap-set ibuffer-mode-map "C-o" #'casual-ibuffer-tmenu)
 ;(keymap-set ibuffer-mode-map "F" #'casual-ibuffer-filter-tmenu)
 ;(keymap-set ibuffer-mode-map "s" #'casual-ibuffer-sortby-tmenu)
 (keymap-set Info-mode-map "C-o" #'casual-info-tmenu)
+(keymap-set Man-mode-map "C-o" #'casual-man-tmenu)
 ;(keymap-set reb-mode-map "C-o" #'casual-re-builder-tmenu)
 ;(keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
-;(keymap-set bookmark-bmenu-mode-map "C-o" #'casual-bookmarks-tmenu)
+                                        ;(keymap-set bookmark-bmenu-mode-map "C-o" #'casual-bookmarks-tmenu)
+(keymap-set org-mode-map "M-m" #'casual-org-tmenu)
 ;(keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
 ;(keymap-global-set "M-g" #'casual-avy-tmenu)
 ;(keymap-set symbol-overlay-map "C-o" #'casual-symbol-overlay-tmenu)
 (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
-

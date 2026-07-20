@@ -3,6 +3,7 @@ daemonize
 indicator-caps-lock
 show-failed-attempts
 show-keyboard-layout
+image=~/.local/share/wallpapers/hundebilder/IMG_20240314_095632358.jpg
 
 indicator-radius=230
 indicator-thickness=50
