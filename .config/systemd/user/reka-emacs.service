@@ -1,0 +1,24 @@
+[Unit]
+Description=Emacs for Reka
+Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+#Wants=graphical-session.target
+#Before=graphical-session.target
+
+#Wants=xdg-desktop-autostart.target
+#Before=xdg-desktop-autostart.target
+
+[Service]
+ExecSearchPath=/run/current-system/sw/bin
+Type=simple
+Slice=session.slice
+ExecStart=env RUST_LOG=${REKA_LOGLEVEL} emacs --load=%E/emacs/reka-init.el
+WorkingDirectory=%h
+
+# Emacs will exit with status 15 after having received SIGTERM, which
+# is the default "KillSignal" value systemd uses to stop services.
+SuccessExitStatus=15
+
+# The location of the SSH auth socket varies by distribution, and some
+# set it from PAM, so don't override by default.
+# Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+Restart=on-failure

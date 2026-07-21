@@ -532,11 +532,11 @@ in
           wantedBy = [ "graphical-session.target" ];
         };
     udiskie = {
-      after = [ "graphical-session.target" /*"tray.target"*/ ];
+      after = [ "graphical-session.target" ];
       description = "udiskie automount daemon";
       partOf = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs.udiskie}/bin/udiskie --verbose --automount --no-config --notify --tray --appindicator";
+        ExecStart = "${pkgs.udiskie}/bin/udiskie --automount --no-config --notify --tray --appindicator";
       };
       #      requires = [ "tray.target" ];
       wantedBy = [ "graphical-session.target" ];

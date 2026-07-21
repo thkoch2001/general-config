@@ -1,0 +1,5 @@
+[Unit]
+Description=Workaround unit to start graphical-session only after reka https://codeberg.org/river/river/issues/1495
+Wants=graphical-session.target
+Wants=xdg-desktop-autostart.target
+AllowIsolate=no

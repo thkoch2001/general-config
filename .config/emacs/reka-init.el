@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(setenv "RUST_LOG" (getenv "REKA_LOGLEVEL"))
 (require 'reka)
 
 (run-at-time nil nil (lambda ()
