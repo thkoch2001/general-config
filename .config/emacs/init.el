@@ -97,11 +97,12 @@
 
 (add-to-list 'default-frame-alist '(alpha-background . 0))
 
-(defun thk-transparency-stop-on-first-char ()
+; args parameter necessary for 'after-change-functions
+(defun thk-transparency-scratch-hook (&rest args)
   "hook to disable transparency in *scratch* buffer on first keypress"
-  (progn
+  (if (= (buffer-size (current-buffer)) 0)
+    (set-frame-parameter (selected-frame) 'alpha-background 0)
     (set-frame-parameter (selected-frame) 'alpha-background 100)
-    (remove-hook 'post-self-insert-hook 'thk-transparency-stop-on-first-char)
     )
   )
 
@@ -112,7 +113,8 @@
            (= (count-windows) 1))
       (progn
         (set-frame-parameter (selected-frame) 'alpha-background 0)
-        (add-hook 'post-self-insert-hook 'thk-transparency-stop-on-first-char 100 t)
+        ; Unfortunately there is no hook to add the following line at buffer creation time
+        (add-hook 'after-change-functions 'thk-transparency-scratch-hook 0 t)
         )
     (set-frame-parameter (selected-frame) 'alpha-background 100)
     )
