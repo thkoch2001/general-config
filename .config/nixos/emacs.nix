@@ -2,7 +2,7 @@
 let
   reka = import (pkgs.fetchgit {
     url = "https://codeberg.org/tazjin/reka.git";
-    rev = "refs/heads/canon";
+    rev = "refs/heads/canon";     # 90e89c2f51240e3d0a10d98e0cc61732bd86334e
     hash = "sha256-w25BZpbKMAACFweRqNEtGDvw/sNNJUfsVJQCXh41Y6w=";
   });
 in
@@ -18,11 +18,13 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
     apache-mode
     atomic-chrome
     casual-suite
+    ednc # TODO https://github.com/sinic/ednc
     envrc
     git-auto-commit-mode
     graphviz-dot-mode
     haskell-mode
     helpful
+    keycast # TODO https://github.com/tarsius/keycast
     magit
     markdown-mode
     nix-mode
@@ -38,6 +40,7 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
     yaml-mode
     yasnippet-snippets
   ]) ++ (with epkgs.nongnuPackages; [
+    eat # emulate a terminal https://codeberg.org/akib/emacs-eat
     ws-butler
   ]) ++ [
     (callPackage reka {

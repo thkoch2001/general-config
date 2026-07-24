@@ -201,7 +201,7 @@ in
         # rustc # rust compiler
         # rustfmt
         # rustic # backup, see GitHub issue on --cacert option
-        # rustup
+        rustup
         samba # for file sharing to VMs, see quickemu
         # sassc
         # screen-message
@@ -391,7 +391,7 @@ in
     blueman.enable = true;
     #    displayManager.gdm.enable = true;
     dunst = {
-      enable = true;
+      enable = lib.mkDefault true;
       settings = {
         global.font = "DejaVu Sans 12";
       };
@@ -426,6 +426,9 @@ in
           #reka_loglevel = "debug"; # defaults to info
           #river_loglevel = "debug"; # defaults to info
         };
+      };
+      services = {
+        dunst.enable = false;
       };
       systemd.user.services = {
         swayidle =

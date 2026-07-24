@@ -35,6 +35,7 @@
                         "46433a4be67ff0f415175d0876ef9435d190f3aa57bb00670febd70ba0ba52e1" ; solarized-dark-high-contrast 2.0
                         default))
  '(delete-old-versions t)
+ '(delete-selection-mode t)
  '(editorconfig-mode t)
  '(enable-remote-dir-locals t) ; test https://debbugs.gnu.org/12145
  '(fido-vertical-mode t)
@@ -76,6 +77,8 @@
                                (show-paren-mode t)
                                (local-set-key "%" 'thk-match-paren)
                                (hs-minor-mode t)
+                               (hl-line-mode t)
+                               (electric-pair-mode t)
                                )))
 
 ;; "y or n" instead of "yes or no"
