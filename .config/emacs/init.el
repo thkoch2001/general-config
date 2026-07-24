@@ -100,12 +100,26 @@
 
 (add-to-list 'default-frame-alist '(alpha-background . 0))
 
+(defun thk-desktop-on ()
+  (set-frame-parameter (selected-frame) 'alpha-background 0)
+  ;(setq-local old-mode-line-format mode-line-format)
+  ;(setq-local mode-line-format nil)
+  ; Unfortunately there is no hook to add the following line at buffer creation time
+  (add-hook 'after-change-functions 'thk-transparency-scratch-hook 0 t)
+  )
+
+(defun thk-desktop-off ()
+  (set-frame-parameter (selected-frame) 'alpha-background 100)
+  ;(if (local-variable-p old-mode-line-format)
+  ;    (setq-local mode-line-format old-mode-line-format))
+  )
+
 ; args parameter necessary for 'after-change-functions
 (defun thk-transparency-scratch-hook (&rest args)
   "hook to disable transparency in *scratch* buffer on first keypress"
   (if (= (buffer-size (current-buffer)) 0)
-    (set-frame-parameter (selected-frame) 'alpha-background 0)
-    (set-frame-parameter (selected-frame) 'alpha-background 100)
+      (thk-desktop-on)
+    (thk-desktop-off)
     )
   )
 
@@ -116,17 +130,13 @@
        (= 0 (buffer-size))
        (= 1 (count-windows))
        )
-      (progn
-        (set-frame-parameter (selected-frame) 'alpha-background 0)
-        ; Unfortunately there is no hook to add the following line at buffer creation time
-        (add-hook 'after-change-functions 'thk-transparency-scratch-hook 0 t)
-        )
-    (set-frame-parameter (selected-frame) 'alpha-background 100)
+      (thk-desktop-on)
+    (thk-desktop-off)
     )
   )
 
 (add-hook 'window-selection-change-functions 'thk-transparency)
-(add-hook 'window-configuration-change-functions 'thk-transparency)
+(add-hook 'window-configuration-change-hook 'thk-transparency)
 
 (use-package ace-window
   :bind (
