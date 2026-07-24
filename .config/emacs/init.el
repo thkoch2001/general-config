@@ -109,11 +109,13 @@
     )
   )
 
-(defun thk-transparency ()
+(defun thk-transparency (&rest args)
   "transparency"
-  (if (and (string-equal (buffer-name) "*scratch*")
-           (= (buffer-size (current-buffer)) 0)
-           (= (count-windows) 1))
+  (if (and
+       (string-equal "*scratch*" (buffer-name))
+       (= 0 (buffer-size))
+       (= 1 (count-windows))
+       )
       (progn
         (set-frame-parameter (selected-frame) 'alpha-background 0)
         ; Unfortunately there is no hook to add the following line at buffer creation time
@@ -122,7 +124,9 @@
     (set-frame-parameter (selected-frame) 'alpha-background 100)
     )
   )
-(add-hook 'buffer-list-update-hook 'thk-transparency)
+
+(add-hook 'window-selection-change-functions 'thk-transparency)
+(add-hook 'window-configuration-change-functions 'thk-transparency)
 
 (use-package ace-window
   :bind (
