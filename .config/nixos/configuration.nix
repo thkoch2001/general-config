@@ -370,7 +370,11 @@ in
     # ladybird.enable = true; # https://github.com/LadybirdBrowser/ladybird/issues/572#issuecomment-2242268172
     mosh.enable = true;
     # mtr.enable = true; # TODO network diagnostic https://www.bitwizard.nl/mtr/
-    niri.enable = lib.mkDefault true;
+    reka = {
+      enable = lib.mkDefault true;
+      #reka_loglevel = "debug"; # defaults to info
+      #river_loglevel = "debug"; # defaults to info
+    };
     # - `programs.ssh.startAgent' (defined in `/home/thk/.config/nixos/configuration.nix') and `services.gnome.gcr-ssh-agent.enable' (defined in `/nix/store/snl5y2ljnxfaz7a7hih2f67n1wvj69jk-nixos-26.05/nixos/nixos/modules/services/desktops/gnome/gcr-ssh-agent.nix') cannot both be enabled at the same time.
     # These options conflict because only one SSH agent can be installed at a time.
     ssh.startAgent = true;
@@ -387,17 +391,10 @@ in
   services = {
     autologin = {
       enable = true;
-      leader = lib.mkDefault "${pkgs.niri}/bin/niri-session";
       user = "thk";
     };
     blueman.enable = true;
     #    displayManager.gdm.enable = true;
-    dunst = {
-      enable = lib.mkDefault true;
-      settings = {
-        global.font = "DejaVu Sans 12";
-      };
-    };
     gnome.gcr-ssh-agent.enable = lib.mkForce false; # seems this gets enabled by niri?
     libinput.enable = true;
     pcscd.enable = true;
@@ -420,43 +417,43 @@ in
   };
 
   specialisation = {
-    reka.configuration = {
+    niri.configuration = {
       programs = {
-        niri.enable = false;
-        reka = {
-          enable = true;
-          #reka_loglevel = "debug"; # defaults to info
-          #river_loglevel = "debug"; # defaults to info
-        };
+        niri.enable = true;
+        reka.enable = false;
       };
       services = {
-        dunst.enable = false;
+        autologin.leader = "${pkgs.niri}/bin/niri-session";
+        dunst = {
+          enable = true;
+          settings = {
+            global.font = "DejaVu Sans 12";
+          };
+        };
       };
       systemd.user.services = {
         swayidle =
           let
             lockcmd = "${pkgs.swaylock}/bin/swaylock";
-            wlopmcmd = "${pkgs.wlopm}/bin/wlopm";
+            niricmd = "${pkgs.niri}/bin/niri msg action";
           in
-          {
-            description = "Idle manager for Wayland";
-            documentation = [ "man:swayidle(1)" ];
-            partOf = [ "graphical-session.target" ];
-            serviceConfig = {
-              ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
-                            timeout 180 '${wlopmcmd} --off "*"' \
-                            resume '${wlopmcmd} --on "*"' \
-                          '';
-              #Restart = "always";
+            {
+              after = [ "niri.service" ];
+              description = "Idle manager for Wayland";
+              documentation = [ "man:swayidle(1)" ];
+              partOf = [ "graphical-session.target" ];
+              serviceConfig = {
+                ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
+                            timeout 180 '${niricmd} power-off-monitors' \
+                                        resume '${niricmd} power-on-monitors' \
+                                                    '';
+                #Restart = "always";
+              };
+              unitConfig = {
+                ConditionEnvironment = "WAYLAND_DISPLAY";
+              };
+              wantedBy = [ "graphical-session.target" ];
             };
-            unitConfig = {
-              ConditionEnvironment = "WAYLAND_DISPLAY";
-            };
-            wantedBy = [ "graphical-session.target" ];
-          };
-        waybar.serviceConfig = {
-          ExecStart = [ "" "${pkgs.waybar}/bin/waybar -c %h/.config/waybar/config.reka.jsonc" ];
-        };
       };
     };
   };
@@ -516,25 +513,27 @@ in
     swayidle =
       let
         lockcmd = "${pkgs.swaylock}/bin/swaylock";
-        niricmd = "${pkgs.niri}/bin/niri msg action";
+        wlopmcmd = "${pkgs.wlopm}/bin/wlopm";
       in
-      lib.mkDefault
+        lib.mkDefault
         {
-          after = [ "niri.service" ];
           description = "Idle manager for Wayland";
           documentation = [ "man:swayidle(1)" ];
           partOf = [ "graphical-session.target" ];
           serviceConfig = {
             ExecStart = ''${pkgs.swayidle}/bin/swayidle -w \
-            timeout 180 '${niricmd} power-off-monitors' \
-            resume '${niricmd} power-on-monitors' \
-            '';
+                          timeout 180 '${wlopmcmd} --off "*"' \
+                          resume '${wlopmcmd} --on "*"' \
+                        '';
             #Restart = "always";
           };
           unitConfig = {
             ConditionEnvironment = "WAYLAND_DISPLAY";
           };
           wantedBy = [ "graphical-session.target" ];
+        };
+        waybar.serviceConfig = {
+          ExecStart = [ "" "${pkgs.waybar}/bin/waybar -c %h/.config/waybar/config.reka.jsonc" ];
         };
     udiskie = {
       after = [ "graphical-session.target" ];

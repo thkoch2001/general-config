@@ -40,13 +40,17 @@
 (thk-reka-set-key "s-p" "systemd-run" "--user" "--quiet" "--property=ExitType=cgroup" "fuzzel" "--log-level=info")
 (thk-reka-set-key "s-w" "systemctl" "--user" "kill" "--signal=SIGUSR1" "waybar.service")
 (thk-reka-set-key "s-<return>" "systemd-run" "--user" "--quiet" "alacritty")
+(thk-reka-set-key "<MonBrightnessDown>" "brightnessctl" "set" "4%+")
+(thk-reka-set-key "<MonBrightnessUp>" "brightnessctl" "set" "4%-")
+
 
 (keymap-global-set "s-x" ctl-x-map)
 (keymap-global-set "s-h" help-map)
-(keymap-global-set "s-<tab>" 'next-multiframe-window)
-(keymap-global-set "S-s-<iso-lefttab>" 'previous-window-any-frame)
-(keymap-global-set "s-u" 'universal-argument)
-(keymap-global-set "s-X" 'execute-extended-command)
+(keymap-global-set "s-<tab>" #'next-multiframe-window)
+(keymap-global-set "S-s-<iso-lefttab>" #'previous-window-any-frame)
+(keymap-global-set "s-u" #'universal-argument)
+(keymap-global-set "s-X" #'execute-extended-command)
+
 
 (defun thk-bury () (interactive)
        (if (string= "*scratch*" (buffer-name))
