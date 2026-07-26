@@ -172,6 +172,7 @@ in
         nixpkgs-fmt
         # nix-prefetch-github
         # nmap
+        ollama
         openrsync
         # palemoon-bin # firefox fork https://www.palemoon.org/
         pandoc # e.g. markdown preview in emacs

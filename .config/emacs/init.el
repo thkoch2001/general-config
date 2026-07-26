@@ -58,6 +58,7 @@
  '(select-enable-clipboard t)
  '(shell-kill-buffer-on-exit t)
  '(show-trailing-whitespace t)
+ '(tab-bar-close-button-show nil)
  '(tab-bar-new-tab-choice "*scratch*")
  '(tab-bar-show 1)
  '(tab-bar-tab-hints 1)
@@ -126,7 +127,7 @@
 (defun thk-transparency (&rest args)
   "transparency"
   (if (and
-       (string-equal "*scratch*" (buffer-name))
+       (string= "*scratch*" (buffer-name))
        (= 0 (buffer-size))
        (= 1 (count-windows))
        )

@@ -47,7 +47,14 @@
 (keymap-global-set "S-s-<iso-lefttab>" 'previous-window-any-frame)
 (keymap-global-set "s-u" 'universal-argument)
 (keymap-global-set "s-X" 'execute-extended-command)
-(keymap-global-set "s-b" (lambda () (interactive) (switch-to-buffer "*scratch*") (delete-other-windows) (thk-transparency)))
+
+(defun thk-bury () (interactive)
+       (if (string= "*scratch*" (buffer-name))
+           (tab-close)
+         (switch-to-buffer "*scratch*") (delete-other-windows) (thk-transparency)
+         )
+       )
+(keymap-global-set "s-b" 'thk-bury)
 (keymap-global-set "s-d" (lambda () (interactive) (message nil)))
 
 (reka-enable) ; must be called after changes to reka-intercept-prefixes
@@ -98,6 +105,7 @@
 (defun thk-init-reka-mode ()
   (when (eq major-mode 'reka-mode)
     (setq cursor-type nil)
+    (setq mode-line-format nil)
     ))
 
 (add-hook 'after-change-major-mode-hook #'thk-init-reka-mode)
