@@ -41,6 +41,7 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
     yasnippet-snippets
   ]) ++ (with epkgs.nongnuPackages; [
     eat # emulate a terminal https://codeberg.org/akib/emacs-eat
+    gptel
     ws-butler
   ]) ++ [
     (callPackage reka {

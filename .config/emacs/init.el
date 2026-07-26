@@ -36,6 +36,8 @@
                         default))
  '(delete-old-versions t)
  '(delete-selection-mode t)
+ ; show sizes in dires as human readable
+ '(dired-listing-switches "-alh")
  '(editorconfig-mode t)
  '(enable-remote-dir-locals t) ; test https://debbugs.gnu.org/12145
  '(fido-vertical-mode t)
@@ -200,6 +202,24 @@
 (use-package git-auto-commit-mode
   :ensure t
 )
+
+(use-package gptel
+  :after (f)
+  :custom
+  (gptel-log-level 'info)
+  (gptel-default-mode 'org-mode)
+
+  :init
+  (setq
+   gptel-model 'qwen2.5-coder:3b
+   gptel-backend
+   (gptel-make-ollama "ollama"
+     :host "localhost:11434"
+     :models
+     '("qwen2.5-coder:3b"
+       "qwen2.5-coder:7b")
+     ))
+  )
 
 (use-package graphviz-dot-mode
   :ensure t
