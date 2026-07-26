@@ -48,6 +48,8 @@
  '(kept-new-versions 6)
  '(line-number-mode t)
  '(menu-bar-mode nil)
+ ;; hide default in minibuffer when something else gets typed
+ '(minibuffer-electric-default-mode 1)
  '(require-final-newline nil)
  '(safe-local-variable-values '(
                                 (gac-automatically-push-p . t)
@@ -57,20 +59,21 @@
  '(scroll-bar-mode nil)
  '(select-enable-clipboard t)
  '(shell-kill-buffer-on-exit t)
+ ;; see emacs FAQ: 5.27 How do I show which parenthesis matches the one I'm looking at?
+ '(show-paren-mode t)
  '(show-trailing-whitespace t)
  '(tab-bar-close-button-show nil)
  '(tab-bar-new-tab-choice "*scratch*")
  '(tab-bar-show 1)
  '(tab-bar-tab-hints 1)
  '(tab-width 4)
+ '(tool-bar-mode nil)
  '(use-dialog-box nil)
  '(use-file-dialog nil) ; prevents endless loop with filechooser.el https://codeberg.org/rahguzar/filechooser/pulls/23
  '(vc-make-backup-files t)
  '(version-control t)
  '(visible-bell t)
  )
-
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 (add-hook 'prog-mode-hook #'(lambda ()
                              (progn
@@ -85,9 +88,6 @@
 ;; "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; see emacs FAQ: 5.27 How do I show which parenthesis matches the one I'm looking at?
-(show-paren-mode 1)
-
 ;; Here is some Emacs Lisp that will make the <%> key show the
 ;; matching parenthesis, like in `vi'.  In addition, if the cursor
 ;; isn't over a parenthesis, it simply inserts a % like normal.
@@ -97,7 +97,6 @@
   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
-
 
 (add-to-list 'default-frame-alist '(alpha-background . 0))
 

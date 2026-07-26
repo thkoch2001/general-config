@@ -102,6 +102,7 @@ in
         bat # syntax highlighting cat https://github.com/sharkdp/bat
         bc # cli calculator
         (callPackage ./borg2.nix { })
+        brightnessctl
         # cargo # rust package manager
         chromium # needed although programs.enabled.chromius = true; ungoogled-chromium didn't work
         # clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
