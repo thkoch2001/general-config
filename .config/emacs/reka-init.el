@@ -106,19 +106,39 @@
             #'ednc-tooltip-presentation-function)
   )
 
-;(require 'ednc-popup "/home/thk/git/emacs-ednc-popup/ednc-popup.el")
-;(add-hook 'ednc-notification-presentation-functions
-;          #'ednc-popup-presentation-function)
+;; blocked on https://codeberg.org/tazjin/reka/issues/15
+;; (require 'ednc-popup "/home/thk/git/emacs-ednc-popup/ednc-popup.el")
+;; (add-hook 'ednc-notification-presentation-functions
+;;           #'ednc-popup-presentation-function)
 
-; open reka buffers fullscreen
+;; open reka buffers fullscreen
 (add-to-list 'display-buffer-alist '((derived-mode . reka-mode)	display-buffer-full-frame))
 
-; workaround for missing reka-mode-hook, https://codeberg.org/tazjin/reka/issues/16
+
 (defun thk-init-reka-mode ()
   (when (eq major-mode 'reka-mode)
     (setq cursor-type nil)
     (setq mode-line-format nil)
     ))
 
+;; workaround for missing reka-mode-hook, see https://codeberg.org/tazjin/reka/issues/16
 (add-hook 'after-change-major-mode-hook #'thk-init-reka-mode)
 
+;; https://superuser.com/questions/597076/gtk-3-menu-configuration-for-emacs
+;; https://emacs.stackexchange.com/questions/83022/adding-a-custom-toolbar-item-scaling-the-emacs-toolbar-icons
+
+; make it possible to use tool-bar and menu-bar, see https://codeberg.org/tazjin/reka/issues/18
+(defun reka--window-parameters (frame window)
+  (let*
+      ((edges (window-inside-absolute-pixel-edges window))
+       (toolbar-height 42)
+       (menu-height 24)
+       (offset (+ (if tool-bar-mode toolbar-height 0) (if menu-bar-mode menu-height 0)))
+       )
+    (reka-make-window-parameters
+     (buffer-local-value 'reka-window (window-buffer window))
+     frame
+     (nth 0 edges)
+     (+ (nth 1 edges) offset)
+     (- (nth 2 edges) (nth 0 edges))
+     (- (nth 3 edges) (nth 1 edges)))))
