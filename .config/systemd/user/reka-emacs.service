@@ -11,7 +11,7 @@ Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
 ExecSearchPath=/run/current-system/sw/bin
 Type=simple
 Slice=session.slice
-ExecStart=env RUST_LOG=${REKA_LOGLEVEL} emacs --load=%E/emacs/reka-init.el
+ExecStart=emacs --load=%E/emacs/reka-init.el
 WorkingDirectory=%h
 
 # Emacs will exit with status 15 after having received SIGTERM, which

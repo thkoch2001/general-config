@@ -1,18 +1,51 @@
 # https://sr.ht/~emersion/kanshi/
 # https://manpages.debian.org/bookworm/sway/sway-output.5.en.html
+
+
+profile "2extern+laptopnew" {
+#  output DP-6 position 0,0
+#  output DP-4 position 1920,0
+#  output eDP-1 position 4480,0
+  output "Dell Inc. DELL 2407WFP UY54575H02JS " {
+    enable
+    position 0,0
+    scale 1.3333
+    mode 1920x1200@59.950Hz
+#    1920x1200 1600x1200 1680x1050 1280x1024 1152x864 1024x768
+  }
+  output "Dell Inc. DELL U2719DC 7J0GVS2" {
+    enable
+    position 1441,0
+    scale 1.3333
+    mode 2560x1440@59.951Hz
+#    2560x1440 2048x1080 1920x1080 1600x1200 1280x1024
+  }
+  output eDP-1 {
+    enable
+    position 3363,0
+    scale 1.5
+    mode 1920x1080@60.049Hz
+  }
+}
+
+
 profile "2extern+laptop" {
 #  output DP-6 position 0,0
 #  output DP-4 position 1920,0
 #  output eDP-1 position 4480,0
-  output DP-4 {
+  output "Dell Inc. DELL 2407WFP UY54575H02JS " {
+    enable
     position 0,0
     scale 1.4
+    mode 1920x1200@59.950Hz
   }
-  output DP-3 {
+  output "Dell Inc. DELL U2719DC 7J0GVS2" {
+    enable
     position 1372,0
     scale 1.4
   }
   output eDP-1 {
+    enable
     position 3203,0
     scale 1.5
   }

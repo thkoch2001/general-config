@@ -1,0 +1,10 @@
+[Unit]
+Description=rau, emacs for river
+Wants=pipewire.service graphical-session-pre.target
+After=pipewire.service graphical-session-pre.target
+
+[Service]
+Slice=session.slice
+Type=simple
+WorkingDirectory=%h
+ExecStart=/run/current-system/sw/bin/river -log-level info

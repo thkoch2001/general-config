@@ -1,8 +1,11 @@
+
 #!/bin/sh
 
-systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP WAYLAND_DISPLAY DISPLAY REKA_LOGLEVEL
+export XDG_SESSION_TYPE=wayland
+
+systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP WAYLAND_DISPLAY DISPLAY
 if command -v dbus-update-activation-environment >/dev/null 2>&1; then
     dbus-update-activation-environment --all
 fi
 
-exec systemctl --user --wait start reka-emacs.service
+exec systemctl --user --wait start rau-emacs.service

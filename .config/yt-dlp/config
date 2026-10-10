@@ -1,3 +1,4 @@
---extractor-args "youtube:player_js_version=actual"
+#--extractor-args "youtube:player_js_version=actual"
+#--extractor-args 'youtube:player_client=android'
 #--format "best[height<=720]"
 --abort-on-unavailable-fragments

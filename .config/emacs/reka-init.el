@@ -1,24 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
-(let* (
-       (repo "/home/thk/git/reka/")
-       (rust (concat repo "target/debug/libreka.so"))
-       (lisp (concat repo "lisp/reka.el"))
-      )
-  (if (and (getenv "REKADEV") (file-exists-p rust))
-    (progn
-      (message "loading reka from git")
-      (require 'libreka rust)
-      (require 'reka lisp)
-      )
-  (progn
-    (message "loading reka from Emacs load path")
-    (require 'reka)
-    )
-  ))
+(require 'reka)
 
 (run-at-time nil nil (lambda ()
-    (start-process "start reka-emacs-started.target" nil "systemctl" "--user" "start" "reka-emacs-started.target")
+    (start-process "start reka-emacs-started.target" nil "systemctl" "--user" "start" "rau-emacs-started.target")
     ))
 
 (customize-set-variable 'tab-bar-select-tab-modifiers '(super) "set by reka-init.el")

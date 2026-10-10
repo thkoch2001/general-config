@@ -1,24 +1,34 @@
-{ pkgs, ... }:
+{ pkgs, upkgs, ... }:
 let
   reka = import (pkgs.fetchgit {
     url = "https://codeberg.org/tazjin/reka.git";
-    rev = "refs/heads/canon";     # 90e89c2f51240e3d0a10d98e0cc61732bd86334e
-    hash = "sha256-w25BZpbKMAACFweRqNEtGDvw/sNNJUfsVJQCXh41Y6w=";
+    rev = "refs/heads/canon";
+    hash = "sha256-jdggakCHHRNpRQUjpHHHWyBsU1SL61QIWZMV6A0IWfU=";
   });
+  rau = import (pkgs.fetchFromGitHub {
+    owner = "thkoch2001";
+    repo = "rau";
+    rev = "refs/heads/master";
+    hash = "sha256-mEzor0AqARGeLUUcjGlMAIYmhkOOOV3YkYAEQKKodS8=";
+  });
+
 in
-with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
+with pkgs; (emacsPackagesFor upkgs.emacs31-pgtk).emacsWithPackages (
   epkgs:
   (with epkgs.elpaPackages; [
     ace-window
     company
-    org
+    inspector
+    # org # included in emacs
     # org-modern # https://github.com/minad/org-modern
-    use-package
+    tree-inspector
   ]) ++ (with epkgs.melpaPackages; [
     apache-mode
     atomic-chrome
     casual-suite
     ednc # TODO https://github.com/sinic/ednc
+    elfeed
+    elisp-def # TODO https://github.com/Wilfred/elisp-def
     envrc
     git-auto-commit-mode
     graphviz-dot-mode
@@ -27,8 +37,12 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
     keycast # TODO https://github.com/tarsius/keycast
     magit
     markdown-mode
+    mixed-pitch
+    nerd-icons
     nix-mode
     nov
+    ollama-buddy
+    package-lint
     paredit
     rainbow-delimiters
     rust-mode
@@ -39,14 +53,24 @@ with pkgs; (emacsPackagesFor emacs-pgtk).emacsWithPackages (
     visual-fill-column
     yaml-mode
     yasnippet-snippets
+    zig-mode
   ]) ++ (with epkgs.nongnuPackages; [
     eat # emulate a terminal https://codeberg.org/akib/emacs-eat
+    # TODO
+    # https://www.grothe.us/presentations/emacsconf-202512-emacs-private-ai.pdf
     gptel
     ws-butler
   ]) ++ [
     (callPackage reka {
       inherit pkgs;
     })
+    (callPackage rau {
+      inherit pkgs;
+    })
+    # TODO
+    # https://github.com/dakra/ghostel
+    # https://dakra.github.io/ghostel/
+    upkgs.emacsPackages.ghostel
   ]
   /*
     pandoc-mode?

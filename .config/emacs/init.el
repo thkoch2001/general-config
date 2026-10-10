@@ -1,90 +1,167 @@
+;; -*- lexical-binding: t; -*-
+
+;; TODO use-package-compute-statistics to t, restart Emacs and call use-package-report
+
+;; TODO review emacs/etc/presets/newcomers-presets-mode.el
+;; - https://sachachua.com/blog/2026/04/what-s-in-the-emacs-newcomers-presets-theme/
+
+
 ;; completion stuff:
 ;; https://www.masteringemacs.org/article/understanding-minibuffer-completion
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html
+
+;;; Code:
 
 (setq default-directory "~/")
 (set-face-attribute 'default nil :height 130)
 (package-initialize)
 
 (defun thk-state-file (path)
-  (concat "~/.local/state/emacs/" path)
-  )
+  (concat "~/.local/state/emacs/" path))
+
 (make-directory (thk-state-file "auto-save") t)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(async-shell-command-buffer 'new-buffer)
- '(async-shell-command-display-buffer nil)
- '(auto-revert-check-vc-info t)
- `(auto-save-file-name-transforms '((".*" ,(thk-state-file "auto-save/") t)))
- '(auto-save-list-file-prefix (thk-state-file "auto-save-list"))
- '(backup-by-copying t)
- `(backup-directory-alist '(("." . ,(thk-state-file "backup"))))
- '(blink-cursor-mode t)
- '(calendar-week-start-day 1)
- '(completion-cycle-threshold t)
- '(column-number-mode t)
- '(custom-buffer-done-kill t)
- '(custom-enabled-themes '(solarized-dark-high-contrast))
- '(custom-file "~/.config/emacs/custom-save-dump-not-loaded.el")
- '(custom-safe-themes '(
-                        "69181b408ef74ce12270736cddd201de626ec5021a9b4d87fb788a18b8c59d1b" ; modus-vivendi
-                        "46433a4be67ff0f415175d0876ef9435d190f3aa57bb00670febd70ba0ba52e1" ; solarized-dark-high-contrast 2.0
-                        default))
- '(delete-old-versions t)
- '(delete-selection-mode t)
- ; show sizes in dires as human readable
- '(dired-listing-switches "-alh")
- '(editorconfig-mode t)
- '(enable-remote-dir-locals t) ; test https://debbugs.gnu.org/12145
- '(fido-vertical-mode t)
- '(fill-column 78)
- '(global-auto-revert-mode t)
- '(indent-tabs-mode nil)
- '(indicate-empty-lines t)
- '(inhibit-startup-screen t)
- '(initial-scratch-message nil)
- '(kept-new-versions 6)
- '(line-number-mode t)
- '(menu-bar-mode nil)
- ;; hide default in minibuffer when something else gets typed
- '(minibuffer-electric-default-mode 1)
- '(require-final-newline nil)
- '(safe-local-variable-values '(
-                                (gac-automatically-push-p . t)
-                                (gac-automatically-push-p . nil)
+(use-package emacs
+  :init
+  (setq custom-file "~/.emacs.d/custom.el")
+  (load custom-file t)
+  :custom
+  (async-shell-command-buffer 'new-buffer)
+  (async-shell-command-display-buffer nil)
+  (auto-revert-check-vc-info t)
+  (auto-save-file-name-transforms `((".*" ,(thk-state-file "auto-save/") t)))
+  (auto-save-list-file-prefix (thk-state-file "auto-save-list"))
+  (backup-by-copying t)
+  (backup-directory-alist `(("." . ,(thk-state-file "backup"))))
+  (blink-cursor-mode t)
+  (calendar-week-start-day 1)
+  ;; (completion-cycle-threshold t)
+  (column-number-mode t)
+  (custom-buffer-done-kill t)
+  (custom-enabled-themes '(solarized-dark-high-contrast))
+  (custom-safe-themes '(
+                         "69181b408ef74ce12270736cddd201de626ec5021a9b4d87fb788a18b8c59d1b" ; modus-vivendi
+                         "46433a4be67ff0f415175d0876ef9435d190f3aa57bb00670febd70ba0ba52e1" ; solarized-dark-high-contrast 2.0
+                         default))
+  (delete-old-versions t)
+  (delete-selection-mode t)
+                                        ; show sizes in dires as human readable
+  (dired-listing-switches "-alh")
+  (editorconfig-mode t)
+  (enable-remote-dir-locals t) ; test https://debbugs.gnu.org/12145
+  ;; '(fido-vertical-mode t)
+  (fill-column 78)
+  (global-auto-revert-mode t)
+  (indent-tabs-mode nil)
+  (indicate-empty-lines t)
+  (inhibit-startup-screen t)
+  (initial-scratch-message nil)
+  (isearch-lazy-count t)
+  (kept-new-versions 6)
+  (line-number-mode t)
+  (menu-bar-mode nil)
+  (outline-minor-mode-cycle t)
+  (outline-minor-mode-use-buttons 'in-margins)
+  (require-final-newline nil)
+  (safe-local-variable-values '(
+                                 (gac-automatically-push-p . t)
+                                 (gac-automatically-push-p . nil)
                                         ; git-auto-commit-mode
-  ))
- '(scroll-bar-mode nil)
- '(select-enable-clipboard t)
- '(shell-kill-buffer-on-exit t)
- ;; see emacs FAQ: 5.27 How do I show which parenthesis matches the one I'm looking at?
- '(show-paren-mode t)
- '(show-trailing-whitespace t)
- '(tab-bar-close-button-show nil)
- '(tab-bar-new-tab-choice "*scratch*")
- '(tab-bar-show 1)
- '(tab-bar-tab-hints 1)
- '(tab-width 4)
- '(tool-bar-mode nil)
- '(use-dialog-box nil)
- '(use-file-dialog nil) ; prevents endless loop with filechooser.el https://codeberg.org/rahguzar/filechooser/pulls/23
- '(vc-make-backup-files t)
- '(version-control t)
- '(visible-bell t)
- )
+                                 ))
+  (scroll-bar-mode nil)
+  (select-enable-clipboard t)
+  (set-mark-command-repeat-pop t)       ; Given `repeat-mode'.
+  (shell-kill-buffer-on-exit t)
+  ;; see emacs FAQ: 5.27 How do I show which parenthesis matches the one I'm looking at?
+  (show-paren-mode t)
+  (show-trailing-whitespace t)
+  (tab-bar-close-button-show nil)
+  (tab-bar-new-tab-choice "*scratch*")
+  (tab-bar-show 1)
+  (tab-bar-tab-hints 1)
+  (tab-width 4)
+  ;; see window-min-height
+  (temp-buffer-max-height 10)
+  (tool-bar-mode nil)
+  (use-dialog-box nil)
+  (use-file-dialog nil) ; prevents endless loop with filechooser.el https://codeberg.org/rahguzar/filechooser/pulls/23
+  (vc-make-backup-files t)
+  (version-control t)
+  (visible-bell t)
+  ;; prevent frequent resizes of completions or other temp-buffer-resize-mode windows
+  (window-min-height 7)
+
+;;; newcomers presets
+;; https://sachachua.com/blog/2026/04/what-s-in-the-emacs-newcomers-presets-theme/
+;;;; Appearance-related options
+  (font-use-system-font t)
+  (frame-resize-pixelwise t)
+  (window-resize-pixelwise t)
+  (mode-line-compact 'long)
+
+;;;; Mouse-related options
+  (context-menu-mode t)
+  (save-interprogram-paste-before-kill t)
+  (mouse-yank-at-point t)
+  (pixel-scroll-mode t)
+ ;; '(pixel-scroll-precision-mode t) ;; see bug#69972
+  (mouse-drag-and-drop-region t)
+  (mouse-drag-and-drop-region-cross-program t)
+  (mouse-drag-mode-line-buffer t)
+  (global-xref-mouse-mode t)
+
+;;;; Persistence-related options
+  (savehist-mode t)
+  (save-place-mode t)
+  (recentf-mode t)
+
+;;;; Editing-related options
+  (repeat-mode t)
+  (imenu-auto-rescan t)
+  (view-read-only t)
+  (column-number-mode t)
+  (kill-do-not-save-duplicates t)
+  (scroll-error-top-bottom t)
+
+;;;; Directory management-related options
+  (dired-auto-revert-buffer t)
+  (dired-mouse-drag-files t)
+  (shell-command-prompt-show-cwd t)
+
+;;;; File-related options
+  (etags-regen-mode t)
+  (vc-auto-revert-mode t)
+  (vc-deduce-backend-nonvc-modes t)
+  (vc-dir-save-some-buffers-on-revert t)
+  (vc-find-revision-no-save t)
+  (vc-follow-symlinks t)
+  (vc-use-incoming-outgoing-prefixes t)
+  (vc-dir-simple-unmark-all-files t)
+
+;;;; Completion-related options
+  (which-key-mode t)
+
+;;;; Package-related options
+  (package-autosuggest-mode t)
+  (package-menu-use-current-if-no-marks nil)
+
+;;;; Frame- and window-related options
+  (frame-inhibit-implied-resize t)
+  (help-window-select t)
+;;  (tab-bar-history-mode t)
+ ;; FIXME: If you toggle off the theme, without having run any
+ ;; tab-related commands, the tab bar remains visible.
+;;  (tab-bar-show 0)
+  (window-combination-resize t)
+
+;;;; Programming-related options
+  (compilation-scroll-output 'first-error)
+)
 
 (add-hook 'prog-mode-hook #'(lambda ()
-                             (progn
-                               (display-line-numbers-mode 1)
-                               (show-paren-mode t)
+                              (progn
+;;                               (hl-line-mode t)
                                (local-set-key "%" 'thk-match-paren)
-                               (hs-minor-mode t)
-                               (hl-line-mode t)
-                               (electric-pair-mode t)
                                )))
 
 ;; "y or n" instead of "yes or no"
@@ -177,18 +254,53 @@
 ;;   (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
 ;;   )
 
-(use-package company
-  :ensure t
+(use-package completion-preview
+  :ensure nil
+  :demand t
+  :bind
+  ( :map completion-preview-active-mode-map
+    ("M-i" . completion-preview-insert-word)
+    ("M-n" . completion-preview-next-candidate)
+    ("M-p" . completion-preview-prev-candidate)
+    ("M-<return>" . completion-preview-insert)
+    ;; With TAB we effectively defer to the *Completions* buffer to
+    ;; show more completion candidates at once.
+    ("<tab>" . completion-preview-complete))
+  :custom
+  (completion-preview-minimum-symbol-length 2)
+  (global-completion-preview-mode 1)
+  :config
+  (with-eval-after-load 'org
+    (add-to-list 'completion-preview-commands #'org-self-insert-command))
   )
 
-;(use-package company-lsp
-;  :ensure t
-;  )
+(use-package display-line-numbers
+  :hook (text-mode prog-mode))
 
 (use-package eglot
   :ensure t
   :custom
   (eglot-connect-timeout 120)
+  )
+
+(use-package elec-pair
+  :hook (prog-mode . electric-pair-mode))
+
+(use-package elfeed
+  :ensure t
+  :custom
+  (elfeed-feeds
+   '(("https://planet.emacslife.com/atom.xml" emacs it)
+     ("http://planet.postgresql.org/rss20.xml" it)
+     ("http://planet.haskell.org/atom.xml" it)
+     ("http://www.planeteclipse.org/planet/atom.xml" it)
+     ("https://this-week-in-rust.org/atom.xml" it)
+     ("https://www.osnews.com/feed/" it)
+     ("http://planet.debian.org/rss20.xml" it)
+     ("https://www.anti-spiegel.ru/feed/atom/" news)
+     ("https://media.ccc.de/updates.rdf" it)
+    )
+   (elfeed-set-max-connections 1))
   )
 
 (use-package envrc
@@ -198,6 +310,13 @@
 (use-package eww
   :ensure t
   )
+
+(use-package flymake
+  :hook prog-mode)
+
+(use-package flyspell
+  :hook ((prog-mode . flyspell-prog-mode)
+         (text-mode . flyspell-mode)))
 
 (use-package git-auto-commit-mode
   :ensure t
@@ -238,6 +357,9 @@
     )
   )
 
+(use-package hideshow
+  :hook (prog-mode . hs-minor-mode))
+
 (use-package magit
   :ensure t
   :bind (
@@ -247,11 +369,87 @@
     )
   )
 
+;; maybe set line-spacing 0.2
 (use-package markdown-mode
   :ensure t
   :custom
   (markdown-command "pandoc -f markdown -t html")
-)
+  (markdown-hide-markup t)
+  (markdown-fontify-code-blocks-natively t)
+  (markdown-header-scaling t))
+
+(defun my/flex-noinsert-try-completion (string table pred point)
+  "Flex `try-completion' that never auto-extends the input on TAB.
+
+Keeps flex's filtering and scoring but suppresses the merge:
+
+  - no candidates           -> nil   (no match)
+  - exactly one candidate   -> complete it fully
+  - two or more candidates  -> return STRING unchanged, so TAB only
+							   pops the *Completions* list.
+
+STRING, TABLE, PRED and POINT are the usual `try-completion' args."
+  (let ((all (completion-flex-all-completions string table pred point)))
+	(cond
+	 ((null all) nil)
+	 ((= (safe-length all) 1)
+	  (let ((sole (car all)))
+		(if (string= sole string) t (cons sole (length sole)))))
+	 (t (cons string point)))))
+
+(defun thk/minibuffer-truncate-lines ()
+  "Keep minibuffer lines unwrapped."
+  (setq truncate-lines t))
+
+;; https://rahuljuliato.com/posts/completions-buffer-is-now-enough
+(use-package minibuffer
+  :ensure nil
+  :bind (:map minibuffer-visible-completions-up-down-map
+		      ("C-n" . minibuffer-next-completion)
+		      ("C-p" . minibuffer-previous-completion))
+  :hook ((minibuffer-setup . cursor-intangible-mode)
+		 (minibuffer-setup . thk/minibuffer-truncate-lines))
+  :custom
+  (completion-auto-help t)
+  (completion-auto-select 'second-tab)
+  (completion-category-overrides '((eglot-capf (styles flex-noinsert))))
+  ;; TODO: no eager display if rau buffer is shown
+  ;; https://protesilaos.com/codelog/2026-07-29-emacs-default-minibuffer-completion-overview/
+  ;; (completion-eager-display t)
+  (completion-eager-update t)
+  (completion-ignore-case t)
+  (completion-show-help nil)
+  (completion-show-inline-help nil)
+  (completion-styles '(partial-completion flex initials))
+;;  (completion-styles '(basic emacs22 flex))
+  (completions-detailed t)
+  (completions-format 'one-column)
+  (completions-group t)
+  (completions-header-format nil)
+  (completions-max-height 12)
+  (completions-sort 'historical)
+  (enable-recursive-minibuffers t)
+  (minibuffer-depth-indicate-mode t)
+  ;; hide default in minibuffer when something else gets typed
+  (minibuffer-electric-default-mode t)
+  (minibuffer-prompt-properties
+   '(read-only t intangible t cursor-intangible t face minibuffer-prompt))
+  (minibuffer-visible-completions 'up-down)
+  (read-buffer-completion-ignore-case t)
+  (read-file-name-completion-ignore-case t)
+  (tab-always-indent 'complete)
+  :config
+  (add-to-list 'completion-styles-alist
+			   '(flex-noinsert
+				 my/flex-noinsert-try-completion
+				 completion-flex-all-completions
+				 "Flex matching that never extends input on TAB."))
+  (put 'flex-noinsert 'completion--adjust-metadata
+	   'completion--flex-adjust-metadata))
+
+(use-package mixed-pitch
+  :ensure t
+  :hook (markdown-mode . mixed-pitch-mode))
 
 (use-package nix-mode
   :ensure t
@@ -265,7 +463,7 @@
 (use-package org
   :ensure t
   :custom
-  (initial-major-mode 'org-mode)
+;;  (initial-major-mode 'org-mode)
   (org-agenda-files '("~/org"))
   (org-clock-persist t)
   (org-clock-persist-file (thk-state-file "org-clock-save.el"))
@@ -298,6 +496,9 @@
 (use-package paredit
   :ensure t
   )
+
+(use-package paren
+  :hook (prog-mode . show-paren-mode))
 
 ;; (use-package projectile
 ;;   :ensure t
@@ -373,7 +574,7 @@
 
 (use-package visual-fill-column
   :ensure t
-  )
+  :hook (markdown-mode . visual-fill-column-mode))
 
 (use-package woman
   :custom
@@ -421,3 +622,50 @@
 ;(keymap-global-set "M-g" #'casual-avy-tmenu)
 ;(keymap-set symbol-overlay-map "C-o" #'casual-symbol-overlay-tmenu)
 (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
+
+
+;; elisp setup
+;; TODO: move to use-package elisp-mode
+(defun thk-emacs-lisp-outline-setup ()
+  "Set up outline folding and movement for top-level Emacs Lisp forms."
+  (setq-local outline-regexp "^;;;; \\|^;;; \\|^(")
+  (outline-minor-mode 1)
+
+  ;; Move the current top-level form up or down.
+  (local-set-key (kbd "M-<up>") #'outline-move-subtree-up)
+  (local-set-key (kbd "M-<down>") #'outline-move-subtree-down))
+
+(add-hook 'emacs-lisp-mode-hook #'thk-emacs-lisp-outline-setup)
+
+(defun thk-profiler-toggle ()
+  (interactive)
+  (require 'elp)
+  (if (and (fboundp 'profiler-cpu-running-p)
+           (or (profiler-cpu-running-p) (profiler-memory-running-p)))
+      (profiler-stop)
+    (profiler-start 'cpu)))
+
+(keymap-global-set "C-s-p" #'thk-profiler-toggle)
+
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+;; https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=8a88f3ed5aeece4a7c8edbebc83ed52479fbbfab
+;; emacs-devel 15.7.26, New package `outline-occur'
+(when (not (functionp 'outline-occur))
+  (add-to-list 'display-buffer-alist
+               '((major-mode . occur-mode)
+		         (display-buffer-pop-up-window)
+		         (post-command-select-window . t)))
+  (defun outline-occur ()
+  "Navigate the current buffer's outline using `occur'.
+The `outline-regexp' variable is used to find the beginning of the
+outline headings.  The `outline-occur-regexp' buffer-local variable
+allows overriding this regexp."
+  (interactive)
+  (if outline-regexp
+      (occur (concat "^\\(?:" outline-regexp "\\)"))
+    (user-error "No outline regexp defined"))))
+
+
+
+

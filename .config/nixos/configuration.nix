@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   upkgs = (import <nixpkgs-unstable> { }).pkgs;
-  thk-emacs = (import ./emacs.nix { pkgs = pkgs; });
+  thk-emacs = (import ./emacs.nix { inherit pkgs upkgs; });
   thk-nur = import
     (pkgs.fetchFromGitHub {
       owner = "thkoch2001";
@@ -20,7 +20,7 @@ in
       ./hardware-configuration.nix
       ./autologin.nix
       ./printing
-      ./reka.nix
+      ./rau.nix
     ];
 
   boot = {
@@ -63,12 +63,7 @@ in
     localBinInPath = true;
     sessionVariables = {
       EDITOR = "emacsclient -a vi";
-      NIXOS_OZONE_WL = "1";
     };
-    # TODO:
-    # get rid of chromium
-    # https://github.com/crossbowerbt/dillo-plus/
-    # https://sr.ht/~bptato/chawan/
     systemPackages = with pkgs;
       let
         # https://nixos.wiki/wiki/TexLive
@@ -104,6 +99,7 @@ in
         (callPackage ./borg2.nix { })
         brightnessctl
         # cargo # rust package manager
+        chawan # TUI browser https://sr.ht/~bptato/chawan/
         chromium # needed although programs.enabled.chromius = true; ungoogled-chromium didn't work
         # clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
         copyq # clipboard manager
@@ -111,6 +107,8 @@ in
         # davfs2
         # detox
         # devenv
+        dillo
+        dillo-plus
         dnsutils
         # dovecot_pigeonhole
         # duff
@@ -135,6 +133,7 @@ in
         # gramps # gen-trees
         graphviz
         htop
+        inhibridge
         kanshi # wayland equivalent to autorandr
         kdePackages.akregator
         kdePackages.gwenview
@@ -160,6 +159,8 @@ in
         lsof # git-annex assistant checks if files are open for writing
         # lxde.lxsession
         # lynx
+        man-pages
+        man-pages-posix
         # mdbook
         # mediathekview
         mpv
@@ -197,6 +198,7 @@ in
         #   monolithic = false;
         # };
         quickemu # Quickly create and run optimised Windows, macOS and Linux virtual machines
+        qutebrowser
         # redshift
         # reuse
         # rust-analyzer
@@ -245,6 +247,7 @@ in
         wlopm # wayland output power management, used by swayidle, swaylock
         wlr-randr
         wlr-which-key
+        wpaperd
         xdg-utils # xdg-open
         xwayland-satellite
         xlsclients # find out which running apps use xwayland
@@ -324,7 +327,20 @@ in
     };
   };
 
-  nixpkgs.overlays = [ (import ./lib/autopatch.nix { inherit lib; patchesDir = ./patches; }) ];
+  nixpkgs = {
+    config.permittedInsecurePackages = [
+      "ladybird-0-unstable-2026-05-04"
+    ];
+
+    overlays = [
+      (final: prev: {
+        river = (pkgs.callPackage (import ./packages/river.nix) {});
+        wpaperd = upkgs.wpaperd;
+        yt-dlp = upkgs.yt-dlp;
+      })
+      (import ./lib/autopatch.nix { inherit lib; patchesDir = ./patches; })
+    ];
+  };
 
   programs = {
     chromium = {
@@ -370,9 +386,9 @@ in
     # ladybird.enable = true; # https://github.com/LadybirdBrowser/ladybird/issues/572#issuecomment-2242268172
     mosh.enable = true;
     # mtr.enable = true; # TODO network diagnostic https://www.bitwizard.nl/mtr/
-    reka = {
+    rau = {
       enable = lib.mkDefault true;
-      #reka_loglevel = "debug"; # defaults to info
+      #rau_loglevel = "debug"; # defaults to info
       #river_loglevel = "debug"; # defaults to info
     };
     # - `programs.ssh.startAgent' (defined in `/home/thk/.config/nixos/configuration.nix') and `services.gnome.gcr-ssh-agent.enable' (defined in `/nix/store/snl5y2ljnxfaz7a7hih2f67n1wvj69jk-nixos-26.05/nixos/nixos/modules/services/desktops/gnome/gcr-ssh-agent.nix') cannot both be enabled at the same time.
@@ -395,14 +411,29 @@ in
     };
     blueman.enable = true;
     #    displayManager.gdm.enable = true;
+    dunst = {
+      enable = true;
+      settings = {
+        global.font = "DejaVu Sans 12";
+      };
+    };
     gnome.gcr-ssh-agent.enable = lib.mkForce false; # seems this gets enabled by niri?
     libinput.enable = true;
+    ollama = {
+      enable = true;
+      environmentVariables = {
+        OLLAMA_KEEP_ALIVE = "120m";
+      };
+      #loadModels
+      #syncModels
+      #alias ollama-flush='ollama run --keep-alive 0s' ?
+    };
+    openssh.enable = false;
     pcscd.enable = true;
     pipewire = {
       enable = true;
       pulse.enable = true;
     };
-    openssh.enable = false;
     # Enable power-saving features.
     tlp.enable = true;
     udisks2.enable = true;
@@ -420,16 +451,10 @@ in
     niri.configuration = {
       programs = {
         niri.enable = true;
-        reka.enable = false;
+        rau.enable = false;
       };
       services = {
         autologin.leader = "${pkgs.niri}/bin/niri-session";
-        dunst = {
-          enable = true;
-          settings = {
-            global.font = "DejaVu Sans 12";
-          };
-        };
       };
       systemd.user.services = {
         swayidle =
@@ -479,14 +504,20 @@ in
     };
     copyq = {
       description = "CopyQ Clipboard manager";
-      after = [ "niri.service" "reka.service" ];
+      after = [ "niri.service" "rau.service" ];
       wantedBy = [ "graphical-session.target" ];
       serviceConfig.ExecStart = "${pkgs.copyq}/bin/copyq";
+    };
+    inhibridge = {
+      description = "bridge freedesktop.org ScreenSaver inhibitions to systemd-inhibit";
+      after = [ "niri.service" "rau.service" ];
+      wantedBy = [ "graphical-session.target" ];
+      serviceConfig.ExecStart = "${pkgs.inhibridge}/bin/inhibridge";
     };
     kanshi = {
       description = "automatically apply display configs";
       # After niri to ensure WAYLAND_DISPLAY is set
-      after = [ "niri.service" "reka.service" ];
+      after = [ "niri.service" "rau.service" ];
       wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
         ExecStart = "${pkgs.kanshi}/bin/kanshi";
@@ -495,7 +526,7 @@ in
     };
     pasystray = {
       description = "PulseAudio systray";
-      after = [ "niri.service" "reka.service" ];
+      after = [ "niri.service" "rau.service" ];
       wantedBy = [ "graphical-session.target" ];
       serviceConfig.ExecStart = "${pkgs.pasystray}/bin/pasystray";
     };
@@ -533,7 +564,7 @@ in
           wantedBy = [ "graphical-session.target" ];
         };
         waybar.serviceConfig = {
-          ExecStart = [ "" "${pkgs.waybar}/bin/waybar -c %h/.config/waybar/config.reka.jsonc" ];
+          ExecStart = [ "" "${pkgs.waybar}/bin/waybar -c %h/.config/waybar/config.rau.jsonc" ];
         };
     udiskie = {
       after = [ "graphical-session.target" ];
@@ -550,7 +581,7 @@ in
       description = "wpaperd background image";
       partOf = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = "${upkgs.wpaperd}/bin/wpaperd -v";
+        ExecStart = "${pkgs.wpaperd}/bin/wpaperd -v";
         Restart= "always";
         RestartSec = 4;
         RestartSteps = 3;
@@ -602,9 +633,9 @@ in
 
     config = {
       # niri ships its own niri-portals.conf, nothing needed
-      # TODO: configure this for reka session
-      reka.default = [ "wlr" ];
-      reka."org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+      # TODO: configure this for rau session
+      rau.default = [ "wlr" ];
+      rau."org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
     };
   };
 }
