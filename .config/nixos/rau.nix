@@ -1,9 +1,8 @@
 # add a session for the rau WM on river
-{ config, depot, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   cfg = config.programs.rau;
-  channel = (pkgs.callPackage ./packages/river-channel { inherit pkgs; });
 
   # this session script is copy&pasted from various places and is probably
   # a worst practice type thing
@@ -94,17 +93,15 @@ in
       #      documentation = ["man:poweralertd(1)"];
       partOf = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = "${channel}/bin/channel";
+        ExecStart = "${pkgs.channel}/bin/channel";
       };
       wantedBy = [ "rau-emacs.service" ];
     };
 
     services.displayManager.sessionPackages = [ rauSystemPackage ];
 
-    environment.systemPackages = with pkgs; [
-      channel
+    environment.systemPackages = [
       rauSystemPackage
-      river # for development and manpage
     ];
     services.autologin.leader = "${rauSession}"; # TODO this should not be here
   };

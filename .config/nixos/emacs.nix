@@ -9,7 +9,7 @@ let
     owner = "thkoch2001";
     repo = "rau";
     rev = "refs/heads/master";
-    hash = "sha256-mEzor0AqARGeLUUcjGlMAIYmhkOOOV3YkYAEQKKodS8=";
+    hash = "sha256-r+5L4isGtZuxdaGE8zXA15U5i9avmA4g35hALY5og78=";
   });
 
 in
@@ -27,7 +27,6 @@ with pkgs; (emacsPackagesFor upkgs.emacs31-pgtk).emacsWithPackages (
     atomic-chrome
     casual-suite
     ednc # TODO https://github.com/sinic/ednc
-    elfeed
     elisp-def # TODO https://github.com/Wilfred/elisp-def
     envrc
     git-auto-commit-mode
@@ -67,6 +66,7 @@ with pkgs; (emacsPackagesFor upkgs.emacs31-pgtk).emacsWithPackages (
     (callPackage rau {
       inherit pkgs;
     })
+    upkgs.emacsPackages.elfeed
     # TODO
     # https://github.com/dakra/ghostel
     # https://dakra.github.io/ghostel/

@@ -530,6 +530,13 @@ STRING, TABLE, PRED and POINT are the usual `try-completion' args."
   (telega-video-player-command "vlc")
   )
 
+(use-package term-sessions
+  :load-path
+  "/home/thk/git/emacs-term-sessions"
+  :custom
+  (term-sessions-history-lines 1000)
+  (term-sessions-preferred-frontend 'ghostel)
+  )
 
 (use-package time
   :custom

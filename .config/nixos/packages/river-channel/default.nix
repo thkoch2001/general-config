@@ -1,6 +1,6 @@
 # channel is a separate input config tied utility, but its heavily
 # tied to river
-{ pkgs ? import <nixpkgs> {}, ... }:
+{ pkgs, upkgs , ... }:
 let
   version = "0.4.1";
 in
@@ -19,7 +19,7 @@ pkgs.stdenv.mkDerivation (final: {
     libxkbcommon
     wayland
     wayland-protocols
-    river
+    upkgs.river
   ];
 
   zigBuildFlags = [

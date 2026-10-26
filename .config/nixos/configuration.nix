@@ -99,6 +99,7 @@ in
         (callPackage ./borg2.nix { })
         brightnessctl
         # cargo # rust package manager
+        channel
         chawan # TUI browser https://sr.ht/~bptato/chawan/
         chromium # needed although programs.enabled.chromius = true; ungoogled-chromium didn't work
         # clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
@@ -149,13 +150,14 @@ in
         jq
         # kdePackages.falkon # webbrowser
         # ladybird # webbrowser C++, needs to be installed via NixOS
-        ladybird
+#        ladybird
         # klavaro
         libnotify # provides notify-send
         libreoffice-fresh
         libwebp # for dwebp for telegram emacs client telega, to display stickers
         # libsecret # for msmtp
         # lingot
+        linuxPackages.v4l2loopback # video camera recording with obs-studio
         lsof # git-annex assistant checks if files are open for writing
         # lxde.lxsession
         # lynx
@@ -174,6 +176,7 @@ in
         nixpkgs-fmt
         # nix-prefetch-github
         # nmap
+        obs-studio
         ollama
         openrsync
         # palemoon-bin # firefox fork https://www.palemoon.org/
@@ -201,6 +204,7 @@ in
         qutebrowser
         # redshift
         # reuse
+        river
         # rust-analyzer
         # rustc # rust compiler
         # rustfmt
@@ -255,6 +259,7 @@ in
         yt-dlp
         thk-nur.yt2feed
         zip
+        upkgs.zmx
       ];
   };
 
@@ -299,7 +304,6 @@ in
       enable = true;
       extraPackages = with pkgs; [
         vpl-gpu-rt
-        #intel-media-sdk
       ];
     };
   };
@@ -329,12 +333,13 @@ in
 
   nixpkgs = {
     config.permittedInsecurePackages = [
-      "ladybird-0-unstable-2026-05-04"
     ];
 
     overlays = [
       (final: prev: {
-        river = (pkgs.callPackage (import ./packages/river.nix) {});
+        channel = (pkgs.callPackage ./packages/river-channel { inherit pkgs upkgs; });
+        ladybird = upkgs.ladybird;
+        river = upkgs.river;
         wpaperd = upkgs.wpaperd;
         yt-dlp = upkgs.yt-dlp;
       })

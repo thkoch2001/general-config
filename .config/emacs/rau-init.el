@@ -125,7 +125,7 @@ Only runs in GUI mode to prevent duplicate output in terminal/batch modes."
            :format "%m"))))
     (let ((lgr (lgr-get-logger "rau")))
       (lgr-add-appender lgr appender)
-      (lgr-set-threshold lgr lgr-level-trace)
+      (lgr-set-threshold lgr lgr-level-warn)
       ))
   )
 
