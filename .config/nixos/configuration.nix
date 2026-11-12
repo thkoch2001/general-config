@@ -91,8 +91,8 @@ in
         # (pkgs.writeShellScriptBin "my-hello" ''
         #   echo "Hello, ${config.home.username}!"
         # '')
-
         alacritty
+        audacity
         (aspellWithDicts (d: [ d.de d.en d.ro d.ru ]))
         bat # syntax highlighting cat https://github.com/sharkdp/bat
         bc # cli calculator
@@ -138,6 +138,7 @@ in
         kanshi # wayland equivalent to autorandr
         kdePackages.akregator
         kdePackages.gwenview
+        kdePackages.kdenlive
         # kdePackages.kgeography
         kdePackages.okular
         # kdePackages.pim-sieve-editor
@@ -149,8 +150,7 @@ in
         josh # monorepos with git
         jq
         # kdePackages.falkon # webbrowser
-        # ladybird # webbrowser C++, needs to be installed via NixOS
-#        ladybird
+        # ladybird # webbrowser C++, needs to be installed via module?
         # klavaro
         libnotify # provides notify-send
         libreoffice-fresh
@@ -186,6 +186,9 @@ in
         pass
         pavucontrol
         pinentry-qt # provided here, see ~/.gnupg/gpg-agent.conf
+        # convert PDF to png images with
+        # pdftoppm -png -r 300 $PDF $PREFIX
+        poppler-utils
         # powertop
         # psmisc # fuser, killall and pstree
         pspg # postgres pager
@@ -248,6 +251,7 @@ in
         wdisplays
         wget
         wl-clipboard
+        wl-screenrec
         wlopm # wayland output power management, used by swayidle, swaylock
         wlr-randr
         wlr-which-key

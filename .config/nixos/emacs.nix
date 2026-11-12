@@ -1,17 +1,11 @@
 { pkgs, upkgs, ... }:
 let
-  reka = import (pkgs.fetchgit {
-    url = "https://codeberg.org/tazjin/reka.git";
-    rev = "refs/heads/canon";
-    hash = "sha256-jdggakCHHRNpRQUjpHHHWyBsU1SL61QIWZMV6A0IWfU=";
-  });
   rau = import (pkgs.fetchFromGitHub {
     owner = "thkoch2001";
     repo = "rau";
     rev = "refs/heads/master";
-    hash = "sha256-r+5L4isGtZuxdaGE8zXA15U5i9avmA4g35hALY5og78=";
+    hash = "sha256-rVtk5fpxgd21FZX8Vu8sO8ft/FHAxK94afcvyiyAxF4=";
   });
-
 in
 with pkgs; (emacsPackagesFor upkgs.emacs31-pgtk).emacsWithPackages (
   epkgs:
@@ -26,29 +20,31 @@ with pkgs; (emacsPackagesFor upkgs.emacs31-pgtk).emacsWithPackages (
     apache-mode
     atomic-chrome
     casual-suite
-    ednc # TODO https://github.com/sinic/ednc
+    # ednc # TODO https://github.com/sinic/ednc
     elisp-def # TODO https://github.com/Wilfred/elisp-def
     envrc
     git-auto-commit-mode
     graphviz-dot-mode
-    haskell-mode
+    # haskell-mode
     helpful
     keycast # TODO https://github.com/tarsius/keycast
+    literate-calc-mode # TODO https://irreal.org/blog/?p=14195
     magit
     markdown-mode
     mixed-pitch
     nerd-icons
     nix-mode
     nov
-    ollama-buddy
+    # ollama-buddy # AI
     package-lint
     paredit
     rainbow-delimiters
     rust-mode
     solarized-theme
-    systemd
+    # systemd
     telega
     treemacs
+    trust-manager
     visual-fill-column
     yaml-mode
     yasnippet-snippets
@@ -57,12 +53,9 @@ with pkgs; (emacsPackagesFor upkgs.emacs31-pgtk).emacsWithPackages (
     eat # emulate a terminal https://codeberg.org/akib/emacs-eat
     # TODO
     # https://www.grothe.us/presentations/emacsconf-202512-emacs-private-ai.pdf
-    gptel
+    # gptel
     ws-butler
   ]) ++ [
-    (callPackage reka {
-      inherit pkgs;
-    })
     (callPackage rau {
       inherit pkgs;
     })

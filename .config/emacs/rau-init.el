@@ -111,7 +111,6 @@ Only runs in GUI mode to prevent duplicate output in terminal/batch modes."
   :demand t
   :custom
   (tab-bar-select-tab-modifiers '(super))
-  (rau-intercept-prefixes nil)
   :hook
   (rau-ready . thk-on-rau-ready)
   (rau-mode . thk-init-rau-mode)

@@ -23,7 +23,7 @@
 
 (use-package emacs
   :init
-  (setq custom-file "~/.emacs.d/custom.el")
+  (setq custom-file "~/.config/emacs/custom.el")
   (load custom-file t)
   :custom
   (async-shell-command-buffer 'new-buffer)
@@ -56,7 +56,9 @@
   (indicate-empty-lines t)
   (inhibit-startup-screen t)
   (initial-scratch-message nil)
+  (isearch-allow-motion t)
   (isearch-lazy-count t)
+  (ispell-dictionary "american")
   (kept-new-versions 6)
   (line-number-mode t)
   (menu-bar-mode nil)
@@ -103,7 +105,7 @@
   (context-menu-mode t)
   (save-interprogram-paste-before-kill t)
   (mouse-yank-at-point t)
-  (pixel-scroll-mode t)
+ ;; (pixel-scroll-mode t) ;; too slow
  ;; '(pixel-scroll-precision-mode t) ;; see bug#69972
   (mouse-drag-and-drop-region t)
   (mouse-drag-and-drop-region-cross-program t)
@@ -156,7 +158,10 @@
 
 ;;;; Programming-related options
   (compilation-scroll-output 'first-error)
-)
+
+  :hook
+  ((markdown-mode . visual-line-mode))
+  )
 
 (add-hook 'prog-mode-hook #'(lambda ()
                               (progn
@@ -297,7 +302,7 @@
      ("https://this-week-in-rust.org/atom.xml" it)
      ("https://www.osnews.com/feed/" it)
      ("http://planet.debian.org/rss20.xml" it)
-     ("https://www.anti-spiegel.ru/feed/atom/" news)
+     ("https://www.anti-spiegel.ru/feed" news)
      ("https://media.ccc.de/updates.rdf" it)
     )
    (elfeed-set-max-connections 1))
@@ -322,31 +327,31 @@
   :ensure t
 )
 
-(use-package gptel
-  :after (f)
-  :custom
-  (gptel-log-level 'info)
-  (gptel-default-mode 'org-mode)
+;; (use-package gptel
+;;   :after (f)
+;;   :custom
+;;   (gptel-log-level 'info)
+;;   (gptel-default-mode 'org-mode)
 
-  :init
-  (setq
-   gptel-model 'qwen2.5-coder:3b
-   gptel-backend
-   (gptel-make-ollama "ollama"
-     :host "localhost:11434"
-     :models
-     '("qwen2.5-coder:3b"
-       "qwen2.5-coder:7b")
-     ))
-  )
+;;   :init
+;;   (setq
+;;    gptel-model 'qwen2.5-coder:3b
+;;    gptel-backend
+;;    (gptel-make-ollama "ollama"
+;;      :host "localhost:11434"
+;;      :models
+;;      '("qwen2.5-coder:3b"
+;;        "qwen2.5-coder:7b")
+;;      ))
+;;   )
 
 (use-package graphviz-dot-mode
   :ensure t
   )
 
-(use-package haskell-mode
-  :ensure t
-  )
+;; (use-package haskell-mode
+;;   :ensure t
+;;   )
 
 (use-package helpful
   :ensure t
@@ -373,7 +378,7 @@
 (use-package markdown-mode
   :ensure t
   :custom
-  (markdown-command "pandoc -f markdown -t html")
+  (markdown-command "pandoc -f markdown -t html --defaults=html --standalone")
   (markdown-hide-markup t)
   (markdown-fontify-code-blocks-natively t)
   (markdown-header-scaling t))
@@ -482,6 +487,7 @@ STRING, TABLE, PRED and POINT are the usual `try-completion' args."
  }")
   (org-list-allow-alphabetical t)
   (org-modules '(org-protocol))
+  (org-return-follows-link t)
   (org-special-ctrl-a/e t)
   (org-special-ctrl-k t)
   (org-src-fontify-natively t)
@@ -574,6 +580,11 @@ STRING, TABLE, PRED and POINT are the usual `try-completion' args."
   (:map global-map ("C-M-t" . treemacs))
   )
 
+(use-package trust-manager
+  :defer 1
+  :config
+  (trust-manager-mode 1))
+
 (use-package uniquify
   :custom
   (uniquify-buffer-name-style 'reverse nil (uniquify))
@@ -581,7 +592,7 @@ STRING, TABLE, PRED and POINT are the usual `try-completion' args."
 
 (use-package visual-fill-column
   :ensure t
-  :hook (markdown-mode . visual-fill-column-mode))
+  :hook visual-line-mode)
 
 (use-package woman
   :custom
