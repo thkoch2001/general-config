@@ -6,8 +6,13 @@ let
     rev = "refs/heads/master";
     hash = "sha256-rVtk5fpxgd21FZX8Vu8sO8ft/FHAxK94afcvyiyAxF4=";
   });
+  emacs-gpu = pkgs.callPackage (import ./packages/emacs-gpu.nix) {
+    pkgs=upkgs;
+  };
+  emacs = upkgs.emacs31-pgtk;
+  # emacs = emacs-gpu; # ezemtsov's skia Emacs
 in
-with pkgs; (emacsPackagesFor upkgs.emacs31-pgtk).emacsWithPackages (
+with pkgs; (emacsPackagesFor emacs).emacsWithPackages (
   epkgs:
   (with epkgs.elpaPackages; [
     ace-window
