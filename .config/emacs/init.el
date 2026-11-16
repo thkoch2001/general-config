@@ -76,9 +76,9 @@
   (shell-kill-buffer-on-exit t)
   ;; see emacs FAQ: 5.27 How do I show which parenthesis matches the one I'm looking at?
   (show-paren-mode t)
-  (show-trailing-whitespace t)
   (tab-bar-close-button-show nil)
   (tab-bar-new-tab-choice "*scratch*")
+  (tab-bar-new-tab-to 'rightmost)
   (tab-bar-show 1)
   (tab-bar-tab-hints 1)
   (tab-width 4)
@@ -161,13 +161,44 @@
 
   :hook
   ((markdown-mode . visual-line-mode))
+  :config
+  (dolist (mode '(help-mode Info-mode))
+    (add-to-list 'quit-window-kill-buffer mode))
   )
 
-(add-hook 'prog-mode-hook #'(lambda ()
-                              (progn
-;;                               (hl-line-mode t)
-                               (local-set-key "%" 'thk-match-paren)
-                               )))
+(defun thk-text-prog-mode-init ()
+  (setq-local show-trailing-whitespace t)
+  (delete-trailing-whitespace-mode))
+
+(defun thk-prog-mode-init ()
+  (thk-text-prog-mode-init)
+  (display-line-numbers-mode)
+  (electric-pair-mode)
+  (flymake-mode)
+  (flyspell-prog-mode)
+  (hs-minor-mode)
+  (show-paren-mode)
+  ;; (hl-line-mode t)
+  (local-set-key "%" 'thk-match-paren))
+
+(defun thk-text-mode-init ()
+  (thk-text-prog-mode-init)
+  (flyspell-mode))
+
+(add-hook 'prog-mode-hook #'thk-prog-mode-init)
+(add-hook 'text-mode-hook #'thk-text-mode-init)
+
+(defun thk-emacs-lisp-init ()
+  (rainbow-delimiters-mode)
+  ;; Set up outline folding and movement for top-level Emacs Lisp forms.
+  (setq-local outline-regexp "^;;;; \\|^;;; \\|^(")
+  (outline-minor-mode 1)
+
+  ;; Move the current top-level form up or down.
+  (local-set-key (kbd "M-<up>") #'outline-move-subtree-up)
+  (local-set-key (kbd "M-<down>") #'outline-move-subtree-down))
+
+(add-hook 'emacs-lisp-mode-hook #'thk-emacs-lisp-init)
 
 ;; "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -279,17 +310,11 @@
     (add-to-list 'completion-preview-commands #'org-self-insert-command))
   )
 
-(use-package display-line-numbers
-  :hook (text-mode prog-mode))
-
 (use-package eglot
   :ensure t
   :custom
   (eglot-connect-timeout 120)
   )
-
-(use-package elec-pair
-  :hook (prog-mode . electric-pair-mode))
 
 (use-package elfeed
   :ensure t
@@ -306,6 +331,9 @@
      ("https://media.ccc.de/updates.rdf" it)
     )
    (elfeed-set-max-connections 1))
+  :config
+  (add-to-list 'quit-window-kill-buffer 'elfeed-search-mode)
+  (add-to-list 'quit-window-kill-buffer 'elfeed-show-mode)
   )
 
 (use-package envrc
@@ -315,13 +343,6 @@
 (use-package eww
   :ensure t
   )
-
-(use-package flymake
-  :hook prog-mode)
-
-(use-package flyspell
-  :hook ((prog-mode . flyspell-prog-mode)
-         (text-mode . flyspell-mode)))
 
 (use-package git-auto-commit-mode
   :ensure t
@@ -360,10 +381,9 @@
     ("C-h v" . 'helpful-variable)
     ("C-h k" . 'helpful-key)
     )
+  :config
+  (add-to-list 'quit-window-kill-buffer 'helpful-mode)
   )
-
-(use-package hideshow
-  :hook (prog-mode . hs-minor-mode))
 
 (use-package magit
   :ensure t
@@ -371,7 +391,13 @@
          ("C-x g" . 'magit-status)
          ("C-x M-g" . 'magit-dispatch)
          ("C-c g" . 'magit-file-dispatch)
-    )
+         )
+  :custom
+  (magit-buffer-name-format " %x%M%v: %t%x")
+  (magit-show-process-buffer-hint nil)
+  :config
+  (dolist (mode '(magit-diff-mode))
+    (add-to-list 'quit-window-kill-buffer mode))
   )
 
 ;; maybe set line-spacing 0.2
@@ -503,17 +529,9 @@ STRING, TABLE, PRED and POINT are the usual `try-completion' args."
   :ensure t
   )
 
-(use-package paren
-  :hook (prog-mode . show-paren-mode))
-
 ;; (use-package projectile
 ;;   :ensure t
 ;;   )
-
-(use-package rainbow-delimiters
-  :ensure t
-  :hook ((emacs-lisp-mode) . #'rainbow-delimiters-mode)
-  )
 
 (use-package systemd
   :ensure t
@@ -542,7 +560,18 @@ STRING, TABLE, PRED and POINT are the usual `try-completion' args."
   :custom
   (term-sessions-history-lines 1000)
   (term-sessions-preferred-frontend 'ghostel)
-  )
+  :config
+  (add-to-list 'display-buffer-alist
+               '("^\\*term-session:" . ((display-buffer-reuse-window
+                                         display-buffer-in-tab)
+                                        . ((reusable-frames . t)))))
+  (add-to-list 'quit-window-kill-buffer 'term-sessions-list-mode)
+  (defun term-sessions-list-open ()
+    "Open session at point, reusing an existing session buffer when present."
+    (interactive)
+    (let ((session (term-sessions-list--entry-at-point)))
+      (quit-window)
+      (term-sessions-open session))))
 
 (use-package time
   :custom
@@ -640,20 +669,6 @@ STRING, TABLE, PRED and POINT are the usual `try-completion' args."
 ;(keymap-global-set "M-g" #'casual-avy-tmenu)
 ;(keymap-set symbol-overlay-map "C-o" #'casual-symbol-overlay-tmenu)
 (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
-
-
-;; elisp setup
-;; TODO: move to use-package elisp-mode
-(defun thk-emacs-lisp-outline-setup ()
-  "Set up outline folding and movement for top-level Emacs Lisp forms."
-  (setq-local outline-regexp "^;;;; \\|^;;; \\|^(")
-  (outline-minor-mode 1)
-
-  ;; Move the current top-level form up or down.
-  (local-set-key (kbd "M-<up>") #'outline-move-subtree-up)
-  (local-set-key (kbd "M-<down>") #'outline-move-subtree-down))
-
-(add-hook 'emacs-lisp-mode-hook #'thk-emacs-lisp-outline-setup)
 
 (defun thk-profiler-toggle ()
   (interactive)

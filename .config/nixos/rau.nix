@@ -83,21 +83,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    security.polkit.enable = true;
-    services.graphical-desktop.enable = true;
-
     systemd.packages = [ rauSystemPackage ];
-    systemd.user.services.channel = {
-      after = [ "graphical-session.target" ];
-      description = "Channel: input config for river";
-      #      documentation = ["man:poweralertd(1)"];
-      partOf = [ "graphical-session.target" ];
-      serviceConfig = {
-        ExecStart = "${pkgs.channel}/bin/channel";
-      };
-      wantedBy = [ "rau-emacs.service" ];
-    };
-
     services.displayManager.sessionPackages = [ rauSystemPackage ];
 
     environment.systemPackages = [

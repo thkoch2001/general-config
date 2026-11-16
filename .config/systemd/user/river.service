@@ -7,4 +7,6 @@ After=pipewire.service graphical-session-pre.target
 Slice=session.slice
 Type=simple
 WorkingDirectory=%h
+Environment=XKB_DEFAULT_LAYOUT=de,ro,ru
+Environment=XKB_DEFAULT_OPTIONS=grp:ctrls_toggle
 ExecStart=/run/current-system/sw/bin/river -log-level info

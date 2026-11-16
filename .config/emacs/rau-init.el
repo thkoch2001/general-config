@@ -68,20 +68,21 @@ Only runs in GUI mode to prevent duplicate output in terminal/batch modes."
        (
         :needs-focus :layout 0
         "M-o" ; ace-window, bound in use-package
-        ,(set "s-x" ctl-x-map)
         ,(set "s-h" help-map)
-        ,(set "s-u" #'universal-argument)
-        ,(set "s-X" #'execute-extended-command)
         ,(set "s-p" #'xdg-launcher-run-app)
+        ,(set "s-u" #'universal-argument)
+        ,(set "s-x" ctl-x-map)
+        ,(set "s-X" #'execute-extended-command)
         )
        (
         :layout 0
         ,(run "s-c" "copyq" "show")
+        ,(set "s-d" (lambda () (interactive) (message nil)))
+        ,(set "s-f" #'rau-toggle-fullscreen)
         ,(run "s-l" "sh" "-c" "swaylock && sleep 3 && systemctl --user --signal SIGUSR1 kill swayidle.service")
         ,(run "s-P" "systemd-run" "--user" "--quiet" "--property=ExitType=cgroup" "fuzzel" "--log-level=info")
+        ,(set "s-t" #'tab-bar-new-tab)
         ,(run "s-w" "systemctl" "--user" "kill" "--signal=SIGUSR1" "waybar.service")
-        ,(set "s-f" #'rau-toggle-fullscreen)
-        ,(set "s-d" (lambda () (interactive) (message nil)))
         )
        (
         :allow-when-locked
@@ -94,7 +95,8 @@ Only runs in GUI mode to prevent duplicate output in terminal/batch modes."
         ,(run "<AudioRaiseVolume>" "wpctl" "set-volume" "@DEFAULT_SINK@" "0.1+")
         ,(run "<AudioLowerVolume>" "wpctl" "set-volume" "@DEFAULT_SINK@" "0.1-")
         )
-       ,(set "s-<return>" #'ghostel)
+       ,(set "s-<return>" #'term-sessions-new)
+       ,(set "S-s-<return>" #'term-sessions-list)
        ))))
 
 (setopt rau-backend-init-file
@@ -116,7 +118,8 @@ Only runs in GUI mode to prevent duplicate output in terminal/batch modes."
   (rau-mode . thk-init-rau-mode)
   :config
   ;; open rau buffers fullscreen
-  (add-to-list 'display-buffer-alist '((derived-mode . rau-mode)	display-buffer-full-frame))
+  (add-to-list 'display-buffer-alist '((derived-mode . rau-mode)
+	                                   display-buffer-full-frame))
   (let ((appender
          (lgr-set-layout
           (lgr-appender-journald)

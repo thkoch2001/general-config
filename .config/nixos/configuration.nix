@@ -10,6 +10,13 @@ let
       hash = "sha256-pi9pakM7MujZZktPp7P5EJhEINPT3sFs2/H0mnJhdBQ=";
     })
     { inherit pkgs; };
+  river-keyboard-layout-listener = pkgs.callPackage
+    (pkgs.fetchFromGitHub {
+      owner = "thkoch2001";
+      repo = "river-keyboard-layout-listener";
+      rev = "master";
+      hash = "sha256-qepkKHc051GN6Kx4hLOg6FepUuu29IGxQH7YJNW0sN8=";
+    }){};
 in
 {
   imports =
@@ -99,7 +106,6 @@ in
         (callPackage ./borg2.nix { })
         brightnessctl
         # cargo # rust package manager
-        channel
         chawan # TUI browser https://sr.ht/~bptato/chawan/
         chromium # needed although programs.enabled.chromius = true; ungoogled-chromium didn't work
         # clippy # rust lint tool, see https://github.com/rust-lang/rustlings/issues/2111
@@ -208,6 +214,7 @@ in
         # redshift
         # reuse
         river
+        river-keyboard-layout-listener
         # rust-analyzer
         # rustc # rust compiler
         # rustfmt
@@ -341,7 +348,6 @@ in
 
     overlays = [
       (final: prev: {
-        channel = (pkgs.callPackage ./packages/river-channel { inherit pkgs upkgs; });
         ladybird = upkgs.ladybird;
         river = upkgs.river;
         wpaperd = upkgs.wpaperd;
@@ -410,6 +416,7 @@ in
   # from tazjin
   security = {
     pam.services.swaylock = { };
+    polkit.enable = true; # TODO why? taken from reka module
     sudo.extraConfig = "Defaults insults,pwfeedback";
   };
 
@@ -427,6 +434,7 @@ in
       };
     };
     gnome.gcr-ssh-agent.enable = lib.mkForce false; # seems this gets enabled by niri?
+    graphical-desktop.enable = true;
     libinput.enable = true;
     ollama = {
       enable = true;
@@ -488,6 +496,9 @@ in
               };
               wantedBy = [ "graphical-session.target" ];
             };
+        waybar.serviceConfig = {
+          ExecStart = [ "" "${pkgs.waybar}/bin/waybar -c %h/.config/waybar/config.niri.jsonc" ];
+        };
       };
     };
   };
@@ -571,9 +582,6 @@ in
             ConditionEnvironment = "WAYLAND_DISPLAY";
           };
           wantedBy = [ "graphical-session.target" ];
-        };
-        waybar.serviceConfig = {
-          ExecStart = [ "" "${pkgs.waybar}/bin/waybar -c %h/.config/waybar/config.rau.jsonc" ];
         };
     udiskie = {
       after = [ "graphical-session.target" ];
